@@ -1,0 +1,61 @@
+using AppCapasCitas.API.Models;
+using AppCapasCitas.API.VM.Response;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace AppCapasCitas.API.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class PacienteController : ControllerBase
+    {
+        private readonly CitasContext _context;
+
+        public PacienteController(CitasContext context)
+        {
+            _context = context;
+        }
+
+        [HttpGet]
+        public IActionResult GetPacientes()
+        {
+            var pacientes = _context.Pacientes
+                .Where(p => p.Activo)
+                .Select(p => new PacienteResponse
+                {
+                    Id = p.Id,
+                    PacienteId = p.Usuario!.PacienteId ?? 0,
+                    Nombre = p.Usuario!.Nombre,
+                    Apellido = p.Usuario!.Apellido,
+                    Telefono = p.Usuario!.Telefono,
+                    Celular = p.Usuario!.Celular,
+                    Direccion = p.Usuario!.Direccion,
+                    Ciudad = p.Usuario!.Ciudad,
+                    CodigoPais = p.Usuario!.CodigoPais,
+                    Pais = p.Usuario!.Pais,
+                    Estado = p.Usuario!.Estado,
+                    UltimoLogin = p.Usuario!.UltimoLogin,
+                    FechaCreacion = p.Usuario!.FechaCreacion,
+                    FechaActualizacion = p.Usuario!.FechaActualizacion,
+                    CreadoPor = p.Usuario!.CreadoPor,
+                    ModificadoPor = p.Usuario!.ModificadoPor,                    
+                    Email = p.Usuario!.Email,
+                    FechaNacimiento = p.FechaNacimiento,
+                    Genero = p.Genero,
+                    Alergias = p.Alergias,
+                    EnfermedadesCronicas = p.EnfermedadesCronicas,
+                    MedicamentosActuales = p.MedicamentosActuales,
+                    Activo = p.Activo
+                })
+            
+            .ToList();
+            if (pacientes == null || !pacientes.Any())
+            {
+                return NotFound(new { Message = "No se encontraron pacientes." });
+            }
+            // Aquí iría la lógica para obtener los pacientes
+            return Ok(pacientes);
+        }
+    }
+}

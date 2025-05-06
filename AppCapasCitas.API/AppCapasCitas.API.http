@@ -1,0 +1,48 @@
+@AppCapasCitas.API_HostAddress = http://localhost:5100
+
+
+###
+GET {{ AppCapasCitas.API_HostAddress }}/api/paciente/
+Accept: application/json
+
+
+###
+GET {{ AppCapasCitas.API_HostAddress }}/api/Medico/
+Accept: application/json
+
+
+###
+GET {{ AppCapasCitas.API_HostAddress }}/api/Medico/2
+Accept: application/json
+
+###
+DELETE  {{ AppCapasCitas.API_HostAddress }}/api/Medico/3
+Accept: application/json
+
+###
+### Actualizar un médico por ID (PUT)
+PUT {{ AppCapasCitas.API_HostAddress}}/api/Medico/2
+Content-Type: application/json
+Accept: application/json
+
+
+{
+    "id": 2,
+    "nombre": "medico dos actualizado",
+    "apellido": "ap dos actualizado",
+    "telefono": "551234567890",
+    "celular": "5512063611",
+    "direccion": "Las Manzanas",
+    "ciudad": "Jilotzingo",
+    "codigoPais": 52,
+    "pais": "México",
+    "estado": "Mexico",
+    "activo": false,
+    "ultimoLogin": null,
+    "modificadoPor": "system",
+    "email": "m2@gmail.com",
+    "medicoId": 2,
+    "cedulaProfesional": "22",
+    "biografia": "Biografía dos actualizado",
+    "especialidadId": 1
+  }
