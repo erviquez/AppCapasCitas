@@ -1,29 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using AppCapasCitas.API.Models.Common;
 
 namespace AppCapasCitas.API.Models;
 
-public partial class HorarioTrabajo
-{
-    public int Id { get; set; }
+public partial class HorarioTrabajo : EntidadBaseAuditoria
+    {
+        [Required]
+        public DayOfWeek DiaSemana { get; set; }
 
-    public int DiaSemana { get; set; }
+        [Required]
+        public TimeSpan HoraInicio { get; set; }
 
-    public TimeOnly HoraInicio { get; set; }
+        [Required]
+        public TimeSpan HoraFin { get; set; }
 
-    public TimeOnly HoraFin { get; set; }
-
-
-    public DateTime FechaCreacion { get; set; }
-
-    public DateTime? FechaActualizacion { get; set; }
-
-    public string? CreadoPor { get; set; }
-
-    public string? ModificadoPor { get; set; }
-
-    public bool Activo { get; set; }
-    //relaciones
-    public int MedicoId { get; set; }
-    public virtual Medico Medico { get; set; } = null!;
-}
+        // Relaciones
+        [Required]
+        public int MedicoId { get; set; }
+        public virtual Medico? Medico { get; set; }
+    }

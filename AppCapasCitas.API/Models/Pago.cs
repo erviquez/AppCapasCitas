@@ -1,39 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using AppCapasCitas.API.Models.Common;
 
 namespace AppCapasCitas.API.Models;
 
-public partial class Pago
-{
-    public int Id { get; set; }
+public partial class Pago: EntidadBaseAuditoria
+    {
+        [Required]
+        public decimal Monto { get; set; }
 
-    public decimal Monto { get; set; }
+        [Required]
+        public DateTime FechaPago { get; set; }
 
-    public DateTime FechaPago { get; set; }
+        [Required]
+        [StringLength(20)]
+        public string? MetodoPago { get; set; } // Efectivo, Tarjeta, Transferencia
 
-    public string MetodoPago { get; set; } = null!;
+        [Required]
+        [StringLength(20)]
+        public string? Estado { get; set; } // Pendiente, Completado, Reembolsado, Fallido
 
-    public string Estado { get; set; } = null!;
+        public string? Comprobante { get; set; }
+        public string? Notas { get; set; }
 
-    public string? Comprobante { get; set; }
+        // Relaciones
+        [Required]
+        public int PacienteId { get; set; }
+        public virtual Paciente? Paciente { get; set; }
 
-    public string? Notas { get; set; }
-
-
-
-    public DateTime FechaCreacion { get; set; }
-
-    public DateTime? FechaActualizacion { get; set; }
-
-    public string? CreadoPor { get; set; }
-
-    public string? ModificadoPor { get; set; }
-
-    public bool Activo { get; set; }
-
-    public int? CitaId { get; set; }
-    public virtual Cita? Cita { get; set; }
-
-    public int PacienteId { get; set; }
-    public virtual Paciente Paciente { get; set; } = null!;
-}
+        public int? CitaId { get; set; }
+        public virtual Cita? Cita { get; set; }
+    }

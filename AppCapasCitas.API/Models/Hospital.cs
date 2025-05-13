@@ -1,47 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using AppCapasCitas.API.Models.Common;
 
 namespace AppCapasCitas.API.Models;
 
-public partial class Hospital
+public partial class Hospital: EntidadBaseAuditoria
 {
-    public int Id { get; set; }
+    [Required]
+    [StringLength(200)]
+    public string? Nombre { get; set; }
 
-    public string Nombre { get; set; } = null!;
 
+    [Phone]
     public string? TelefonoPrincipal { get; set; }
 
+    [EmailAddress]
     public string? EmailContacto { get; set; }
 
     public string? SitioWeb { get; set; }
-
-    public string Direccion { get; set; } = null!;
-
+    [Required]
+    public string? Direccion { get; set; }
+    
+    [StringLength(50)]
     public string? CodigoPostal { get; set; }
-
+    
     public string? Municipio { get; set; }
 
     public string? Pais { get; set; }
+    [Url]
+    public string Url { get; set; } = string.Empty;
 
-    public string Url { get; set; } = null!;
 
+    // Horarios de atención del hospital
     public string? HorarioAtencion { get; set; }
-
+    
+    // Servicios especiales del hospital
     public string? ServiciosEspeciales { get; set; }
 
-    public DateTime FechaCreacion { get; set; }
+    // Relaciones
+    public virtual ICollection<Consultorio> Consultorios { get; set; } = new HashSet<Consultorio>();
+    public virtual ICollection<Medico> Medicos { get; set; } = new HashSet<Medico>();
 
-    public DateTime? FechaActualizacion { get; set; }
-
-    public string? CreadoPor { get; set; }
-
-    public string? ModificadoPor { get; set; }
-
-    public bool Activo { get; set; }
-
-    public virtual ICollection<Consultorio> Consultorios { get; set; } = new List<Consultorio>();
-
-    public virtual ICollection<MedicoEspecialidadHospital> MedicoEspecialidadHospitales { get; set; } = new List<MedicoEspecialidadHospital>();
-
-    // public virtual ICollection<Medico> Medicos { get; set; } = new List<Medico>();
+    public virtual ICollection<MedicoEspecialidadHospital> MedicoEspecialidadHospitales { get; set; } = new HashSet<MedicoEspecialidadHospital>();
 }

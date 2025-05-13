@@ -1,3 +1,4 @@
+using AppCapasCitas.API.Data;
 using AppCapasCitas.API.Models;
 using AppCapasCitas.API.VM.Request;
 using AppCapasCitas.API.VM.Response;
@@ -11,15 +12,16 @@ namespace AppCapasCitas.API.Controllers
     [ApiController]
     public class MedicoController : ControllerBase
     {
-        private readonly CitasContext _context;
-        public MedicoController(CitasContext context)
+        private readonly CitasDbContext _context;
+        public MedicoController(CitasDbContext context)
         {
             _context = context;
         }
         [HttpGet]
         public IActionResult GetAll()
         {
-            var medicos = _context.Medicos
+            var medicos = _context.Medico
+                .Include(m => m.Usuario)
                 .Where(m => m.Activo)
                 .Select(m => new MedicoResponse
                 {
@@ -40,8 +42,10 @@ namespace AppCapasCitas.API.Controllers
                     CreadoPor = m.Usuario!.CreadoPor,
                     ModificadoPor = m.Usuario!.ModificadoPor,                    
                     Email = m.Usuario!.Email,
-                    CedulaProfesional = m.CedulaProfesional,
+                    CedulaProfesional = m.CedulaProfesional!,
+                    Biografia = m.Biografia!,
                     // EspecialidadId = m.Especialidad!.Id,
+
                     // NombreEspecialidad = m.Especialidad!.Nombre,
                     
                 })
@@ -52,7 +56,7 @@ namespace AppCapasCitas.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var medico = _context.Medicos
+            var medico = _context.Medico
             
                 .Include(m => m.Usuario)
                // .Include(m => m.Especialidad)
@@ -75,7 +79,7 @@ namespace AppCapasCitas.API.Controllers
                     CreadoPor = m.CreadoPor,
                     ModificadoPor = m.ModificadoPor,                    
                     Email = m.Usuario!.Email,
-                    CedulaProfesional = m.CedulaProfesional,
+                    CedulaProfesional = m.CedulaProfesional!,
                     Biografia = m.Biografia!,
                     // EspecialidadId = m.Especialidad!.Id,
                     // NombreEspecialidad = m.Especialidad!.Nombre,
@@ -96,7 +100,7 @@ namespace AppCapasCitas.API.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var medico = _context.Medicos.Find(id);
+            var medico = _context.Medico.Find(id);
 
                 
             if (medico == null)
@@ -110,12 +114,9 @@ namespace AppCapasCitas.API.Controllers
 
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] MedicoRequest medicoResponse)
+        public IActionResult Update(int id, [FromBody] MedicoRequest medicoRequest)
         {
-             var medico = _context.Medicos
-                .Include(m => m.Usuario)
-                //.Include(m => m.Especialidad)
-                .FirstOrDefault(m => m.Id == id);
+             var medico = _context.Medico.Find(id);
             if (medico == null)
             {
                 return NotFound();
@@ -126,22 +127,8 @@ namespace AppCapasCitas.API.Controllers
                 return BadRequest("El usuario asociado al médico no existe");
             }
             // Update all fields from the medicoResponse
-            // medico.Usuario!.Nombre = medicoResponse.Nombre;
-            // medico.Usuario!.Apellido = medicoResponse.Apellido;
-            // medico.Usuario!.Telefono = medicoResponse.Telefono;
-            // medico.Usuario!.Celular = medicoResponse.Celular;
-            // medico.Usuario!.Direccion = medicoResponse.Direccion;
-            // medico.Usuario!.Ciudad = medicoResponse.Ciudad;
-            // medico.Usuario!.CodigoPais = medicoResponse.CodigoPais;
-            // medico.Usuario!.Pais = medicoResponse.Pais;
-            // medico.Usuario!.Estado = medicoResponse.Estado;
-            // medico.Usuario!.Activo = medicoResponse.Activo;
-            // medico.Usuario!.UltimoLogin = medicoResponse.UltimoLogin;    
-            // medico.Usuario!.Email = medicoResponse.Email;
-            medico.Usuario!.MedicoId = medicoResponse.MedicoId;
-            medico.CedulaProfesional = medicoResponse.CedulaProfesional;
-           // medico.EspecialidadId = medicoResponse.EspecialidadId;
-
+            medico.CedulaProfesional = medicoRequest.CedulaProfesional;
+            medico.Biografia = medicoRequest.Biografia;
             medico.FechaActualizacion = DateTime.Now; // Typically you'd update this to current time
             medico.ModificadoPor = "CurrentUser"; // Should be set to the actual user making the change
 
@@ -156,6 +143,33 @@ namespace AppCapasCitas.API.Controllers
                 return StatusCode(500, "Ocurrió un error al actualizar el médico" + ex.Message);
             }
         }
+        [HttpPost]
+        public IActionResult Create([FromBody] MedicoRequest medicoRequest)
+        {
+            var medico = new Medico
+            { // create all fields from the medicoResponse
+   
+                CedulaProfesional = medicoRequest.CedulaProfesional,
+                Biografia = medicoRequest.Biografia,
+                Activo = true,
+                FechaCreacion = DateTime.Now, // Typically you'd update this to current time
+                CreadoPor = "CurrentUser" // Should be set to the actual user making the changenge
+            };           
+
+            try
+            {
+                _context.Medico.AddAsync(medico);
+                _context.SaveChanges();
+                return Ok("Se Agrego el médico con éxito");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, "Ocurrió un error al actualizar el médico" + ex.Message);
+            }
+        }
+
+
 
 
 

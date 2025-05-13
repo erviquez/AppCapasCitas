@@ -1,35 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using AppCapasCitas.API.Models.Common;
 
 namespace AppCapasCitas.API.Models;
 
-public partial class Consultorio
+public partial class Consultorio:EntidadBaseAuditoria
 {
-    public int Id { get; set; }
+    [Required]
+    [StringLength(100)]
+    public string? Nombre { get; set; }
 
-    public string Nombre { get; set; } = null!;
+    [Required]
+    public string? Ubicacion { get; set; } // Ej: "Piso 3, Ala Norte"
 
-    public string Ubicacion { get; set; } = null!;
-
+    [Phone]
     public string? Telefono { get; set; }
 
+    [StringLength(20)]
     public string? NumeroConsultorio { get; set; }
 
-    public string? Equipamiento { get; set; }
+    public string? Equipamiento { get; set; } // Equipos especiales disponibles
 
-
-    public DateTime FechaCreacion { get; set; }
-
-    public DateTime? FechaActualizacion { get; set; }
-
-    public string? CreadoPor { get; set; }
-
-    public string? ModificadoPor { get; set; }
-
-    public bool Activo { get; set; }
-
-    //Relaciones
+    // Relaciones
+    [Required]
     public int HospitalId { get; set; }
-    public virtual Hospital Hospital { get; set; } = null!;
-    public virtual ICollection<Cita> Cita { get; set; } = new List<Cita>();
+    public virtual Hospital? Hospital { get; set; }
+
+    public virtual ICollection<Cita> Citas { get; set; } = new HashSet<Cita>();
 }

@@ -1,31 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using AppCapasCitas.API.Models.Common;
 
 namespace AppCapasCitas.API.Models;
 
-public partial class MedicamentoRecetado
-{
-    public int Id { get; set; }
+public partial class MedicamentoRecetado: EntidadBaseAuditoria
+    {
+        [Required]
+        [StringLength(100)]
+        public string? NombreMedicamento { get; set; }
 
-    public string NombreMedicamento { get; set; } = null!;
+        [Required]
+        public string? Dosis { get; set; }
 
-    public string Dosis { get; set; } = null!;
+        [Required]
+        public string? Frecuencia { get; set; }
 
-    public string Frecuencia { get; set; } = null!;
+        public string? InstruccionesEspeciales { get; set; }
 
-    public string? InstruccionesEspeciales { get; set; }
-
-
-    public DateTime FechaCreacion { get; set; }
-
-    public DateTime? FechaActualizacion { get; set; }
-
-    public string? CreadoPor { get; set; }
-
-    public string? ModificadoPor { get; set; }
-
-    public bool Activo { get; set; }
-    //Relaciones
-    public int RecetaMedicaId { get; set; }
-    public virtual RecetaMedica RecetaMedica { get; set; } = null!;
-}
+        // Relaciones
+        [Required]
+        public int RecetaMedicaId { get; set; }
+        public virtual RecetaMedica? RecetaMedica { get; set; }
+    }

@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using AppCapasCitas.API.Models.Common;
 
 namespace AppCapasCitas.API.Models;
 
-public partial class Medico
+public partial class Medico: EntidadBaseAuditoria
 {
-    public int Id { get; set; }
-    public string CedulaProfesional { get; set; } = null!;
-    public string? Biografia { get; set; }  
-    public DateTime FechaCreacion { get; set; }
-    public DateTime? FechaActualizacion { get; set; }
-    public string? CreadoPor { get; set; }
-    public string? ModificadoPor { get; set; }
-    public bool Activo { get; set; }
-    public virtual ICollection<Cita> Citas { get; set; } = new List<Cita>();   
+
+    [Required]
+    public string? CedulaProfesional { get; set; }
+    public string? Biografia { get; set; }
+
+    public virtual ICollection<Cita> Citas { get; set; } = new HashSet<Cita>();
     public virtual ICollection<HistorialMedico> HistorialMedicos { get; set; } = new List<HistorialMedico>();
-    public virtual ICollection<HorarioTrabajo> HorarioTrabajos { get; set; } = new List<HorarioTrabajo>();
+    public virtual ICollection<HorarioTrabajo> HorariosTrabajo { get; set; } = new HashSet<HorarioTrabajo>();
     public virtual ICollection<MedicoEspecialidadHospital> MedicoEspecialidadHospitales { get; set; } = new List<MedicoEspecialidadHospital>();
-    public virtual ICollection<RecetaMedica> RecetaMedicas { get; set; } = new List<RecetaMedica>();
+    public virtual ICollection<RecetaMedica> RecetasMedicas { get; set; } = new HashSet<RecetaMedica>();
     public virtual Usuario? Usuario { get; set; }
 }

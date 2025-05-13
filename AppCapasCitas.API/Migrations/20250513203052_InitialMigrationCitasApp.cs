@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AppCapasCitas.API.Migrations
 {
     /// <inheritdoc />
-    public partial class MigracionInicial4 : Migration
+    public partial class InitialMigrationCitasApp : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -108,31 +108,6 @@ namespace AppCapasCitas.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "medico",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    cedula_profesional = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    biografia = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    fecha_creacion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    fecha_actualizacion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    creado_por = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    modificado_por = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    activo = table.Column<bool>(type: "bit", nullable: false),
-                    EspecialidadId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("pk_medico", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_medico_especialidad_EspecialidadId",
-                        column: x => x.EspecialidadId,
-                        principalTable: "especialidad",
-                        principalColumn: "id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "consultorio",
                 columns: table => new
                 {
@@ -157,19 +132,19 @@ namespace AppCapasCitas.API.Migrations
                         name: "fk_consultorio_hospital_hospital_id",
                         column: x => x.hospital_id,
                         principalTable: "hospital",
-                        principalColumn: "id");
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "horario_trabajo",
+                name: "medico",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    dia_semana = table.Column<int>(type: "int", nullable: false),
-                    hora_inicio = table.Column<TimeOnly>(type: "time", nullable: false),
-                    hora_fin = table.Column<TimeOnly>(type: "time", nullable: false),
-                    medico_id = table.Column<int>(type: "int", nullable: false),
+                    cedula_profesional = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    biografia = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    hospital_id = table.Column<int>(type: "int", nullable: true),
                     fecha_creacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     fecha_actualizacion = table.Column<DateTime>(type: "datetime2", nullable: true),
                     creado_por = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -178,112 +153,16 @@ namespace AppCapasCitas.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_horario_trabajo", x => x.id);
+                    table.PrimaryKey("pk_medico", x => x.id);
                     table.ForeignKey(
-                        name: "fk_horario_trabajo_medico_medico_id",
-                        column: x => x.medico_id,
-                        principalTable: "medico",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "medico_especialidad_hospital",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    medico_id = table.Column<int>(type: "int", nullable: false),
-                    especialidad_id = table.Column<int>(type: "int", nullable: false),
-                    hospital_id = table.Column<int>(type: "int", nullable: false),
-                    cargo_id = table.Column<int>(type: "int", nullable: false),
-                    fecha_inicio = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    fecha_fin = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    activo = table.Column<bool>(type: "bit", nullable: false),
-                    costo_consulta_especifico = table.Column<decimal>(type: "decimal(10,2)", nullable: true),
-                    consultorio = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    horario_atencion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    numero_contrato = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    tipo_contratacion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    fecha_creacion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    fecha_actualizacion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    creado_por = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    modificado_por = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("pk_medico_especialidad_hospital", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_medico_especialidad_hospital_cargo_cargo_id",
-                        column: x => x.cargo_id,
-                        principalTable: "cargo",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_medico_especialidad_hospital_especialidad_especialidad_id",
-                        column: x => x.especialidad_id,
-                        principalTable: "especialidad",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_medico_especialidad_hospital_hospital_hospital_id",
+                        name: "fk_medico_hospital_hospital_id",
                         column: x => x.hospital_id,
                         principalTable: "hospital",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_medico_especialidad_hospital_medico_medico_id",
-                        column: x => x.medico_id,
-                        principalTable: "medico",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "usuario",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    identity_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    rol_id = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    rol_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    activo = table.Column<bool>(type: "bit", nullable: false),
-                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    celular = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    direccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ciudad = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    codigo_pais = table.Column<int>(type: "int", nullable: false),
-                    pais = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    estado = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ultimo_login = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    paciente_id = table.Column<int>(type: "int", nullable: true),
-                    medico_id = table.Column<int>(type: "int", nullable: true),
-                    fecha_creacion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    fecha_actualizacion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    creado_por = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    modificado_por = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    email = table.Column<string>(type: "nvarchar(max)", nullable: false, defaultValue: "")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("pk_usuario", x => x.id);
-                    table.ForeignKey(
-                        name: "fk_usuario_medico_medico_id",
-                        column: x => x.medico_id,
-                        principalTable: "medico",
-                        principalColumn: "id");
-                    table.ForeignKey(
-                        name: "fk_usuario_paciente_paciente_id",
-                        column: x => x.paciente_id,
-                        principalTable: "paciente",
                         principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "cita",
+                name: "citas",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -305,23 +184,149 @@ namespace AppCapasCitas.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_cita", x => x.id);
+                    table.PrimaryKey("pk_citas", x => x.id);
                     table.ForeignKey(
-                        name: "fk_cita_consultorio_consultorio_id",
+                        name: "fk_citas_consultorio_consultorio_id",
                         column: x => x.consultorio_id,
                         principalTable: "consultorio",
                         principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
-                        name: "fk_cita_medico_medico_id",
+                        name: "fk_citas_medico_medico_id",
                         column: x => x.medico_id,
                         principalTable: "medico",
-                        principalColumn: "id");
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "fk_cita_paciente_paciente_id",
+                        name: "fk_citas_paciente_paciente_id",
                         column: x => x.paciente_id,
                         principalTable: "paciente",
-                        principalColumn: "id");
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "horarios_trabajo",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    dia_semana = table.Column<int>(type: "int", nullable: false),
+                    hora_inicio = table.Column<TimeSpan>(type: "time", nullable: false),
+                    hora_fin = table.Column<TimeSpan>(type: "time", nullable: false),
+                    medico_id = table.Column<int>(type: "int", nullable: false),
+                    fecha_creacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    fecha_actualizacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    creado_por = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    modificado_por = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    activo = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_horarios_trabajo", x => x.id);
+                    table.ForeignKey(
+                        name: "fk_horarios_trabajo_medico_medico_id",
+                        column: x => x.medico_id,
+                        principalTable: "medico",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "medico_especialidad_hospital",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    fecha_inicio = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    fecha_fin = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    costo_consulta_especifico = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: true),
+                    consultorio = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    horario_atencion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    numero_contrato = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    tipo_contratacion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    medico_id = table.Column<int>(type: "int", nullable: false),
+                    especialidad_id = table.Column<int>(type: "int", nullable: false),
+                    hospital_id = table.Column<int>(type: "int", nullable: false),
+                    cargo_id = table.Column<int>(type: "int", nullable: false),
+                    fecha_creacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    fecha_actualizacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    creado_por = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    modificado_por = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    activo = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_medico_especialidad_hospital", x => x.id);
+                    table.ForeignKey(
+                        name: "fk_medico_especialidad_hospital_cargo_cargo_id",
+                        column: x => x.cargo_id,
+                        principalTable: "cargo",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "fk_medico_especialidad_hospital_especialidad_especialidad_id",
+                        column: x => x.especialidad_id,
+                        principalTable: "especialidad",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "fk_medico_especialidad_hospital_hospital_hospital_id",
+                        column: x => x.hospital_id,
+                        principalTable: "hospital",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "fk_medico_especialidad_hospital_medico_medico_id",
+                        column: x => x.medico_id,
+                        principalTable: "medico",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "usuario",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    identity_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    rol_id = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    rol_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    celular = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    direccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ciudad = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    codigo_pais = table.Column<int>(type: "int", nullable: false),
+                    pais = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    estado = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ultimo_login = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    paciente_id = table.Column<int>(type: "int", nullable: true),
+                    medico_id = table.Column<int>(type: "int", nullable: true),
+                    fecha_creacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    fecha_actualizacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    creado_por = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    modificado_por = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    activo = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_usuario", x => x.id);
+                    table.ForeignKey(
+                        name: "fk_usuario_medico_medico_id",
+                        column: x => x.medico_id,
+                        principalTable: "medico",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "fk_usuario_paciente_paciente_id",
+                        column: x => x.paciente_id,
+                        principalTable: "paciente",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -351,25 +356,27 @@ namespace AppCapasCitas.API.Migrations
                 {
                     table.PrimaryKey("pk_historial_medico", x => x.id);
                     table.ForeignKey(
-                        name: "fk_historial_medico_cita_cita_id",
+                        name: "fk_historial_medico_citas_cita_id",
                         column: x => x.cita_id,
-                        principalTable: "cita",
+                        principalTable: "citas",
                         principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "fk_historial_medico_medico_medico_id",
                         column: x => x.medico_id,
                         principalTable: "medico",
-                        principalColumn: "id");
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_historial_medico_paciente_paciente_id",
                         column: x => x.paciente_id,
                         principalTable: "paciente",
-                        principalColumn: "id");
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "pago",
+                name: "pagos",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -390,22 +397,23 @@ namespace AppCapasCitas.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_pago", x => x.id);
+                    table.PrimaryKey("pk_pagos", x => x.id);
                     table.ForeignKey(
-                        name: "fk_pago_cita_cita_id",
+                        name: "fk_pagos_citas_cita_id",
                         column: x => x.cita_id,
-                        principalTable: "cita",
+                        principalTable: "citas",
                         principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
-                        name: "fk_pago_paciente_paciente_id",
+                        name: "fk_pagos_paciente_paciente_id",
                         column: x => x.paciente_id,
                         principalTable: "paciente",
-                        principalColumn: "id");
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "receta_medica",
+                name: "recetas_medicas",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -424,27 +432,29 @@ namespace AppCapasCitas.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_receta_medica", x => x.id);
+                    table.PrimaryKey("pk_recetas_medicas", x => x.id);
                     table.ForeignKey(
-                        name: "fk_receta_medica_cita_cita_id",
+                        name: "fk_recetas_medicas_citas_cita_id",
                         column: x => x.cita_id,
-                        principalTable: "cita",
+                        principalTable: "citas",
                         principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
-                        name: "fk_receta_medica_medico_medico_id",
+                        name: "fk_recetas_medicas_medico_medico_id",
                         column: x => x.medico_id,
                         principalTable: "medico",
-                        principalColumn: "id");
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "fk_receta_medica_paciente_paciente_id",
+                        name: "fk_recetas_medicas_paciente_paciente_id",
                         column: x => x.paciente_id,
                         principalTable: "paciente",
-                        principalColumn: "id");
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "medicamento_recetado",
+                name: "medicamentos_recetados",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -462,11 +472,11 @@ namespace AppCapasCitas.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_medicamento_recetado", x => x.id);
+                    table.PrimaryKey("pk_medicamentos_recetados", x => x.id);
                     table.ForeignKey(
-                        name: "fk_medicamento_recetado_receta_medica_receta_medica_id",
+                        name: "fk_medicamentos_recetados_recetas_medicas_receta_medica_id",
                         column: x => x.receta_medica_id,
-                        principalTable: "receta_medica",
+                        principalTable: "recetas_medicas",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -477,28 +487,28 @@ namespace AppCapasCitas.API.Migrations
                 column: "especialidad_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_cita_consultorio_id",
-                table: "cita",
+                name: "ix_citas_consultorio_id",
+                table: "citas",
                 column: "consultorio_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_cita_estado",
-                table: "cita",
+                name: "ix_citas_estado",
+                table: "citas",
                 column: "estado");
 
             migrationBuilder.CreateIndex(
-                name: "ix_cita_fecha_hora",
-                table: "cita",
+                name: "ix_citas_fecha_hora",
+                table: "citas",
                 column: "fecha_hora");
 
             migrationBuilder.CreateIndex(
-                name: "ix_cita_medico_id",
-                table: "cita",
+                name: "ix_citas_medico_id",
+                table: "citas",
                 column: "medico_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_cita_paciente_id",
-                table: "cita",
+                name: "ix_citas_paciente_id",
+                table: "citas",
                 column: "paciente_id");
 
             migrationBuilder.CreateIndex(
@@ -522,19 +532,19 @@ namespace AppCapasCitas.API.Migrations
                 column: "paciente_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_horario_trabajo_medico_id",
-                table: "horario_trabajo",
+                name: "ix_horarios_trabajo_medico_id",
+                table: "horarios_trabajo",
                 column: "medico_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_medicamento_recetado_receta_medica_id",
-                table: "medicamento_recetado",
+                name: "ix_medicamentos_recetados_receta_medica_id",
+                table: "medicamentos_recetados",
                 column: "receta_medica_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_medico_EspecialidadId",
+                name: "ix_medico_hospital_id",
                 table: "medico",
-                column: "EspecialidadId");
+                column: "hospital_id");
 
             migrationBuilder.CreateIndex(
                 name: "ix_medico_especialidad_hospital_cargo_id",
@@ -558,47 +568,40 @@ namespace AppCapasCitas.API.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_MedicoEspecialidadHospital_Unique",
-                table: "medico_especialidad_hospital",
-                columns: new[] { "medico_id", "especialidad_id", "hospital_id" },
-                unique: true,
-                filter: "[Activo] = 1");
-
-            migrationBuilder.CreateIndex(
-                name: "ix_pago_cita_id",
-                table: "pago",
+                name: "ix_pagos_cita_id",
+                table: "pagos",
                 column: "cita_id",
                 unique: true,
-                filter: "([cita_id] IS NOT NULL)");
+                filter: "[cita_id] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "ix_pago_estado",
-                table: "pago",
+                name: "ix_pagos_estado",
+                table: "pagos",
                 column: "estado");
 
             migrationBuilder.CreateIndex(
-                name: "ix_pago_paciente_id",
-                table: "pago",
+                name: "ix_pagos_paciente_id",
+                table: "pagos",
                 column: "paciente_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_receta_medica_cita_id",
-                table: "receta_medica",
+                name: "ix_recetas_medicas_cita_id",
+                table: "recetas_medicas",
                 column: "cita_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_receta_medica_fecha_emision",
-                table: "receta_medica",
+                name: "ix_recetas_medicas_fecha_emision",
+                table: "recetas_medicas",
                 column: "fecha_emision");
 
             migrationBuilder.CreateIndex(
-                name: "ix_receta_medica_medico_id",
-                table: "receta_medica",
+                name: "ix_recetas_medicas_medico_id",
+                table: "recetas_medicas",
                 column: "medico_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_receta_medica_paciente_id",
-                table: "receta_medica",
+                name: "ix_recetas_medicas_paciente_id",
+                table: "recetas_medicas",
                 column: "paciente_id");
 
             migrationBuilder.CreateIndex(
@@ -612,14 +615,14 @@ namespace AppCapasCitas.API.Migrations
                 table: "usuario",
                 column: "medico_id",
                 unique: true,
-                filter: "([medico_id] IS NOT NULL)");
+                filter: "[medico_id] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "ix_usuario_paciente_id",
                 table: "usuario",
                 column: "paciente_id",
                 unique: true,
-                filter: "([paciente_id] IS NOT NULL)");
+                filter: "[paciente_id] IS NOT NULL");
         }
 
         /// <inheritdoc />
@@ -629,28 +632,31 @@ namespace AppCapasCitas.API.Migrations
                 name: "historial_medico");
 
             migrationBuilder.DropTable(
-                name: "horario_trabajo");
+                name: "horarios_trabajo");
 
             migrationBuilder.DropTable(
-                name: "medicamento_recetado");
+                name: "medicamentos_recetados");
 
             migrationBuilder.DropTable(
                 name: "medico_especialidad_hospital");
 
             migrationBuilder.DropTable(
-                name: "pago");
+                name: "pagos");
 
             migrationBuilder.DropTable(
                 name: "usuario");
 
             migrationBuilder.DropTable(
-                name: "receta_medica");
+                name: "recetas_medicas");
 
             migrationBuilder.DropTable(
                 name: "cargo");
 
             migrationBuilder.DropTable(
-                name: "cita");
+                name: "citas");
+
+            migrationBuilder.DropTable(
+                name: "especialidad");
 
             migrationBuilder.DropTable(
                 name: "consultorio");
@@ -663,9 +669,6 @@ namespace AppCapasCitas.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "hospital");
-
-            migrationBuilder.DropTable(
-                name: "especialidad");
         }
     }
 }

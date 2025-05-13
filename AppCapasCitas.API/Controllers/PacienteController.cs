@@ -1,8 +1,6 @@
-using AppCapasCitas.API.Models;
+using AppCapasCitas.API.Data;
 using AppCapasCitas.API.VM.Response;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AppCapasCitas.API.Controllers
 {
@@ -10,9 +8,9 @@ namespace AppCapasCitas.API.Controllers
     [ApiController]
     public class PacienteController : ControllerBase
     {
-        private readonly CitasContext _context;
+        private readonly CitasDbContext _context;
 
-        public PacienteController(CitasContext context)
+        public PacienteController(CitasDbContext context)
         {
             _context = context;
         }
@@ -20,7 +18,7 @@ namespace AppCapasCitas.API.Controllers
         [HttpGet]
         public IActionResult GetPacientes()
         {
-            var pacientes = _context.Pacientes
+            var pacientes = _context.Paciente
                 .Where(p => p.Activo)
                 .Select(p => new PacienteResponse
                 {
@@ -42,7 +40,7 @@ namespace AppCapasCitas.API.Controllers
                     ModificadoPor = p.Usuario!.ModificadoPor,                    
                     Email = p.Usuario!.Email,
                     FechaNacimiento = p.FechaNacimiento,
-                    Genero = p.Genero,
+                    Genero = p.Genero!,
                     Alergias = p.Alergias,
                     EnfermedadesCronicas = p.EnfermedadesCronicas,
                     MedicamentosActuales = p.MedicamentosActuales,

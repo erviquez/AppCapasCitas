@@ -1,49 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using AppCapasCitas.API.Models.Common;
 
 namespace AppCapasCitas.API.Models;
 
-public partial class Cita
+public partial class Cita: EntidadBaseAuditoria
 {
-    public int Id { get; set; }
-
+    [Required]
     public DateTime FechaHora { get; set; }
 
-    public string Motivo { get; set; } = null!;
+    [Required]
+    [StringLength(200)]
+    public string? Motivo { get; set; }
 
-    public string Estado { get; set; } = null!;
-
+    [Required]
+    [StringLength(20)]
+    public string? Estado { get; set; } = "Programada"; // Programada, Confirmada, EnProgreso, Cancelada, Completada
     public string? Notas { get; set; }
-
     public string? Diagnostico { get; set; }
-
     public string? Tratamiento { get; set; }
 
-
-
-
-    public DateTime FechaCreacion { get; set; }
-
-    public DateTime? FechaActualizacion { get; set; }
-
-    public string? CreadoPor { get; set; }
-
-    public string? ModificadoPor { get; set; }
-
-    public bool Activo { get; set; }
-    //Relaciones
-    public int MedicoId { get; set; }
-    public virtual Medico Medico { get; set; } = null!;
-
+    // Relaciones
+    [Required]
     public int PacienteId { get; set; }
-    public virtual Paciente Paciente { get; set; } = null!;
+    public virtual Paciente? Paciente { get; set; }
+
+    [Required]
+    public int MedicoId { get; set; }
+    public virtual Medico? Medico { get; set; }
 
     public int? ConsultorioId { get; set; }
     public virtual Consultorio? Consultorio { get; set; }
 
-    public virtual ICollection<HistorialMedico> HistorialMedicos { get; set; } = new List<HistorialMedico>();
-
+    public virtual ICollection<RecetaMedica> RecetasMedicas { get; set; } = new HashSet<RecetaMedica>();
     public virtual Pago? Pago { get; set; }
-
-    public virtual ICollection<RecetaMedica> RecetaMedicas { get; set; } = new List<RecetaMedica>();
 }

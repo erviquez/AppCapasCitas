@@ -1,0 +1,19 @@
+using System.ComponentModel.DataAnnotations;
+
+namespace AppCapasCitas.API.Models.Common;
+
+public abstract class EntidadBaseAuditoria
+{
+        [Key]
+        public int Id { get; set; }
+        
+        [Required]
+        public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
+        
+        public DateTime? FechaActualizacion { get; set; }
+
+        public string? CreadoPor { get; set; }
+
+        public string? ModificadoPor { get; set; }
+        public bool Activo { get; set; } = true;
+}

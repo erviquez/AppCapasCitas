@@ -1,33 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using AppCapasCitas.API.Models.Common;
 
 namespace AppCapasCitas.API.Models;
 
-public partial class Cargo
+public partial class Cargo  : EntidadBaseAuditoria
 {
-    public int Id { get; set; }
+    [Required]
+    [StringLength(100)]
+    public string Nombre { get; set; } = string.Empty;
 
-    public string Nombre { get; set; } = null!;
-
+    [StringLength(500)]
     public string? Descripcion { get; set; }
 
-    public int NivelJerarquico { get; set; }
+    // Nivel jerárquico (opcional)
+    public int NivelJerarquico { get; set; } = 1;
 
-    public bool EsJefatura { get; set; }
+    // Indica si es un cargo de jefatura
+    public bool EsJefatura { get; set; } = false;
 
+    // Relación con especialidad (si el cargo es específico de una especialidad)
     public int? EspecialidadId { get; set; }
-
-    public DateTime FechaCreacion { get; set; }
-
-    public DateTime? FechaActualizacion { get; set; }
-
-    public string? CreadoPor { get; set; }
-
-    public string? ModificadoPor { get; set; }
-
-    public bool Activo { get; set; }
-
-    // public virtual Especialidad? Especialidad { get; set; }
-
-    public virtual ICollection<MedicoEspecialidadHospital> MedicoEspecialidadHospitals { get; set; } = new List<MedicoEspecialidadHospital>();
+    public virtual Especialidad? Especialidad { get; set; }
 }

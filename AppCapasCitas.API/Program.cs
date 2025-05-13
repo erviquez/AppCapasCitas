@@ -1,5 +1,5 @@
 
-using AppCapasCitas.API.Models;
+using AppCapasCitas.API.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,9 +10,11 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 string connetionStringSql =  builder.Configuration.GetConnectionString("SqlConnectionString")!;
-builder.Services.AddDbContext<CitasContext>(options =>
+builder.Services.AddDbContext<CitasDbContext>(options =>
                 options.UseSqlServer(connetionStringSql)
-            );
+                       .UseSnakeCaseNamingConvention()
+                )
+                ;
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
