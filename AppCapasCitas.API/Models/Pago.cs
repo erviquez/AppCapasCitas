@@ -19,9 +19,7 @@ public partial class Pago
 
     public string? Notas { get; set; }
 
-    public int PacienteId { get; set; }
 
-    public int? CitaId { get; set; }
 
     public DateTime FechaCreacion { get; set; }
 
@@ -33,7 +31,9 @@ public partial class Pago
 
     public bool Activo { get; set; }
 
+    public int? CitaId { get; set; }
     public virtual Cita? Cita { get; set; }
 
+    public int PacienteId { get; set; }
     public virtual Paciente Paciente { get; set; } = null!;
 }

@@ -28,5 +28,5 @@ public partial class Especialidad
     // Relación muchos-a-muchos con Médico y Hospital
     public virtual ICollection<MedicoEspecialidadHospital> MedicoEspecialidadHospitales { get; set; } = new List<MedicoEspecialidadHospital>();
 
-    public virtual ICollection<Medico> Medicos { get; set; } = new List<Medico>();
+    //public virtual ICollection<Medico> Medicos { get; set; } = new List<Medico>();
 }

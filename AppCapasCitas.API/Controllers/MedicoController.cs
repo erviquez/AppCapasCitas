@@ -116,18 +116,15 @@ namespace AppCapasCitas.API.Controllers
                 .Include(m => m.Usuario)
                 //.Include(m => m.Especialidad)
                 .FirstOrDefault(m => m.Id == id);
-
             if (medico == null)
             {
                 return NotFound();
             }
-
             // Validate Usuario exists
             if (medico.Usuario == null)
             {
                 return BadRequest("El usuario asociado al médico no existe");
             }
-
             // Update all fields from the medicoResponse
             // medico.Usuario!.Nombre = medicoResponse.Nombre;
             // medico.Usuario!.Apellido = medicoResponse.Apellido;

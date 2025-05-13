@@ -19,11 +19,8 @@ public partial class Cita
 
     public string? Tratamiento { get; set; }
 
-    public int PacienteId { get; set; }
 
-    public int MedicoId { get; set; }
 
-    public int? ConsultorioId { get; set; }
 
     public DateTime FechaCreacion { get; set; }
 
@@ -34,14 +31,17 @@ public partial class Cita
     public string? ModificadoPor { get; set; }
 
     public bool Activo { get; set; }
+    //Relaciones
+    public int MedicoId { get; set; }
+    public virtual Medico Medico { get; set; } = null!;
 
+    public int PacienteId { get; set; }
+    public virtual Paciente Paciente { get; set; } = null!;
+
+    public int? ConsultorioId { get; set; }
     public virtual Consultorio? Consultorio { get; set; }
 
     public virtual ICollection<HistorialMedico> HistorialMedicos { get; set; } = new List<HistorialMedico>();
-
-    public virtual Medico Medico { get; set; } = null!;
-
-    public virtual Paciente Paciente { get; set; } = null!;
 
     public virtual Pago? Pago { get; set; }
 

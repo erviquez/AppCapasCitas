@@ -13,7 +13,6 @@ public partial class HorarioTrabajo
 
     public TimeOnly HoraFin { get; set; }
 
-    public int MedicoId { get; set; }
 
     public DateTime FechaCreacion { get; set; }
 
@@ -24,6 +23,7 @@ public partial class HorarioTrabajo
     public string? ModificadoPor { get; set; }
 
     public bool Activo { get; set; }
-
+    //relaciones
+    public int MedicoId { get; set; }
     public virtual Medico Medico { get; set; } = null!;
 }

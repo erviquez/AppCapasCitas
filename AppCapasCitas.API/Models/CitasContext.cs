@@ -119,10 +119,10 @@ public partial class CitasContext : DbContext
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("fk_cita_consultorio_consultorio_id");
 
-            entity.HasOne(d => d.Medico).WithMany(p => p.Cita)
-                .HasForeignKey(d => d.MedicoId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_cita_medico_medico_id");
+            // entity.HasOne(d => d.Medico).WithMany(p => p.Cita)
+            //     .HasForeignKey(d => d.MedicoId)
+            //     .OnDelete(DeleteBehavior.ClientSetNull)
+            //     .HasConstraintName("fk_cita_medico_medico_id");
 
             entity.HasOne(d => d.Paciente).WithMany(p => p.Cita)
                 .HasForeignKey(d => d.PacienteId)
@@ -332,11 +332,6 @@ public partial class CitasContext : DbContext
 
 
         });
-
-
-
-
-
 
         modelBuilder.Entity<MedicoEspecialidadHospital>(entity =>
         {

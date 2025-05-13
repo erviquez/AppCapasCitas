@@ -15,7 +15,6 @@ public partial class MedicamentoRecetado
 
     public string? InstruccionesEspeciales { get; set; }
 
-    public int RecetaMedicaId { get; set; }
 
     public DateTime FechaCreacion { get; set; }
 
@@ -26,6 +25,7 @@ public partial class MedicamentoRecetado
     public string? ModificadoPor { get; set; }
 
     public bool Activo { get; set; }
-
+    //Relaciones
+    public int RecetaMedicaId { get; set; }
     public virtual RecetaMedica RecetaMedica { get; set; } = null!;
 }

@@ -13,11 +13,6 @@ public partial class RecetaMedica
 
     public string Instrucciones { get; set; } = null!;
 
-    public int MedicoId { get; set; }
-
-    public int PacienteId { get; set; }
-
-    public int? CitaId { get; set; }
 
     public DateTime FechaCreacion { get; set; }
 
@@ -29,11 +24,16 @@ public partial class RecetaMedica
 
     public bool Activo { get; set; }
 
+
+
+    public int? CitaId { get; set; }
     public virtual Cita? Cita { get; set; }
 
-    public virtual ICollection<MedicamentoRecetado> MedicamentoRecetados { get; set; } = new List<MedicamentoRecetado>();
 
+    public int MedicoId { get; set; }
     public virtual Medico Medico { get; set; } = null!;
 
+    public int PacienteId { get; set; }
     public virtual Paciente Paciente { get; set; } = null!;
+    public virtual ICollection<MedicamentoRecetado> MedicamentoRecetados { get; set; } = new List<MedicamentoRecetado>();
 }

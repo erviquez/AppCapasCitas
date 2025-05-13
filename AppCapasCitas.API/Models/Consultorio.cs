@@ -17,7 +17,6 @@ public partial class Consultorio
 
     public string? Equipamiento { get; set; }
 
-    public int HospitalId { get; set; }
 
     public DateTime FechaCreacion { get; set; }
 
@@ -29,7 +28,8 @@ public partial class Consultorio
 
     public bool Activo { get; set; }
 
-    public virtual ICollection<Cita> Cita { get; set; } = new List<Cita>();
-
+    //Relaciones
+    public int HospitalId { get; set; }
     public virtual Hospital Hospital { get; set; } = null!;
+    public virtual ICollection<Cita> Cita { get; set; } = new List<Cita>();
 }
