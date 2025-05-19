@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AppCapasCitas.Domain\AppCapasCitas.Domain.csproj" />
+    <ProjectReference Include="..\AppCapasCitas.Transversal.Common\AppCapasCitas.Transversal.Common.csproj" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+    <Folder Include="Features\Especialidades\" />
+    <Folder Include="Features\Especialidades\Commands\" />
+    <Folder Include="Features\Especialidades\Queries\" />
+    <Folder Include="Features\HorariosTrabajo\" />
+    <Folder Include="Features\HorariosTrabajo\Commands\" />
+    <Folder Include="Features\HorariosTrabajo\Queries\" />
+    <Folder Include="Features\Medicos\Commands\DisableMedico\" />
+    <Folder Include="Features\Medicos\Commands\EditMedico\" />
+    <Folder Include="Features\Medicos\Queries\GetMedicoByName\" />
+    <Folder Include="Features\Pacientes\" />
+    <Folder Include="Features\Pacientes\Commands\" />
+    <Folder Include="Features\Pacientes\Commands\CreatePaciente\" />
+    <Folder Include="Features\Pacientes\Commands\DisablePaciente\" />
+    <Folder Include="Features\Pacientes\Commands\EditPaciente\" />
+    <Folder Include="Features\Pacientes\Queries\" />
+    <Folder Include="Features\Pacientes\Queries\GetPacienteByEntityId\" />
+    <Folder Include="Features\Pacientes\Queries\GetPacienteByName\" />
+    <Folder Include="Features\Pacientes\Queries\GetPacienteList\" />
+    <Folder Include="Features\Pacientes\Queries\PaginationPaciente\" />
+    <Folder Include="Features\Pacientes\Vms\" />
+    <Folder Include="Features\Pacientes\Vms\Request\" />
+    <Folder Include="Features\Pacientes\Vms\Response\" />
+    <Folder Include="Features\Usuarios\" />
+    <Folder Include="Features\Usuarios\Commands\" />
+    <Folder Include="Features\Usuarios\Commands\CreateUsuario\" />
+    <Folder Include="Features\Usuarios\Queries\" />
+    <Folder Include="Features\Usuarios\Queries\GetUsuarioByIdentityId\" />
+    <Folder Include="Features\Usuarios\Queries\GetUsuarioList\" />
+    <Folder Include="Features\Usuarios\Vms\" />
+    <Folder Include="Features\Usuarios\Vms\Request\" />
+    <Folder Include="Features\Usuarios\Vms\Response\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\Identity\" />
+  </ItemGroup>
+
+</Project>

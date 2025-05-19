@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "IMwe4FuMFwo=",
+  "success": true,
+  "projectFilePath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\erdv\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
+    "C:\\Users\\erdv\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.11.0\\fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",
+    "C:\\Users\\erdv\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.0\\microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

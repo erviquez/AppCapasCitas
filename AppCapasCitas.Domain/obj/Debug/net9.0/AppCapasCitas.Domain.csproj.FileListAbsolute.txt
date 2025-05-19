@@ -1,0 +1,11 @@
+D:\Licito\AppCapasCitas\Core\AppCapasCitas.Domain\bin\Debug\net9.0\AppCapasCitas.Domain.deps.json
+D:\Licito\AppCapasCitas\Core\AppCapasCitas.Domain\bin\Debug\net9.0\AppCapasCitas.Domain.dll
+D:\Licito\AppCapasCitas\Core\AppCapasCitas.Domain\bin\Debug\net9.0\AppCapasCitas.Domain.pdb
+D:\Licito\AppCapasCitas\Core\AppCapasCitas.Domain\obj\Debug\net9.0\AppCapasCitas.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Licito\AppCapasCitas\Core\AppCapasCitas.Domain\obj\Debug\net9.0\AppCapasCitas.Domain.AssemblyInfoInputs.cache
+D:\Licito\AppCapasCitas\Core\AppCapasCitas.Domain\obj\Debug\net9.0\AppCapasCitas.Domain.AssemblyInfo.cs
+D:\Licito\AppCapasCitas\Core\AppCapasCitas.Domain\obj\Debug\net9.0\AppCapasCitas.Domain.csproj.CoreCompileInputs.cache
+D:\Licito\AppCapasCitas\Core\AppCapasCitas.Domain\obj\Debug\net9.0\AppCapasCitas.Domain.dll
+D:\Licito\AppCapasCitas\Core\AppCapasCitas.Domain\obj\Debug\net9.0\refint\AppCapasCitas.Domain.dll
+D:\Licito\AppCapasCitas\Core\AppCapasCitas.Domain\obj\Debug\net9.0\AppCapasCitas.Domain.pdb
+D:\Licito\AppCapasCitas\Core\AppCapasCitas.Domain\obj\Debug\net9.0\ref\AppCapasCitas.Domain.dll

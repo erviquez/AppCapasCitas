@@ -1,7 +1,9 @@
 
-using AppCapasCitas.API.Data;
-using Microsoft.EntityFrameworkCore;
 
+using AppCapasCitas.Infrastructure;
+using AppCapasCitas.Application;
+using AppCapasCitas.Transversal.Common;
+using AppCapasCitas.Transversal.Logging;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -9,12 +11,21 @@ builder.Services.AddControllers();
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-string connetionStringSql =  builder.Configuration.GetConnectionString("SqlConnectionString")!;
-builder.Services.AddDbContext<CitasDbContext>(options =>
-                options.UseSqlServer(connetionStringSql)
-                       .UseSnakeCaseNamingConvention()
-                )
-                ;
+
+
+// Configurar logging para HTML
+string _baseLogPath = "Logs/logs"; // Sin extensión para permitir la rotación diaria
+var fullPath = Path.Combine(Directory.GetCurrentDirectory(), _baseLogPath + ".html");
+
+// Crear directorio si no existe
+Directory.CreateDirectory(Path.GetDirectoryName(fullPath)!);
+builder.Logging.AddProvider(new HtmlFileLoggerProvider(fullPath));
+
+// Registrar LoggerAdapter como servicio
+builder.Services.AddSingleton(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
+
+
+builder.Services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
@@ -30,6 +41,10 @@ builder.Services.AddSwaggerGen(c =>
     });      
 });
 
+builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddApplicationServices();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,7 +59,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 
 
