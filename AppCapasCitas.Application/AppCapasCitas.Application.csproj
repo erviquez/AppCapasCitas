@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="FluentValidation" Version="11.11.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
     <PackageReference Include="MediatR" Version="12.4.1" />
@@ -45,18 +46,10 @@
     <Folder Include="Features\Pacientes\Vms\" />
     <Folder Include="Features\Pacientes\Vms\Request\" />
     <Folder Include="Features\Pacientes\Vms\Response\" />
-    <Folder Include="Features\Usuarios\" />
-    <Folder Include="Features\Usuarios\Commands\" />
-    <Folder Include="Features\Usuarios\Commands\CreateUsuario\" />
     <Folder Include="Features\Usuarios\Queries\" />
     <Folder Include="Features\Usuarios\Queries\GetUsuarioByIdentityId\" />
     <Folder Include="Features\Usuarios\Queries\GetUsuarioList\" />
-    <Folder Include="Features\Usuarios\Vms\" />
-    <Folder Include="Features\Usuarios\Vms\Request\" />
     <Folder Include="Features\Usuarios\Vms\Response\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Models\" />
-    <Folder Include="Models\Identity\" />
   </ItemGroup>
 
 </Project>

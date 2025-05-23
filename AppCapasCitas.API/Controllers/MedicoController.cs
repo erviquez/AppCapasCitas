@@ -3,6 +3,7 @@
 using System.Net;
 using System.Threading.Tasks;
 using AppCapasCitas.API.VM.Response;
+using AppCapasCitas.Application.Features.Medicos.Commands.CreateMedico;
 using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByEntityId.GetMedicoById;
 using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByIdentityId;
 using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoList;
@@ -13,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AppCapasCitas.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class MedicoController : ControllerBase
     {
@@ -116,36 +117,11 @@ namespace AppCapasCitas.API.Controllers
         //         return StatusCode(500, "Ocurrió un error al actualizar el médico" + ex.Message);
         //     }
         // }
-        // [HttpPost]
-        // public IActionResult Create([FromBody] MedicoRequest medicoRequest)
-        // {
-        //     var medico = new Medico
-        //     { // create all fields from the medicoResponse
-
-        //         CedulaProfesional = medicoRequest.CedulaProfesional,
-        //         Biografia = medicoRequest.Biografia,
-        //         Activo = true,
-        //         FechaCreacion = DateTime.Now, // Typically you'd update this to current time
-        //         CreadoPor = "CurrentUser" // Should be set to the actual user making the changenge
-        //     };           
-
-        //     try
-        //     {
-        //         _context.Medico.AddAsync(medico);
-        //         _context.SaveChanges();
-        //         return Ok("Se Agrego el médico con éxito");
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         // Log the exception
-        //         return StatusCode(500, "Ocurrió un error al actualizar el médico" + ex.Message);
-        //     }
-        // }
-
-
-
-
-
-
+        [HttpPost("CreateMedico")]
+        public async Task<IActionResult> CreateMedico([FromBody] CreateMedicoCommand command)
+        {            
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
 }

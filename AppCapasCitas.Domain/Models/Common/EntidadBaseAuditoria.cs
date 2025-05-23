@@ -12,7 +12,7 @@ public abstract class EntidadBaseAuditoria
         
         public DateTime? FechaActualizacion { get; set; }
 
-        public string? CreadoPor { get; set; }
+        public string? CreadoPor { get; set; } = "system";
 
         public string? ModificadoPor { get; set; }
         public bool Activo { get; set; } = true;

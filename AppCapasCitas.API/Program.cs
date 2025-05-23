@@ -1,9 +1,15 @@
 
 
 using AppCapasCitas.Infrastructure;
+
 using AppCapasCitas.Application;
 using AppCapasCitas.Transversal.Common;
 using AppCapasCitas.Transversal.Logging;
+using AppCapasCitas.Identity;
+using AppCapasCitas.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using AppCapasCitas.Identity.Data;
+using AppCapasCitas.Application.Models.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -12,6 +18,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));      
 
 // Configurar logging para HTML
 string _baseLogPath = "Logs/logs"; // Sin extensión para permitir la rotación diaria
@@ -43,6 +50,8 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddApplicationServices();
+builder.Services.ConfigureIdentityServices(builder.Configuration);
+
 
 
 var app = builder.Build();
@@ -66,4 +75,32 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var service = scope.ServiceProvider;
+    var loggerFactory = service.GetRequiredService<ILoggerFactory>();
+    try
+    {
+        var context = service.GetRequiredService<InfrastructureDbContext>();
+        await context.Database.MigrateAsync();
+        var contextIdentity = service.GetRequiredService<CleanArchitectureIdentityDbContext>();
+        await contextIdentity.Database.MigrateAsync();
+        // //insertar data
+        // await CitasDbContextSeed.SeedAsync(context,loggerFactory);
+        // await CitasDbContextSeedData.LoadDataAsync(context,loggerFactory);
+
+        // //identity
+        // var contextIdentity = service.GetRequiredService<CleanArchitectureIdentityDbContext>();
+        // await contextIdentity.Database.MigrateAsync();
+
+
+    }
+    catch (Exception ex)
+    {
+        var logger = loggerFactory.CreateLogger<Program>();
+        logger.LogError(ex,"Error de migración");
+    }
+}
 app.Run();

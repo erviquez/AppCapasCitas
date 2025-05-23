@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "XZ7jQqdRXws=",
+  "dgSpecHash": "G9JbSJbIpJM=",
   "success": true,
   "projectFilePath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Infrastructure\\AppCapasCitas.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\erdv\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
+    "C:\\Users\\erdv\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\efcore.namingconventions\\9.0.0\\efcore.namingconventions.9.0.0.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.11.0\\fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",
