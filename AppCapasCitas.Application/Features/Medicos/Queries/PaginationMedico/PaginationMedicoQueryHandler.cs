@@ -1,9 +1,8 @@
 using System;
 using AppCapasCitas.Application.Contracts.Persistence;
-using AppCapasCitas.Application.Features.Medicos.Vms.Response;
-using AppCapasCitas.Application.Features.Shared;
 using AppCapasCitas.Application.Specifications.Medicos;
 using AppCapasCitas.Domain.Models;
+using AppCapasCitas.DTO.Response.Medico;
 using AppCapasCitas.Transversal.Common;
 using AutoMapper;
 using MediatR;

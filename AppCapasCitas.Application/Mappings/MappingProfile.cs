@@ -1,6 +1,5 @@
-using System;
-using AppCapasCitas.Application.Features.Medicos.Vms.Response;
 using AppCapasCitas.Domain.Models;
+using AppCapasCitas.DTO.Response.Medico;
 using AutoMapper;
 
 namespace AppCapasCitas.Application.Mappings;

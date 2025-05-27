@@ -10,6 +10,7 @@ public class GetMedicoByIdQueryValidator:AbstractValidator<GetMedicoByIdQuery>
         RuleFor(x => x.Id)
             .NotEmpty().WithMessage("El Id no puede estar vacío")
             .GreaterThan(0).WithMessage("El Id debe ser mayor que cero");
+            ;
     }
 }
 

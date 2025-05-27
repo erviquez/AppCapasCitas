@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AppCapasCitas.Domain\AppCapasCitas.Domain.csproj" />
+    <ProjectReference Include="..\AppCapasCitas.DTO\AppCapasCitas.DTO.csproj" />
     <ProjectReference Include="..\AppCapasCitas.Transversal.Common\AppCapasCitas.Transversal.Common.csproj" />
 
   </ItemGroup>
@@ -32,7 +33,6 @@
     <Folder Include="Features\HorariosTrabajo\Queries\" />
     <Folder Include="Features\Medicos\Commands\DisableMedico\" />
     <Folder Include="Features\Medicos\Commands\EditMedico\" />
-    <Folder Include="Features\Medicos\Queries\GetMedicoByName\" />
     <Folder Include="Features\Pacientes\" />
     <Folder Include="Features\Pacientes\Commands\" />
     <Folder Include="Features\Pacientes\Commands\CreatePaciente\" />
@@ -46,10 +46,7 @@
     <Folder Include="Features\Pacientes\Vms\" />
     <Folder Include="Features\Pacientes\Vms\Request\" />
     <Folder Include="Features\Pacientes\Vms\Response\" />
-    <Folder Include="Features\Usuarios\Queries\" />
     <Folder Include="Features\Usuarios\Queries\GetUsuarioByIdentityId\" />
-    <Folder Include="Features\Usuarios\Queries\GetUsuarioList\" />
-    <Folder Include="Features\Usuarios\Vms\Response\" />
   </ItemGroup>
 
 </Project>

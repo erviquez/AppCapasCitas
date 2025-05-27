@@ -5,11 +5,12 @@ using AppCapasCitas.Application.Contracts.Persistence.Infrastructure;
 using AppCapasCitas.Application.Models;
 using AppCapasCitas.Application.Models.Identity;
 using AppCapasCitas.Domain.Models;
+using AppCapasCitas.DTO.Request.Identity;
+using AppCapasCitas.DTO.Response.Identity;
 using AppCapasCitas.Transversal.Common;
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
-using Microsoft.VisualBasic;
 
 namespace AppCapasCitas.Application.Features.Usuarios.Commands.CreateUsuario;
 
@@ -132,9 +133,7 @@ public class CreateUsuarioCommandHandler : IRequestHandler<CreateUsuarioCommand,
         if (!result.IsSuccess)
         {
             _appLogger.LogError(result.Message!);
-        }
-
-            
+        }            
     }
     private async Task ExecuteCompensations(List<Func<Task>> compensations)
     {

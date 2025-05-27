@@ -292,6 +292,19 @@
           "bin/placeholder/AppCapasCitas.Domain.dll": {}
         }
       },
+      "AppCapasCitas.DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "FluentValidation": "8.2.3"
+        },
+        "compile": {
+          "bin/placeholder/AppCapasCitas.DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppCapasCitas.DTO.dll": {}
+        }
+      },
       "AppCapasCitas.Transversal.Common/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -767,6 +780,11 @@
       "path": "../AppCapasCitas.Domain/AppCapasCitas.Domain.csproj",
       "msbuildProject": "../AppCapasCitas.Domain/AppCapasCitas.Domain.csproj"
     },
+    "AppCapasCitas.DTO/1.0.0": {
+      "type": "project",
+      "path": "../AppCapasCitas.DTO/AppCapasCitas.DTO.csproj",
+      "msbuildProject": "../AppCapasCitas.DTO/AppCapasCitas.DTO.csproj"
+    },
     "AppCapasCitas.Transversal.Common/1.0.0": {
       "type": "project",
       "path": "../AppCapasCitas.Transversal.Common/AppCapasCitas.Transversal.Common.csproj",
@@ -775,6 +793,7 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "AppCapasCitas.DTO >= 1.0.0",
       "AppCapasCitas.Domain >= 1.0.0",
       "AppCapasCitas.Transversal.Common >= 1.0.0",
       "AutoMapper >= 13.0.1",
@@ -820,6 +839,9 @@
           "projectReferences": {
             "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Domain\\AppCapasCitas.Domain.csproj": {
               "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Domain\\AppCapasCitas.Domain.csproj"
+            },
+            "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj": {
+              "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj"
             },
             "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj": {
               "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj"

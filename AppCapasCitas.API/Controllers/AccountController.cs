@@ -1,8 +1,7 @@
 using AppCapasCitas.Application.Contracts.Identity;
-using AppCapasCitas.Application.Contracts.Persistence;
 using AppCapasCitas.Application.Features.Usuarios.Commands.CreateUsuario;
-using AppCapasCitas.Application.Models.Identity;
-using AppCapasCitas.Domain.Models;
+using AppCapasCitas.DTO.Request.Identity;
+using AppCapasCitas.DTO.Response.Identity;
 using AppCapasCitas.Transversal.Common;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -16,13 +15,11 @@ namespace AppCapasCitas.API.Controllers;
  public class AccountController : ControllerBase
 {
     private readonly IAuthService _authService;
-    private readonly IAsyncRepository<Usuario> _userRepository;
     private readonly IMediator _mediator;
-    public AccountController(IMediator mediator, IAuthService authService, IAsyncRepository<Usuario> userRepository)
+    public AccountController(IMediator mediator, IAuthService authService)
     {
         _mediator = mediator;
         _authService = authService;
-        _userRepository = userRepository;
     }
 
     [AllowAnonymous]

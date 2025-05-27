@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AppCapasCitas.Application\AppCapasCitas.Application.csproj" />
+    <ProjectReference Include="..\AppCapasCitas.DTO\AppCapasCitas.DTO.csproj" />
     <ProjectReference Include="..\AppCapasCitas.Identity\AppCapasCitas.Identity.csproj" />
     <ProjectReference Include="..\AppCapasCitas.Infrastructure\AppCapasCitas.Infrastructure.csproj" />
     <ProjectReference Include="..\AppCapasCitas.Transversal.Common\AppCapasCitas.Transversal.Common.csproj" />

@@ -1,0 +1,1044 @@
+<html><head>
+        <style>
+            .log-entry { margin: 5px 0; padding: 8px; border-left: 4px solid #ccc; }
+            .time { color: #666; margin-right: 10px; }
+            .level { font-weight: bold; margin-right: 10px; }
+            .trace { border-color: #aaa; }
+            .debug { border-color: #5bc0de; }
+            .information { border-color: #5cb85c; }
+            .warning { border-color: #f0ad4e; }
+            .error { border-color: #d9534f; }
+            .critical { border-color: #d9534f; background-color: #f2dede; }
+            .exception { color: #d9534f; margin-top: 5px; }
+        </style>
+        </head><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (31ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (35ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>No migrations were applied. The database is already up to date.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>No migrations were applied. The database is already up to date.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:45</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Now listening on: http://localhost:5100</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:45</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Application started. Press Ctrl+C to shut down.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:45</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Hosting environment: Development</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:50:45</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</div>
+            
+        </div><body>
+        <div class='log-entry error'>
+            <span class='time'>2025-05-24 11:54:01</span>
+            <span class='level'>Error</span>
+            <span class='category'>AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByName.GetMedicoByNameQuery</span>
+            <div class='message'>Application Request: Sucedio una excepcion para el request GetMedicoByNameQuery AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByName.GetMedicoByNameQuery</div>
+            <div class='exception'>FluentValidation.ValidationException: Validation failed: 
+ -- Nombre: El nombre no puede estar vacio Severity: Error
+   at AppCapasCitas.Application.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\ValidationBehaviour.cs:line 26
+   at AppCapasCitas.Application.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\UnhandledExceptionBehaviour.cs:line 20</div>
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:37</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:37</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:37</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (30ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>No migrations were applied. The database is already up to date.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>No migrations were applied. The database is already up to date.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Now listening on: http://localhost:5100</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Application started. Press Ctrl+C to shut down.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Hosting environment: Development</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:54:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</div>
+            
+        </div><body>
+        <div class='log-entry error'>
+            <span class='time'>2025-05-24 11:55:17</span>
+            <span class='level'>Error</span>
+            <span class='category'>AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByName.GetMedicoByNameQuery</span>
+            <div class='message'>Application Request: Sucedio una excepcion para el request GetMedicoByNameQuery AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByName.GetMedicoByNameQuery</div>
+            <div class='exception'>FluentValidation.ValidationException: Validation failed: 
+ -- Nombre: El nombre no puede estar vacio Severity: Error
+   at AppCapasCitas.Application.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\ValidationBehaviour.cs:line 26
+   at AppCapasCitas.Application.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\UnhandledExceptionBehaviour.cs:line 20</div>
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (47ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (37ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>No migrations were applied. The database is already up to date.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>No migrations were applied. The database is already up to date.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Now listening on: http://localhost:5100</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Application started. Press Ctrl+C to shut down.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Hosting environment: Development</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 11:56:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:40</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (43ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:40</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:40</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (37ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:40</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:40</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:40</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:40</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (28ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:40</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>No migrations were applied. The database is already up to date.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:40</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>No migrations were applied. The database is already up to date.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Now listening on: http://localhost:5100</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Application started. Press Ctrl+C to shut down.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Hosting environment: Development</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:03:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:04:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (108ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[hospital_id], [m].[modificado_por], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[identity_id], [u].[medico_id], [u].[modificado_por], [u].[nombre], [u].[paciente_id], [u].[pais], [u].[rol_id], [u].[rol_name], [u].[telefono], [u].[ultimo_login], [m0].[id], [m0].[activo], [m0].[cargo_id], [m0].[consultorio], [m0].[costo_consulta_especifico], [m0].[creado_por], [m0].[especialidad_id], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[fecha_fin], [m0].[fecha_inicio], [m0].[horario_atencion], [m0].[hospital_id], [m0].[medico_id], [m0].[modificado_por], [m0].[numero_contrato], [m0].[tipo_contratacion]
+FROM [medico] AS [m]
+LEFT JOIN [usuario] AS [u] ON [m].[id] = [u].[medico_id]
+LEFT JOIN [medico_especialidad_hospital] AS [m0] ON [m].[id] = [m0].[medico_id]
+WHERE [m].[activo] = CAST(1 AS bit) AND LOWER(COALESCE([u].[nombre], N'') + N' ' + COALESCE([u].[apellido], N'')) = @__ToLower_0
+ORDER BY [m].[id], [u].[id]</div>
+            
+        </div><body>
+        <div class='log-entry warning'>
+            <span class='time'>2025-05-24 12:06:45</span>
+            <span class='level'>Warning</span>
+            <span class='category'>AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoList.GetMedicoListQueryHandler</span>
+            <div class='message'>No se encontraron medicos</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (31ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (29ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>No migrations were applied. The database is already up to date.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <div class='message'>No migrations were applied. The database is already up to date.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Now listening on: http://localhost:5100</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Application started. Press Ctrl+C to shut down.</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Hosting environment: Development</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <div class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</div>
+            
+        </div><body>
+        <div class='log-entry information'>
+            <span class='time'>2025-05-24 12:08:27</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <div class='message'>Executed DbCommand (26ms) [Parameters=[@__ToLower_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[hospital_id], [m].[modificado_por], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[identity_id], [u].[medico_id], [u].[modificado_por], [u].[nombre], [u].[paciente_id], [u].[pais], [u].[rol_id], [u].[rol_name], [u].[telefono], [u].[ultimo_login], [m0].[id], [m0].[activo], [m0].[cargo_id], [m0].[consultorio], [m0].[costo_consulta_especifico], [m0].[creado_por], [m0].[especialidad_id], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[fecha_fin], [m0].[fecha_inicio], [m0].[horario_atencion], [m0].[hospital_id], [m0].[medico_id], [m0].[modificado_por], [m0].[numero_contrato], [m0].[tipo_contratacion]
+FROM [medico] AS [m]
+LEFT JOIN [usuario] AS [u] ON [m].[id] = [u].[medico_id]
+LEFT JOIN [medico_especialidad_hospital] AS [m0] ON [m].[id] = [m0].[medico_id]
+WHERE [m].[activo] = CAST(1 AS bit) AND LOWER(COALESCE([u].[nombre], N'') + N' ' + COALESCE([u].[apellido], N'')) = @__ToLower_0
+ORDER BY [m].[id], [u].[id]</div>
+            
+        </div><body>
+        <div class='log-entry warning'>
+            <span class='time'>2025-05-24 12:08:27</span>
+            <span class='level'>Warning</span>
+            <span class='category'>AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoList.GetMedicoListQueryHandler</span>
+            <div class='message'>No se encontraron medicos</div>
+            
+        </div>

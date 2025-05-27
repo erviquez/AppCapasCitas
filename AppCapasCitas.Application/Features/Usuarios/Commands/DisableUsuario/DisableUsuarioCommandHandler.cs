@@ -1,7 +1,7 @@
-using System;
+
 using AppCapasCitas.Application.Contracts.Identity;
 using AppCapasCitas.Application.Contracts.Persistence;
-using AppCapasCitas.Application.Models.Identity;
+using AppCapasCitas.DTO.Request.Identity;
 using AppCapasCitas.Transversal.Common;
 using FluentValidation.Results;
 using MediatR;

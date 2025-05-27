@@ -63,7 +63,7 @@ public interface IAsyncRepository<T> where T : class
     Task<bool> ExistAsync(Expression<Func<T, bool>>? filter = null, CancellationToken cancellationToken = default);
 
 
-    //Pendiente
+
     //Representan en Specification de paginación
     //ISpecification: Es un artefacto complejo que contiene la lógica para poder ordenar, para paginación, para hacer filtro, etc 
       Task<T> GetByIdWithSpec(ISpecification<T> spec);

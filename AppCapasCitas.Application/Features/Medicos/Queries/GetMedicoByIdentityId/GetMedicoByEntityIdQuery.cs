@@ -1,5 +1,5 @@
-using System;
-using AppCapasCitas.Application.Features.Medicos.Vms.Response;
+
+using AppCapasCitas.DTO.Response.Medico;
 using AppCapasCitas.Transversal.Common;
 using MediatR;
 

@@ -1,0 +1,61 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build FrontEnd",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "${workspaceFolder}/AppCapasCitas.FrontEnd",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Build API",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "${workspaceFolder}/AppCapasCitas.API",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Run FrontEnd",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/AppCapasCitas.FrontEnd"
+            ],
+            "isBackground": true,
+            "dependsOn": "Build FrontEnd"
+        },
+        {
+            "label": "Run API",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/AppCapasCitas.API"
+            ],
+            "isBackground": true,
+            "dependsOn": "Build API"
+        },
+        {
+            "label": "Run Both Projects",
+            "dependsOn": ["Run FrontEnd", "Run API"],
+            "group": "none",
+            "problemMatcher": []
+        }
+    ]
+}

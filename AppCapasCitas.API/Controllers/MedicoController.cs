@@ -1,14 +1,13 @@
 
-
 using System.Net;
-using System.Threading.Tasks;
-using AppCapasCitas.API.VM.Response;
 using AppCapasCitas.Application.Features.Medicos.Commands.CreateMedico;
 using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByEntityId.GetMedicoById;
 using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByIdentityId;
+using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByName;
 using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoList;
 using AppCapasCitas.Application.Features.Medicos.Queries.PaginationMedico;
 using AppCapasCitas.Application.Features.Shared;
+using AppCapasCitas.DTO.Response.Medico;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +25,7 @@ namespace AppCapasCitas.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<ActionResult<IReadOnlyList<MedicoResponse>>> GetAll()
         {
             var query = new GetMedicoListQuery();
             var result = await _mediator.Send(query);
@@ -35,12 +34,17 @@ namespace AppCapasCitas.API.Controllers
                 return NotFound(result);
             }
             return Ok(result);
-
-
+        }
+        [HttpGet("GetByName/{nombre}")]
+        public async Task<ActionResult<IReadOnlyList<MedicoResponse>>> GetByName(string nombre)
+        {
+            var query = new GetMedicoByNameQuery(nombre);
+            var result = await _mediator.Send(query);
+            return Ok(result);
         }
 
         [HttpGet("GetById/{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<ActionResult<MedicoResponse>> GetById(int id)
         {
             var query = new GetMedicoByIdQuery(id);
             var result = await _mediator.Send(query);
@@ -62,9 +66,9 @@ namespace AppCapasCitas.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("pagination",Name ="GetPaginationMedico")]
-        [ProducesResponseType(typeof(PaginationVm<MedicoResponse>), (int) HttpStatusCode.OK)]
-        public async Task<ActionResult<PaginationVm<MedicoResponse>>> GetPaginationMedico ([FromQuery] PaginationMedicoQuery paginationMedicoQuery)
+        [HttpGet("pagination", Name = "GetPaginationMedico")]
+        [ProducesResponseType(typeof(PaginationVm<MedicoResponse>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<PaginationVm<MedicoResponse>>> GetPaginationMedico([FromQuery] PaginationMedicoQuery paginationMedicoQuery)
         {
             var paginationMedico = await _mediator.Send(paginationMedicoQuery);
             return Ok(paginationMedico);
@@ -119,9 +123,23 @@ namespace AppCapasCitas.API.Controllers
         // }
         [HttpPost("CreateMedico")]
         public async Task<IActionResult> CreateMedico([FromBody] CreateMedicoCommand command)
-        {            
+        {
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+        
+        // [HttpDelete("DisableMedico")]
+        // public async Task<IActionResult> DeleteMedico([FromBody] DisableMedicoCommand command)
+        // {
+        //     var result = await _mediator.Send(command);
+        //     return Ok(result);
+        // }
+
+        // [HttpPost("UpdateMedico")]
+        // public async Task<IActionResult> UpdateMedico([FromBody] EditMedicoCommand command)
+        // {            
+        //     var result = await _mediator.Send(command);
+        //     return Ok(result);
+        // }
     }
 }

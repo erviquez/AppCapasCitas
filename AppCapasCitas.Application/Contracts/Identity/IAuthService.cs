@@ -1,5 +1,5 @@
-using System;
-using AppCapasCitas.Application.Models.Identity;
+using AppCapasCitas.DTO.Request.Identity;
+using AppCapasCitas.DTO.Response.Identity;
 using AppCapasCitas.Transversal.Common;
 namespace AppCapasCitas.Application.Contracts.Identity;
 
@@ -17,6 +17,7 @@ public interface IAuthService
 
     Task<bool> UserExists(string userId);
     Task<Response<AuthResponse>> GetApplicationUser(string userId);
+    Task<Response<IReadOnlyList<AuthResponse>>> GetAllApplicationUser();
     Task<Response<bool>> UpdateApplicationUser(AuthRequest authRequest);
     Task<Response<bool>> AssignRoleToUser(string userId, string roleId); // Para compensación     
     Task<bool> RemoveRoleFromUser(string userId, string roleId); // Para compensación

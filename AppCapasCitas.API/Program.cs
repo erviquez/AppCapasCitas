@@ -83,10 +83,10 @@ using (var scope = app.Services.CreateScope())
     var loggerFactory = service.GetRequiredService<ILoggerFactory>();
     try
     {
-        var context = service.GetRequiredService<InfrastructureDbContext>();
-        await context.Database.MigrateAsync();
-        var contextIdentity = service.GetRequiredService<CleanArchitectureIdentityDbContext>();
-        await contextIdentity.Database.MigrateAsync();
+        // var context = service.GetRequiredService<InfrastructureDbContext>();
+        // await context.Database.MigrateAsync();
+        // var contextIdentity = service.GetRequiredService<CleanArchitectureIdentityDbContext>();
+        // await contextIdentity.Database.MigrateAsync();
         // //insertar data
         // await CitasDbContextSeed.SeedAsync(context,loggerFactory);
         // await CitasDbContextSeedData.LoadDataAsync(context,loggerFactory);

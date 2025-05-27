@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AppCapasCitas.Application\AppCapasCitas.Application.csproj" />
+    <ProjectReference Include="..\AppCapasCitas.DTO\AppCapasCitas.DTO.csproj" />
   </ItemGroup>
 
 </Project>

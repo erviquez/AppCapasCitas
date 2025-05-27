@@ -1,8 +1,8 @@
 using System.Linq.Expressions;
 using AppCapasCitas.Application.Contracts.Persistence;
 using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByEntityId.GetMedicoById;
-using AppCapasCitas.Application.Features.Medicos.Vms.Response;
 using AppCapasCitas.Domain.Models;
+using AppCapasCitas.DTO.Response.Medico;
 using AppCapasCitas.Transversal.Common;
 using AutoMapper;
 using FluentValidation.Results;
@@ -29,26 +29,24 @@ public class GetMedicoByIdQueryHandler : IRequestHandler<GetMedicoByIdQuery, Res
             var medicoId = Convert.ToInt32(request.Id);
             var includes = new List<Expression<Func<Medico, object>>>
             {
-                x => x.Usuario!, // Include the related Usuario
+                x => x.Usuario!, 
                 x => x.MedicoEspecialidadHospitales!
             };
 
             var medico = await _medicoRepository.GetEntityAsync(
                                             x => x.Activo == true && x.Id == medicoId,
-                                            // null,
                                             includes,
                                             true,
                                             cancellationToken: cancellationToken);
             var message = string.Empty;
             if (medico == null)
             {
-
                 message = $"No se encontró el médico con el Id {request.Id}.";
                 _appLogger.LogInformation(message);
-                response.Message = message;
-                
+                response.Message = message;                
                 return response;
             }
+
 
             var medicoResponse = _mapper.Map<MedicoResponse>(medico);
             response.Data = medicoResponse;
@@ -57,7 +55,7 @@ public class GetMedicoByIdQueryHandler : IRequestHandler<GetMedicoByIdQuery, Res
         }
         catch (Exception ex)
         {
-             var st = new System.Diagnostics.StackTrace(true);
+            var st = new System.Diagnostics.StackTrace(true);
             var frame = st.GetFrame(0); // Frame actual
             //var methodName = frame!.GetMethod()!.Name;
             //var fileName = frame!.GetFileName();

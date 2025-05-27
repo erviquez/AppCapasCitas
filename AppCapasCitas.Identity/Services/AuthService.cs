@@ -1,5 +1,7 @@
 using AppCapasCitas.Application.Contracts.Identity;
 using AppCapasCitas.Application.Models.Identity;
+using AppCapasCitas.DTO.Request.Identity;
+using AppCapasCitas.DTO.Response.Identity;
 using AppCapasCitas.Identity.Data;
 using AppCapasCitas.Identity.Models;
 using AppCapasCitas.Transversal.Common;
@@ -823,6 +825,36 @@ public class AuthService : IAuthService
         }
         return response;
     }
+    //obtiene todos los usuarios
+    public async Task<Response<IReadOnlyList<AuthResponse>>> GetAllApplicationUser()
+    {
+        var response = new Response<IReadOnlyList<AuthResponse>>();
+
+        var users = await _userManager.Users.ToListAsync();
+        if (users != null && users.Count > 0)
+        {
+            var authResponses = users.Select(user => new AuthResponse
+            {
+                Id = user.Id,
+                Username = user.UserName!,
+                Email = user.Email!,
+                Active = user.Active
+            })
+            .Where(x => x.Active == true)
+            .ToList();
+
+            response = new Response<IReadOnlyList<AuthResponse>>
+            {
+                Data = authResponses,
+                IsSuccess = true
+            };
+            return response;
+        }
+        response.IsSuccess = false;
+        response.Message = "No se encontraron usuarios";            
+        return response;
+
+    }
     public async Task<Response<bool>> UpdateApplicationUser(AuthRequest authRequest)
     {
         var response = new Response<bool>();
@@ -851,8 +883,8 @@ public class AuthService : IAuthService
             response.Message = ex.Message;
         }
         return response;
-        
-        
+
+
     }
 
 

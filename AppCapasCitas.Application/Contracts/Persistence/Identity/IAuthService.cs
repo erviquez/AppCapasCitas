@@ -1,5 +1,6 @@
-using System;
-using AppCapasCitas.Application.Models.Identity;
+
+using AppCapasCitas.DTO.Request.Identity;
+using AppCapasCitas.DTO.Response.Identity;
 using AppCapasCitas.Transversal.Common;
 
 

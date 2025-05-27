@@ -2349,6 +2349,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
+          "AppCapasCitas.DTO": "1.0.0",
           "AppCapasCitas.Domain": "1.0.0",
           "AppCapasCitas.Transversal.Common": "1.0.0",
           "AutoMapper": "13.0.1",
@@ -2376,11 +2377,25 @@
           "bin/placeholder/AppCapasCitas.Domain.dll": {}
         }
       },
+      "AppCapasCitas.DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "FluentValidation": "8.2.3"
+        },
+        "compile": {
+          "bin/placeholder/AppCapasCitas.DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppCapasCitas.DTO.dll": {}
+        }
+      },
       "AppCapasCitas.Identity/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "AppCapasCitas.Application": "1.0.0",
+          "AppCapasCitas.DTO": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.4",
           "Microsoft.AspNetCore.Identity": "2.3.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.4",
@@ -6429,6 +6444,11 @@
       "path": "../AppCapasCitas.Domain/AppCapasCitas.Domain.csproj",
       "msbuildProject": "../AppCapasCitas.Domain/AppCapasCitas.Domain.csproj"
     },
+    "AppCapasCitas.DTO/1.0.0": {
+      "type": "project",
+      "path": "../AppCapasCitas.DTO/AppCapasCitas.DTO.csproj",
+      "msbuildProject": "../AppCapasCitas.DTO/AppCapasCitas.DTO.csproj"
+    },
     "AppCapasCitas.Identity/1.0.0": {
       "type": "project",
       "path": "../AppCapasCitas.Identity/AppCapasCitas.Identity.csproj",
@@ -6453,6 +6473,7 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "AppCapasCitas.Application >= 1.0.0",
+      "AppCapasCitas.DTO >= 1.0.0",
       "AppCapasCitas.Identity >= 1.0.0",
       "AppCapasCitas.Infrastructure >= 1.0.0",
       "AppCapasCitas.Transversal.Common >= 1.0.0",
@@ -6496,6 +6517,9 @@
           "projectReferences": {
             "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\AppCapasCitas.Application.csproj": {
               "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\AppCapasCitas.Application.csproj"
+            },
+            "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj": {
+              "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj"
             },
             "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Identity\\AppCapasCitas.Identity.csproj": {
               "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Identity\\AppCapasCitas.Identity.csproj"
