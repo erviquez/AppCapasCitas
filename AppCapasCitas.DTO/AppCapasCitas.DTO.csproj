@@ -13,7 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="8.2.3" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AppCapasCitas.Transversal.Common\AppCapasCitas.Transversal.Common.csproj" />
   </ItemGroup>
 
 </Project>

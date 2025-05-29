@@ -1,6 +1,173 @@
 ﻿@page "/usuario/registro"
-<h3>Registro de usuarios</h3>
+@using AppCapasCitas.DTO.Helpers
+@using AppCapasCitas.DTO.Request.Identity
+@inject NavigationManager navigationManager
+@inject IUsuarioProxy proxy
 
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h3 class="mb-0">Registro de usuarios</h3>
+                </div>
+                <div class="card-body">
+                    <EditForm Model="request" class="needs-validation" OnValidSubmit="GuardarDatos">
+                        <DataAnnotationsValidator/>
+                        <div class="row">
+                    
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Username*</label>
+                                <InputText class="form-control" @bind-Value="request.Username"  />
+                                <ValidationMessage For="(() => request.Username)"/>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Email*</label>
+                                <InputText type="email" class="form-control" @bind-Value="request.Email"  />
+                                <ValidationMessage For="(() => request.Email)"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Password*</label>                                
+                                <InputText type="password" class="form-control" 
+                                        @bind-Value="request.Password" />
+                                <ValidationMessage For="(() => request.Password)"/>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Confirmar Password*</label>
+                                <InputText type="password" class="@ConfirmPasswordInputClass"
+                                        @bind-Value="confirmPassword" />
+                                <div class="invalid-feedback" style="display:@(passwordsMatch ? "none" : "block")">
+                                    Las contraseñas no coinciden
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Nombre*</label>
+                                    <InputText class="form-control" @bind-Value="request.Nombre"  />
+                                    <ValidationMessage For="(() => request.Nombre)"/>                                    
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Apellido*</label>
+                                    <InputText class="form-control" @bind-Value="request.Apellido"  />
+                                    <ValidationMessage For="(() => request.Apellido)"/>                                    
+                                </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Teléfono</label>
+                                    <InputText type="tel" class="form-control" @bind-Value="request.Telefono" />
+                                    <ValidationMessage For="(()=>request.Telefono)"/>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Celular</label>
+                                    <InputText type="tel" class="form-control" @bind-Value="request.Celular" />
+                                    <ValidationMessage For="(()=>request.Celular)"/>
+                                </div>
+                        </div> 
+                        <div class="row">
+                            <!-- Dirección -->
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">Dirección</label>
+                                <InputTextArea class="form-control" @bind-Value="request.Direccion" />
+                                <ValidationMessage For="(() => request.Direccion)"/>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Ciudad</label>
+                                <InputText class="form-control" @bind-Value="request.Ciudad" />
+                                <ValidationMessage For="(() => request.Ciudad)"/>
+
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Estado</label>
+                                <InputText class="form-control" @bind-Value="request.Estado" />
+                                <ValidationMessage For="(() => request.Estado)"/>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">País</label>
+                                <InputSelect class="form-select" @bind-Value="request.CodigoPais" >
+                                    <option value=0>Seleccione...</option>
+                                    @foreach (var pais in PaisesHelper.Paises)
+                                    {
+                                        <option value="@pais.Key">@pais.Value</option>
+                                    }
+                                </InputSelect>
+                                <ValidationMessage For="(() => request.CodigoPais)"/>
+                            </div>
+                        </div>
+
+                        <div  class=" col-md-6   offset-md-3 d-flex justify-content-center">
+                            <button type="button" class="btn btn-info btn-lg" @onclick="Regresar">
+                                <i class="fas fa-user-plus me-2"></i>Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-primary btn-lg" disabled="@(!passwordsMatch)">
+                                <i class="fas fa-user-plus me-2"></i>Registrarse
+                            </button>
+                            
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @code {
+    public RegistrationRequest request = new();
 
+    private string _confirmPassword = string.Empty;
+    private bool passwordsMatch = true;
+
+    private string confirmPassword
+    {
+        get => _confirmPassword;
+        set
+        {
+            _confirmPassword = value;
+            ValidatePasswordMatch();
+        }
+    }
+
+    private string ConfirmPasswordInputClass => $"form-control{(passwordsMatch ? "" : " is-invalid")}";
+
+    private void ValidatePasswordMatch()
+    {
+        passwordsMatch = request.Password == confirmPassword;
+    }
+
+    public async Task GuardarDatos()
+    {
+        ValidatePasswordMatch();
+
+        if (!passwordsMatch)
+        {
+            return;
+        }
+        try
+        {
+            var result = await proxy.RegistrarUsuarioAsync(request);
+            if (!result.IsSuccess)
+            {
+                Console.WriteLine("Error al registrar el usuario: " + result.Message);
+                return;
+            }
+            Console.WriteLine("Éxito al registrar el usuario: " + result.Message);
+            Regresar();
+            @* navigationManager.NavigateTo("/"); *@
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error al registrar el usuario: " + ex.Message);
+        }
+    }
+    public void Regresar()
+    {
+        navigationManager.NavigateTo("/");
+    }
 }

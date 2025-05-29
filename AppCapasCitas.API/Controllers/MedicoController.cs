@@ -40,6 +40,10 @@ namespace AppCapasCitas.API.Controllers
         {
             var query = new GetMedicoByNameQuery(nombre);
             var result = await _mediator.Send(query);
+            if (result.IsSuccess == false)
+            {
+                return NotFound(result);
+            }
             return Ok(result);
         }
 
@@ -71,6 +75,10 @@ namespace AppCapasCitas.API.Controllers
         public async Task<ActionResult<PaginationVm<MedicoResponse>>> GetPaginationMedico([FromQuery] PaginationMedicoQuery paginationMedicoQuery)
         {
             var paginationMedico = await _mediator.Send(paginationMedicoQuery);
+            if (paginationMedico.IsSuccess == false)
+            {
+                return NotFound(paginationMedico);
+            }   
             return Ok(paginationMedico);
         }
 

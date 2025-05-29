@@ -1,6 +1,5 @@
-using System;
 using System.Text.RegularExpressions;
-using AppCapasCitas.Application.Helpers;
+using AppCapasCitas.DTO.Helpers;
 using FluentValidation;
 
 namespace AppCapasCitas.Application.Features.Usuarios.Commands.CreateUsuario;

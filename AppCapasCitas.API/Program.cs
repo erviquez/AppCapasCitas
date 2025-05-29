@@ -6,13 +6,25 @@ using AppCapasCitas.Application;
 using AppCapasCitas.Transversal.Common;
 using AppCapasCitas.Transversal.Logging;
 using AppCapasCitas.Identity;
-using AppCapasCitas.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
-using AppCapasCitas.Identity.Data;
 using AppCapasCitas.Application.Models.Identity;
+using AppCapasCitas.Infrastructure.Data;
+using AppCapasCitas.Identity.Data;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
+string NombrePolitica = "WebApiConf";
 
 builder.Services.AddControllers();
+//CORS 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(NombrePolitica, config =>
+    {
+        config.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    }
+    );
+});
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -71,7 +83,7 @@ if (app.Environment.IsDevelopment())
 //app.UseHttpsRedirection();
 
 
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
@@ -83,10 +95,10 @@ using (var scope = app.Services.CreateScope())
     var loggerFactory = service.GetRequiredService<ILoggerFactory>();
     try
     {
-        // var context = service.GetRequiredService<InfrastructureDbContext>();
-        // await context.Database.MigrateAsync();
-        // var contextIdentity = service.GetRequiredService<CleanArchitectureIdentityDbContext>();
-        // await contextIdentity.Database.MigrateAsync();
+        var context = service.GetRequiredService<InfrastructureDbContext>();
+        await context.Database.MigrateAsync();
+        var contextIdentity = service.GetRequiredService<CleanArchitectureIdentityDbContext>();
+        await contextIdentity.Database.MigrateAsync();
         // //insertar data
         // await CitasDbContextSeed.SeedAsync(context,loggerFactory);
         // await CitasDbContextSeedData.LoadDataAsync(context,loggerFactory);
@@ -94,13 +106,12 @@ using (var scope = app.Services.CreateScope())
         // //identity
         // var contextIdentity = service.GetRequiredService<CleanArchitectureIdentityDbContext>();
         // await contextIdentity.Database.MigrateAsync();
-
-
     }
     catch (Exception ex)
     {
         var logger = loggerFactory.CreateLogger<Program>();
-        logger.LogError(ex,"Error de migración");
+        logger.LogError(ex, "Error de migración");
     }
 }
+app.UseCors(NombrePolitica);
 app.Run();

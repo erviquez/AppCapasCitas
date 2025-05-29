@@ -2258,7 +2258,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "FluentValidation": "8.2.3"
+          "AppCapasCitas.Transversal.Common": "1.0.0",
+          "FluentValidation": "11.11.0"
         },
         "compile": {
           "bin/placeholder/AppCapasCitas.DTO.dll": {}

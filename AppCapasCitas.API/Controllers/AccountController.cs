@@ -5,7 +5,6 @@ using AppCapasCitas.DTO.Response.Identity;
 using AppCapasCitas.Transversal.Common;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AppCapasCitas.API.Controllers;
@@ -28,7 +27,12 @@ namespace AppCapasCitas.API.Controllers;
 
     public async Task<ActionResult<Response<AuthResponse>>> Login([FromBody] AuthRequest request)
     { 
-        return Ok( await _authService.Login(request));
+        var result =  await _authService.Login(request);
+        if (result == null)
+            return StatusCode(StatusCodes.Status500InternalServerError, "Error interno al acceder las credenciales.");
+        if (!result.IsSuccess)
+            return NotFound(result);
+        return Accepted(result);
     }
     [HttpPost("Register")]
     [AllowAnonymous]
@@ -36,21 +40,24 @@ namespace AppCapasCitas.API.Controllers;
     public async Task<ActionResult<Response<RegistrationResponse>>> Register([FromBody] CreateUsuarioCommand command)
     {
         var result = await _mediator.Send(command);
-        return Ok( result);
 
+        if (result == null)
+            return StatusCode(StatusCodes.Status500InternalServerError, "Error interno al registrar el usuario.");
+
+        if (!result.IsSuccess)
+            return BadRequest(result); 
+        return CreatedAtAction(nameof(Register), result);
     }
 
     [HttpPost("RefreshToken")]
-    // [ValidateAntiForgeryToken]
     public async Task<ActionResult<AuthResponse>> RefreshToken([FromBody] TokenRequest request)
     {
         return Ok(await _authService.RefreshToken(request));
     }
     [HttpPost("Logout")]
-    // [ValidateAntiForgeryToken]
     public async Task<ActionResult<bool>> Logout([FromBody] LogoutRequest request)
     {
-        return Ok(await _authService.Logout(request));
+        return Accepted(await _authService.Logout(request));
     }
 
 }

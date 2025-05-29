@@ -1,8 +1,8 @@
 
 using AppCapasCitas.Application.Contracts.Identity;
 using AppCapasCitas.Application.Contracts.Persistence;
-using AppCapasCitas.Application.Helpers;
 using AppCapasCitas.Domain.Models;
+using AppCapasCitas.DTO.Helpers;
 using AppCapasCitas.DTO.Response.Usuario;
 using AppCapasCitas.Transversal.Common;
 using AutoMapper;

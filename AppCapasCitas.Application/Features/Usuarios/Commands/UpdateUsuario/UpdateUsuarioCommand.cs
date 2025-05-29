@@ -1,6 +1,4 @@
-
-using AppCapasCitas.Application.Helpers;
-using AppCapasCitas.Application.Models.Identity;
+using AppCapasCitas.DTO.Helpers;
 using AppCapasCitas.DTO.Response.Identity;
 using AppCapasCitas.Transversal.Common;
 using MediatR;

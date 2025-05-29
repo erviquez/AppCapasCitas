@@ -201,7 +201,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj": {
+                "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -222,7 +226,7 @@
           "dependencies": {
             "FluentValidation": {
               "target": "Package",
-              "version": "[8.2.3, )"
+              "version": "[11.11.0, )"
             }
           },
           "imports": [

@@ -1738,7 +1738,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "FluentValidation": "8.2.3"
+          "AppCapasCitas.Transversal.Common": "1.0.0",
+          "FluentValidation": "11.11.0"
         },
         "compile": {
           "bin/placeholder/AppCapasCitas.DTO.dll": {}
@@ -5031,11 +5032,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Infrastructure\\AppCapasCitas.Infrastructure.csproj",
+      "projectUniqueName": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Infrastructure\\AppCapasCitas.Infrastructure.csproj",
       "projectName": "AppCapasCitas.Infrastructure",
-      "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Infrastructure\\AppCapasCitas.Infrastructure.csproj",
+      "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Infrastructure\\AppCapasCitas.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-      "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Infrastructure\\obj\\",
+      "outputPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

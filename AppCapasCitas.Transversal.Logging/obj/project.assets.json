@@ -454,11 +454,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Logging\\AppCapasCitas.Transversal.Logging.csproj",
+      "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Logging\\AppCapasCitas.Transversal.Logging.csproj",
       "projectName": "AppCapasCitas.Transversal.Logging",
-      "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Logging\\AppCapasCitas.Transversal.Logging.csproj",
+      "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Logging\\AppCapasCitas.Transversal.Logging.csproj",
       "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-      "outputPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Logging\\obj\\",
+      "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Logging\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -36,8 +36,6 @@ public class CreateUsuarioCommandHandler : IRequestHandler<CreateUsuarioCommand,
     public async Task<Response<RegistrationResponse>> Handle(CreateUsuarioCommand request, CancellationToken cancellationToken)
     {
         var response = new Response<RegistrationResponse>();
-        await SendEmail(request);
-
         await using var transaction = await _unitOfWork.BeginTransactionAsync();
         var userId = Guid.NewGuid();
         var compensations = new List<Func<Task>>();
@@ -92,6 +90,17 @@ public class CreateUsuarioCommandHandler : IRequestHandler<CreateUsuarioCommand,
             _userRepository.AddEntity(usuario);
             userId = usuario.IdentityId;
             await _unitOfWork.CommitTransactionAsync(cancellationToken);
+            response.Data = new RegistrationResponse
+            {
+                UserId = userId.ToString(),
+                Username = request.Username,
+                Email = request.Email,
+                Token = result.Data.Token,
+                RefreshToken = result.Data.RefreshToken,
+                RoleId = result.Data.RoleId,
+                RoleName = result.Data.RoleName,
+                Success = true
+            };
             response.IsSuccess = true;
             response.Message = "Usuario creado exitosamente";
             

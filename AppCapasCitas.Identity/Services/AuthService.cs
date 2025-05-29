@@ -94,6 +94,16 @@ public class AuthService : IAuthService
                 response.Message = "El usuario no existe";
                 return response;
             }
+            if (user.Active == false)
+            {
+                response.IsSuccess = false;
+                response.Message = "El usuario está inactivo";
+                return response;
+            }
+            //recuperar Roles del usuario
+            var roles = await _userManager.GetRolesAsync(user);
+            
+  
 
             // Intenta autenticar al usuario
             var resultado = await _signInManager.PasswordSignInAsync(
@@ -122,6 +132,8 @@ public class AuthService : IAuthService
                 Email = user.Email!,
                 Username = user.UserName!,
                 RefreshToken = token.Item2, // Nuevo refresh token
+                Active = user.Active,
+                Roles = roles.ToList() // Roles del usuario,
             };
         }
         catch (Exception ex)
@@ -134,7 +146,7 @@ public class AuthService : IAuthService
 
             _appLogger.LogError(ex.Message, ex);
             response.Message = "Ocurrió un error, revisar detalle.";
-
+            response.IsSuccess = false;
             response.Errors = new List<ValidationFailureFluent>
             {
                 new ValidationFailureFluent(className, errorMessage)
