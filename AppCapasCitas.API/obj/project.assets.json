@@ -6491,11 +6491,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\AppCapasCitas.API.csproj",
+      "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\AppCapasCitas.API.csproj",
       "projectName": "AppCapasCitas.API",
-      "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\AppCapasCitas.API.csproj",
+      "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\AppCapasCitas.API.csproj",
       "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-      "outputPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\obj\\",
+      "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

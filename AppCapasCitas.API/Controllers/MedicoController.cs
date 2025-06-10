@@ -29,10 +29,6 @@ namespace AppCapasCitas.API.Controllers
         {
             var query = new GetMedicoListQuery();
             var result = await _mediator.Send(query);
-            if (result.IsSuccess == false)
-            {
-                return NotFound(result);
-            }
             return Ok(result);
         }
         [HttpGet("GetByName/{nombre}")]

@@ -4,6 +4,9 @@ namespace AppCapasCitas.DTO.Response.Usuario;
 public class UsuarioResponse
 {
     //usuario
+    public Guid? IdentityId { get; set; }
+    public string Email { get; set; } = null!;
+    
     public string Nombre { get; set; } = null!;
     public string Apellido { get; set; } = null!;
     public string Telefono { get; set; } = null!;
@@ -21,10 +24,11 @@ public class UsuarioResponse
     public DateTime? FechaActualizacion { get; set; }
     public string? CreadoPor { get; set; }
     public string? ModificadoPor { get; set; }
+    // //UsuarioIdentity
+    // public Guid? IdentityId { get; set; }
+    // public bool UsuarioActivo { get; set; }
+    // public DateTime? LastLogin { get; set; } = null;
+    // public string Email { get; set; } = null!;
 
-    //UsuarioIdentity
-    public Guid? IdentityId { get; set; }
-    public bool UsuarioActivo { get; set; }
-    public string Email { get; set; } = null!;
 
 }

@@ -116,11 +116,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj",
+      "projectUniqueName": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj",
       "projectName": "AppCapasCitas.Transversal.Common",
-      "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj",
+      "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj",
       "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-      "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\obj\\",
+      "outputPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

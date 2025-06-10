@@ -8,7 +8,7 @@ public abstract class EntidadBaseAuditoria
         public int Id { get; set; }
         
         [Required]
-        public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
+        public DateTime FechaCreacion { get; set; } = DateTime.Now;
         
         public DateTime? FechaActualizacion { get; set; }
 

@@ -59,7 +59,7 @@ public class PaginationMedicoQueryHandler: IRequestHandler<PaginationMedicoQuery
                 listMedico.Add(medicoVm);
             }
   
-            var pagination = new ResponsePagination<IReadOnlyList<MedicoResponse>>
+            responsePagination = new ResponsePagination<IReadOnlyList<MedicoResponse>>
             {
                     PageNumber = request.PageIndex,
                     TotalPages = totalPages,

@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "yCoSYqlqUXw=",
+  "dgSpecHash": "+sr9jV/5EMM=",
   "success": true,
-  "projectFilePath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj",
+  "projectFilePath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\erdv\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\blazor.bootstrap.3.3.1.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\blazored.sessionstorage\\2.4.0\\blazored.sessionstorage.2.4.0.nupkg.sha512",
+    "C:\\Users\\erdv\\.nuget\\packages\\blazored.toast\\4.2.1\\blazored.toast.4.2.1.nupkg.sha512",
+    "C:\\Users\\erdv\\.nuget\\packages\\currietechnologies.razor.sweetalert2\\5.6.0\\currietechnologies.razor.sweetalert2.5.6.0.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.11.0\\fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\microsoft.aspnetcore.authorization\\9.0.4\\microsoft.aspnetcore.authorization.9.0.4.nupkg.sha512",

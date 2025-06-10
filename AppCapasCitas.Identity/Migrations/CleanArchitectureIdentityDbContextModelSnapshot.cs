@@ -55,6 +55,9 @@ namespace AppCapasCitas.Identity.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime?>("LastLogin")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("LastModifiedBy")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");

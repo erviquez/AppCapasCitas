@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj": {}
+    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj": {}
   },
   "projects": {
-    "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj": {
+    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
+        "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
         "projectName": "AppCapasCitas.DTO",
-        "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
+        "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
         "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-        "outputPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\obj\\",
+        "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj": {
-                "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj"
+              "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj": {
+                "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj"
               }
             }
           }
@@ -79,14 +79,14 @@
         }
       }
     },
-    "d:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj": {
+    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj",
+        "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj",
         "projectName": "AppCapasCitas.FrontEnd",
-        "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj",
+        "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj",
         "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-        "outputPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\obj\\",
+        "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -107,8 +107,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj": {
-                "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj"
+              "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj": {
+                "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj"
               }
             }
           }
@@ -136,6 +136,14 @@
             "Blazored.SessionStorage": {
               "target": "Package",
               "version": "[2.4.0, )"
+            },
+            "Blazored.Toast": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "CurrieTechnologies.Razor.SweetAlert2": {
+              "target": "Package",
+              "version": "[5.6.0, )"
             },
             "Microsoft.AspNetCore.Components.Authorization": {
               "target": "Package",
@@ -198,14 +206,14 @@
         }
       }
     },
-    "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj": {
+    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj",
+        "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj",
         "projectName": "AppCapasCitas.Transversal.Common",
-        "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj",
+        "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj",
         "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-        "outputPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\obj\\",
+        "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

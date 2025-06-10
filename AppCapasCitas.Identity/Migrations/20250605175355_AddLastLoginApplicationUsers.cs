@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AppCapasCitas.Identity.Migrations
 {
     /// <inheritdoc />
-    public partial class AddApplicationUser : Migration
+    public partial class AddLastLoginApplicationUsers : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,6 +35,7 @@ namespace AppCapasCitas.Identity.Migrations
                     CreateBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     LastModifiedByDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    LastLogin = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),

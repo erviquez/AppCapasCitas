@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.ComponentModel.DataAnnotations;
 using AppCapasCitas.Domain.Models.Common;
 
@@ -8,10 +7,9 @@ namespace AppCapasCitas.Domain.Models;
 public partial class Paciente: EntidadBaseAuditoria
     {
 
-        [Required]
+    
         public DateTime FechaNacimiento { get; set; }
-        [Required]
-        [StringLength(20)]
+
         public string? Genero { get; set; }
         public string? Alergias { get; set; }
         public string? EnfermedadesCronicas { get; set; }

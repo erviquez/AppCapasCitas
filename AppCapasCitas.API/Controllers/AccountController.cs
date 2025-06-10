@@ -1,6 +1,9 @@
+using System.Net;
 using AppCapasCitas.Application.Contracts.Identity;
 using AppCapasCitas.Application.Features.Usuarios.Commands.CreateUsuario;
+using AppCapasCitas.Application.Features.Usuarios.Commands.DisableUsuario;
 using AppCapasCitas.DTO.Request.Identity;
+using AppCapasCitas.DTO.Request.Usuario;
 using AppCapasCitas.DTO.Response.Identity;
 using AppCapasCitas.Transversal.Common;
 using MediatR;
@@ -11,7 +14,7 @@ namespace AppCapasCitas.API.Controllers;
 
 [Route("api/v1/[controller]")]
 [ApiController]
- public class AccountController : ControllerBase
+public class AccountController : ControllerBase
 {
     private readonly IAuthService _authService;
     private readonly IMediator _mediator;
@@ -26,8 +29,8 @@ namespace AppCapasCitas.API.Controllers;
     //[ValidateAntiForgeryToken]
 
     public async Task<ActionResult<Response<AuthResponse>>> Login([FromBody] AuthRequest request)
-    { 
-        var result =  await _authService.Login(request);
+    {
+        var result = await _authService.Login(request);
         if (result == null)
             return StatusCode(StatusCodes.Status500InternalServerError, "Error interno al acceder las credenciales.");
         if (!result.IsSuccess)
@@ -42,10 +45,14 @@ namespace AppCapasCitas.API.Controllers;
         var result = await _mediator.Send(command);
 
         if (result == null)
-            return StatusCode(StatusCodes.Status500InternalServerError, "Error interno al registrar el usuario.");
+        {
+            result!.IsSuccess = false;
+            result.Message = "Error interno al registrar el usuario.";
+            return result;
 
+        }
         if (!result.IsSuccess)
-            return BadRequest(result); 
+            return BadRequest(result);
         return CreatedAtAction(nameof(Register), result);
     }
 
@@ -57,7 +64,29 @@ namespace AppCapasCitas.API.Controllers;
     [HttpPost("Logout")]
     public async Task<ActionResult<bool>> Logout([FromBody] LogoutRequest request)
     {
-        return Accepted(await _authService.Logout(request));
+        var result = await _authService.Logout(request);
+        return Accepted(result);
+
+    }
+
+    [HttpPut("DisableUsuarioById", Name = "DisableUsuarioById")]
+    [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult<bool>> DisableUsuarioById([FromBody] UsuarioRequest request)
+    {
+        var response = new Response<bool>();
+        if (request == null || request.UserId == Guid.Empty)
+        {
+            response.IsSuccess = false;
+            response.Message = "Invalid user request.";
+            return BadRequest(response);
+        }
+        var query = new DisableUsuarioCommand { IdentityId = request.UserId!, Active = request.IsActive };
+        var result = await _mediator.Send(query);
+        if (result.IsSuccess == false)
+        {            
+            return NotFound(result);
+        }
+        return Ok(result);
     }
 
 }

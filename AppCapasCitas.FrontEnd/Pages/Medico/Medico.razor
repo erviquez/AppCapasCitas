@@ -1,0 +1,34 @@
+﻿@page "/medico"
+@inject NavigationManager navigationManager
+@inject IMedicoProxy proxy
+@inject IToastService toastService
+
+
+
+@attribute [Authorize]
+
+
+<h3>Medico</h3>
+<EditForm>
+
+</EditForm>
+
+@code {
+
+    @* public MedicoResponse Medico = new();
+    protected override async Task OnInitializedAsync()
+    {
+
+        var result = await proxy.ObtenerMedicosAsync();
+        if (result.IsSuccess)
+        {
+
+
+        }
+        else
+        {
+            toastService.ShowInfo(result.Message);
+        }
+    } *@
+
+}

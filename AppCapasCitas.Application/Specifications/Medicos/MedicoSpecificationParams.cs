@@ -1,4 +1,4 @@
-using System;
+
 
 namespace AppCapasCitas.Application.Specifications.Medicos;
 

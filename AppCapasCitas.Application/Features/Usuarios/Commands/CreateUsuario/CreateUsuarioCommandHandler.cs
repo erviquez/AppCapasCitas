@@ -3,7 +3,6 @@ using AppCapasCitas.Application.Contracts.Identity;
 using AppCapasCitas.Application.Contracts.Persistence;
 using AppCapasCitas.Application.Contracts.Persistence.Infrastructure;
 using AppCapasCitas.Application.Models;
-using AppCapasCitas.Application.Models.Identity;
 using AppCapasCitas.Domain.Models;
 using AppCapasCitas.DTO.Request.Identity;
 using AppCapasCitas.DTO.Response.Identity;

@@ -14,8 +14,4 @@ public abstract class SpecificationParams
         set => _pageSize = (value > MaxPagesize)? MaxPagesize : value;
     }
     public string? Search {get;set;}
-
-
-
-
 }

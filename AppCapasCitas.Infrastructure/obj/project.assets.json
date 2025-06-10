@@ -5032,11 +5032,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Infrastructure\\AppCapasCitas.Infrastructure.csproj",
+      "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Infrastructure\\AppCapasCitas.Infrastructure.csproj",
       "projectName": "AppCapasCitas.Infrastructure",
-      "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Infrastructure\\AppCapasCitas.Infrastructure.csproj",
+      "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Infrastructure\\AppCapasCitas.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-      "outputPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Infrastructure\\obj\\",
+      "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

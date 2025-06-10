@@ -128,7 +128,7 @@ namespace AppCapasCitas.Infrastructure.Persistence
             }
 
             return (IAsyncRepository<TEntity>)_repositories[type];
-        }
+        }   
 
         public void Dispose()
         {

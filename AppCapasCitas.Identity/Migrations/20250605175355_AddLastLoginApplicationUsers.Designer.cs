@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppCapasCitas.Identity.Migrations
 {
     [DbContext(typeof(CleanArchitectureIdentityDbContext))]
-    [Migration("20250521233823_AddApplicationUser")]
-    partial class AddApplicationUser
+    [Migration("20250605175355_AddLastLoginApplicationUsers")]
+    partial class AddLastLoginApplicationUsers
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,6 +57,9 @@ namespace AppCapasCitas.Identity.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastLogin")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("LastModifiedBy")
                         .HasMaxLength(100)

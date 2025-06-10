@@ -1,49 +1,81 @@
 ﻿@page "/"
 @using AppCapasCitas.DTO.Request.Identity
-@inject IUsuarioProxy proxy
+
+@inject ILoginProxy proxy
 @inject NavigationManager navigationManager
+@inject AuthenticationStateProvider auth
+@inject IToastService toastService
 
-<h3>Login</h3>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header bg-dark text-white text-center">
+                    <h3 class="mb-0">Iniciar sesión</h3>
+                </div>
+                <div class="card-body">
+                    <EditForm Model="loginRequest" OnValidSubmit="OnLogin">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
 
-<EditForm Model="loginRequest" OnValidSubmit="OnLogin">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-
-    <div class="mb-3">
-        <label class="form-label">Email</label>
-        <InputText class="form-control" @bind-Value="loginRequest.Email" />
-        <ValidationMessage For="() => loginRequest.Email" />
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <InputText type="email" class="form-control" @bind-Value="loginRequest.Email" />
+                            <ValidationMessage For="@(() => loginRequest.Email)" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <InputText type="password" class="form-control" @bind-Value="loginRequest.Password" />
+                            <ValidationMessage For="@(() => loginRequest.Password)" />
+                        </div>
+                        <div class="mb-3 d-flex align-items-center">
+                            <InputCheckbox class="form-check-input me-2" @bind-Value="loginRequest.RememberMe" />
+                            <label class="form-check-label mb-0">Recordarme</label>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-between">
+                            <a @onclick="Registrar" class="btn btn-link p-0 text-dark">¿No tienes una cuenta? Regístrate</a>
+                            <a href="/usuario/recuperar-contrasena" class="btn btn-link p-0 text-dark">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-outline-dark btn-lg">Iniciar sesión</button>
+                        </div>
+                    </EditForm>
+                    @* @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div class="alert alert-danger mt-3 mb-0">@errorMessage</div>
+                    } *@
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label class="form-label">Contraseña</label>
-        <InputText type="password" class="form-control" @bind-Value="loginRequest.Password" />
-        <ValidationMessage For="() => loginRequest.Password" />
-    </div>
-    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-</EditForm>
-
-@if (!string.IsNullOrEmpty(errorMessage))
-{
-    <div class="alert alert-danger mt-2">@errorMessage</div>
-}
+</div>
+<Loading mostrar="@cargando"/>
 
 @code {
     private AuthRequest loginRequest = new();
     private string errorMessage = string.Empty;
+    public bool cargando { get; set; } = false;
 
     private async Task OnLogin()
     {
-        errorMessage = string.Empty;
+        cargando = true;
         var response = await proxy.LoginAsync(loginRequest);
         if (response == null || !response.IsSuccess)
         {
-            
-            errorMessage = response?.Message ?? "Error al iniciar sesión.";
+            cargando = false;
+            string errorMessage = response!.Message!;            
+            toastService.ShowError(errorMessage);
             return;
         }
-        
-
-        // Redirigir o guardar token según tu lógica
-        navigationManager.NavigateTo("/");
+        var authService = (AuthenticationService)auth;
+        await authService.Autenticar(response.Data!);
+        cargando = false;
+        navigationManager.NavigateTo("/home");
+        toastService.ShowSuccess(response.Message!);
     }
-}
+    public void Registrar()
+    {
+        navigationManager.NavigateTo("/usuario/registro");
+    }
+}    
+   

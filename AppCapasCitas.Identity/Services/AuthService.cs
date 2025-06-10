@@ -86,31 +86,34 @@ public class AuthService : IAuthService
         try
         {
             // Busca usuario por email
-            var user = await _userManager.FindByEmailAsync(request.Email);
+            var applicationUser = await _userManager.FindByEmailAsync(request.Email);
 
-            if (user == null)
+            if (applicationUser == null)
             {
                 response.IsSuccess = false;
                 response.Message = "El usuario no existe";
                 return response;
             }
-            if (user.Active == false)
+            if (applicationUser.Active == false)
             {
                 response.IsSuccess = false;
                 response.Message = "El usuario está inactivo";
                 return response;
             }
             //recuperar Roles del usuario
-            var roles = await _userManager.GetRolesAsync(user);
-            
-  
+            var roles = await _userManager.GetRolesAsync(applicationUser);
 
             // Intenta autenticar al usuario
             var resultado = await _signInManager.PasswordSignInAsync(
-                user.UserName!,
+                applicationUser.UserName!,
                 request.Password,
                 request.RememberMe,
-                lockoutOnFailure: false);
+                lockoutOnFailure: false
+                );
+            //agregar fecha de último login
+            applicationUser.LastLogin = DateTime.Now;
+            _context.Users!.Update(applicationUser);
+            await _context.SaveChangesAsync();
 
             if (!resultado.Succeeded)
             {
@@ -120,19 +123,20 @@ public class AuthService : IAuthService
             }
 
             // Genera tokens JWT y refresh token
-            var token = await GenerateToken(user);
+            var token = await GenerateToken(applicationUser);
 
             // Construye respuesta con datos del usuario
 
             response.IsSuccess = true;
+            response.Message = "Login exitoso";
             response.Data = new AuthResponse
             {
-                Id = user.Id,
+                Id = applicationUser.Id,
                 Token = token.Item1,      // Nuevo token JWT
-                Email = user.Email!,
-                Username = user.UserName!,
+                Email = applicationUser.Email!,
+                Username = applicationUser.UserName!,
                 RefreshToken = token.Item2, // Nuevo refresh token
-                Active = user.Active,
+                Active = applicationUser.Active,
                 Roles = roles.ToList() // Roles del usuario,
             };
         }
@@ -369,6 +373,7 @@ public class AuthService : IAuthService
                 Email = request.Email,
                 UserName = request.Username,
                 EmailConfirmed = true
+
             };
 
             // Intenta crear el usuario con la contraseña proporcionada
@@ -409,7 +414,7 @@ public class AuthService : IAuthService
             var frame = st.GetFrame(0); // Frame actual
             var className = frame!.GetMethod()!.DeclaringType!.FullName;
             var lineNumber = frame.GetFileLineNumber();
-            string errorMessage = $"Error en la Linea: {lineNumber} -> {ex.Message} ";
+            string errorMessage = $"Error en la Linea: {lineNumber} -> {ex.InnerException!.Message} ";
             _appLogger.LogError(ex.Message, ex);
             response.Message = "Ocurrió un error, revisar detalle.";
             response.Errors = new List<ValidationFailureFluent>
@@ -628,7 +633,8 @@ public class AuthService : IAuthService
 
             // Tiempo de expiración (de configuración)
             Expires = DateTime.UtcNow.Add(_jwtSettings.ExpireTime),
-
+            Audience = _jwtSettings.Audience, 
+            Issuer = _jwtSettings.Issuer, 
             // Credenciales de firma (algoritmo HMAC-SHA256)
             SigningCredentials = new SigningCredentials(
                 symmetricSecurityKey,
@@ -850,9 +856,11 @@ public class AuthService : IAuthService
                 Id = user.Id,
                 Username = user.UserName!,
                 Email = user.Email!,
-                Active = user.Active
+                Active = user.Active,
+                LastLogin = user.LastLogin
+
             })
-            .Where(x => x.Active == true)
+            //.Where(x => x.Active == true)
             .ToList();
 
             response = new Response<IReadOnlyList<AuthResponse>>
@@ -864,6 +872,39 @@ public class AuthService : IAuthService
         }
         response.IsSuccess = false;
         response.Message = "No se encontraron usuarios";            
+        return response;
+
+    }
+    
+    
+
+    public async Task<Response<IReadOnlyList<AuthResponse>>> GetAllApplicationUserActive(bool active = true)
+    {
+        var response = new Response<IReadOnlyList<AuthResponse>>();
+
+        var users = await _userManager.Users.ToListAsync();
+        if (users != null && users.Count > 0)
+        {
+            var authResponses = users.Select(user => new AuthResponse
+            {
+                Id = user.Id,
+                Username = user.UserName!,
+                Email = user.Email!,
+                Active = user.Active,
+                LastLogin = user.LastLogin
+            })
+            .Where(x => x.Active == active)
+            .ToList();
+
+            response = new Response<IReadOnlyList<AuthResponse>>
+            {
+                Data = authResponses,
+                IsSuccess = true
+            };
+            return response;
+        }
+        response.IsSuccess = false;
+        response.Message = $"No se encontraron usuarios " + (active ? "activos" : "inactivos");
         return response;
 
     }

@@ -18,6 +18,7 @@ public interface IAuthService
     Task<bool> UserExists(string userId);
     Task<Response<AuthResponse>> GetApplicationUser(string userId);
     Task<Response<IReadOnlyList<AuthResponse>>> GetAllApplicationUser();
+    Task<Response<IReadOnlyList<AuthResponse>>> GetAllApplicationUserActive(bool active = true);
     Task<Response<bool>> UpdateApplicationUser(AuthRequest authRequest);
     Task<Response<bool>> AssignRoleToUser(string userId, string roleId); // Para compensación     
     Task<bool> RemoveRoleFromUser(string userId, string roleId); // Para compensación

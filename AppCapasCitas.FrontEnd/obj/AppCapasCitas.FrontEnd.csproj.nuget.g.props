@@ -17,6 +17,8 @@
     <Import Project="$(NuGetPackageRoot)microsoft.net.sdk.webassembly.pack\9.0.5\build\Microsoft.NET.Sdk.WebAssembly.Pack.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.sdk.webassembly.pack\9.0.5\build\Microsoft.NET.Sdk.WebAssembly.Pack.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.net.illink.tasks\9.0.5\build\Microsoft.NET.ILLink.Tasks.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.illink.tasks\9.0.5\build\Microsoft.NET.ILLink.Tasks.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly\9.0.4\build\net9.0\Microsoft.AspNetCore.Components.WebAssembly.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly\9.0.4\build\net9.0\Microsoft.AspNetCore.Components.WebAssembly.props')" />
+    <Import Project="$(NuGetPackageRoot)currietechnologies.razor.sweetalert2\5.6.0\buildTransitive\CurrieTechnologies.Razor.SweetAlert2.props" Condition="Exists('$(NuGetPackageRoot)currietechnologies.razor.sweetalert2\5.6.0\buildTransitive\CurrieTechnologies.Razor.SweetAlert2.props')" />
+    <Import Project="$(NuGetPackageRoot)blazored.toast\4.2.1\buildTransitive\Blazored.Toast.props" Condition="Exists('$(NuGetPackageRoot)blazored.toast\4.2.1\buildTransitive\Blazored.Toast.props')" />
     <Import Project="$(NuGetPackageRoot)blazor.bootstrap\3.3.1\buildTransitive\Blazor.Bootstrap.props" Condition="Exists('$(NuGetPackageRoot)blazor.bootstrap\3.3.1\buildTransitive\Blazor.Bootstrap.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">

@@ -60,7 +60,7 @@ public class GetUsuarioListQueryHandler : IRequestHandler<GetUsuarioListQuery, R
                         usuarioResponse.Estado = usuarioApp.Estado;
                         usuarioResponse.CodigoPais = usuarioApp.CodigoPais;
                         usuarioResponse.Pais = PaisesHelper.GetNombrePais(usuarioApp.CodigoPais);
-                        usuarioResponse.UsuarioActivo = usuarioApp.Activo;
+                        usuarioResponse.Activo = usuarioApp.Activo;
                         if (usuarioApp.MedicoId.HasValue)
                         {
                             usuarioResponse.MedicoId = usuarioApp.MedicoId.Value;

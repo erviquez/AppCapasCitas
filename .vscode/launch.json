@@ -11,5 +11,11 @@
             "name": "Open logs-2025-05-27.html",
             "file": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\Logs\\logs-2025-05-27.html"
         }
-    ]
+    ],
+    "serverReadyAction": {
+    "action": "openExternally",
+    "pattern": "\\bNow listening on:\\S+)",
+    "uriFormat": "http://localhost:5101",
+    "browser": "chrome"
+    }
 }

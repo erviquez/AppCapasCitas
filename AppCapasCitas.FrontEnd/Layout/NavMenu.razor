@@ -1,39 +1,101 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject AuthenticationStateProvider auth
+@inject NavigationManager navigationManager
+@inject SweetAlertService Swal;
+
+
+
+<!-- Barra superior de navegación -->
+<header class="top-row ps-3 navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">AppCapasCitas.FrontEnd</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+        <a class="navbar-brand" href="/">Citas medicas</a>
+        <button class="navbar-toggler" 
+                title="Menú de navegación" 
+                @onclick="ToggleNavMenu"
+                aria-label="Alternar menú de navegación">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
-</div>
+</header>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+<!-- Menú desplegable -->
+<div class="@NavMenuCssClass nav-scrollable bg-dark" @onclick="ToggleNavMenu">
     <nav class="nav flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="usuario/registro">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Registro
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
+        <AuthorizeView>
+
+            <NotAuthorized>
+
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="usuario/registro">
+                        <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Registrarse
+                    </NavLink>
+                </div>
+            </NotAuthorized>
+        </AuthorizeView>
+
+        <AuthorizeView>
+
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="medico">
+                    <span class="bi bi-person-badge-fill-nav-menu" aria-hidden="true"></span>  Médicos
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="paciente">
+                    <span class="bi bi-person-lines-fill-nav-menu" aria-hidden="true"></span>  Pacientes
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="administracion">
+                    <span class="bi bi-gear-fill-nav-menu" aria-hidden="true"></span> Administración
+                </NavLink>
+                <ul class="nav flex-column ms-3">
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="usuario/usuario">
+                            <span class="bi bi-people-fill-nav-menu" aria-hidden="true"></span> Usuarios
+                        </NavLink>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-item px-3">
+                <a class="nav-link" @onclick="CerrarSesion" style="cursor: pointer;">
+                    <span class="bi bi-box-arrow-right-nav-menu" aria-hidden="true"></span> Cerrar Sesión
+                </a>
+            </div>
+
+    </AuthorizeView>
     </nav>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null!;
 
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+    private async Task CerrarSesion()
+    {
+        SweetAlertResult result = await Swal.FireAsync(new SweetAlertOptions{
+            Title = "Confirmación",
+            Text = "¿Desea cerrar la sesión?",
+            Icon = SweetAlertIcon.Question,
+            ShowCancelButton = true,
+            ConfirmButtonText = "Si",
+            CancelButtonText = "No"
+        });
+        if (!string.IsNullOrEmpty(result.Value))
+        {
+            await Swal.FireAsync(
+            "Adios...",
+            "Ha cerrado sesión correctamente.",
+            SweetAlertIcon.Success
+            );
+            var authService = (AuthenticationService)auth;
+            await authService.Logout();
+            navigationManager.NavigateTo("/");
+        }
+
     }
 }

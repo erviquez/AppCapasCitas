@@ -2,8 +2,10 @@
 @using AppCapasCitas.DTO.Helpers
 @using AppCapasCitas.DTO.Request.Identity
 @inject NavigationManager navigationManager
+@inject IToastService toastService
 @inject IUsuarioProxy proxy
 
+<Loading mostrar="@cargando"/>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-12">
@@ -12,7 +14,7 @@
                     <h3 class="mb-0">Registro de usuarios</h3>
                 </div>
                 <div class="card-body">
-                    <EditForm Model="request" class="needs-validation" OnValidSubmit="GuardarDatos">
+                    <EditForm Model="request" class="needs-validation" OnValidSubmit="OnGuardarDatos">
                         <DataAnnotationsValidator/>
                         <div class="row">
                     
@@ -103,12 +105,12 @@
                             </div>
                         </div>
 
-                        <div  class=" col-md-6   offset-md-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-info btn-lg" @onclick="Regresar">
-                                <i class="fas fa-user-plus me-2"></i>Cancelar
+                        <div  class=" col-md-3   offset-md-9 float-end">
+                            <button type="button" class="btn btn-outline-secondary btn-md" @onclick="Regresar">
+                                Regresar &nbsp; <i class="bi bi-box-arrow-left"></i>
                             </button>
-                            <button type="submit" class="btn btn-primary btn-lg" disabled="@(!passwordsMatch)">
-                                <i class="fas fa-user-plus me-2"></i>Registrarse
+                            <button type="submit" class="btn btn-outline-primary btn-md" disabled="@(!passwordsMatch)">
+                               Registrarse &nbsp; <i class="bi bi-person-plus"></i>
                             </button>
                             
                         </div>
@@ -120,6 +122,7 @@
 </div>
 @code {
     public RegistrationRequest request = new();
+    public bool cargando { get; set; } = false;
 
     private string _confirmPassword = string.Empty;
     private bool passwordsMatch = true;
@@ -141,12 +144,16 @@
         passwordsMatch = request.Password == confirmPassword;
     }
 
-    public async Task GuardarDatos()
+    public async Task OnGuardarDatos()
     {
+        cargando = true;
+
         ValidatePasswordMatch();
 
         if (!passwordsMatch)
         {
+            toastService.ShowError("Las contraseñas no coinciden");
+            cargando = false;
             return;
         }
         try
@@ -154,20 +161,30 @@
             var result = await proxy.RegistrarUsuarioAsync(request);
             if (!result.IsSuccess)
             {
+                toastService.ShowError(result.Message! + " \n " + string.Join("\n", result.Errors!.Select(e => $"{e.PropertyName}: {e.ErrorMessage}")));
                 Console.WriteLine("Error al registrar el usuario: " + result.Message);
+                Console.WriteLine(string.Join("\n", result.Errors!.Select(e => $"{e.PropertyName}: {e.ErrorMessage}")));
+                cargando = false;
                 return;
             }
+            toastService.ShowSuccess(result.Message!);
             Console.WriteLine("Éxito al registrar el usuario: " + result.Message);
+            cargando = false;
             Regresar();
             @* navigationManager.NavigateTo("/"); *@
         }
         catch (Exception ex)
         {
+            cargando = false;
+            toastService.ShowError(ex.Message!);
             Console.WriteLine("Error al registrar el usuario: " + ex.Message);
         }
     }
+
+    
     public void Regresar()
     {
+
         navigationManager.NavigateTo("/");
     }
 }

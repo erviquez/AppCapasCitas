@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿
 using AppCapasCitas.Domain.Models.Common;
 
 namespace AppCapasCitas.Domain.Models;
@@ -8,7 +6,7 @@ namespace AppCapasCitas.Domain.Models;
 public partial class Medico: EntidadBaseAuditoria
 {
 
-    [Required]
+ 
     public string? CedulaProfesional { get; set; }
     public string? Biografia { get; set; }
 

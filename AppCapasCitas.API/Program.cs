@@ -83,6 +83,7 @@ if (app.Environment.IsDevelopment())
 //app.UseHttpsRedirection();
 
 
+app.UseCors(NombrePolitica);
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -113,5 +114,4 @@ using (var scope = app.Services.CreateScope())
         logger.LogError(ex, "Error de migración");
     }
 }
-app.UseCors(NombrePolitica);
 app.Run();
