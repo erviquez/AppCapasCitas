@@ -1,0 +1,631 @@
+<html><head>
+        <style>
+            .log-entry { margin: 5px 0; padding: 8px; border-left: 4px solid #ccc; }
+            .time { color: #666; margin-right: 10px; }
+            .level { font-weight: bold; margin-right: 10px; }
+            .trace { border-color: #aaa; }
+            .debug { border-color: #5bc0de; }
+            .information { border-color: #5cb85c; }
+            .warning { border-color: #f0ad4e; }
+            .error { border-color: #d9534f; }
+            .critical { border-color: #d9534f; background-color: #f2dede; }
+            .exception { color: #d9534f; margin-top: 5px; }
+        </style>
+        </head>Aqui esta 2222<body>
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:50:59</span>
+            <span class='level'>Information</span>
+            <span class='category'>ShortnerService</span>
+            <span class='message'>URL creada: http://localhost:5100/api/v1/Account/ConfirmEmail?userId=09c0f1b8-6c92-4f34-ab90-7b0231b6685b&token=1R7OXI1NAEIBYE8T3UJBN8TJEW4AZ52L90A3298f478-aea1-4bbd-ba66-a67a4ca9cd7d</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-02 10:50:59</span>
+            <span class='level'>Error</span>
+            <span class='category'>ShortnerService</span>
+            <span class='message'>Error al acortar la URL, se retornará la URL original</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:50:59</span>
+            <span class='level'>Information</span>
+            <span class='category'>EmailService</span>
+            <span class='message'>Email service is inactive, skipping email sending.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:50:59</span>
+            <span class='level'>Information</span>
+            <span class='category'>ShortnerService</span>
+            <span class='message'>URL creada: http://localhost:5100/api/v1/Account/ConfirmPhone?userId=09c0f1b8-6c92-4f34-ab90-7b0231b6685b&phone=5545647961&token=1R7OXI1NAEIBYE8T3UJBN8TJEW4AZ52L90A3298f478-aea1-4bbd-ba66-a67a4ca9cd7d</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-02 10:50:59</span>
+            <span class='level'>Error</span>
+            <span class='category'>ShortnerService</span>
+            <span class='message'>Error al acortar la URL, se retornará la URL original</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:50:59</span>
+            <span class='level'>Information</span>
+            <span class='category'>SmsService</span>
+            <span class='message'>SMS service is inactive, skipping SMS sending.</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-02 10:50:59</span>
+            <span class='level'>Error</span>
+            <span class='category'>CreateUsuarioCommandHandler</span>
+            <span class='message'>SMS service is inactive</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:50:59</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 8ef0e439-2742-45cc-b6e0-de0ea01fb27c</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:51:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:51:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:52:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>DisableUsuarioCommand</span>
+            <span class='message'>Usuario: Inactivo</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:52:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 18ede549-444b-4229-96a1-712b85877ac4</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:52:07</span>
+            <span class='level'>Information</span>
+            <span class='category'>DisableUsuarioCommand</span>
+            <span class='message'>Usuario: Activo</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:52:07</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 000f208f-8fa8-4509-9b19-43c7b94004e6</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:52:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>GetRolesQueryHandler</span>
+            <span class='message'>Roles obtenidos correctamente</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:52:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>EmailService</span>
+            <span class='message'>Email service is inactive, skipping email sending.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:52:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>SmsService</span>
+            <span class='message'>SMS service is inactive, skipping SMS sending.</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-02 10:52:19</span>
+            <span class='level'>Error</span>
+            <span class='category'>ConvertUsuarioCommandHandler</span>
+            <span class='message'>SMS service is inactive</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:52:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: cfd81308-93c1-4451-8ff3-05cd38d4797b</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:52:26</span>
+            <span class='level'>Information</span>
+            <span class='category'>GetRolesQueryHandler</span>
+            <span class='message'>Roles obtenidos correctamente</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:52:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>EmailService</span>
+            <span class='message'>Email service is inactive, skipping email sending.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:52:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>SmsService</span>
+            <span class='message'>SMS service is inactive, skipping SMS sending.</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-02 10:52:32</span>
+            <span class='level'>Error</span>
+            <span class='category'>ConvertUsuarioCommandHandler</span>
+            <span class='message'>SMS service is inactive</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:52:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: cfd81308-93c1-4451-8ff3-05cd38d4797b</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:54:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>ShortnerService</span>
+            <span class='message'>URL creada: http://localhost:5100/api/v1/Account/ConfirmEmail?userId=c6aae1bd-690e-4618-a36f-4f9959291c72&token=E5O2YHS94SI8881LFOCLPZIVDHSSMT29L8R8491957d-4c69-4b83-afe6-811844547fc1</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-02 10:54:19</span>
+            <span class='level'>Error</span>
+            <span class='category'>ShortnerService</span>
+            <span class='message'>Error al acortar la URL, se retornará la URL original</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:54:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>EmailService</span>
+            <span class='message'>Email service is inactive, skipping email sending.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:54:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>ShortnerService</span>
+            <span class='message'>URL creada: http://localhost:5100/api/v1/Account/ConfirmPhone?userId=c6aae1bd-690e-4618-a36f-4f9959291c72&phone=5545647961&token=E5O2YHS94SI8881LFOCLPZIVDHSSMT29L8R8491957d-4c69-4b83-afe6-811844547fc1</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-02 10:54:19</span>
+            <span class='level'>Error</span>
+            <span class='category'>ShortnerService</span>
+            <span class='message'>Error al acortar la URL, se retornará la URL original</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:54:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>SmsService</span>
+            <span class='message'>SMS service is inactive, skipping SMS sending.</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-02 10:54:19</span>
+            <span class='level'>Error</span>
+            <span class='category'>CreateUsuarioCommandHandler</span>
+            <span class='message'>SMS service is inactive</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:54:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: c6aae1bd-690e-4618-a36f-4f9959291c72, TipoAccionId: 8ef0e439-2742-45cc-b6e0-de0ea01fb27c</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:54:22</span>
+            <span class='level'>Information</span>
+            <span class='category'>GetRolesQueryHandler</span>
+            <span class='message'>Roles obtenidos correctamente</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:54:27</span>
+            <span class='level'>Information</span>
+            <span class='category'>EmailService</span>
+            <span class='message'>Email service is inactive, skipping email sending.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:54:27</span>
+            <span class='level'>Information</span>
+            <span class='category'>SmsService</span>
+            <span class='message'>SMS service is inactive, skipping SMS sending.</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-02 10:54:27</span>
+            <span class='level'>Error</span>
+            <span class='category'>ConvertUsuarioCommandHandler</span>
+            <span class='message'>SMS service is inactive</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 10:54:27</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: c6aae1bd-690e-4618-a36f-4f9959291c72, TipoAccionId: cfd81308-93c1-4451-8ff3-05cd38d4797b</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:01:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>ShortnerService</span>
+            <span class='message'>URL creada: http://localhost:5100/api/v1/Account/ConfirmEmail?userId=4f95532b-a8d0-4374-ae06-63f0bed0f58d&token=8D3CP2WMU020XYHJPKE8O1A0VCHLN1CTMSG3322a8df-a52b-4148-8edd-90a3d69f002c</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-02 11:01:19</span>
+            <span class='level'>Error</span>
+            <span class='category'>ShortnerService</span>
+            <span class='message'>Error al acortar la URL, se retornará la URL original</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:01:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>EmailService</span>
+            <span class='message'>Email service is inactive, skipping email sending.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:01:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>ShortnerService</span>
+            <span class='message'>URL creada: http://localhost:5100/api/v1/Account/ConfirmPhone?userId=4f95532b-a8d0-4374-ae06-63f0bed0f58d&phone=5545647961&token=8D3CP2WMU020XYHJPKE8O1A0VCHLN1CTMSG3322a8df-a52b-4148-8edd-90a3d69f002c</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-02 11:01:19</span>
+            <span class='level'>Error</span>
+            <span class='category'>ShortnerService</span>
+            <span class='message'>Error al acortar la URL, se retornará la URL original</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:01:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>SmsService</span>
+            <span class='message'>SMS service is inactive, skipping SMS sending.</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-02 11:01:19</span>
+            <span class='level'>Error</span>
+            <span class='category'>CreateUsuarioCommandHandler</span>
+            <span class='message'>SMS service is inactive</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:01:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 4f95532b-a8d0-4374-ae06-63f0bed0f58d, TipoAccionId: 8ef0e439-2742-45cc-b6e0-de0ea01fb27c</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:01:26</span>
+            <span class='level'>Information</span>
+            <span class='category'>GetRolesQueryHandler</span>
+            <span class='message'>Roles obtenidos correctamente</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:01:33</span>
+            <span class='level'>Information</span>
+            <span class='category'>EmailService</span>
+            <span class='message'>Email service is inactive, skipping email sending.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:01:33</span>
+            <span class='level'>Information</span>
+            <span class='category'>SmsService</span>
+            <span class='message'>SMS service is inactive, skipping SMS sending.</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-02 11:01:33</span>
+            <span class='level'>Error</span>
+            <span class='category'>ConvertUsuarioCommandHandler</span>
+            <span class='message'>SMS service is inactive</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:01:33</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 4f95532b-a8d0-4374-ae06-63f0bed0f58d, TipoAccionId: cfd81308-93c1-4451-8ff3-05cd38d4797b</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:02:48</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 046e2c5e-c950-4de6-b0ec-e977f458da98</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:06:47</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: c6aae1bd-690e-4618-a36f-4f9959291c72</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:06:47</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: c6aae1bd-690e-4618-a36f-4f9959291c72, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:29:45</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: c6aae1bd-690e-4618-a36f-4f9959291c72, TipoAccionId: 046e2c5e-c950-4de6-b0ec-e977f458da98</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:29:47</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: c6aae1bd-690e-4618-a36f-4f9959291c72</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:29:47</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: c6aae1bd-690e-4618-a36f-4f9959291c72, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:37:12</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:37:12</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:58:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: c6aae1bd-690e-4618-a36f-4f9959291c72</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 11:58:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: c6aae1bd-690e-4618-a36f-4f9959291c72, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 12:04:35</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: c6aae1bd-690e-4618-a36f-4f9959291c72, TipoAccionId: 046e2c5e-c950-4de6-b0ec-e977f458da98</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 15:32:17</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 4f95532b-a8d0-4374-ae06-63f0bed0f58d, TipoAccionId: bcaed2ad-15e5-4f03-b7c1-00a1dabdf110</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 15:46:35</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 15:46:35</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 15:50:58</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 4f95532b-a8d0-4374-ae06-63f0bed0f58d, TipoAccionId: bcaed2ad-15e5-4f03-b7c1-00a1dabdf110</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 16:43:39</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 4f95532b-a8d0-4374-ae06-63f0bed0f58d, TipoAccionId: bcaed2ad-15e5-4f03-b7c1-00a1dabdf110</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:14:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 4f95532b-a8d0-4374-ae06-63f0bed0f58d, TipoAccionId: bcaed2ad-15e5-4f03-b7c1-00a1dabdf110</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:30:29</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 046e2c5e-c950-4de6-b0ec-e977f458da98</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:30:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:30:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:30:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>DisableUsuarioCommand</span>
+            <span class='message'>Usuario: Inactivo</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:30:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: c6aae1bd-690e-4618-a36f-4f9959291c72, TipoAccionId: 18ede549-444b-4229-96a1-712b85877ac4</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:31:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>DisableUsuarioCommand</span>
+            <span class='message'>Usuario: Activo</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:31:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: c6aae1bd-690e-4618-a36f-4f9959291c72, TipoAccionId: 000f208f-8fa8-4509-9b19-43c7b94004e6</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:55:51</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 046e2c5e-c950-4de6-b0ec-e977f458da98</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:56:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:56:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>DisableUsuarioCommand</span>
+            <span class='message'>Usuario: Inactivo</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 1f5dfc42-f119-42be-b807-26645c9965c6</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:56:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>DisableUsuarioCommand</span>
+            <span class='message'>Usuario: Activo</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 17:56:33</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 1f5dfc42-f119-42be-b807-26645c9965c6</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:01:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>DisableUsuarioCommand</span>
+            <span class='message'>Usuario: Inactivo</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:01:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 18ede549-444b-4229-96a1-712b85877ac4</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:23:51</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 046e2c5e-c950-4de6-b0ec-e977f458da98</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:24:48</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: 4f95532b-a8d0-4374-ae06-63f0bed0f58d</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:24:48</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 4f95532b-a8d0-4374-ae06-63f0bed0f58d, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:25:05</span>
+            <span class='level'>Information</span>
+            <span class='category'>DisableUsuarioCommand</span>
+            <span class='message'>Usuario: Activo</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:25:05</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 000f208f-8fa8-4509-9b19-43c7b94004e6</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:25:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>DisableUsuarioCommand</span>
+            <span class='message'>Usuario: Inactivo</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:25:14</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 4f95532b-a8d0-4374-ae06-63f0bed0f58d, TipoAccionId: 18ede549-444b-4229-96a1-712b85877ac4</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:26:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>DisableUsuarioCommand</span>
+            <span class='message'>Usuario: Activo</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:26:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 4f95532b-a8d0-4374-ae06-63f0bed0f58d, TipoAccionId: 000f208f-8fa8-4509-9b19-43c7b94004e6</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:26:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 4f95532b-a8d0-4374-ae06-63f0bed0f58d, TipoAccionId: 046e2c5e-c950-4de6-b0ec-e977f458da98</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:26:45</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:26:45</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 18:30:24</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 4f95532b-a8d0-4374-ae06-63f0bed0f58d, TipoAccionId: bcaed2ad-15e5-4f03-b7c1-00a1dabdf110</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 19:36:47</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: c6aae1bd-690e-4618-a36f-4f9959291c72</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 19:36:47</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: c6aae1bd-690e-4618-a36f-4f9959291c72, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 19:41:36</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 19:41:36</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 19:42:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: c6aae1bd-690e-4618-a36f-4f9959291c72</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 19:42:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: c6aae1bd-690e-4618-a36f-4f9959291c72, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-02 19:43:46</span>
+            <span class='level'>Information</span>
+            <span class='category'>ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: c6aae1bd-690e-4618-a36f-4f9959291c72, TipoAccionId: 046e2c5e-c950-4de6-b0ec-e977f458da98</span></div>

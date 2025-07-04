@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AppCapasCitas.Identity.Data;
+//public class CleanArchitectureIdentityDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
 
-public class CleanArchitectureIdentityDbContext : IdentityDbContext<ApplicationUser>
+public class CleanArchitectureIdentityDbContext : IdentityDbContext<ApplicationUser,ApplicationRole, string>
 {
     public CleanArchitectureIdentityDbContext(DbContextOptions<CleanArchitectureIdentityDbContext> options) : base(options)
     {

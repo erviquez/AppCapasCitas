@@ -22,14 +22,84 @@ namespace AppCapasCitas.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("AppCapasCitas.Domain.Models.Cargo", b =>
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.Aseguradora", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit")
+                        .HasColumnName("activo");
+
+                    b.Property<string>("Ciudad")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ciudad");
+
+                    b.Property<string>("CodigoPostal")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("codigo_postal");
+
+                    b.Property<string>("CreadoPor")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("creado_por");
+
+                    b.Property<string>("Direccion")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("direccion");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("estado");
+
+                    b.Property<DateTime?>("FechaActualizacion")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("fecha_actualizacion");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("fecha_creacion");
+
+                    b.Property<string>("ModificadoPor")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("modificado_por");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("nombre");
+
+                    b.Property<string>("Observaciones")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("observaciones");
+
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("paciente_id");
+
+                    b.Property<string>("Pais")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("pais");
+
+                    b.Property<string>("Telefono")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("telefono");
+
+                    b.HasKey("Id")
+                        .HasName("pk_aseguradora");
+
+                    b.HasIndex("PacienteId")
+                        .HasDatabaseName("ix_aseguradora_paciente_id");
+
+                    b.ToTable("aseguradora", (string)null);
+                });
+
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.Cargo", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
@@ -48,8 +118,8 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("bit")
                         .HasColumnName("es_jefatura");
 
-                    b.Property<int?>("EspecialidadId")
-                        .HasColumnType("int")
+                    b.Property<Guid?>("EspecialidadId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("especialidad_id");
 
                     b.Property<DateTime?>("FechaActualizacion")
@@ -85,19 +155,17 @@ namespace AppCapasCitas.Infrastructure.Migrations
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Cita", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
                         .HasColumnName("activo");
 
-                    b.Property<int?>("ConsultorioId")
-                        .HasColumnType("int")
+                    b.Property<Guid?>("ConsultorioId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("consultorio_id");
 
                     b.Property<string>("CreadoPor")
@@ -126,8 +194,8 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("fecha_hora");
 
-                    b.Property<int>("MedicoId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("MedicoId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("medico_id");
 
                     b.Property<string>("ModificadoPor")
@@ -144,9 +212,13 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("notas");
 
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("paciente_id");
+
+                    b.Property<Guid?>("PagoId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("pago_id");
 
                     b.Property<string>("Tratamiento")
                         .HasColumnType("nvarchar(max)")
@@ -175,12 +247,10 @@ namespace AppCapasCitas.Infrastructure.Migrations
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Consultorio", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
@@ -202,8 +272,8 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("fecha_creacion");
 
-                    b.Property<int>("HospitalId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("HospitalId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("hospital_id");
 
                     b.Property<string>("ModificadoPor")
@@ -239,14 +309,49 @@ namespace AppCapasCitas.Infrastructure.Migrations
                     b.ToTable("consultorio", (string)null);
                 });
 
-            modelBuilder.Entity("AppCapasCitas.Domain.Models.Especialidad", b =>
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.Contacto", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("nombre");
+
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("paciente_id");
+
+                    b.Property<string>("Parentesco")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("parentesco");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("telefono");
+
+                    b.HasKey("Id")
+                        .HasName("pk_contacto");
+
+                    b.HasIndex("PacienteId")
+                        .HasDatabaseName("ix_contacto_paciente_id");
+
+                    b.ToTable("contacto", (string)null);
+                });
+
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.Especialidad", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
@@ -286,12 +391,10 @@ namespace AppCapasCitas.Infrastructure.Migrations
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.HistorialMedico", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
@@ -301,8 +404,8 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("decimal(4,2)")
                         .HasColumnName("altura");
 
-                    b.Property<int?>("CitaId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("CitaId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("cita_id");
 
                     b.Property<string>("CreadoPor")
@@ -326,8 +429,8 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("fecha_creacion");
 
-                    b.Property<int>("MedicoId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("MedicoId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("medico_id");
 
                     b.Property<string>("ModificadoPor")
@@ -338,8 +441,8 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("notas");
 
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("paciente_id");
 
                     b.Property<decimal>("Peso")
@@ -375,12 +478,10 @@ namespace AppCapasCitas.Infrastructure.Migrations
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.HorarioTrabajo", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
@@ -410,8 +511,8 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("time")
                         .HasColumnName("hora_inicio");
 
-                    b.Property<int>("MedicoId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("MedicoId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("medico_id");
 
                     b.Property<string>("ModificadoPor")
@@ -429,12 +530,10 @@ namespace AppCapasCitas.Infrastructure.Migrations
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Hospital", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
@@ -513,12 +612,10 @@ namespace AppCapasCitas.Infrastructure.Migrations
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.MedicamentoRecetado", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
@@ -560,8 +657,8 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("nombre_medicamento");
 
-                    b.Property<int>("RecetaMedicaId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("RecetaMedicaId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("receta_medica_id");
 
                     b.HasKey("Id")
@@ -575,12 +672,9 @@ namespace AppCapasCitas.Infrastructure.Migrations
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Medico", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
@@ -591,7 +685,6 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnName("biografia");
 
                     b.Property<string>("CedulaProfesional")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("cedula_profesional");
 
@@ -607,10 +700,6 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("fecha_creacion");
 
-                    b.Property<int?>("HospitalId")
-                        .HasColumnType("int")
-                        .HasColumnName("hospital_id");
-
                     b.Property<string>("ModificadoPor")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("modificado_por");
@@ -618,27 +707,22 @@ namespace AppCapasCitas.Infrastructure.Migrations
                     b.HasKey("Id")
                         .HasName("pk_medico");
 
-                    b.HasIndex("HospitalId")
-                        .HasDatabaseName("ix_medico_hospital_id");
-
                     b.ToTable("medico", (string)null);
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.MedicoEspecialidadHospital", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
                         .HasColumnName("activo");
 
-                    b.Property<int>("CargoId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("CargoId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("cargo_id");
 
                     b.Property<string>("Consultorio")
@@ -654,8 +738,8 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("creado_por");
 
-                    b.Property<int>("EspecialidadId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("EspecialidadId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("especialidad_id");
 
                     b.Property<DateTime?>("FechaActualizacion")
@@ -678,12 +762,12 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("horario_atencion");
 
-                    b.Property<int>("HospitalId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("HospitalId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("hospital_id");
 
-                    b.Property<int>("MedicoId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("MedicoId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("medico_id");
 
                     b.Property<string>("ModificadoPor")
@@ -719,12 +803,9 @@ namespace AppCapasCitas.Infrastructure.Migrations
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Paciente", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
@@ -734,6 +815,22 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("alergias");
 
+                    b.Property<string>("AntecedentesFamiliares")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("antecedentes_familiares");
+
+                    b.Property<string>("AntecedentesPersonales")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("antecedentes_personales");
+
+                    b.Property<string>("Ciudad")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ciudad");
+
+                    b.Property<string>("CodigoPostal")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("codigo_postal");
+
                     b.Property<string>("CreadoPor")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("creado_por");
@@ -741,6 +838,10 @@ namespace AppCapasCitas.Infrastructure.Migrations
                     b.Property<string>("EnfermedadesCronicas")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("enfermedades_cronicas");
+
+                    b.Property<string>("EstadoCivil")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("estado_civil");
 
                     b.Property<DateTime?>("FechaActualizacion")
                         .HasColumnType("datetime2")
@@ -750,15 +851,17 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("fecha_creacion");
 
-                    b.Property<DateTime>("FechaNacimiento")
+                    b.Property<DateTime?>("FechaNacimiento")
                         .HasColumnType("datetime2")
                         .HasColumnName("fecha_nacimiento");
 
                     b.Property<string>("Genero")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("genero");
+
+                    b.Property<string>("Idiomas")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("idiomas");
 
                     b.Property<string>("MedicamentosActuales")
                         .HasColumnType("nvarchar(max)")
@@ -768,27 +871,56 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("modificado_por");
 
+                    b.Property<string>("Nacionalidad")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("nacionalidad");
+
+                    b.Property<string>("NumeroIdentificacion")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("numero_identificacion");
+
+                    b.Property<string>("Observaciones")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("observaciones");
+
+                    b.Property<string>("Ocupacion")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ocupacion");
+
+                    b.Property<string>("Sexo")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("sexo");
+
+                    b.Property<string>("TipoSangre")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("tipo_sangre");
+
+                    b.Property<Guid?>("TipoSangreId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("tipo_sangre_id");
+
                     b.HasKey("Id")
                         .HasName("pk_paciente");
+
+                    b.HasIndex("TipoSangreId")
+                        .HasDatabaseName("ix_paciente_tipo_sangre_id");
 
                     b.ToTable("paciente", (string)null);
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Pago", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
                         .HasColumnName("activo");
 
-                    b.Property<int?>("CitaId")
-                        .HasColumnType("int")
+                    b.Property<Guid?>("CitaId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("cita_id");
 
                     b.Property<string>("Comprobante")
@@ -835,8 +967,8 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("notas");
 
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("paciente_id");
 
                     b.HasKey("Id")
@@ -858,19 +990,17 @@ namespace AppCapasCitas.Infrastructure.Migrations
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.RecetaMedica", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
                         .HasColumnName("activo");
 
-                    b.Property<int?>("CitaId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("CitaId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("cita_id");
 
                     b.Property<string>("CreadoPor")
@@ -898,16 +1028,16 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("instrucciones");
 
-                    b.Property<int>("MedicoId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("MedicoId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("medico_id");
 
                     b.Property<string>("ModificadoPor")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("modificado_por");
 
-                    b.Property<int>("PacienteId")
-                        .HasColumnType("int")
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("paciente_id");
 
                     b.HasKey("Id")
@@ -928,14 +1058,78 @@ namespace AppCapasCitas.Infrastructure.Migrations
                     b.ToTable("receta_medica", (string)null);
                 });
 
-            modelBuilder.Entity("AppCapasCitas.Domain.Models.Usuario", b =>
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.TipoAccion", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("uniqueidentifier")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("descripcion");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("nombre");
+
+                    b.HasKey("Id")
+                        .HasName("pk_tipo_accion");
+
+                    b.ToTable("tipo_accion", (string)null);
+                });
+
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.TipoSangre", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Anticuerpos")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("anticuerpos");
+
+                    b.Property<string>("Antigenos")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("antigenos");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("descripcion");
+
+                    b.Property<string>("DonarA")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("donar_a");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("nombre");
+
+                    b.Property<string>("RecibirDe")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("recibir_de");
+
+                    b.HasKey("Id")
+                        .HasName("pk_tipo_sangre");
+
+                    b.HasIndex("Nombre")
+                        .IsUnique()
+                        .HasDatabaseName("ix_tipo_sangre_nombre");
+
+                    b.ToTable("tipo_sangre", (string)null);
+                });
+
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.Usuario", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit")
@@ -987,14 +1181,6 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("fecha_creacion");
 
-                    b.Property<Guid>("IdentityId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("identity_id");
-
-                    b.Property<int?>("MedicoId")
-                        .HasColumnType("int")
-                        .HasColumnName("medico_id");
-
                     b.Property<string>("ModificadoPor")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("modificado_por");
@@ -1004,23 +1190,19 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("nombre");
 
-                    b.Property<int?>("PacienteId")
-                        .HasColumnType("int")
-                        .HasColumnName("paciente_id");
-
                     b.Property<string>("Pais")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("pais");
 
-                    b.Property<Guid?>("RolId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("rol_id");
-
                     b.Property<string>("RolName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("rol_name");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("role_id");
 
                     b.Property<string>("Telefono")
                         .IsRequired()
@@ -1034,42 +1216,91 @@ namespace AppCapasCitas.Infrastructure.Migrations
                     b.HasKey("Id")
                         .HasName("pk_usuario");
 
-                    b.HasIndex("IdentityId")
+                    b.HasIndex("Id")
                         .IsUnique()
-                        .HasDatabaseName("ix_usuario_identity_id");
-
-                    b.HasIndex("MedicoId")
-                        .IsUnique()
-                        .HasDatabaseName("ix_usuario_medico_id")
-                        .HasFilter("[medico_id] IS NOT NULL");
-
-                    b.HasIndex("PacienteId")
-                        .IsUnique()
-                        .HasDatabaseName("ix_usuario_paciente_id")
-                        .HasFilter("[paciente_id] IS NOT NULL");
+                        .HasDatabaseName("ix_usuario_id");
 
                     b.ToTable("usuario", (string)null);
                 });
 
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.UsuarioLogAccion", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit")
+                        .HasColumnName("activo");
+
+                    b.Property<string>("CreadoPor")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("creado_por");
+
+                    b.Property<DateTime?>("FechaActualizacion")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("fecha_actualizacion");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("fecha_creacion");
+
+                    b.Property<string>("ModificadoPor")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("modificado_por");
+
+                    b.Property<Guid>("TipoAccionId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("tipo_accion_id");
+
+                    b.Property<Guid>("UsuarioId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("usuario_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_usuario_log_accion");
+
+                    b.HasIndex("TipoAccionId")
+                        .HasDatabaseName("ix_usuario_log_accion_tipo_accion_id");
+
+                    b.HasIndex("UsuarioId")
+                        .HasDatabaseName("ix_usuario_log_accion_usuario_id");
+
+                    b.ToTable("usuario_log_accion", (string)null);
+                });
+
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.Aseguradora", b =>
+                {
+                    b.HasOne("AppCapasCitas.Domain.Models.Paciente", "PacienteNavigation")
+                        .WithMany("Aseguradoras")
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_aseguradora_paciente_paciente_id");
+
+                    b.Navigation("PacienteNavigation");
+                });
+
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Cargo", b =>
                 {
-                    b.HasOne("AppCapasCitas.Domain.Models.Especialidad", "Especialidad")
+                    b.HasOne("AppCapasCitas.Domain.Models.Especialidad", "EspecialidadNavigation")
                         .WithMany()
                         .HasForeignKey("EspecialidadId")
                         .HasConstraintName("fk_cargo_especialidad_especialidad_id");
 
-                    b.Navigation("Especialidad");
+                    b.Navigation("EspecialidadNavigation");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Cita", b =>
                 {
-                    b.HasOne("AppCapasCitas.Domain.Models.Consultorio", "Consultorio")
+                    b.HasOne("AppCapasCitas.Domain.Models.Consultorio", "ConsultorioNavigation")
                         .WithMany("Citas")
                         .HasForeignKey("ConsultorioId")
                         .OnDelete(DeleteBehavior.SetNull)
                         .HasConstraintName("fk_cita_consultorio_consultorio_id");
 
-                    b.HasOne("AppCapasCitas.Domain.Models.Medico", "Medico")
+                    b.HasOne("AppCapasCitas.Domain.Models.Medico", "MedicoNavigation")
                         .WithMany("Citas")
                         .HasForeignKey("MedicoId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1083,196 +1314,234 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_cita_paciente_paciente_id");
 
-                    b.Navigation("Consultorio");
+                    b.Navigation("ConsultorioNavigation");
 
-                    b.Navigation("Medico");
+                    b.Navigation("MedicoNavigation");
 
                     b.Navigation("Paciente");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Consultorio", b =>
                 {
-                    b.HasOne("AppCapasCitas.Domain.Models.Hospital", "Hospital")
+                    b.HasOne("AppCapasCitas.Domain.Models.Hospital", "HospitalNavigation")
                         .WithMany("Consultorios")
                         .HasForeignKey("HospitalId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_consultorio_hospital_hospital_id");
 
-                    b.Navigation("Hospital");
+                    b.Navigation("HospitalNavigation");
+                });
+
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.Contacto", b =>
+                {
+                    b.HasOne("AppCapasCitas.Domain.Models.Paciente", "PacienteNavigation")
+                        .WithMany("Contactos")
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_contacto_paciente_paciente_id");
+
+                    b.Navigation("PacienteNavigation");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.HistorialMedico", b =>
                 {
-                    b.HasOne("AppCapasCitas.Domain.Models.Cita", "Cita")
+                    b.HasOne("AppCapasCitas.Domain.Models.Cita", "CitaNavigation")
                         .WithMany()
                         .HasForeignKey("CitaId")
-                        .OnDelete(DeleteBehavior.SetNull)
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
                         .HasConstraintName("fk_historial_medico_cita_cita_id");
 
-                    b.HasOne("AppCapasCitas.Domain.Models.Medico", "Medico")
+                    b.HasOne("AppCapasCitas.Domain.Models.Medico", "MedicoNavigation")
                         .WithMany("HistorialMedicos")
                         .HasForeignKey("MedicoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_historial_medico_medico_medico_id");
 
-                    b.HasOne("AppCapasCitas.Domain.Models.Paciente", "Paciente")
+                    b.HasOne("AppCapasCitas.Domain.Models.Paciente", "PacienteNavigation")
                         .WithMany("HistorialMedico")
                         .HasForeignKey("PacienteId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_historial_medico_paciente_paciente_id");
 
-                    b.Navigation("Cita");
+                    b.Navigation("CitaNavigation");
 
-                    b.Navigation("Medico");
+                    b.Navigation("MedicoNavigation");
 
-                    b.Navigation("Paciente");
+                    b.Navigation("PacienteNavigation");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.HorarioTrabajo", b =>
                 {
-                    b.HasOne("AppCapasCitas.Domain.Models.Medico", "Medico")
+                    b.HasOne("AppCapasCitas.Domain.Models.Medico", "MedicoNavigation")
                         .WithMany("HorariosTrabajo")
                         .HasForeignKey("MedicoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_horario_trabajo_medico_medico_id");
 
-                    b.Navigation("Medico");
+                    b.Navigation("MedicoNavigation");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.MedicamentoRecetado", b =>
                 {
-                    b.HasOne("AppCapasCitas.Domain.Models.RecetaMedica", "RecetaMedica")
+                    b.HasOne("AppCapasCitas.Domain.Models.RecetaMedica", "RecetaMedicaNavigation")
                         .WithMany("Medicamentos")
                         .HasForeignKey("RecetaMedicaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_medicamento_recetado_receta_medica_receta_medica_id");
 
-                    b.Navigation("RecetaMedica");
+                    b.Navigation("RecetaMedicaNavigation");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Medico", b =>
                 {
-                    b.HasOne("AppCapasCitas.Domain.Models.Hospital", null)
-                        .WithMany("Medicos")
-                        .HasForeignKey("HospitalId")
-                        .HasConstraintName("fk_medico_hospital_hospital_id");
+                    b.HasOne("AppCapasCitas.Domain.Models.Usuario", "UsuarioNavigation")
+                        .WithOne("MedicoNavigation")
+                        .HasForeignKey("AppCapasCitas.Domain.Models.Medico", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("fk_medico_usuario_id");
+
+                    b.Navigation("UsuarioNavigation");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.MedicoEspecialidadHospital", b =>
                 {
-                    b.HasOne("AppCapasCitas.Domain.Models.Cargo", "Cargo")
+                    b.HasOne("AppCapasCitas.Domain.Models.Cargo", "CargoNavigation")
                         .WithMany()
                         .HasForeignKey("CargoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_medico_especialidad_hospital_cargo_cargo_id");
 
-                    b.HasOne("AppCapasCitas.Domain.Models.Especialidad", "Especialidad")
+                    b.HasOne("AppCapasCitas.Domain.Models.Especialidad", "EspecialidadNavigation")
                         .WithMany("MedicoEspecialidadHospitales")
                         .HasForeignKey("EspecialidadId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_medico_especialidad_hospital_especialidad_especialidad_id");
 
-                    b.HasOne("AppCapasCitas.Domain.Models.Hospital", "Hospital")
+                    b.HasOne("AppCapasCitas.Domain.Models.Hospital", "HospitalNavigation")
                         .WithMany("MedicoEspecialidadHospitales")
                         .HasForeignKey("HospitalId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_medico_especialidad_hospital_hospital_hospital_id");
 
-                    b.HasOne("AppCapasCitas.Domain.Models.Medico", "Medico")
+                    b.HasOne("AppCapasCitas.Domain.Models.Medico", "MedicoNavigation")
                         .WithMany("MedicoEspecialidadHospitales")
                         .HasForeignKey("MedicoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_medico_especialidad_hospital_medico_medico_id");
 
-                    b.Navigation("Cargo");
+                    b.Navigation("CargoNavigation");
 
-                    b.Navigation("Especialidad");
+                    b.Navigation("EspecialidadNavigation");
 
-                    b.Navigation("Hospital");
+                    b.Navigation("HospitalNavigation");
 
-                    b.Navigation("Medico");
+                    b.Navigation("MedicoNavigation");
+                });
+
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.Paciente", b =>
+                {
+                    b.HasOne("AppCapasCitas.Domain.Models.Usuario", "UsuarioNavigation")
+                        .WithOne("PacienteNavigation")
+                        .HasForeignKey("AppCapasCitas.Domain.Models.Paciente", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("fk_paciente_usuario_id");
+
+                    b.HasOne("AppCapasCitas.Domain.Models.TipoSangre", "TipoSangreNavigation")
+                        .WithMany("Pacientes")
+                        .HasForeignKey("TipoSangreId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("fk_paciente_tipo_sangre_tipo_sangre_id");
+
+                    b.Navigation("TipoSangreNavigation");
+
+                    b.Navigation("UsuarioNavigation");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Pago", b =>
                 {
-                    b.HasOne("AppCapasCitas.Domain.Models.Cita", "Cita")
-                        .WithOne("Pago")
+                    b.HasOne("AppCapasCitas.Domain.Models.Cita", "CitaNavigation")
+                        .WithOne("PagoNavigation")
                         .HasForeignKey("AppCapasCitas.Domain.Models.Pago", "CitaId")
                         .OnDelete(DeleteBehavior.SetNull)
                         .HasConstraintName("fk_pago_cita_cita_id");
 
-                    b.HasOne("AppCapasCitas.Domain.Models.Paciente", "Paciente")
+                    b.HasOne("AppCapasCitas.Domain.Models.Paciente", "PacienteNavigation")
                         .WithMany("Pagos")
                         .HasForeignKey("PacienteId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_pago_paciente_paciente_id");
 
-                    b.Navigation("Cita");
+                    b.Navigation("CitaNavigation");
 
-                    b.Navigation("Paciente");
+                    b.Navigation("PacienteNavigation");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.RecetaMedica", b =>
                 {
-                    b.HasOne("AppCapasCitas.Domain.Models.Cita", "Cita")
+                    b.HasOne("AppCapasCitas.Domain.Models.Cita", "CitaNavigation")
                         .WithMany("RecetasMedicas")
                         .HasForeignKey("CitaId")
-                        .OnDelete(DeleteBehavior.SetNull)
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
                         .HasConstraintName("fk_receta_medica_cita_cita_id");
 
-                    b.HasOne("AppCapasCitas.Domain.Models.Medico", "Medico")
+                    b.HasOne("AppCapasCitas.Domain.Models.Medico", "MedicoNavigation")
                         .WithMany("RecetasMedicas")
                         .HasForeignKey("MedicoId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_receta_medica_medico_medico_id");
 
-                    b.HasOne("AppCapasCitas.Domain.Models.Paciente", "Paciente")
+                    b.HasOne("AppCapasCitas.Domain.Models.Paciente", "PacienteNavigation")
                         .WithMany("RecetasMedicas")
                         .HasForeignKey("PacienteId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("fk_receta_medica_paciente_paciente_id");
 
-                    b.Navigation("Cita");
+                    b.Navigation("CitaNavigation");
 
-                    b.Navigation("Medico");
+                    b.Navigation("MedicoNavigation");
 
-                    b.Navigation("Paciente");
+                    b.Navigation("PacienteNavigation");
                 });
 
-            modelBuilder.Entity("AppCapasCitas.Domain.Models.Usuario", b =>
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.UsuarioLogAccion", b =>
                 {
-                    b.HasOne("AppCapasCitas.Domain.Models.Medico", "Medico")
-                        .WithOne("Usuario")
-                        .HasForeignKey("AppCapasCitas.Domain.Models.Usuario", "MedicoId")
+                    b.HasOne("AppCapasCitas.Domain.Models.TipoAccion", "TipoAccionNavigation")
+                        .WithMany()
+                        .HasForeignKey("TipoAccionId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("fk_usuario_medico_medico_id");
+                        .IsRequired()
+                        .HasConstraintName("fk_usuario_log_accion_tipo_accion_tipo_accion_id");
 
-                    b.HasOne("AppCapasCitas.Domain.Models.Paciente", "Paciente")
-                        .WithOne("Usuario")
-                        .HasForeignKey("AppCapasCitas.Domain.Models.Usuario", "PacienteId")
+                    b.HasOne("AppCapasCitas.Domain.Models.Usuario", "UsuarioNavigation")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("fk_usuario_paciente_paciente_id");
+                        .IsRequired()
+                        .HasConstraintName("fk_usuario_log_accion_usuario_usuario_id");
 
-                    b.Navigation("Medico");
+                    b.Navigation("TipoAccionNavigation");
 
-                    b.Navigation("Paciente");
+                    b.Navigation("UsuarioNavigation");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Cita", b =>
                 {
-                    b.Navigation("Pago");
+                    b.Navigation("PagoNavigation");
 
                     b.Navigation("RecetasMedicas");
                 });
@@ -1292,8 +1561,6 @@ namespace AppCapasCitas.Infrastructure.Migrations
                     b.Navigation("Consultorios");
 
                     b.Navigation("MedicoEspecialidadHospitales");
-
-                    b.Navigation("Medicos");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Medico", b =>
@@ -1307,26 +1574,38 @@ namespace AppCapasCitas.Infrastructure.Migrations
                     b.Navigation("MedicoEspecialidadHospitales");
 
                     b.Navigation("RecetasMedicas");
-
-                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Paciente", b =>
                 {
+                    b.Navigation("Aseguradoras");
+
                     b.Navigation("Citas");
+
+                    b.Navigation("Contactos");
 
                     b.Navigation("HistorialMedico");
 
                     b.Navigation("Pagos");
 
                     b.Navigation("RecetasMedicas");
-
-                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.RecetaMedica", b =>
                 {
                     b.Navigation("Medicamentos");
+                });
+
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.TipoSangre", b =>
+                {
+                    b.Navigation("Pacientes");
+                });
+
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.Usuario", b =>
+                {
+                    b.Navigation("MedicoNavigation");
+
+                    b.Navigation("PacienteNavigation");
                 });
 #pragma warning restore 612, 618
         }

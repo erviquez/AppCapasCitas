@@ -18,9 +18,11 @@ public class UsuarioSpecification : BaseSpecification<Usuario>
             )
 
     {
+         AddInclude(u => u.MedicoNavigation!);
+         AddInclude(u => u.PacienteNavigation!);
         ApplyPaging(
             usuarioParams.PageSize * (usuarioParams.PageIndex - 1), usuarioParams.PageSize);
-        AddOrderBy(p => p.IdentityId!); // Or another unique field if Id doesn't exist
+        AddOrderBy(p => p.Id!); // Or another unique field if Id doesn't exist
 
         // Apply default ordering first to ensure consistent pagination
         // Then apply the requested sorting if specified
@@ -48,7 +50,7 @@ public class UsuarioSpecification : BaseSpecification<Usuario>
                     break;
                 // Default case already handled by initial ordering
                 default:
-                    AddOrderBy(p => p.IdentityId!); // Default ordering
+                    AddOrderBy(p => p.Id!); // Default ordering
                     break;
             }
 

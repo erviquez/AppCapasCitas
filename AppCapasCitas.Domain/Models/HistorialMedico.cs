@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.ComponentModel.DataAnnotations;
 using AppCapasCitas.Domain.Models.Common;
 
@@ -21,13 +20,14 @@ public partial class HistorialMedico: EntidadBaseAuditoria
         public decimal Altura { get; set; }
 
         // Relaciones
-        public int PacienteId { get; set; }
-        public virtual Paciente? Paciente { get; set; }
+        public Guid PacienteId { get; set; }
+        public virtual Paciente? PacienteNavigation { get; set; }
 
 
-        public int MedicoId { get; set; }
-        public virtual Medico? Medico { get; set; }
 
-        public int? CitaId { get; set; }
-        public virtual Cita? Cita { get; set; }
+        public Guid MedicoId { get; set; }          
+        public virtual Medico? MedicoNavigation { get; set; }
+
+        public Guid CitaId { get; set; }
+        public virtual Cita? CitaNavigation { get; set; }
     }

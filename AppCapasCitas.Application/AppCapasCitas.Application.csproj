@@ -32,21 +32,16 @@
     <Folder Include="Features\HorariosTrabajo\Commands\" />
     <Folder Include="Features\HorariosTrabajo\Queries\" />
     <Folder Include="Features\Medicos\Commands\DisableMedico\" />
-    <Folder Include="Features\Medicos\Commands\EditMedico\" />
-    <Folder Include="Features\Pacientes\" />
     <Folder Include="Features\Pacientes\Commands\" />
     <Folder Include="Features\Pacientes\Commands\CreatePaciente\" />
     <Folder Include="Features\Pacientes\Commands\DisablePaciente\" />
     <Folder Include="Features\Pacientes\Commands\EditPaciente\" />
-    <Folder Include="Features\Pacientes\Queries\" />
-    <Folder Include="Features\Pacientes\Queries\GetPacienteByEntityId\" />
     <Folder Include="Features\Pacientes\Queries\GetPacienteByName\" />
     <Folder Include="Features\Pacientes\Queries\GetPacienteList\" />
-    <Folder Include="Features\Pacientes\Queries\PaginationPaciente\" />
     <Folder Include="Features\Pacientes\Vms\" />
     <Folder Include="Features\Pacientes\Vms\Request\" />
     <Folder Include="Features\Pacientes\Vms\Response\" />
-    <Folder Include="Features\Usuarios\Queries\GetUsuarioByIdentityId\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>

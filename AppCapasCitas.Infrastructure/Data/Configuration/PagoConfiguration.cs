@@ -11,7 +11,7 @@ public class PagoConfiguration : IEntityTypeConfiguration<Pago>
     {
         // Relación con Paciente:
         // - Un paciente puede tener múltiples pagos registrados
-        entity.HasOne(p => p.Paciente)
+        entity.HasOne(p => p.PacienteNavigation)
                 .WithMany(pa => pa.Pagos)
                 .HasForeignKey(p => p.PacienteId)
                 .OnDelete(DeleteBehavior.Restrict);

@@ -12,7 +12,7 @@ public class HorarioTrabajoConfiguration : IEntityTypeConfiguration<HorarioTraba
         // Relación con Médico:
         // - Un médico puede tener múltiples horarios de trabajo
         // - Eliminación en cascada: si se elimina el médico, se eliminan sus horarios
-        entity.HasOne(ht => ht.Medico)
+        entity.HasOne(ht => ht.MedicoNavigation)
                 .WithMany(m => m.HorariosTrabajo)
                 .HasForeignKey(ht => ht.MedicoId)
                 .OnDelete(DeleteBehavior.Cascade);

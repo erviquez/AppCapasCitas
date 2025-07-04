@@ -4,7 +4,6 @@ using AppCapasCitas.Application.Specifications.Medicos;
 using AppCapasCitas.Domain.Models;
 using AppCapasCitas.DTO.Response.Medico;
 using AppCapasCitas.Transversal.Common;
-using AutoMapper;
 using MediatR;
 
 namespace AppCapasCitas.Application.Features.Medicos.Queries.PaginationMedico;
@@ -12,12 +11,11 @@ namespace AppCapasCitas.Application.Features.Medicos.Queries.PaginationMedico;
 public class PaginationMedicoQueryHandler: IRequestHandler<PaginationMedicoQuery, ResponsePagination<IReadOnlyList<MedicoResponse>>>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
+   
 
-    public PaginationMedicoQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    public PaginationMedicoQueryHandler(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
-        _mapper = mapper;
     }
 
     public async Task<ResponsePagination<IReadOnlyList<MedicoResponse>>> Handle(PaginationMedicoQuery request, CancellationToken cancellationToken)
@@ -26,14 +24,16 @@ public class PaginationMedicoQueryHandler: IRequestHandler<PaginationMedicoQuery
         try
         {
               var medicoSpecificationParams = new MedicoSpecificationParams
-            {
-                PageIndex = request.PageIndex,
-                PageSize = request.PageSize,
-                Search = request.Search,
-                Sort = request.Sort,
-            };
+              {
+                  PageIndex = request.PageIndex,
+                  PageSize = request.PageSize,
+                  Search = request.Search,
+                  Sort = request.Sort,
+                  IsActive = request.IsActive // <-- Se agrega el filtro de activos/inactivos
+                
+                };
             var spec = new MedicoSpecification(medicoSpecificationParams);
-            var medicos = await _unitOfWork.GetRepository<Usuario>().GetAllWithSpec(spec);
+            var medicos = await _unitOfWork.GetRepository<Medico>().GetAllWithSpec(spec);
 
             var specCount = new MedicoFourCountingSpecification(medicoSpecificationParams);
             var totalMedicos = await _unitOfWork.GetRepository<Medico>().CountAsyncWithSpec(specCount);
@@ -47,14 +47,29 @@ public class PaginationMedicoQueryHandler: IRequestHandler<PaginationMedicoQuery
             {
                 var medicoVm = new MedicoResponse
                 {
-                    MedicoId = medico.Id,
-                    IdentityId = medico.IdentityId,
-                    Nombre = medico.Nombre,
-                    Apellido = medico.Apellido,
-                    Email = medico.Email,
-                    Telefono = medico.Telefono,
-                    CedulaProfesional = medico.Medico!.CedulaProfesional!,
-                    Biografia = medico.Medico!.Biografia!,        
+                    //Id = medico.Id,
+                    MedicoId = medico.UsuarioNavigation!.Id,
+                    Nombre = medico.UsuarioNavigation!.Nombre,
+                    Apellido = medico.UsuarioNavigation!.Apellido,
+                    Telefono = medico.UsuarioNavigation!.Telefono,
+                    Celular = medico.UsuarioNavigation!.Celular,
+                    Direccion = medico.UsuarioNavigation!.Direccion,
+                    Ciudad = medico.UsuarioNavigation!.Ciudad,
+                    CodigoPais = medico.UsuarioNavigation!.CodigoPais,
+                    Pais = medico.UsuarioNavigation!.Pais,
+                    Estado = medico.UsuarioNavigation!.Estado,
+                    Activo = medico.UsuarioNavigation!.Activo,
+                    UltimoLogin = medico.UsuarioNavigation!.UltimoLogin,
+                    FechaCreacion = medico.UsuarioNavigation!.FechaCreacion,
+                    FechaActualizacion = medico.UsuarioNavigation!.FechaActualizacion,
+                    CreadoPor = medico.UsuarioNavigation!.CreadoPor,
+                    ModificadoPor = medico.UsuarioNavigation!.ModificadoPor,
+                    Email = medico.UsuarioNavigation!.Email,
+                    CedulaProfesional = medico.CedulaProfesional ?? string.Empty,
+                    Biografia = medico.Biografia!,
+                    //pendiente especialidades y hospitales
+
+               
                 };
                 listMedico.Add(medicoVm);
             }
@@ -62,6 +77,7 @@ public class PaginationMedicoQueryHandler: IRequestHandler<PaginationMedicoQuery
             responsePagination = new ResponsePagination<IReadOnlyList<MedicoResponse>>
             {
                     PageNumber = request.PageIndex,
+                    PageSize = request.PageSize,
                     TotalPages = totalPages,
                     TotalCount = totalMedicos,
                     IsSuccess = true,
@@ -72,7 +88,7 @@ public class PaginationMedicoQueryHandler: IRequestHandler<PaginationMedicoQuery
         catch (Exception ex)
         {
             responsePagination.IsSuccess = false;
-            responsePagination.Message = ex.Message;
+            responsePagination.Message = ex.Message + " - Error al obtener la paginación de medicos" + ex.InnerException?.Message;
         }
         return responsePagination;
     }

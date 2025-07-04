@@ -23,23 +23,6 @@ public class AuthenticationService : AuthenticationStateProvider
         _httpClient = httpClient;
     }
 
-    // public override async Task<AuthenticationState> GetAuthenticationStateAsync()
-    // {
-    //     // valida que no haya un token almacenado en el sessionStorage
-    //     var sesionUsuario = await _session.GetItemAsync<AuthResponse>("session");
-    //     if (sesionUsuario == null)
-    //     {
-    //         return await Task.FromResult(new AuthenticationState(_principal));
-    //     }
-    //     else
-    //     {
-    //         // si hay un token almacenado, lo asigna al HttpClient y crea el ClaimsPrincipal
-    //         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", sesionUsuario.Token);
-    //         var jwt = LeerToken(sesionUsuario);
-    //         var claims = new ClaimsPrincipal(new ClaimsIdentity(jwt.Claims, authenticationType: "JWT"));
-    //         return await Task.FromResult(new AuthenticationState(claims));
-    //     }
-    // }
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
     {
         var sesionUsuario = await _session.GetItemAsync<AuthResponse>("session");
@@ -102,5 +85,16 @@ public class AuthenticationService : AuthenticationStateProvider
         _httpClient.DefaultRequestHeaders.Authorization = null;
         _principal = new ClaimsPrincipal(new ClaimsIdentity());
         NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+    }
+
+    //GetUserActual
+    public async Task<AuthResponse> GetUserActual()
+    {
+        var sesionUsuario = await _session.GetItemAsync<AuthResponse>("session");
+        if (sesionUsuario != null)
+        {
+            return sesionUsuario;
+        }
+        return null!;
     }
 }

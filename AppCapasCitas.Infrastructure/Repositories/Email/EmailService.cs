@@ -27,18 +27,23 @@ public class EmailService : IEmailService
         var response = new Response<bool>();
         try
         {
-            using (SmtpClient client = new SmtpClient(_emailSettings!.Server, int.Parse(_emailSettings.Port!)))
+            if(!_emailSettings!.Active)
             {
-                client.Credentials = new NetworkCredential(_emailSettings.Email, _emailSettings.Secret);
-                client.EnableSsl = true;
-                var correo = new MailMessage(_emailSettings.Email!, email.To!)
-                {
-                    Subject = email.Subject,
-                    Body = email.Body,
-                    IsBodyHtml = true
-                };
-                await client.SendMailAsync(correo);
+                _appLogger!.LogInformation("Email service is inactive, skipping email sending.");
+                return new Response<bool> { IsSuccess = true, Data = false, Message = "Email service is inactive" };
             }
+            using (SmtpClient client = new SmtpClient(_emailSettings!.Server, int.Parse(_emailSettings.Port!)))
+                {
+                    client.Credentials = new NetworkCredential(_emailSettings.Email, _emailSettings.Secret);
+                    client.EnableSsl = true;
+                    var correo = new MailMessage(_emailSettings.Email!, email.To!)
+                    {
+                        Subject = email.Subject,
+                        Body = email.Body,
+                        IsBodyHtml = true
+                    };
+                    await client.SendMailAsync(correo);
+                }
             response.IsSuccess = true;
         }
         catch (Exception ex)

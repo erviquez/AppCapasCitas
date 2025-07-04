@@ -24,11 +24,11 @@ public partial class Pago: EntidadBaseAuditoria
         public string? Comprobante { get; set; }
         public string? Notas { get; set; }
 
-        // Relaciones
-        [Required]
-        public int PacienteId { get; set; }
-        public virtual Paciente? Paciente { get; set; }
+    // Relaciones
+    [Required]
+        public Guid PacienteId { get; set; }  
+        public virtual Paciente? PacienteNavigation { get; set; }
 
-        public int? CitaId { get; set; }
-        public virtual Cita? Cita { get; set; }
+        public Guid? CitaId { get; set; }
+        public virtual Cita? CitaNavigation { get; set; }
     }

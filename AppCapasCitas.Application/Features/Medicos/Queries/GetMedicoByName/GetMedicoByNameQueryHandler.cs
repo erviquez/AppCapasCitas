@@ -32,14 +32,14 @@ public class GetMedicoByNameQueryHandler : IRequestHandler<GetMedicoByNameQuery,
         {
             var includes = new List<Expression<Func<Medico, object>>>
             {
-                x => x.Usuario!, // Include the related Usuario
+                x => x.UsuarioNavigation!, // Include the related Usuario
                 x => x.MedicoEspecialidadHospitales!
             };
 
             
             var medicos = await _medicoRepository.GetAsync(
                 x => x.Activo == true &&
-                (x.Usuario!.Nombre + " " + x.Usuario.Apellido).ToLower() == request.Nombre!.ToLower(),
+                (x.UsuarioNavigation!.Nombre + " " + x.UsuarioNavigation.Apellido).ToLower() == request.Nombre!.ToLower(),
                 x => x.OrderBy(x => x.Id),
                 includes,
                 cancellationToken: cancellationToken);

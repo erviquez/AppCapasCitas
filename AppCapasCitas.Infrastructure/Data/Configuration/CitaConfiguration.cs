@@ -18,7 +18,7 @@ public class CitaConfiguration : IEntityTypeConfiguration<Cita>
 
         // Relación con Medico:
         // - Un médico puede tener múltiples citas programadas
-        entity.HasOne(c => c.Medico)
+        entity.HasOne(c => c.MedicoNavigation)
                 .WithMany(m => m.Citas)
                 .HasForeignKey(c => c.MedicoId)
                 .OnDelete(DeleteBehavior.Restrict);
@@ -26,15 +26,15 @@ public class CitaConfiguration : IEntityTypeConfiguration<Cita>
         // Relación con Consultorio (opcional):
         // - Una cita puede tener un consultorio asignado
         // - Si se elimina el consultorio, la cita permanece (SetNull)
-        entity.HasOne(c => c.Consultorio)
+        entity.HasOne(c => c.ConsultorioNavigation)
                 .WithMany(co => co.Citas)
                 .HasForeignKey(c => c.ConsultorioId)
                 .OnDelete(DeleteBehavior.SetNull);
 
         // Relación con Pago (1-a-1 opcional):
         // - Una cita puede tener un pago asociado
-        entity.HasOne(c => c.Pago)
-                .WithOne(p => p.Cita)
+        entity.HasOne(c => c.PagoNavigation)
+                .WithOne(p => p.CitaNavigation)
                 .HasForeignKey<Pago>(p => p.CitaId)
                 .OnDelete(DeleteBehavior.SetNull);
         // Configuración de índices para mejorar el rendimiento de búsquedas frecuentes        

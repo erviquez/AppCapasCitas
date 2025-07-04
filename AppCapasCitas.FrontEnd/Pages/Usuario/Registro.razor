@@ -14,94 +14,88 @@
                     <h3 class="mb-0">Registro de usuarios</h3>
                 </div>
                 <div class="card-body">
-                    <EditForm Model="request" class="needs-validation" OnValidSubmit="OnGuardarDatos">
+                    <EditForm Model="OnRegistrationRequest" class="needs-validation" OnValidSubmit="OnGuardarDatos">
                         <DataAnnotationsValidator/>
                         <div class="row">
                     
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Username*</label>
-                                <InputText class="form-control" @bind-Value="request.Username"  />
-                                <ValidationMessage For="(() => request.Username)"/>
+                                <InputText class="form-control" @bind-Value="OnRegistrationRequest.Username"  />
+                                <ValidationMessage For="(() => OnRegistrationRequest.Username)"/>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Email*</label>
-                                <InputText type="email" class="form-control" @bind-Value="request.Email"  />
-                                <ValidationMessage For="(() => request.Email)"/>
+                                <InputText type="email" class="form-control" @bind-Value="OnRegistrationRequest.Email"  />
+                                <ValidationMessage For="(() => OnRegistrationRequest.Email)"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Password*</label>                                
-                                <InputText type="password" class="form-control" 
-                                        @bind-Value="request.Password" />
-                                <ValidationMessage For="(() => request.Password)"/>
+                                <label class="form-label">Password*</label>
+                                <InputText type="password" class="form-control" @bind-Value="OnRegistrationRequest.Password" />                                
+                                <ValidationMessage For="() => OnRegistrationRequest.Password" />
                             </div>
-
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Confirmar Password*</label>
-                                <InputText type="password" class="@ConfirmPasswordInputClass"
-                                        @bind-Value="confirmPassword" />
-                                <div class="invalid-feedback" style="display:@(passwordsMatch ? "none" : "block")">
-                                    Las contraseñas no coinciden
-                                </div>
+                                <InputText type="password" class="form-control" @bind-Value="OnRegistrationRequest.ConfirmPassword" />
+                                <ValidationMessage For="() => OnRegistrationRequest.ConfirmPassword" />
                             </div>
                         </div>
-
                         <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Nombre*</label>
-                                    <InputText class="form-control" @bind-Value="request.Nombre"  />
-                                    <ValidationMessage For="(() => request.Nombre)"/>                                    
+                                    <InputText class="form-control" @bind-Value="OnRegistrationRequest.Nombre"  />
+                                    <ValidationMessage For="(() => OnRegistrationRequest.Nombre)"/>                                    
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Apellido*</label>
-                                    <InputText class="form-control" @bind-Value="request.Apellido"  />
-                                    <ValidationMessage For="(() => request.Apellido)"/>                                    
+                                    <InputText class="form-control" @bind-Value="OnRegistrationRequest.Apellido"  />
+                                    <ValidationMessage For="(() => OnRegistrationRequest.Apellido)"/>                                    
                                 </div>
                         </div>
                         <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Teléfono</label>
-                                    <InputText type="tel" class="form-control" @bind-Value="request.Telefono" />
-                                    <ValidationMessage For="(()=>request.Telefono)"/>
+                                    <InputText type="tel" class="form-control" @bind-Value="OnRegistrationRequest.Telefono" />
+                                    <ValidationMessage For="(()=>OnRegistrationRequest.Telefono)"/>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Celular</label>
-                                    <InputText type="tel" class="form-control" @bind-Value="request.Celular" />
-                                    <ValidationMessage For="(()=>request.Celular)"/>
+                                    <InputText type="tel" class="form-control" @bind-Value="OnRegistrationRequest.Celular" />
+                                    <ValidationMessage For="(()=>OnRegistrationRequest.Celular)"/>
                                 </div>
                         </div> 
                         <div class="row">
                             <!-- Dirección -->
                             <div class="col-md-12 mb-3">
                                 <label class="form-label">Dirección</label>
-                                <InputTextArea class="form-control" @bind-Value="request.Direccion" />
-                                <ValidationMessage For="(() => request.Direccion)"/>
+                                <InputTextArea class="form-control" @bind-Value="OnRegistrationRequest.Direccion" />
+                                <ValidationMessage For="(() => OnRegistrationRequest.Direccion)"/>
 
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">Ciudad</label>
-                                <InputText class="form-control" @bind-Value="request.Ciudad" />
-                                <ValidationMessage For="(() => request.Ciudad)"/>
+                                <InputText class="form-control" @bind-Value="OnRegistrationRequest.Ciudad" />
+                                <ValidationMessage For="(() => OnRegistrationRequest.Ciudad)"/>
 
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">Estado</label>
-                                <InputText class="form-control" @bind-Value="request.Estado" />
-                                <ValidationMessage For="(() => request.Estado)"/>
+                                <InputText class="form-control" @bind-Value="OnRegistrationRequest.Estado" />
+                                <ValidationMessage For="(() => OnRegistrationRequest.Estado)"/>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">País</label>
-                                <InputSelect class="form-select" @bind-Value="request.CodigoPais" >
+                                <InputSelect class="form-select" @bind-Value="OnRegistrationRequest.CodigoPais" >
                                     <option value=0>Seleccione...</option>
                                     @foreach (var pais in PaisesHelper.Paises)
                                     {
                                         <option value="@pais.Key">@pais.Value</option>
                                     }
                                 </InputSelect>
-                                <ValidationMessage For="(() => request.CodigoPais)"/>
+                                <ValidationMessage For="(() => OnRegistrationRequest.CodigoPais)"/>
                             </div>
                         </div>
 
@@ -121,7 +115,7 @@
     </div>
 </div>
 @code {
-    public RegistrationRequest request = new();
+    public RegistrationRequest OnRegistrationRequest = new();
     public bool cargando { get; set; } = false;
 
     private string _confirmPassword = string.Empty;
@@ -141,7 +135,9 @@
 
     private void ValidatePasswordMatch()
     {
-        passwordsMatch = request.Password == confirmPassword;
+        passwordsMatch = !string.IsNullOrEmpty(OnRegistrationRequest.Password) &&
+                         !string.IsNullOrEmpty(confirmPassword) &&
+                         OnRegistrationRequest.Password == confirmPassword;
     }
 
     public async Task OnGuardarDatos()
@@ -150,20 +146,21 @@
 
         ValidatePasswordMatch();
 
-        if (!passwordsMatch)
-        {
-            toastService.ShowError("Las contraseñas no coinciden");
-            cargando = false;
-            return;
-        }
+        OnRegistrationRequest.Password = OnRegistrationRequest.Password;
         try
         {
-            var result = await proxy.RegistrarUsuarioAsync(request);
+            var result = await proxy.RegistrarUsuarioAsync(OnRegistrationRequest);
             if (!result.IsSuccess)
             {
-                toastService.ShowError(result.Message! + " \n " + string.Join("\n", result.Errors!.Select(e => $"{e.PropertyName}: {e.ErrorMessage}")));
-                Console.WriteLine("Error al registrar el usuario: " + result.Message);
-                Console.WriteLine(string.Join("\n", result.Errors!.Select(e => $"{e.PropertyName}: {e.ErrorMessage}")));
+                toastService.ShowError(result.Message!);
+                if (result.Errors != null )
+                {
+                    foreach (var error in result.Errors!)
+                    {
+                        toastService.ShowError($"{error.PropertyName}: {error.ErrorMessage}");
+                    }
+                }
+                passwordsMatch = true;
                 cargando = false;
                 return;
             }
@@ -171,15 +168,15 @@
             Console.WriteLine("Éxito al registrar el usuario: " + result.Message);
             cargando = false;
             Regresar();
-            @* navigationManager.NavigateTo("/"); *@
         }
         catch (Exception ex)
         {
+            passwordsMatch = true;
             cargando = false;
             toastService.ShowError(ex.Message!);
             Console.WriteLine("Error al registrar el usuario: " + ex.Message);
         }
-    }
+    }  
 
     
     public void Regresar()

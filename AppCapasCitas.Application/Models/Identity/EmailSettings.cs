@@ -6,5 +6,6 @@ public class EmailSettings
     public string? Secret { get; set; }
     public string? Port { get; set; }
     public string? Server { get; set; }
+    public bool Active { get; set; } = true;
     
 }

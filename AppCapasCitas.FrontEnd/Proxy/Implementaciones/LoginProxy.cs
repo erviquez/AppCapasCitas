@@ -37,6 +37,24 @@ public class LoginProxy:ILoginProxy
 
     }
 
+    //registrar ultimo login
+    // private async Task<Response<bool>> RegistrarUltimoLoginAsync(string userId)
+    // {
+    //     var response = new Response<bool>();
+    //     if (string.IsNullOrEmpty(userId))
+    //     {
+    //         response.IsSuccess = false;
+    //         response.Errors = new List<ValidationFailure> { new ValidationFailure("Error", "El userId no puede ser nulo o vacío") };
+    //         return response;
+    //     }
+
+    //     var result = await _httpClient.PostAsJsonAsync("api/v1/Account/RegistrarUltimoLogin", userId);
+    //     response = await result.Content.ReadFromJsonAsync<Response<bool>>()
+    //             ?? new Response<bool>();
+
+    //     return response;
+    // }
+
     public Task<Response<RegistrationResponse>> RegistrarUsuarioAsync(RegistrationRequest request)
     {
         throw new NotImplementedException();

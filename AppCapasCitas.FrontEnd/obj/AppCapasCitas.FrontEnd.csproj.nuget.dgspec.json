@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj": {}
+    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.frontEnd\\AppCapasCitas.FrontEnd.csproj": {}
   },
   "projects": {
     "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj": {
@@ -75,18 +75,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj": {
+    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.frontEnd\\AppCapasCitas.FrontEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj",
+        "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.frontEnd\\AppCapasCitas.FrontEnd.csproj",
         "projectName": "AppCapasCitas.FrontEnd",
-        "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj",
+        "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.frontEnd\\AppCapasCitas.FrontEnd.csproj",
         "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-        "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\obj\\",
+        "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.frontEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -161,13 +161,13 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.5, )",
+              "version": "[9.0.6, )",
               "autoReferenced": true
             },
             "Microsoft.NET.Sdk.WebAssembly.Pack": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.5, )",
+              "version": "[9.0.6, )",
               "autoReferenced": true
             },
             "System.IdentityModel.Tokens.Jwt": {
@@ -189,7 +189,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[9.0.5, 9.0.5]"
+              "version": "[9.0.6, 9.0.6]"
             }
           ],
           "frameworkReferences": {
@@ -197,7 +197,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -273,7 +273,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

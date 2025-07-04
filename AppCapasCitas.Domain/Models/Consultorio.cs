@@ -24,8 +24,8 @@ public partial class Consultorio:EntidadBaseAuditoria
 
     // Relaciones
     [Required]
-    public int HospitalId { get; set; }
-    public virtual Hospital? Hospital { get; set; }
+    public Guid HospitalId { get; set; }
+    public virtual Hospital? HospitalNavigation { get; set; }
 
     public virtual ICollection<Cita> Citas { get; set; } = new HashSet<Cita>();
 }

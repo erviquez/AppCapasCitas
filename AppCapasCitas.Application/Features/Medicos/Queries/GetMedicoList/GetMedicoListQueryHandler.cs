@@ -32,7 +32,7 @@ public class GetMedicoListQueryHandler : IRequestHandler<GetMedicoListQuery, Res
         {
             var includes = new List<Expression<Func<Medico, object>>>
             {
-                x => x.Usuario!, // Include the related Usuario
+                x => x.UsuarioNavigation!, // Include the related Usuario
                 x => x.MedicoEspecialidadHospitales!
             };
 

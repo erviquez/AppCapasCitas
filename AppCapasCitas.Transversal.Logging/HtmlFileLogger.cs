@@ -14,11 +14,15 @@ public class HtmlFileLogger : ILogger
         _categoryName = categoryName;
     }
 
-    public IDisposable BeginScope<TState>(TState state) => null!;
+    // Implementación explícita para evitar warning CS8633
+    IDisposable? ILogger.BeginScope<TState>(TState state)
+    {
+        return null;
+    }
 
     public bool IsEnabled(LogLevel logLevel) => true;
 
-    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
     {
         var today = DateTime.Today.ToString("yyyy-MM-dd");
         var filePath = _basePath.Replace(".html", $"-{today}.html");
@@ -29,7 +33,7 @@ public class HtmlFileLogger : ILogger
         File.AppendAllText(filePath, logEntry);
     }
 
-    private string FormatLogEntry(LogLevel logLevel, string category, string message, Exception exception)
+    private string FormatLogEntry(LogLevel logLevel, string category, string message, Exception? exception)
     {
         var time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         var logLevelClass = logLevel.ToString().ToLower();
@@ -39,10 +43,12 @@ public class HtmlFileLogger : ILogger
             <span class='time'>{time}</span>
             <span class='level'>{logLevel}</span>
             <span class='category'>{category}</span>
-            <div class='message'>{message}</div>
-            {(exception != null ? $"<div class='exception'>{exception}</div>" : "")}
-        </div>";
-
+            <span class='message'>{message}</span>";
+        if (exception != null)
+        {
+            html += $"<span class='exception'>{exception}</span>";
+        }
+        html += "</div>\n";
         return html;
     }
     private void InitializeStyles(string filePath)
@@ -65,12 +71,12 @@ public class HtmlFileLogger : ILogger
             .exception { color: #d9534f; margin-top: 5px; }
         </style>
         ";
-            File.WriteAllText(filePath, $"<html><head>{cssStyles}</head><body>");
+            File.WriteAllText(filePath, $"<html><head>{cssStyles}</head>Aqui esta 2222<body>");
         }
         else
         {
             // Append to the existing file
-            File.AppendAllText(filePath, "<body>");
+            File.AppendAllText(filePath, "");
         }
     }
 }

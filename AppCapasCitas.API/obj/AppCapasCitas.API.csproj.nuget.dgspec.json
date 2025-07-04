@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\AppCapasCitas.API.csproj": {}
+    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.api\\AppCapasCitas.API.csproj": {}
   },
   "projects": {
-    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\AppCapasCitas.API.csproj": {
+    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.api\\AppCapasCitas.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\AppCapasCitas.API.csproj",
+        "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.api\\AppCapasCitas.API.csproj",
         "projectName": "AppCapasCitas.API",
-        "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\AppCapasCitas.API.csproj",
+        "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.api\\AppCapasCitas.API.csproj",
         "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-        "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\obj\\",
+        "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -103,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -208,7 +208,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -273,7 +273,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -348,7 +348,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -462,7 +462,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -551,7 +551,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -622,7 +622,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -697,7 +697,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "i6WvxMjm0ww=",
+  "dgSpecHash": "ZUFT0dXskbE=",
   "success": true,
-  "projectFilePath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\AppCapasCitas.API.csproj",
+  "projectFilePath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.api\\AppCapasCitas.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\erdv\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",

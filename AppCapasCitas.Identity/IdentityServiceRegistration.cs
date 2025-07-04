@@ -38,7 +38,7 @@ public static class IdentityServiceRegistration
 
         // Configura ASP.NET Core Identity con ApplicationUser personalizado y IdentityRole
         // Esto establece la gestión de usuarios, roles y proveedores de tokens por defecto
-        services.AddIdentity<ApplicationUser, IdentityRole>()
+        services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<CleanArchitectureIdentityDbContext>()
                 .AddDefaultTokenProviders();
 

@@ -10,18 +10,26 @@ using AppCapasCitas.Application.Models.Identity;
 using AppCapasCitas.Infrastructure.Data;
 using AppCapasCitas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
+using AppCapasCitas.Application.Contracts.Persistence.Infrastructure;
+using AppCapasCitas.Infrastructure.Repositories.Messaging;
+using AppCapasCitas.Infrastructure.Repositories.Shortner;
 var builder = WebApplication.CreateBuilder(args);
 string NombrePolitica = "WebApiConf";
 
 builder.Services.AddControllers();
 //CORS 
+var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(NombrePolitica, config =>
     {
-        config.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();
+        config
+            //.WithOrigins(allowedOrigins!)
+            .AllowAnyOrigin()
+            //.AllowCredentials()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
     }
     );
 });
@@ -30,8 +38,12 @@ builder.Services.AddCors(options =>
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));      
-
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.Configure<SmsSettings>(builder.Configuration.GetSection("SmsSettings"));
+builder.Services.Configure<ShortnerSettings>(builder.Configuration.GetSection("ShortnerSettings"));
+builder.Services.Configure<UrlsConfirmationSettings>(builder.Configuration.GetSection("UrlsConfirmationSettings"));
+builder.Services.AddHttpClient<ISmsService, SmsService>();
+builder.Services.AddHttpClient<IShortnerService, ShortnerService>();
 // Configurar logging para HTML
 string _baseLogPath = "Logs/logs"; // Sin extensión para permitir la rotación diaria
 var fullPath = Path.Combine(Directory.GetCurrentDirectory(), _baseLogPath + ".html");

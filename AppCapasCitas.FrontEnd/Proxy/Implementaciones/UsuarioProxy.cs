@@ -5,6 +5,7 @@ using AppCapasCitas.DTO.Response.Identity;
 using AppCapasCitas.DTO.Response.Usuario;
 using AppCapasCitas.FrontEnd.Proxy.Interfaces;
 using AppCapasCitas.Transversal.Common;
+using AppCapasCitas.Transversal.Common.Identity;
 using FluentValidation.Results;
 
 namespace AppCapasCitas.FrontEnd.Proxy.Implementaciones;
@@ -27,11 +28,46 @@ public class UsuarioProxy : IUsuarioProxy
             return response!;
         }
         response.IsSuccess = false;
-        response.Errors = new List<ValidationFailure> { new ValidationFailure("Error", "No se pudieron recuperar los usuarios") };
+        //response.Errors = new List<ValidationFailure> { new ValidationFailure("Error", "No se pudieron recuperar los usuarios") };
         return response;
-
-
     }
+    public async Task<Response<UsuarioResponse>> ObtenerUsuarioAsync(Guid usuarioId)
+    {
+        var response = new Response<UsuarioResponse>();
+        var result = await _httpClient.GetAsync($"api/v1/Usuario/getUser/{usuarioId}");
+        if (result.IsSuccessStatusCode)
+        {
+            response = await result.Content.ReadFromJsonAsync<Response<UsuarioResponse>>();
+            return response!;
+        }
+        response.IsSuccess = false;
+        return response;
+    }
+
+    public async Task<Response<UsuarioResponse>> ObtenerUsuarioPorIdAsync(Guid usuarioId)
+    {
+        var response = new Response<UsuarioResponse>();
+        try
+        {
+            var result = await _httpClient.GetAsync($"api/v1/Usuario/getUser/{usuarioId}");
+            if (result.IsSuccessStatusCode)
+            {
+                response = await result.Content.ReadFromJsonAsync<Response<UsuarioResponse>>();
+                return response!;
+            }
+            response.IsSuccess = false;
+            response.Message = "No se pudo recuperar el usuario por ID";
+            return response;    
+        }
+        catch (Exception ex)
+        {
+            response!.IsSuccess = false;
+            response.Message = "Error al obtener el usuario por ID: " + ex.Message;
+            response.Errors = new List<ValidationFailure> { new ValidationFailure("Error", ex.Message) };
+        }
+        return response;
+    }
+
 
     public async Task<ResponsePagination<List<UsuarioResponse>>> ObtenerPaginationUsuariosAsync(
         string sort,
@@ -50,7 +86,8 @@ public class UsuarioProxy : IUsuarioProxy
         catch (Exception ex)
         {
             response!.IsSuccess = false;
-            response.Message = $"Error: An error occurred while fetching paginated users: {ex.Message}";
+            response.Message = "Error al obtener la paginación de usuarios" + ex.Message;
+            response.Errors = new List<ValidationFailure> { new ValidationFailure("Error", ex.Message) };
         }
         return response!;
     }
@@ -72,7 +109,6 @@ public class UsuarioProxy : IUsuarioProxy
         var queryString = query.ToString();
         return string.IsNullOrEmpty(queryString) ? string.Empty : $"?{queryString}";
     }
-
     public async Task<Response<RegistrationResponse>> RegistrarUsuarioAsync(RegistrationRequest request)
     {
         var response = new Response<RegistrationResponse>();
@@ -100,7 +136,7 @@ public class UsuarioProxy : IUsuarioProxy
         return result.IsSuccessStatusCode;
     }
     public async Task<Response<bool>> DisableUsuarioByIdAsync(UsuarioRequest usuarioRequest)
-    {       
+    {
         var response = new Response<bool>();
 
         if (usuarioRequest == null)
@@ -111,9 +147,63 @@ public class UsuarioProxy : IUsuarioProxy
         }
 
         var url = $"api/v1/Account/DisableUsuarioById";
-        var result = await _httpClient.PutAsJsonAsync(url,usuarioRequest);
+        var result = await _httpClient.PutAsJsonAsync(url, usuarioRequest);
         response = await result.Content.ReadFromJsonAsync<Response<bool>>();
         return response!;
     }
 
+    public async Task<Response<bool>> ConvertUsuarioAsync(UsuarioConvertRequest request)
+    {
+        var response = new Response<bool>();
+        if (request == null)
+        {
+            response.IsSuccess = false;
+            response.Errors = new List<ValidationFailure> { new ValidationFailure("Error", "Error en el request recibido") };
+            return response;
+        }
+        var result = await _httpClient.PutAsJsonAsync("api/v1/Usuario/convert", request!);
+        response = await result.Content.ReadFromJsonAsync<Response<bool>>();
+        return response!;
+    }
+
+    //Get the list of roles
+    public async Task<Response<List<Role>>> ObtenerRolesAsync()
+    {
+        var response = new Response<List<Role>>();
+        var result = await _httpClient.GetAsync("api/v1/Usuario/getRoles");
+        if (result.IsSuccessStatusCode)
+        {
+            response = await result.Content.ReadFromJsonAsync<Response<List<Role>>>();
+            var listaRoles = response!.Data;
+            var listaRolesFiltrada = listaRoles;//?.Where(x => x.Name == "Medico" || x.Name == "Paciente").ToList();
+            response.Data = listaRolesFiltrada ?? new List<Role>();
+            return response!;
+        }
+        response.IsSuccess = false;
+        response.Message = "No se pudieron recuperar los roles";
+        response.Errors = new List<ValidationFailure> { new ValidationFailure("Error", "No se pudieron recuperar los roles") };
+        return response;
+    }
+
+    public async Task<Response<bool>> ActualizarUsuarioAsync(UsuarioRequest usuarioRequest)
+    {
+        var response = new Response<bool>();
+        if (usuarioRequest == null)
+        {
+            response.IsSuccess = false;
+            response.Errors = new List<ValidationFailure> { new ValidationFailure("Error", "Error en el request recibido") };
+            return response;
+        }
+        var result = await _httpClient.PutAsJsonAsync("api/v1/Usuario/", usuarioRequest!);
+        if (result.IsSuccessStatusCode)
+        {
+            response = await result.Content.ReadFromJsonAsync<Response<bool>>();
+            return response!;
+        }
+        response.IsSuccess = false;
+        response.Message = "No se pudo actualizar el usuario";
+        return response;
+    }
+
+    
 }

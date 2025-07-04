@@ -21,7 +21,6 @@ public static class ApplicationServiceRegistration
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
             //Identity
            //services.AddValidatorsFromAssemblyContaining<RegisterCommandValidator>();
-            
             return services;
     }
 

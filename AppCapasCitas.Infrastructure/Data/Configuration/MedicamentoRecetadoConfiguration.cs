@@ -12,7 +12,7 @@ public class MedicamentoRecetadoConfiguration : IEntityTypeConfiguration<Medicam
         // Relación con RecetaMedica:
         // - Una receta puede contener múltiples medicamentos
         // - Eliminación en cascada: si se elimina la receta, se eliminan sus medicamentos
-        entity.HasOne(mr => mr.RecetaMedica)
+        entity.HasOne(mr => mr.RecetaMedicaNavigation)
                 .WithMany(rm => rm.Medicamentos)
                 .HasForeignKey(mr => mr.RecetaMedicaId)
                 .OnDelete(DeleteBehavior.Cascade);

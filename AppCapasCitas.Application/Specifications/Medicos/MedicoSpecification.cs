@@ -1,21 +1,22 @@
-using System;
+
 using AppCapasCitas.Domain.Models;
 
 namespace AppCapasCitas.Application.Specifications.Medicos;
 
-public class MedicoSpecification: BaseSpecification<Usuario>
+public class MedicoSpecification: BaseSpecification<Medico>
 {
     public MedicoSpecification(MedicoSpecificationParams medicoParams)
-    :base(x => 
-    (x.MedicoId >0) && // Asegura que el Paciente no sea nulo
-        string.IsNullOrEmpty(medicoParams.Search) || 
-        x.Nombre!.Contains(medicoParams.Search!))
+    :base(x =>
+    (string.IsNullOrEmpty(medicoParams.Search) || x.UsuarioNavigation!.Nombre!.Contains(medicoParams.Search!)) &&
+    (string.IsNullOrEmpty(medicoParams.IsActive) || x.UsuarioNavigation!.Activo.ToString() == medicoParams.IsActive)
+)
     {
-        AddInclude(x => x.Medico!);
+        AddInclude(x => x.UsuarioNavigation!);
+        //AddInclude(x => x.MedicoEspecialidadHospitales!);
         ApplyPaging(
             medicoParams.PageSize * (medicoParams.PageIndex -1),medicoParams.PageSize);
-        AddOrderBy(p => p.MedicoId!); // Or another unique field if Id doesn't exist
-
+        // AddOrderBy(p => p.UsuarioNavigation != null ? p.Id : 0); // Or another unique field if Id doesn't exist
+        AddOrderBy(p => p.Id);
         // Apply default ordering first to ensure consistent pagination
         // Then apply the requested sorting if specified
         if (!string.IsNullOrEmpty(medicoParams.Sort))
@@ -23,26 +24,26 @@ public class MedicoSpecification: BaseSpecification<Usuario>
             switch (medicoParams.Sort.ToLower())
             {
                 case "nombreasc":
-                    AddOrderBy(p => p.Nombre!);
+                    AddOrderBy(p => p.UsuarioNavigation!.Nombre!);
                     break;
                 case "nombredesc":
-                    AddOrderByDescending(p => p.Nombre!);
+                    AddOrderByDescending(p => p.UsuarioNavigation!.Nombre!);
                     break;
                 case "apellidoasc":
-                    AddOrderBy(p => p.Apellido!);
+                    AddOrderBy(p => p.UsuarioNavigation!.Apellido!);
                     break;
                 case "apellidodesc":
-                    AddOrderByDescending(p => p.Apellido!);
+                    AddOrderByDescending(p => p.UsuarioNavigation!.Apellido!);
                     break;
                 case "createddateasc":
-                    AddOrderBy(p => p.FechaCreacion!);
+                    AddOrderBy(p => p.UsuarioNavigation!.FechaCreacion!);
                     break;
                 case "createddatedesc":
-                    AddOrderByDescending(p => p.FechaCreacion!);
+                    AddOrderByDescending(p => p.UsuarioNavigation!.FechaCreacion!);
                     break;
                 // Default case already handled by initial ordering
                 default:
-                    AddOrderBy(p => p.MedicoId!); // Default ordering
+                    AddOrderBy(p => p.UsuarioNavigation != null ? p.Id : 0); // Default ordering
                     break;
             }
 

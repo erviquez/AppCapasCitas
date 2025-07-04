@@ -12,7 +12,7 @@ public class ConsultorioConfiguration : IEntityTypeConfiguration<Consultorio>
         // Relación con Hospital:
         // - Un consultorio pertenece a un hospital
         // - Un hospital puede tener múltiples consultorios
-        entity.HasOne(c => c.Hospital)
+        entity.HasOne(c => c.HospitalNavigation)
                 .WithMany(h => h.Consultorios)
                 .HasForeignKey(c => c.HospitalId)
                 .OnDelete(DeleteBehavior.Restrict);

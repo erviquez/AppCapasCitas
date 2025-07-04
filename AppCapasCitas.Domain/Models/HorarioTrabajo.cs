@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using AppCapasCitas.Domain.Models.Common;
 
 namespace AppCapasCitas.Domain.Models;
@@ -16,8 +14,8 @@ public partial class HorarioTrabajo : EntidadBaseAuditoria
         [Required]
         public TimeSpan HoraFin { get; set; }
 
-        // Relaciones
+    // Relaciones
         [Required]
-        public int MedicoId { get; set; }
-        public virtual Medico? Medico { get; set; }
+        public Guid MedicoId { get; set; }
+        public virtual Medico? MedicoNavigation { get; set; }
     }

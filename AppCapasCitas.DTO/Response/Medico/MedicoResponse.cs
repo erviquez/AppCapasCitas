@@ -5,9 +5,9 @@ namespace AppCapasCitas.DTO.Response.Medico;
 public class MedicoResponse
 {
     //usuario
-    public int Id { get; set; }
-    public Guid? IdentityId { get; set; }
 
+
+    public Guid MedicoId { get; set; }
     public string Nombre { get; set; } = null!;
     public string Apellido { get; set; } = null!;
     public string Telefono { get; set; } = null!;
@@ -26,10 +26,9 @@ public class MedicoResponse
     public string Email { get; set; } = null!;
 
     //medico
-    public int MedicoId { get; set; }
     public string CedulaProfesional { get; set; } = null!;
     public string Biografia { get; set; } = null!;
-    public int EspecialidadId { get; set;}
+    public Guid EspecialidadId { get; set;}
     public string NombreEspecialidad { get; set; } = string.Empty;
 
 }

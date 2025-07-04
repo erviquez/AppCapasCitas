@@ -21,6 +21,6 @@ public partial class MedicamentoRecetado: EntidadBaseAuditoria
 
         // Relaciones
         [Required]
-        public int RecetaMedicaId { get; set; }
-        public virtual RecetaMedica? RecetaMedica { get; set; }
+        public Guid RecetaMedicaId { get; set; }
+        public virtual RecetaMedica? RecetaMedicaNavigation { get; set; }
     }

@@ -7,7 +7,7 @@ public class CreateMedicoCommandValidator : AbstractValidator<CreateMedicoComman
     {
         public CreateMedicoCommandValidator()
         {
-            RuleFor(p => p.UsuarioId)
+            RuleFor(p => p.UsuarioIdentityId)
                 .NotEmpty().WithMessage("El ID de usuario es requerido")
                 .NotEqual(Guid.Empty).WithMessage("El ID de usuario no puede ser un GUID vacío");
 

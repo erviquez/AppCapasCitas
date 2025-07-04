@@ -50,7 +50,7 @@ public class DisableUsuarioCommandHandler : IRequestHandler<DisableUsuarioComman
             var resultUpdateIdentity = await _authService.UpdateApplicationUser(usuarioActualizado);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            var usuarioBD = await _usuarioRepository.GetEntityAsync(x => x.IdentityId == request.IdentityId);
+            var usuarioBD = await _usuarioRepository.GetEntityAsync(x => x.Id == request.IdentityId);
             if (usuarioBD is null)
             {
                 //Rolback si no se encuentra el usuario

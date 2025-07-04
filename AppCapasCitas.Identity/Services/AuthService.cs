@@ -5,6 +5,7 @@ using AppCapasCitas.DTO.Response.Identity;
 using AppCapasCitas.Identity.Data;
 using AppCapasCitas.Identity.Models;
 using AppCapasCitas.Transversal.Common;
+using AppCapasCitas.Transversal.Common.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -26,7 +27,7 @@ public class AuthService : IAuthService
 {
     // Managers de Identity para operaciones con usuarios y roles
     private readonly UserManager<ApplicationUser> _userManager;
-    private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly RoleManager<ApplicationRole> _roleManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
 
     // Configuración para generación de tokens JWT
@@ -56,7 +57,7 @@ public class AuthService : IAuthService
         IOptions<JwtSettings> jwtSettings,
         CleanArchitectureIdentityDbContext context,
         TokenValidationParameters tokenValidationParameters,
-        RoleManager<IdentityRole> roleManager,
+        RoleManager<ApplicationRole> roleManager,
         IAppLogger<AuthService> appLogger)
 
 
@@ -111,7 +112,7 @@ public class AuthService : IAuthService
                 lockoutOnFailure: false
                 );
             //agregar fecha de último login
-            applicationUser.LastLogin = DateTime.Now;
+            applicationUser.LastLogin = DateTime.UtcNow;
             _context.Users!.Update(applicationUser);
             await _context.SaveChangesAsync();
 
@@ -131,7 +132,7 @@ public class AuthService : IAuthService
             response.Message = "Login exitoso";
             response.Data = new AuthResponse
             {
-                Id = applicationUser.Id,
+                Id = Guid.Parse(applicationUser.Id),
                 Token = token.Item1,      // Nuevo token JWT
                 Email = applicationUser.Email!,
                 Username = applicationUser.UserName!,
@@ -272,7 +273,7 @@ public class AuthService : IAuthService
             response.IsSuccess = true;
             response.Data = new AuthResponse
             {
-                Id = user!.Id,
+                Id = Guid.Parse(user!.Id),
                 Token = token.Item1,      // Nuevo token JWT
                 Email = user.Email!,
                 Username = user.Email!,
@@ -333,7 +334,6 @@ public class AuthService : IAuthService
                 response.Message = "El username ya fue tomado por otra cuenta";
                 return response;
             }
-
             // Verifica que el email no esté en uso
             var existingEmail = await _userManager.FindByEmailAsync(request.Email);
             if (existingEmail != null)
@@ -342,9 +342,16 @@ public class AuthService : IAuthService
                 response.Message = "El email ya fue tomado por otra cuenta";
                 return response;
             }
-
-            IdentityRole? role = new();
-
+            //verifica si el telefono ya existe
+            // var existingPhone = await _userManager.Users
+            //     .FirstOrDefaultAsync(u => u.PhoneNumber == request.Celular);
+            // if (existingPhone != null)
+            // {
+            //     response.IsSuccess = false;
+            //     response.Message = "El Celular ya está asociado a otra cuenta";
+            //     return response;
+            // }
+            ApplicationRole? role = new();
             // Asigna rol específico si se proporcionó, o rol por defecto "Registrado"
             if (!string.IsNullOrEmpty(request.RoleId))
             {
@@ -366,19 +373,18 @@ public class AuthService : IAuthService
                     return response;
                 }
             }
-
             // Crea el nuevo usuario
             var user = new ApplicationUser
             {
                 Email = request.Email,
                 UserName = request.Username,
-                EmailConfirmed = true
+                EmailConfirmed = false, // Por defecto, el email no está confirmado
+                Active = true, // Por defecto, el usuario está activo
+                PhoneNumber = request.Celular
 
             };
-
             // Intenta crear el usuario con la contraseña proporcionada
             var result = await _userManager.CreateAsync(user, request.Password);
-
             if (result.Succeeded)
             {
                 // Asigna el rol al usuario
@@ -391,22 +397,20 @@ public class AuthService : IAuthService
                     response.Errors = roleResult.Errors.Select(e => new ValidationFailureFluent("Role", e.Description));
                     return response;
                 }
-
                 // Genera tokens para el nuevo usuario
                 var token = await GenerateToken(user);
                 response.IsSuccess = true;
                 response.Data = new RegistrationResponse
                 {
+                    Id = Guid.Parse(user.Id),
                     Email = user.Email,
                     Token = token.Item1,          // Token JWT
-                    UserId = user.Id,
                     Username = user.UserName,
                     RefreshToken = token.Item2,     // Refresh token
                     RoleId = role.Id,
                     RoleName = role.Name!,
                 };
             }
-
         }
         catch (Exception ex)
         {
@@ -545,10 +549,8 @@ public class AuthService : IAuthService
             // 1. Buscar el refresh token en la base de datos
             var storedToken = await _context.RefreshTokens!
                 .FirstOrDefaultAsync(x => x.Token == request.Token &&
-                                    x.UserId == request.UserId &&
+                                    x.UserId == request.UserId.ToString() &&
                                     x.IsRevoked == false
-
-
                                     );
 
             if (storedToken == null)
@@ -633,8 +635,8 @@ public class AuthService : IAuthService
 
             // Tiempo de expiración (de configuración)
             Expires = DateTime.UtcNow.Add(_jwtSettings.ExpireTime),
-            Audience = _jwtSettings.Audience, 
-            Issuer = _jwtSettings.Issuer, 
+            Audience = _jwtSettings.Audience,
+            Issuer = _jwtSettings.Issuer,
             // Credenciales de firma (algoritmo HMAC-SHA256)
             SigningCredentials = new SigningCredentials(
                 symmetricSecurityKey,
@@ -694,14 +696,26 @@ public class AuthService : IAuthService
     /// Obtiene todos los roles disponibles en el sistema
     /// </summary>
     /// <returns>Lista de roles</returns>
-    public async Task<List<Role>> GetRoles()
+    public async Task<Response<List<Role>>> GetRoles()
     {
-        var roles = await _roleManager.Roles.ToListAsync();
-        return roles.Select(role => new Role
+        var response = new Response<List<Role>>();
+        var rolesBd = await _roleManager.Roles.ToListAsync();
+        var roles = rolesBd.Select(role => new Role
         {
-            Id = role.Id,
-            Name = role.Name
-        }).ToList();
+            Id = Guid.Parse(role.Id),
+            Name = role.Name,
+            Prioridad = role.Prioridad,
+            Orden = role.Orden,
+            Activo = role.Activo
+        })
+        .Where(role => role.Activo == true)
+        .OrderBy(role => role.Orden)
+        .ThenBy(role => role.Prioridad)
+        .ToList();
+        response.IsSuccess = true;
+        response.Data = roles;
+        response.Message = "Roles obtenidos correctamente";
+        return response;
     }
 
     /// <summary>
@@ -710,29 +724,32 @@ public class AuthService : IAuthService
     private async Task VerifyRoles()
     {
         // Lista de roles básicos que deben existir
-        var basicRoles = new[] {
-            "Administrador",
-            "Registrado",
-            "Medico",
-            "Paciente",
-            "Usuario",
-            "Operador",
-            "Visor",
-            "Inactivo"
-        };
-
-        foreach (var roleName in basicRoles)
-        {
-            if (!await _roleManager.RoleExistsAsync(roleName))
+        var basicRoles = new[]
             {
-                await _roleManager.CreateAsync(new IdentityRole
+                new { Name = "Registrado", Prioridad = 2, Orden = 1, Activo = true },
+                new { Name = "Medico", Prioridad = 3, Orden = 2, Activo = true },
+                new { Name = "Paciente", Prioridad = 3, Orden = 3, Activo = true },
+                new { Name = "Administrador", Prioridad = 1, Orden = 4, Activo = true },
+                new { Name = "Visor", Prioridad = 4, Orden = 5, Activo = true },
+                new { Name = "Operador", Prioridad = 4, Orden = 6, Activo = true },
+                new { Name = "Usuario", Prioridad = 5, Orden = 7, Activo = false },
+                new { Name = "Inactivo", Prioridad = 5, Orden = 8, Activo = false }
+            };
+
+            foreach (var role in basicRoles)
+            {
+                if (!await _roleManager.RoleExistsAsync(role.Name))
                 {
-                    Name = roleName,
-                    NormalizedName = roleName.ToUpper(),
-                    ConcurrencyStamp = Guid.NewGuid().ToString()
-                });
+                    await _roleManager.CreateAsync(new ApplicationRole
+                    {
+                        Name = role.Name,
+                        NormalizedName = role.Name.ToUpper(),
+                        Prioridad = role.Prioridad,
+                        Orden = role.Orden,
+                        Activo = role.Activo
+                    });
+                }
             }
-        }
     }
 
     /// <summary>
@@ -751,14 +768,45 @@ public class AuthService : IAuthService
         return Guid.Parse(role.Id);
     }
 
-    public async Task<string> GetRoleIdByRoleId(string roleId)
+    public async Task<Response<string>> GetRoleIdByRoleId(string roleId)
     {
+        var response = new Response<string>();
         var role = await _roleManager.FindByIdAsync(roleId);
         if (role == null && role!.Name != "")
         {
-            throw new Exception($"El rol con id {roleId} no existe");
+            response.IsSuccess = false;
+            response.Message = $"El rol con id {roleId} no existe";
+            return response;
         }
-        return role.Name!;
+        response.IsSuccess = true;
+        response.Data = role.Name;
+        response.Message = $"ID del rol con id {roleId} obtenido correctamente";
+        return response;
+    }
+
+    //Obtener Roles del usuario
+    public async Task<Response<List<string>>> GetRolesByUserId(string userId)
+    {
+        var response = new Response<List<string>>();
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            response.IsSuccess = false;
+            response.Message = $"El usuario con id {userId} no existe";
+            return response;
+        }
+
+        var roles = await _userManager.GetRolesAsync(user);
+        if (roles == null || roles.Count == 0)
+        {
+            response.IsSuccess = false;
+            response.Message = $"El usuario con id {userId} no tiene roles asignados";
+            return response;
+        }
+        response.IsSuccess = true;
+        response.Data = roles.ToList();
+        response.Message = $"Roles del usuario con id {userId} obtenidos correctamente";
+        return response;
     }
 
     /// <summary>
@@ -829,7 +877,7 @@ public class AuthService : IAuthService
         {
             var authResponse = new AuthResponse()
             {
-                Id = user.Id,
+                Id = Guid.Parse(user.Id),
                 Username = user.UserName!,
                 Email = user.Email!
             };
@@ -853,7 +901,7 @@ public class AuthService : IAuthService
         {
             var authResponses = users.Select(user => new AuthResponse
             {
-                Id = user.Id,
+                Id = Guid.Parse(user.Id),
                 Username = user.UserName!,
                 Email = user.Email!,
                 Active = user.Active,
@@ -871,12 +919,12 @@ public class AuthService : IAuthService
             return response;
         }
         response.IsSuccess = false;
-        response.Message = "No se encontraron usuarios";            
+        response.Message = "No se encontraron usuarios";
         return response;
 
     }
-    
-    
+
+
 
     public async Task<Response<IReadOnlyList<AuthResponse>>> GetAllApplicationUserActive(bool active = true)
     {
@@ -887,7 +935,7 @@ public class AuthService : IAuthService
         {
             var authResponses = users.Select(user => new AuthResponse
             {
-                Id = user.Id,
+                Id = Guid.Parse(user.Id),
                 Username = user.UserName!,
                 Email = user.Email!,
                 Active = user.Active,
@@ -936,10 +984,141 @@ public class AuthService : IAuthService
             response.Message = ex.Message;
         }
         return response;
-
-
+    }
+    /// <summary>
+    /// Elimina todos los roles asignados a un usuario
+    ///     /// </summary>
+    /// <param name="userId">ID del usuario</param>
+    ///     /// <returns>True si la operación fue exitosa</returns>
+    public async Task<bool> RemoveAllRolesFromUser(string userId)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            return false;
+        }
+        var roles = await _userManager.GetRolesAsync(user);
+        await _userManager.RemoveFromRolesAsync(user, roles);
+        return true;
     }
 
+    /// <summary>
+    /// Confirma el email de un usuario
+    /// </summary>
+    /// <param name="userId">ID del usuario</param>
+    /// <param name="token">Token de confirmación</param>
+    /// <returns>True si la confirmación fue exitosa</returns>
+    public async Task<Response<Guid>> ConfirmEmail(string userId, string refreshToken)
+    {
+        var response = new Response<Guid>();
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            response.IsSuccess = false;
+            response.Message = "Usuario no encontrado";
+            response.Errors = new List<ValidationFailureFluent>
+            {
+                new ValidationFailureFluent("User", "Usuario no encontrado")
+            };
+            return response;
+        }
+        //validar si el email ya está confirmado
+        if (user.EmailConfirmed)
+        {
+            response.IsSuccess = false;
+            response.Message = "El email ya está confirmado";
+            return response;
+        }
+
+        var refreshTokenBd = await _context.RefreshTokens!
+            .FirstOrDefaultAsync(x => x.UserId == userId && x.Token == refreshToken && x.IsUsed == false && x.IsRevoked == false);
+        if (refreshTokenBd == null)
+        {
+            response.IsSuccess = false;
+            response.Message = "No se encontró un token válido para el usuario";
+            response.Errors = new List<ValidationFailureFluent>
+            {
+                new ValidationFailureFluent("RefreshToken", "No se encontró un refresh token válido para el usuario")
+            };
+            return response;
+        }
+        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        var result = await _userManager.ConfirmEmailAsync(user, token);
+        response.IsSuccess = result.Succeeded;
+        if (!result.Succeeded)
+        {
+            response.Message = "Error al confirmar el email";
+            response.Errors = result.Errors.Select(e => new ValidationFailureFluent("Email", e.Description)).ToList();
+        }
+        else
+        {
+            response.IsSuccess = true;
+            response.Data = Guid.Parse(user.Id);
+            response.Message = "Email confirmado correctamente";
+        }
+        return response;
+    }
+    public async Task<Response<Guid>> ConfirmPhoneNumber(string userId, string refreshToken)
+    {
+        var response = new Response<Guid>();
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            response.IsSuccess = false;
+            response.Message = "Usuario no encontrado";
+            response.Errors = new List<ValidationFailureFluent>
+            {
+                new ValidationFailureFluent("User", "Usuario no encontrado")
+            };
+            return response;
+        }
+        // Validar si el teléfono ya está confirmado
+        if (user.PhoneNumberConfirmed) 
+        {
+            response.IsSuccess = false;
+            _appLogger.LogWarning($"El usuario {user.UserName} ya tiene el teléfono {user.PhoneNumber} confirmado, ");
+            response.Message = "El teléfono ya está confirmado";
+            return response;
+        }
+        //
+        if (string.IsNullOrEmpty(user.PhoneNumber))
+        {
+            response.IsSuccess = false;
+            response.Message = "El usuario no tiene un número de teléfono asociado";
+            _appLogger.LogWarning("El usuario {UserId} no tiene un número de teléfono asociado", userId);
+            response.Errors = new List<ValidationFailureFluent>
+            {
+                new ValidationFailureFluent("PhoneNumber", "El usuario no tiene un número de teléfono asociado")
+            };
+        }
+        var refreshTokenBd = await _context.RefreshTokens!.FirstOrDefaultAsync(x => x.UserId == userId && x.Token == refreshToken && x.IsUsed == false && x.IsRevoked == false);
+        if (refreshTokenBd == null)
+        {
+            response.IsSuccess = false;
+            response.Message = "No se encontró un token válido para el usuario";
+            response.Errors = new List<ValidationFailureFluent>
+            {
+                new ValidationFailureFluent("RefreshToken", "No se encontró un refresh token válido para el usuario")
+            };
+            return response;
+        }
+        // Confirmar el teléfono usando el token
+        var token = await _userManager.GenerateChangePhoneNumberTokenAsync(user,user.PhoneNumber!);
+        var result = await _userManager.ChangePhoneNumberAsync(user, user.PhoneNumber!, token);
+        response.IsSuccess = result.Succeeded;
+        if (!result.Succeeded)
+        {
+            response.Message = "Error al confirmar el teléfono";
+            response.Errors = result.Errors.Select(e => new ValidationFailureFluent("PhoneNumber", e.Description)).ToList();
+        }
+        else
+        {
+            response.IsSuccess = true;
+            response.Data = Guid.Parse(user.Id);
+            response.Message = "Teléfono confirmado correctamente";
+        }
+        return response;
+    }
 
 
 }

@@ -22,16 +22,17 @@ public partial class Cita: EntidadBaseAuditoria
 
     // Relaciones
     [Required]
-    public int PacienteId { get; set; }
+
+    public Guid PacienteId { get; set; }  
+
     public virtual Paciente? Paciente { get; set; }
 
     [Required]
-    public int MedicoId { get; set; }
-    public virtual Medico? Medico { get; set; }
-
-    public int? ConsultorioId { get; set; }
-    public virtual Consultorio? Consultorio { get; set; }
-
+    public Guid MedicoId { get; set; }  
+    public virtual Medico? MedicoNavigation { get; set; }
     public virtual ICollection<RecetaMedica> RecetasMedicas { get; set; } = new HashSet<RecetaMedica>();
-    public virtual Pago? Pago { get; set; }
+    public Guid? ConsultorioId { get; set; }
+    public virtual Consultorio? ConsultorioNavigation { get; set; }
+    public Guid? PagoId { get; set; }
+    public virtual Pago? PagoNavigation { get; set; }
 }

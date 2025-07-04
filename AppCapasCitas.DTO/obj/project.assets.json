@@ -135,11 +135,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
+      "projectUniqueName": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
       "projectName": "AppCapasCitas.DTO",
-      "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
+      "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
       "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-      "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\obj\\",
+      "outputPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -203,7 +203,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

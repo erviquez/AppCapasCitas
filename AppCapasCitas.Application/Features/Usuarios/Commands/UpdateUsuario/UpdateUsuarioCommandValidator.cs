@@ -7,33 +7,9 @@ namespace AppCapasCitas.Application.Features.Usuarios.Commands.UpdateUsuario;
 
 public class UpdateUsuarioCommandValidator : AbstractValidator<UpdateUsuarioCommand>
 {
-    
-     public UpdateUsuarioCommandValidator()
+
+    public UpdateUsuarioCommandValidator()
     {
-        // Validación para Username
-        RuleFor(x => x.Username)
-            .NotEmpty().WithMessage("El nombre de usuario es requerido")
-            .MinimumLength(5).WithMessage("El nombre de usuario debe tener al menos 5 caracteres")
-            .MaximumLength(20).WithMessage("El nombre de usuario no puede exceder los 20 caracteres")
-            .Matches("^[a-zA-Z0-9_]+$").WithMessage("Solo se permiten letras, números y guiones bajos");
-
-        // Validación para Password
-        RuleFor(x => x.Password)
-            .NotEmpty().WithMessage("La contraseña es requerida")
-            .MinimumLength(8).WithMessage("La contraseña debe tener al menos 8 caracteres")
-            .MaximumLength(50).WithMessage("La contraseña no puede exceder los 50 caracteres")
-            .Matches("[A-Z]").WithMessage("Debe contener al menos una letra mayúscula")
-            .Matches("[a-z]").WithMessage("Debe contener al menos una letra minúscula")
-            .Matches("[0-9]").WithMessage("Debe contener al menos un número")
-            .Matches("[^a-zA-Z0-9]").WithMessage("Debe contener al menos un carácter especial")
-            .NotEqual(x => x.Username).WithMessage("La contraseña no puede ser igual al nombre de usuario");
-
-
-        // Validación para Email
-        RuleFor(x => x.Email)
-            .NotEmpty().WithMessage("El email es requerido")
-            .EmailAddress().WithMessage("Formato de email inválido")
-            .MaximumLength(100).WithMessage("El email no puede exceder los 100 caracteres");
 
         // Validación para Nombre
         RuleFor(x => x.Nombre)
@@ -78,12 +54,13 @@ public class UpdateUsuarioCommandValidator : AbstractValidator<UpdateUsuarioComm
             .NotEmpty().WithMessage("El código de país es requerido")
             .InclusiveBetween(1, 999).WithMessage("Código de país inválido")
             .Must(BeAValidCountryCode).WithMessage("Código de país no reconocido");
+        // Validación para País (opcional, se infiere del código de país)
+        RuleFor(x => x.Pais)
+            .Must((x, pais) => PaisesHelper.GetNombrePais(x.CodigoPais) == pais)
+            .WithMessage("País no coincide con el código de país");
+        
     }
-      private bool BeAValidUrl(string url)
-    {
-        return Uri.TryCreate(url, UriKind.Absolute, out var uriResult) 
-                && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-    }
+
 
     private bool BeAValidPhoneNumber(string phoneNumber)
     {

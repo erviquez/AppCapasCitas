@@ -21,6 +21,6 @@ public partial class Cargo  : EntidadBaseAuditoria
     public bool EsJefatura { get; set; } = false;
 
     // Relación con especialidad (si el cargo es específico de una especialidad)
-    public int? EspecialidadId { get; set; }
-    public virtual Especialidad? Especialidad { get; set; }
+    public Guid? EspecialidadId { get; set; }
+    public virtual Especialidad? EspecialidadNavigation { get; set; }
 }

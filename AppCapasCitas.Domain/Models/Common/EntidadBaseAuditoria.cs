@@ -5,7 +5,7 @@ namespace AppCapasCitas.Domain.Models.Common;
 public abstract class EntidadBaseAuditoria
 {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; } 
         
         [Required]
         public DateTime FechaCreacion { get; set; } = DateTime.Now;

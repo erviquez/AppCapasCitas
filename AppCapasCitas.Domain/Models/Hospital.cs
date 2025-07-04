@@ -40,7 +40,7 @@ public partial class Hospital: EntidadBaseAuditoria
 
     // Relaciones
     public virtual ICollection<Consultorio> Consultorios { get; set; } = new HashSet<Consultorio>();
-    public virtual ICollection<Medico> Medicos { get; set; } = new HashSet<Medico>();
+    // public virtual ICollection<Medico> Medicos { get; set; } = new HashSet<Medico>();
 
     public virtual ICollection<MedicoEspecialidadHospital> MedicoEspecialidadHospitales { get; set; } = new HashSet<MedicoEspecialidadHospital>();
 }

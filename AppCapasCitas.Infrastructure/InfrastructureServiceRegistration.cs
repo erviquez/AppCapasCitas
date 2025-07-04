@@ -6,6 +6,7 @@ using AppCapasCitas.Infrastructure.Data;
 using AppCapasCitas.Infrastructure.Persistence;
 using AppCapasCitas.Infrastructure.Repositories;
 using AppCapasCitas.Infrastructure.Repositories.Email;
+using AppCapasCitas.Infrastructure.Repositories.Shortner;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,6 +42,7 @@ public static class InfrastructureServiceRegistration
         // // });
 
         services.AddTransient<IEmailService, EmailService>();
+        // services.AddTransient<IShortnerService, ShortnerService>();
         return services;
     }
 

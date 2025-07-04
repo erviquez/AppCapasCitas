@@ -27,19 +27,20 @@ public partial class MedicoEspecialidadHospital: EntidadBaseAuditoria
 
     //relaciones
     [Required]
-    public int MedicoId { get; set; }
-    public virtual Medico? Medico { get; set; }
+
+    public Guid MedicoId { get; set; }  
+    public virtual Medico? MedicoNavigation { get; set; }
 
     [Required]
-    public int EspecialidadId { get; set; }
-    public virtual Especialidad? Especialidad { get; set; }
+    public Guid EspecialidadId { get; set; }
+    public virtual Especialidad? EspecialidadNavigation { get; set; }
 
     [Required]
-    public int HospitalId { get; set; }
-    public virtual Hospital? Hospital { get; set; }
+    public Guid HospitalId { get; set; }
+    public virtual Hospital? HospitalNavigation { get; set; }
 
     // Relación con Cargo (reemplaza el string Cargo)
     [Required]
-    public int CargoId { get; set; }
-    public virtual Cargo? Cargo { get; set; }
+    public Guid CargoId { get; set; }
+    public virtual Cargo? CargoNavigation { get; set; }
 }

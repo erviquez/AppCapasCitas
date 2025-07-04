@@ -1,12 +1,18 @@
 ﻿@page "/usuario/usuario"
-@attribute [Authorize]
+@using AppCapasCitas.DTO.Response.Identity
+@using AppCapasCitas.Transversal.Common.Identity
+@using Blazored.Toast.Configuration
+@using AppCapasCitas.FrontEnd.Components.Modals
+@using AppCapasCitas.FrontEnd.Components
+@using Microsoft.AspNetCore.Components
 @inject NavigationManager navigationManager
 @inject IUsuarioProxy proxy
-@using Blazored.Toast.Configuration
 @inject IToastService toastService
 @inject Blazored.SessionStorage.ISessionStorageService sessionStorage
 @inject SweetAlertService Swal;
-
+@attribute [Authorize]
+@inject AuthenticationStateProvider auth
+@using Microsoft.AspNetCore.Components.Web
 <PageTitle>Usuarios</PageTitle>
 
 <div class="card">
@@ -22,7 +28,6 @@
             </div>
         </div>
     </div>
-
     <div class="card-body">
         <div class="row mb-3">            
             <div class="col-md-10">
@@ -65,6 +70,7 @@
                 <table class="table table-striped table-bordered table-hover">
                     <thead class="table-dark">
                         <tr>
+                            <th>Tipo Usuario</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Email</th>
@@ -84,6 +90,16 @@
                         {
                             @if (usuario == null) continue;
                             <tr>
+                                <td>
+                                    @if (usuario.RoleName != null)
+                                    {
+                                        @usuario.RoleName
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Sin rol asignado</span>
+                                    }
+                                </td>
                                 <td>@usuario.Nombre</td>
                                 <td>@usuario.Apellido</td>
                                 <td>@usuario.Email</td>
@@ -107,21 +123,35 @@
                                     @(usuario.UltimoLogin?.ToString("dd/MM/yyyy HH:mm") ?? "-")
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-outline-info" @onclick="() => EditarUsuario(usuario)" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-                                        <i class="bi bi-pencil-square"></i>
+                                    <button class="btn btn-sm btn-outline-danger ms-1" @onclick="() => EditarUsuario(usuario.UsuarioId.ToString())">
+                                            <i class="bi-pencil-square"></i>
                                     </button>
-                                        @if (usuario.Activo)
-                                        {
-                                            <button class="btn btn-sm btn-outline-danger ms-1" @onclick="() => DesactivarUsuario(usuario)">
-                                                <i class="bi bi-power"></i>
-                                            </button>
-                                        }
-                                        else
-                                        {
-                                            <button class="btn btn-sm btn-outline-success ms-1" @onclick="() => DesactivarUsuario(usuario)">
-                                                <i class="bi bi-check2-square"></i>
-                                            </button>
-                                        }
+                                    
+                                    @if( usuario.RoleName != null && (usuario.RoleName.ToLower() != "medico" && usuario.RoleName.ToLower() != "paciente"))
+                                    {
+                                        <button class="btn btn-sm btn-outline-info" @onclick="() => AbrirModalAsignarRol(usuario.UsuarioId,usuario.RoleId,usuario.Nombre + ' ' + usuario.Apellido)">
+                                            <i class="bi bi-clipboard2-pulse-fill"></i>
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-sm btn-outline-secondary" disabled>
+                                            <i class="bi bi-ban"></i>
+                                        </button>
+                                    }
+
+                                    @if (usuario.Activo)
+                                    {
+                                        <button class="btn btn-sm btn-outline-danger ms-1" @onclick="() => DesactivarUsuario(usuario)">
+                                            <i class="bi bi-power"></i>
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-sm btn-outline-success ms-1" @onclick="() => DesactivarUsuario(usuario)">
+                                            <i class="bi bi-check2-square"></i>
+                                        </button>
+                                    }
                                 </td>
                             </tr>
                         }
@@ -185,63 +215,81 @@
         }
     </div>
 </div>
+@if (mostrarModalAsignarRol)
+{
+    <ModalGeneric titulo="Asignar perfil a usuario" OnClose="() => mostrarModalAsignarRol = false">
+        <EditForm Model="usuarioConvertModel" OnValidSubmit="ConvertirUsuario">
+            <DataAnnotationsValidator/>
+            <div class="mt-2">
+                <label  for="RoleId" class="form-label">Rol</label>
+                <InputSelect id="RoleId"  class="form-control" @bind-Value="usuarioConvertModel.RoleId" TValue="Guid">
+                    <option value="@Guid.Empty">Seleccione un rol</option>
+                    @foreach (var role in listaRoles)
+                    {
+                        <option value="@role.Id">@role.Name</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="() => usuarioConvertModel.RoleId"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="() => mostrarModalAsignarRol = false">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </EditForm>
+    </ModalGeneric>
+}
 
-@* Inicia modal *@
-@* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button> *@
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-@* Termina modal *@
 @code {
     private List<UsuarioResponse> listaUsuario = new();
+    public List<Role> listaRoles = new();
+    public UsuarioConvertRequest usuarioConvertModel = new();
+    private bool mostrarModalAsignarRol = false;
     public bool cargando { get; set; } = false;
-    public string? isActive { get; set; } 
+    public string? isActive { get; set; }
     private string searchText = "";
     private string sort = "";
-    
+    private AuthResponse? usuarioActual = null;
+
     // Paginación
-    private int pageNumber  ;
-    private int pageSize = 5 ;
-    private int totalPages = 1 ;
+    private int pageNumber;
+    private int pageSize = 10;
+    private int totalPages = 1;
     private int totalCount = 0;
-    private bool hasPreviousPages  =false;
-    private bool hasNextPages  =false;
+    private bool hasPreviousPages = false;
+    private bool hasNextPages = false;
+
     protected override async Task OnInitializedAsync()
     {
+        var authService = (AuthenticationService)auth;
+        usuarioActual = await authService.GetUserActual();
         await CargarUsuarios();
+        usuarioConvertModel.RoleId = Guid.Empty;
     }
+
+    private async Task<List<Role>> ObtenerRoles()
+    {
+        var roles = await proxy.ObtenerRolesAsync();
+        if (roles.IsSuccess)
+            return roles.Data!;
+        toastService.ShowError("Error al cargar roles: " + roles.Message);
+        return new List<Role>();
+    }
+
+    private async Task CargarRoles(bool excluirActual = false, Guid? roleId = null)
+    {
+        var roles = await ObtenerRoles();
+        if (excluirActual && roleId.HasValue)
+            listaRoles = roles.Where(r => r.Id != roleId.Value).ToList();
+        else
+            listaRoles = roles;
+    }
+
     private async Task OnPageSizeChanged()
     {
-        pageNumber = 1; // Reinicia a la primera página
-        await CargarUsuarios(); // Vuelve a cargar los datos
+        pageNumber = 1;
+        await CargarUsuarios();
     }
+
     private async Task LimpiarFiltros()
     {
         searchText = string.Empty;
@@ -250,26 +298,53 @@
         await CargarUsuarios();
     }
 
+    private void Regresar()
+    {
+        navigationManager.NavigateTo("/usuario/usuario");
+    }
+    private async Task EditarUsuario(string usuarioId)
+    {
+        cargando = true;
+        SweetAlertResult resultSwal = await Swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "Confirmación",
+            Text = $"¿Desea entrar a la edición del usuario ?",
+            Icon = SweetAlertIcon.Question,
+            ShowCancelButton = true,
+            ConfirmButtonText = "Si",
+            CancelButtonText = "No"
+        });   
+        if (!string.IsNullOrEmpty(resultSwal.Value))
+        {
+            if (string.IsNullOrEmpty(usuarioId))
+            {
+                toastService.ShowError("ID de usuario no válido.");
+                return;
+            }
+            navigationManager.NavigateTo($"/usuario/EditarUsuario/{usuarioId}");
+        }
+        cargando = false;
+
+    }
+
+
     private async Task CargarUsuarios()
     {
         cargando = true;
         StateHasChanged();
-
         try
         {
-            // Ensure pageNumber is within valid range
             pageNumber = Math.Max(1, pageNumber);
-            
             var resultPagination = await proxy.ObtenerPaginationUsuariosAsync(sort, pageNumber, pageSize, searchText, isActive);
-
             if (resultPagination.IsSuccess)
             {
+                var dataOrdenado = resultPagination.Data?.OrderByDescending(u => u.RoleName).ToList() ?? new List<UsuarioResponse>();
                 pageNumber = resultPagination.PageNumber;
                 pageSize = resultPagination.PageSize;
                 totalPages = resultPagination.TotalPages;
                 hasPreviousPages = resultPagination.HasPreviousPages;
                 hasNextPages = resultPagination.HasNextPages;
-                listaUsuario = resultPagination.Data!;
+                listaUsuario = dataOrdenado!;
                 totalCount = resultPagination.TotalCount;
             }
             else
@@ -289,7 +364,6 @@
         }
     }
 
-
     private async Task BuscarUsuarios()
     {
         pageNumber = 1;
@@ -299,7 +373,6 @@
     private async Task ChangePage(int page)
     {
         if (cargando) return;
-        
         cargando = true;
         try
         {
@@ -314,20 +387,84 @@
 
     private void NuevoUsuario()
     {
-        navigationManager.NavigateTo("/usuario/nuevo");
+        navigationManager.NavigateTo("/usuario/AgregarUsuario");
     }
 
-    private void EditarUsuario(UsuarioResponse usuario)
+    private async Task AbrirModalAsignarRol(Guid usuarioId, Guid roleId, string? username = null)
     {
-        //navigationManager.NavigateTo($"/usuario/editar/{usuario.IdentityId}");
+        usuarioConvertModel = new UsuarioConvertRequest
+        {
+            UsuarioId = usuarioId,
+            Username = username,
+            RoleId = Guid.Empty,
+            UsuarioAccion = null,
+        };
+        await CargarRoles(excluirActual: true, roleId: roleId);
+        mostrarModalAsignarRol = true;
     }
 
-    private async Task DesactivarUsuario(UsuarioResponse usuario)
+    public async Task ConvertirUsuario()
     {
-        string estado = usuario.Activo ? "desactivar" : "activar";
-        SweetAlertResult result = await Swal.FireAsync(new SweetAlertOptions{
+        cargando = true;
+        if (usuarioConvertModel.RoleId == Guid.Empty)
+        {
+            toastService.ShowError("Debe seleccionar un rol para el usuario.");
+            cargando = false;
+            return;
+        }
+
+        // Validar que no sea el mismo rol
+        if (listaRoles.Any(r => r.Id == usuarioConvertModel.RoleId && r.Name == usuarioConvertModel.RoleName))
+        {
+            toastService.ShowError("El usuario ya tiene el rol seleccionado.");
+            cargando = false;
+            return;
+        }
+        usuarioConvertModel.RoleName = listaRoles.FirstOrDefault(r => r.Id == usuarioConvertModel.RoleId)?.Name;
+        SweetAlertResult result = await Swal.FireAsync(new SweetAlertOptions
+        {
             Title = "Confirmación",
-            Text = $"¿Está seguro que desea {estado} al usuario {usuario.Nombre} {usuario.Apellido}?",
+            Text = $"¿Está seguro que desea asignar el rol: {usuarioConvertModel.RoleName}  al usuario {usuarioConvertModel.Username} ",
+            Icon = SweetAlertIcon.Question,
+            ShowCancelButton = true,
+            ConfirmButtonText = "Si",
+            CancelButtonText = "No"
+        });
+
+        if (!string.IsNullOrEmpty(result.Value))
+        {
+            var usuarioConvertRequest = new UsuarioConvertRequest()
+            {
+                RoleId = usuarioConvertModel.RoleId,
+                UsuarioId = usuarioConvertModel.UsuarioId,
+                UsuarioAccion = usuarioActual!.Id!.ToString()
+            };
+
+            var resultado = await proxy.ConvertUsuarioAsync(usuarioConvertRequest);
+            if (resultado.IsSuccess)
+            {
+                mostrarModalAsignarRol = false;
+                toastService.ShowSuccess("Usuario convertido correctamente");
+                await CargarUsuarios();
+                cargando = false;
+                Regresar();
+            }
+            else
+            {
+                toastService.ShowError($"Error al convertir usuario: {resultado.Message}");
+            }
+            await CargarUsuarios();
+        }
+        cargando = false;
+    }
+
+    private async Task DesactivarUsuario(UsuarioResponse userResponse)
+    {
+        string estado = userResponse.Activo ? "desactivar" : "activar";
+        SweetAlertResult result = await Swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "Confirmación",
+            Text = $"¿Está seguro que desea {estado} al usuario {userResponse.Nombre} {userResponse.Apellido}?",
             Icon = SweetAlertIcon.Question,
             ShowCancelButton = true,
             ConfirmButtonText = "Si",
@@ -339,10 +476,18 @@
             StateHasChanged();
             try
             {
+                if (userResponse.UsuarioId == Guid.Empty)
+                {
+                    toastService.ShowError("Usuario incorrecto o no encontrado.");
+                    return;
+                }
+                var authService = (AuthenticationService)auth;
+                var usuarioActual = await authService.GetUserActual();
                 var usuarioRequest = new UsuarioRequest
                 {
-                    UserId = usuario.IdentityId ?? Guid.Empty,
-                    IsActive = !usuario.Activo
+                    UsuarioId = userResponse.UsuarioId,
+                    Activo = userResponse.Activo ? false : true,
+                    UsuarioAccion = usuarioActual.Id.ToString()
                 };
                 var response = await proxy.DisableUsuarioByIdAsync(usuarioRequest);
                 if (!response.IsSuccess)
@@ -351,20 +496,16 @@
                 }
                 else
                 {
-                    toastService.ShowSuccess($"Éxito al {estado} usuario {usuario.Nombre} {usuario.Apellido}");                
+                    toastService.ShowSuccess($"Éxito al {estado} usuario {userResponse.Nombre} {userResponse.Apellido}");
                     await CargarUsuarios();
                 }
             }
-            finally 
+            finally
             {
                 cargando = false;
                 StateHasChanged();
             }
-          
-            
-
         }
-
     }
 
     private async Task ExportarExcel()
@@ -372,10 +513,8 @@
         cargando = true;
         try
         {
-            // Implementar lógica de exportación a Excel
             toastService.ShowInfo("Exportando datos a Excel...");
-            // Aquí iría el código para generar el Excel
-            await Task.Delay(1000); // Simular proceso
+            await Task.Delay(1000);
             toastService.ShowSuccess("Datos exportados correctamente");
         }
         catch (Exception ex)

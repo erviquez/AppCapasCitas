@@ -11,17 +11,17 @@ public class HistorialMedicoConfiguration : IEntityTypeConfiguration<HistorialMe
     {
         // Relación con Paciente:
         // - Un paciente tiene un historial médico que puede contener múltiples registros
-        entity.HasOne(hm => hm.Paciente)
+        entity.HasOne(hm => hm.PacienteNavigation)
                 .WithMany(p => p.HistorialMedico)
                 .HasForeignKey(hm => hm.PacienteId)
                 .OnDelete(DeleteBehavior.Restrict);
 
         // Relación con Cita (opcional):
         // - Vincula el registro del historial con una cita específica
-        entity.HasOne(hm => hm.Cita)
+        entity.HasOne(hm => hm.CitaNavigation)
                 .WithMany()
                 .HasForeignKey(hm => hm.CitaId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.Restrict);
 
         // Configuración de propiedades médicas:
         entity.Property(h => h.Temperatura)

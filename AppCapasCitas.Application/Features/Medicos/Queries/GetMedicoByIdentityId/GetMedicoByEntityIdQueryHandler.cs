@@ -1,6 +1,5 @@
 using System.Linq.Expressions;
 using AppCapasCitas.Application.Contracts.Persistence;
-using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoById;
 using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByIdentityId;
 using AppCapasCitas.Domain.Models;
 using AppCapasCitas.DTO.Response.Medico;
@@ -15,9 +14,9 @@ public class GetMedicoByEntityIdQueryHandler : IRequestHandler<GetMedicoByIdenti
 {
     private readonly IAsyncRepository<Medico> _medicoRepository;
     private readonly IMapper _mapper;
-    private readonly IAppLogger<GetMedicoByIdQueryHandler> _appLogger;
+    private readonly IAppLogger<GetMedicoByEntityIdQueryHandler> _appLogger;
 
-    public GetMedicoByEntityIdQueryHandler(IAsyncRepository<Medico> medicoRepository, IMapper mapper, IAppLogger<GetMedicoByIdQueryHandler> appLogger)
+    public GetMedicoByEntityIdQueryHandler(IAsyncRepository<Medico> medicoRepository, IMapper mapper, IAppLogger<GetMedicoByEntityIdQueryHandler> appLogger)
     {
         _medicoRepository = medicoRepository;
         _mapper = mapper;
@@ -33,12 +32,12 @@ public class GetMedicoByEntityIdQueryHandler : IRequestHandler<GetMedicoByIdenti
             var medicoIdentityId = request.IdentityId;
             var includes = new List<Expression<Func<Medico, object>>>
             {
-                x => x.Usuario!, // Include the related Usuario
+                x => x.UsuarioNavigation!,
                 x => x.MedicoEspecialidadHospitales!
             };
 
             var medico = await _medicoRepository.GetEntityAsync(
-                                            x => x.Activo == true && x.Usuario!.IdentityId == medicoIdentityId,
+                                            x => x.Activo == true && x.UsuarioNavigation!.Id == medicoIdentityId,
                                             includes,
                                             true,
                                             cancellationToken: cancellationToken);

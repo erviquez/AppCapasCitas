@@ -1,13 +1,15 @@
 
 using System.Net;
 using AppCapasCitas.Application.Features.Medicos.Commands.CreateMedico;
-using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByEntityId.GetMedicoById;
+using AppCapasCitas.Application.Features.Medicos.Commands.EditMedico;
 using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByIdentityId;
 using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByName;
 using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoList;
 using AppCapasCitas.Application.Features.Medicos.Queries.PaginationMedico;
 using AppCapasCitas.Application.Features.Shared;
+using AppCapasCitas.DTO.Request.Medico;
 using AppCapasCitas.DTO.Response.Medico;
+using AppCapasCitas.Transversal.Common;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -43,17 +45,6 @@ namespace AppCapasCitas.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("GetById/{id}")]
-        public async Task<ActionResult<MedicoResponse>> GetById(int id)
-        {
-            var query = new GetMedicoByIdQuery(id);
-            var result = await _mediator.Send(query);
-            if (result.IsSuccess == false)
-            {
-                return NotFound(result);
-            }
-            return Ok(result);
-        }
         [HttpGet("GetByIdentityId/{identityId}")]
         public async Task<IActionResult> GetByIdentityId(Guid identityId)
         {
@@ -78,60 +69,31 @@ namespace AppCapasCitas.API.Controllers
             return Ok(paginationMedico);
         }
 
-
-        // [HttpDelete("{id}")]
-        // public IActionResult Delete(int id)
-        // {
-        //     var medico = _context.Medico.Find(id);
-
-
-        //     if (medico == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //     medico.Activo = false;
-        //     _context.SaveChanges();           
-        //     return Ok("Se elimino el medico con exito");
-        // }
-
-
-        // [HttpPut("{id}")]
-        // public IActionResult Update(int id, [FromBody] MedicoRequest medicoRequest)
-        // {
-        //      var medico = _context.Medico.Find(id);
-        //     if (medico == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //     // Validate Usuario exists
-        //     if (medico.Usuario == null)
-        //     {
-        //         return BadRequest("El usuario asociado al médico no existe");
-        //     }
-        //     // Update all fields from the medicoResponse
-        //     medico.CedulaProfesional = medicoRequest.CedulaProfesional;
-        //     medico.Biografia = medicoRequest.Biografia;
-        //     medico.FechaActualizacion = DateTime.Now; // Typically you'd update this to current time
-        //     medico.ModificadoPor = "CurrentUser"; // Should be set to the actual user making the change
-
-        //     try
-        //     {
-        //         _context.SaveChanges();
-        //         return Ok("Se actualizó el médico con éxito");
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         // Log the exception
-        //         return StatusCode(500, "Ocurrió un error al actualizar el médico" + ex.Message);
-        //     }
-        // }
+        [HttpPut]
+        public async Task<ActionResult<Response<bool>>> Update([FromBody] MedicoRequest medicoRequest)
+        {
+            var command = new EditMedicoCommand
+            {
+                MedicoId = medicoRequest.MedicoId,
+                CedulaProfesional = medicoRequest.CedulaProfesional,
+                Biografia = medicoRequest.Biografia,
+            };
+            var response = await _mediator.Send(command);
+            if (response.IsSuccess == false)
+            {
+                return BadRequest(response);
+            }
+            return Ok(response);
+        }
+        
         [HttpPost("CreateMedico")]
         public async Task<IActionResult> CreateMedico([FromBody] CreateMedicoCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);
         }
-        
+        //
+   
         // [HttpDelete("DisableMedico")]
         // public async Task<IActionResult> DeleteMedico([FromBody] DisableMedicoCommand command)
         // {

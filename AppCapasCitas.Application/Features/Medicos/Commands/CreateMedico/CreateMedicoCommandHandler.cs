@@ -9,7 +9,7 @@ using MediatR;
 
 namespace AppCapasCitas.Application.Features.Medicos.Commands.CreateMedico;
 
-public class CreateMedicoCommandHandler:IRequestHandler<CreateMedicoCommand,Response<int>>
+public class CreateMedicoCommandHandler:IRequestHandler<CreateMedicoCommand,Response<Guid>>
 {
 
     private readonly IUnitOfWork _unitOfWork;
@@ -29,14 +29,14 @@ public class CreateMedicoCommandHandler:IRequestHandler<CreateMedicoCommand,Resp
         _validator = validator;
     }
 
-    public async Task<Response<int>> Handle(CreateMedicoCommand request, CancellationToken cancellationToken)
+    public async Task<Response<Guid>> Handle(CreateMedicoCommand request, CancellationToken cancellationToken)
     {
-        var response = new Response<int>();
+        var response = new Response<Guid>();
         // Iniciamos transacción local
 
         await using var transaction = await _unitOfWork.BeginTransactionAsync();
 
-        var medicoId = 0;
+        var medicoId = Guid.Empty;
         var compensations = new List<Func<Task>>();
         try
         {
@@ -51,7 +51,7 @@ public class CreateMedicoCommandHandler:IRequestHandler<CreateMedicoCommand,Resp
             }
             // 2. Verificar usuario existente
             var usuarioExistente = await _userRepository.GetEntityAsync(
-                 x => x.IdentityId == request.UsuarioId && (x.PacienteId != null && x.MedicoId != null), null, false);
+                 x => x.Id == request.UsuarioIdentityId, null, false);
 
             if (usuarioExistente != null)
             {
@@ -94,7 +94,7 @@ public class CreateMedicoCommandHandler:IRequestHandler<CreateMedicoCommand,Resp
                 return response;
             }
             var rolAsignado = await _authService.AssignRoleToUser(
-                request.UsuarioId.ToString(),
+                request.UsuarioIdentityId.ToString(),
                 rolId.ToString("D"));
 
             if (!rolAsignado.IsSuccess)
@@ -111,12 +111,12 @@ public class CreateMedicoCommandHandler:IRequestHandler<CreateMedicoCommand,Resp
 
             // 5. Actualizar usuario (Base de Datos Local)
             var usuario = await _userRepository.GetEntityAsync(
-                x => x.IdentityId == request.UsuarioId, null, false);
+                x => x.Id == request.UsuarioIdentityId, null, false);
 
             if (usuario == null)
             {
                 await ExecuteCompensations(compensations);
-                await _authService.RemoveRoleFromUser(request.UsuarioId.ToString(), rolId.ToString("D"));
+                await _authService.RemoveRoleFromUser(request.UsuarioIdentityId.ToString(), rolId.ToString("D"));
                 response.IsSuccess = false;
                 response.Message = "Usuario no encontrado";
                 response.Errors = new List<ValidationFailure>
@@ -126,8 +126,8 @@ public class CreateMedicoCommandHandler:IRequestHandler<CreateMedicoCommand,Resp
                 return response;
             }
 
-            usuario.MedicoId = medico.Id;
-            usuario.RolId = rolId;
+            usuario.Id = medico.Id;
+            usuario.RoleId = rolId;
             usuario.RolName = "MEDICO";
 
             _userRepository.UpdateEntity(usuario);
@@ -136,7 +136,7 @@ public class CreateMedicoCommandHandler:IRequestHandler<CreateMedicoCommand,Resp
             var rolIdRegistrado = await GetRoleIdByName("REGISTRADO");
             if (rolIdRegistrado != Guid.Empty)
             {
-                await _authService.RemoveRoleFromUser(request.UsuarioId.ToString(), rolIdRegistrado.ToString("D"));//remover el rol de paciente
+                await _authService.RemoveRoleFromUser(request.UsuarioIdentityId.ToString(), rolIdRegistrado.ToString("D"));//remover el rol de paciente
             }
             response.IsSuccess = true;
             response.Message = "Médico creado exitosamente";
@@ -158,9 +158,9 @@ public class CreateMedicoCommandHandler:IRequestHandler<CreateMedicoCommand,Resp
         finally
         {
             await transaction.DisposeAsync();
-        }
+        }   
         return response;
-    }
+}
 
     private async Task ExecuteCompensations(List<Func<Task>> compensations)
     {

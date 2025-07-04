@@ -1,0 +1,22 @@
+﻿<div class="modal show d-block" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">@titulo</h5>
+        <button type="button" class="btn-close" @onclick="OnClose"></button>
+      </div>
+      <div class="modal-body">
+        @if (ChildContent != null)
+        {
+            @ChildContent
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+@code {
+    [Parameter] public string? titulo { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+}

@@ -4,7 +4,7 @@ namespace AppCapasCitas.DTO.Response.Paciente;
 public class PacienteResponse
 {
     //usuario
-    public int Id { get; set; }
+    public Guid PaId { get; set; }
     public string Nombre { get; set; } = null!;
     public string Apellido { get; set; } = null!;
     public string Telefono { get; set; } = null!;
@@ -23,7 +23,6 @@ public class PacienteResponse
     public string Email { get; set; } = null!;
 
     //paciente
-    public int PacienteId { get; set; }
     public DateTime FechaNacimiento { get; set; }
     public string Genero { get; set; } = string.Empty;
     public string? Alergias { get; set; }

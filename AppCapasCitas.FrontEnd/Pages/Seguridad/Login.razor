@@ -56,26 +56,41 @@
     private string errorMessage = string.Empty;
     public bool cargando { get; set; } = false;
 
+
     private async Task OnLogin()
     {
         cargando = true;
-        var response = await proxy.LoginAsync(loginRequest);
-        if (response == null || !response.IsSuccess)
+        errorMessage = string.Empty;
+        try
+        {
+            var response = await proxy.LoginAsync(loginRequest);
+            if (response == null || !response.IsSuccess)
+            {
+                errorMessage = response?.Errors != null && response.Errors.Any()
+                    ? string.Join("<br/>", response.Errors.Select(e => e.ErrorMessage))
+                    : "Ocurrió un error desconocido.";
+                toastService.ShowError($"{response?.Message} {errorMessage}");
+                return;
+            }
+            // Autenticar usuario y guardar token en sessionStorage
+            await ((AuthenticationService)auth).Autenticar(response.Data!);
+            navigationManager.NavigateTo("/home");
+            toastService.ShowSuccess(response.Message!);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Error al iniciar sesión: " + ex.Message + " - " + ex.InnerException?.Message;
+            toastService.ShowError(errorMessage);
+        }
+        finally
         {
             cargando = false;
-            string errorMessage = response!.Message!;            
-            toastService.ShowError(errorMessage);
-            return;
         }
-        var authService = (AuthenticationService)auth;
-        await authService.Autenticar(response.Data!);
-        cargando = false;
-        navigationManager.NavigateTo("/home");
-        toastService.ShowSuccess(response.Message!);
     }
+
     public void Registrar()
     {
         navigationManager.NavigateTo("/usuario/registro");
     }
-}    
-   
+}
+

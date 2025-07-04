@@ -46,7 +46,9 @@ public class PaginationUsuarioQueryHandler : IRequestHandler<PaginationUsuarioQu
                 {
                     var usuarioVm = new UsuarioResponse
                     {
-                        IdentityId = usuario!.IdentityId,
+                        UsuarioId = usuario!.Id,
+                        RoleId = usuario.RoleId,
+                        RoleName = usuario.RolName,
                         Nombre = usuario!.Nombre,
                         Apellido = usuario!.Apellido,
                         Email = usuario!.Email,
@@ -57,7 +59,10 @@ public class PaginationUsuarioQueryHandler : IRequestHandler<PaginationUsuarioQu
                         CodigoPais = usuario!.CodigoPais,
                         Pais = usuario!.Pais,
                         Activo = usuario!.Activo,
-                        UltimoLogin = usuario.UltimoLogin
+                        UltimoLogin = usuario.UltimoLogin,
+                        // Medico
+     
+                       
                     };
                     listUsuario.Add(usuarioVm);
                 }

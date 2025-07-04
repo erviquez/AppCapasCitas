@@ -11,24 +11,24 @@ public class RecetaMedicaConfiguration : IEntityTypeConfiguration<RecetaMedica>
     {
         // Relación con Médico:
         // - Un médico puede emitir múltiples recetas
-        entity.HasOne(rm => rm.Medico)
+        entity.HasOne(rm => rm.MedicoNavigation)
                 .WithMany(m => m.RecetasMedicas)
                 .HasForeignKey(rm => rm.MedicoId)
                 .OnDelete(DeleteBehavior.Restrict);
 
         // Relación con Paciente:
         // - Un paciente puede tener múltiples recetas
-        entity.HasOne(rm => rm.Paciente)
+        entity.HasOne(rm => rm.PacienteNavigation)
                 .WithMany(p => p.RecetasMedicas)
                 .HasForeignKey(rm => rm.PacienteId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-        // Relación con Cita (opcional):
-        // - Una receta puede estar asociada a una cita específica
-        entity.HasOne(rm => rm.Cita)
+        // Relación con Cita :
+        // - Una receta está asociada a una cita específica
+        entity.HasOne(rm => rm.CitaNavigation)
                 .WithMany(c => c.RecetasMedicas)
                 .HasForeignKey(rm => rm.CitaId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.Restrict);
         // Configuración de índices para mejorar el rendimiento de búsquedas frecuentes
         entity.HasIndex(rm => rm.FechaEmision); // Búsqueda por fecha de emisión
 

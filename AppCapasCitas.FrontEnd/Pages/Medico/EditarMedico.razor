@@ -1,0 +1,225 @@
+﻿@page "/medico/EditarMedico/{UsuarioId:guid}"
+@using AppCapasCitas.DTO.Helpers
+@using AppCapasCitas.DTO.Request.Usuario
+@using AppCapasCitas.DTO.Response.Identity
+@using Microsoft.AspNetCore.Components.Forms
+@inject NavigationManager navigationManager
+@inject IToastService toastService
+@inject SweetAlertService Swal;
+@inject IMedicoProxy proxyMedico
+@inject IUsuarioProxy proxyUsuario
+@inject SweetAlertService Swal
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+
+@attribute [Authorize]
+@inject AuthenticationStateProvider auth
+@using AppCapasCitas.DTO.Request.Medico
+
+
+
+<Loading mostrar="@cargando"/>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h3 class="mb-0">Editar Médico</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Nombre*</label>
+                            <InputText class="form-control" @bind-Value="usuarioRequest.Nombre" disabled />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Apellido*</label>
+                            <InputText class="form-control" @bind-Value="usuarioRequest.Apellido" disabled />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Teléfono</label>
+                            <InputText class="form-control" @bind-Value="usuarioRequest.Telefono" disabled />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Celular</label>
+                            <InputText class="form-control" @bind-Value="usuarioRequest.Celular" disabled />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Dirección</label>
+                            <InputTextArea class="form-control" @bind-Value="usuarioRequest.Direccion" disabled />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Ciudad</label>
+                            <InputText class="form-control" @bind-Value="usuarioRequest.Ciudad" disabled />
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Estado</label>
+                            <InputText class="form-control" @bind-Value="usuarioRequest.Estado" disabled />
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">País</label>
+                            <InputSelect class="form-select" @bind-Value="usuarioRequest.CodigoPais" disabled>
+                                <option value=0>Seleccione...</option>
+                                @foreach (var pais in PaisesHelper.Paises)
+                                {
+                                    <option value="@pais.Key">@pais.Value</option>
+                                }
+                            </InputSelect>
+                        </div>
+                    </div>
+                    <div class="form-check mb-3">
+                        <InputCheckbox class="form-check-input" @bind-Value="usuarioRequest.Activo" disabled />
+                        <label class="form-check-label">Activo</label>
+                    </div>
+                    <EditForm Model="medicoRequest" class="needs-validation" OnValidSubmit="OnGuardarDatos">
+                        <DataAnnotationsValidator/>
+                        <ValidationSummary />
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <div class="alert alert-info d-flex align-items-center shadow-sm" role="alert" style="font-size:1.15rem;">
+                                    <i class="bi bi-pencil-square me-2" style="font-size:1.5rem;"></i>
+                                    <span>
+                                        <strong>Editando a:</strong>
+                                        <span class="badge bg-primary ms-2" style="font-size:1rem;">
+                                            @usuarioRequest.Nombre @usuarioRequest.Apellido
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>   
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Cédula Profesional*</label>
+                                    <InputText class="form-control" @bind-Value="medicoRequest.CedulaProfesional" />
+                                    <ValidationMessage For="(() => medicoRequest.CedulaProfesional)"/>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Biografía</label>
+                                    <InputTextArea class="form-control" @bind-Value="medicoRequest.Biografia" />
+                                    <ValidationMessage For="(() => medicoRequest.Biografia)"/>
+                                </div>
+                            </div>
+                        <div class="col-md-3 offset-md-9 float-end">
+                            <button type="button" class="btn btn-outline-secondary btn-md" @onclick="Regresar">
+                                Regresar &nbsp; <i class="bi bi-box-arrow-left"></i>
+                            </button>
+                            <button type="submit" class="btn btn-outline-primary btn-md">
+                                Guardar &nbsp; <i class="bi bi-save"></i>
+                            </button>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public Guid UsuarioId { get; set; }
+    public UsuarioRequest usuarioRequest = new();
+    public MedicoRequest medicoRequest = new(); // NUEVO
+    public bool cargando { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        cargando = true;
+        var authService = (AuthenticationService)auth;
+        var usuarioActual = await authService.GetUserActual();
+        
+        var response = await proxyUsuario.ObtenerUsuarioPorIdAsync(UsuarioId);
+        if (response.IsSuccess && response.Data != null)
+        {
+            usuarioRequest = new UsuarioRequest
+            {
+                UsuarioId = response.Data.UsuarioId,
+                Nombre = response.Data.Nombre,
+                Apellido = response.Data.Apellido,
+                Telefono = response.Data.Telefono,
+                Celular = response.Data.Celular,
+                Direccion = response.Data.Direccion,
+                Ciudad = response.Data.Ciudad,
+                Estado = response.Data.Estado,
+                CodigoPais = response.Data.CodigoPais,
+                Activo = response.Data.Activo,
+                UsuarioAccion = usuarioActual?.Id.ToString()
+            };
+
+
+            var medicoResp = await proxyMedico.ObtenerMedicoPorIdAsync(UsuarioId);
+            if (medicoResp.IsSuccess && medicoResp.Data != null)
+            {
+                medicoRequest = new MedicoRequest
+                {
+                    MedicoId = medicoResp.Data.MedicoId,
+                    CedulaProfesional = medicoResp.Data.CedulaProfesional,
+                    Biografia = medicoResp.Data.Biografia
+                };
+            }
+            else
+            {
+                toastService.ShowError("No se pudo cargar el medico.");
+                Regresar();
+            }
+            
+        }
+        else
+        {
+            toastService.ShowError("No se pudo cargar el usuario.");
+            Regresar();
+        }
+        cargando = false;
+    }
+
+    public async Task OnGuardarDatos()
+    {
+        cargando = true;
+        try
+        {
+            SweetAlertResult resultSwal = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Confirmación",
+                Text = $"¿Está seguro que desea actualizar al usuario {usuarioRequest.Nombre} {usuarioRequest.Apellido}?",
+                Icon = SweetAlertIcon.Question,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Si",
+                CancelButtonText = "No"
+            });
+            if (!string.IsNullOrEmpty(resultSwal.Value))
+            {
+                var result = await proxyMedico.ActualizarMedicoAsync(medicoRequest);
+                if (!result.IsSuccess)
+                {
+                    toastService.ShowError(result.Message!);
+                    if (result.Errors != null)
+                    {
+                        foreach (var error in result.Errors!)
+                        {
+                            toastService.ShowError($"{error.PropertyName}: {error.ErrorMessage}");
+                        }
+                    }
+                    cargando = false;
+                    return;
+               }             
+                toastService.ShowSuccess(result.Message!);
+                cargando = false;
+                Regresar();
+            }
+            cargando = false;
+        }
+        catch (Exception ex)
+        {
+            cargando = false;
+            toastService.ShowError(ex.Message!);
+        }
+    }
+
+    public void Regresar()
+    {
+        navigationManager.NavigateTo("/medico/medico");
+    }
+}

@@ -17,15 +17,16 @@ public partial class RecetaMedica: EntidadBaseAuditoria
 
         // Relaciones
         [Required]
-        public int MedicoId { get; set; }
-        public virtual Medico? Medico { get; set; }
+        
+        public Guid MedicoId { get; set; }
+        public virtual Medico? MedicoNavigation { get; set; }
 
         [Required]
-        public int PacienteId { get; set; }
-        public virtual Paciente? Paciente { get; set; }
+        public Guid PacienteId { get; set; }
+        public virtual Paciente? PacienteNavigation { get; set; }
 
-        public int? CitaId { get; set; }
-        public virtual Cita? Cita { get; set; }
+        public Guid CitaId { get; set; }
+        public virtual Cita? CitaNavigation { get; set; }
 
         public virtual ICollection<MedicamentoRecetado> Medicamentos { get; set; } = new HashSet<MedicamentoRecetado>();
     }

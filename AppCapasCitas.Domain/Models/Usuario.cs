@@ -5,15 +5,9 @@ namespace AppCapasCitas.Domain.Models;
 
 public partial class Usuario : EntidadBaseAuditoria
     {
-        public Guid IdentityId { get; set; }  
-        public Guid? RolId { get; set; }  
+        public Guid RoleId { get; set; }  
         public string RolName { get; set; } = string.Empty;
-
-        ///
-
         public string Email { get; set; } = string.Empty;
-        
-
         public string Nombre { get; set; } = string.Empty;
         public string Apellido{ get; set; } = string.Empty;
         public string Telefono { get; set; } = string.Empty;
@@ -27,9 +21,7 @@ public partial class Usuario : EntidadBaseAuditoria
         public DateTime? UltimoLogin { get; set; }
 
         // Relaciones
-        public int? PacienteId { get; set; }
-        public virtual Paciente? Paciente { get; set; }
+        public virtual Paciente? PacienteNavigation { get; set; }
 
-        public int? MedicoId { get; set; }
-        public virtual Medico? Medico { get; set; }
+        public virtual Medico? MedicoNavigation { get; set; }
     }
