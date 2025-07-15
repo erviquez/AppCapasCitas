@@ -1,0 +1,2925 @@
+<html><head>
+        <style>
+            .log-entry { margin: 5px 0; padding: 8px; border-left: 4px solid #ccc; }
+            .time { color: #666; margin-right: 10px; }
+            .level { font-weight: bold; margin-right: 10px; }
+            .trace { border-color: #aaa; }
+            .debug { border-color: #5bc0de; }
+            .information { border-color: #5cb85c; }
+            .warning { border-color: #f0ad4e; }
+            .error { border-color: #d9534f; }
+            .critical { border-color: #d9534f; background-color: #f2dede; }
+            .exception { color: #d9534f; margin-top: 5px; }
+        </style>
+        </head>Aqui esta 2222<body>
+        <div class='log-entry error'>
+            <span class='time'>2025-07-10 16:54:30</span>
+            <span class='level'>Error</span>
+            <span class='category'>Program</span>
+            <span class='message'>Error de migración</span><span class='exception'>Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (2): El sistema no puede encontrar el archivo especificado.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in D:\Licito\AppCapasCitas\AppCapasCitas.api\Program.cs:line 113
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:2,State:0,Class:20</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:54:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:54:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:54:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:54:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.aPI</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:54:59</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application is shutting down...</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-10 16:55:51</span>
+            <span class='level'>Error</span>
+            <span class='category'>Program</span>
+            <span class='message'>Error de migración</span><span class='exception'>Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (2): El sistema no puede encontrar el archivo especificado.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in D:\Licito\AppCapasCitas\AppCapasCitas.aPI\Program.cs:line 113
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:2,State:0,Class:20</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:55:51</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:55:51</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:55:51</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:55:51</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.aPI</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:55:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application is shutting down...</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (35ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:56:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.aPI</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-10 16:57:19</span>
+            <span class='level'>Error</span>
+            <span class='category'>AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommand</span>
+            <span class='message'>Application Request: Sucedio una excepcion para el request GenerateReporteCommand AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommand</span><span class='exception'>System.Text.Json.JsonException: 'A' is an invalid start of a value. Path: $ | LineNumber: 0 | BytePositionInLine: 0.
+ ---> System.Text.Json.JsonReaderException: 'A' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()
+   at System.Text.Json.Utf8JsonReader.Read()
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack& state, JsonReaderException ex)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Utf8JsonReader& reader, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 utf8Json, JsonTypeInfo`1 jsonTypeInfo, Nullable`1 actualByteCount)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 json, JsonTypeInfo`1 jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.Deserialize[TValue](String json, JsonSerializerOptions options)
+   at AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommandHandler.Handle(GenerateReporteCommand request, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Features\Reportes\Commands\GenerateReporteCommandHandler.cs:line 22
+   at AppCapasCitas.Application.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\ValidationBehaviour.cs:line 23
+   at AppCapasCitas.Application.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\UnhandledExceptionBehaviour.cs:line 20</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-10 16:57:19</span>
+            <span class='level'>Error</span>
+            <span class='category'>Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware</span>
+            <span class='message'>An unhandled exception has occurred while executing the request.</span><span class='exception'>System.Text.Json.JsonException: 'A' is an invalid start of a value. Path: $ | LineNumber: 0 | BytePositionInLine: 0.
+ ---> System.Text.Json.JsonReaderException: 'A' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()
+   at System.Text.Json.Utf8JsonReader.Read()
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack& state, JsonReaderException ex)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Utf8JsonReader& reader, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 utf8Json, JsonTypeInfo`1 jsonTypeInfo, Nullable`1 actualByteCount)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 json, JsonTypeInfo`1 jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.Deserialize[TValue](String json, JsonSerializerOptions options)
+   at AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommandHandler.Handle(GenerateReporteCommand request, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Features\Reportes\Commands\GenerateReporteCommandHandler.cs:line 22
+   at AppCapasCitas.Application.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\ValidationBehaviour.cs:line 23
+   at AppCapasCitas.Application.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\UnhandledExceptionBehaviour.cs:line 20
+   at AppCapasCitas.API.Controllers.ReportController.GenerarReportePacientes(ReportePacienteRequest request) in D:\Licito\AppCapasCitas\AppCapasCitas.aPI\Controllers\ReporteController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:25</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application is shutting down...</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (29ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:56</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 16:57:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-10 17:01:38</span>
+            <span class='level'>Error</span>
+            <span class='category'>AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommand</span>
+            <span class='message'>Application Request: Sucedio una excepcion para el request GenerateReporteCommand AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommand</span><span class='exception'>System.Text.Json.JsonException: 'A' is an invalid start of a value. Path: $ | LineNumber: 0 | BytePositionInLine: 0.
+ ---> System.Text.Json.JsonReaderException: 'A' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()
+   at System.Text.Json.Utf8JsonReader.Read()
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack& state, JsonReaderException ex)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Utf8JsonReader& reader, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 utf8Json, JsonTypeInfo`1 jsonTypeInfo, Nullable`1 actualByteCount)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 json, JsonTypeInfo`1 jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.Deserialize[TValue](String json, JsonSerializerOptions options)
+   at AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommandHandler.Handle(GenerateReporteCommand request, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Features\Reportes\Commands\GenerateReporteCommandHandler.cs:line 22
+   at AppCapasCitas.Application.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\ValidationBehaviour.cs:line 23
+   at AppCapasCitas.Application.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\UnhandledExceptionBehaviour.cs:line 20</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-10 17:02:00</span>
+            <span class='level'>Error</span>
+            <span class='category'>Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware</span>
+            <span class='message'>An unhandled exception has occurred while executing the request.</span><span class='exception'>System.Text.Json.JsonException: 'A' is an invalid start of a value. Path: $ | LineNumber: 0 | BytePositionInLine: 0.
+ ---> System.Text.Json.JsonReaderException: 'A' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()
+   at System.Text.Json.Utf8JsonReader.Read()
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack& state, JsonReaderException ex)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Utf8JsonReader& reader, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 utf8Json, JsonTypeInfo`1 jsonTypeInfo, Nullable`1 actualByteCount)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 json, JsonTypeInfo`1 jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.Deserialize[TValue](String json, JsonSerializerOptions options)
+   at AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommandHandler.Handle(GenerateReporteCommand request, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Features\Reportes\Commands\GenerateReporteCommandHandler.cs:line 22
+   at AppCapasCitas.Application.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\ValidationBehaviour.cs:line 23
+   at AppCapasCitas.Application.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\UnhandledExceptionBehaviour.cs:line 20
+   at AppCapasCitas.API.Controllers.ReportController.GenerarReportePacientes(ReportePacienteRequest request) in d:\Licito\AppCapasCitas\AppCapasCitas.API\Controllers\ReporteController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-10 17:02:26</span>
+            <span class='level'>Error</span>
+            <span class='category'>AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommand</span>
+            <span class='message'>Application Request: Sucedio una excepcion para el request GenerateReporteCommand AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommand</span><span class='exception'>System.Text.Json.JsonException: 'A' is an invalid start of a value. Path: $ | LineNumber: 0 | BytePositionInLine: 0.
+ ---> System.Text.Json.JsonReaderException: 'A' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()
+   at System.Text.Json.Utf8JsonReader.Read()
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack& state, JsonReaderException ex)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Utf8JsonReader& reader, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 utf8Json, JsonTypeInfo`1 jsonTypeInfo, Nullable`1 actualByteCount)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 json, JsonTypeInfo`1 jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.Deserialize[TValue](String json, JsonSerializerOptions options)
+   at AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommandHandler.Handle(GenerateReporteCommand request, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Features\Reportes\Commands\GenerateReporteCommandHandler.cs:line 22
+   at AppCapasCitas.Application.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\ValidationBehaviour.cs:line 23
+   at AppCapasCitas.Application.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\UnhandledExceptionBehaviour.cs:line 20</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-10 17:02:39</span>
+            <span class='level'>Error</span>
+            <span class='category'>Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware</span>
+            <span class='message'>An unhandled exception has occurred while executing the request.</span><span class='exception'>System.Text.Json.JsonException: 'A' is an invalid start of a value. Path: $ | LineNumber: 0 | BytePositionInLine: 0.
+ ---> System.Text.Json.JsonReaderException: 'A' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()
+   at System.Text.Json.Utf8JsonReader.Read()
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack& state, JsonReaderException ex)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Utf8JsonReader& reader, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 utf8Json, JsonTypeInfo`1 jsonTypeInfo, Nullable`1 actualByteCount)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 json, JsonTypeInfo`1 jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.Deserialize[TValue](String json, JsonSerializerOptions options)
+   at AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommandHandler.Handle(GenerateReporteCommand request, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Features\Reportes\Commands\GenerateReporteCommandHandler.cs:line 22
+   at AppCapasCitas.Application.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\ValidationBehaviour.cs:line 23
+   at AppCapasCitas.Application.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\UnhandledExceptionBehaviour.cs:line 20
+   at AppCapasCitas.API.Controllers.ReportController.GenerarReportePacientes(ReportePacienteRequest request) in d:\Licito\AppCapasCitas\AppCapasCitas.API\Controllers\ReporteController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (35ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:03:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (52ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:05:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.aPI</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-10 17:06:01</span>
+            <span class='level'>Error</span>
+            <span class='category'>AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommand</span>
+            <span class='message'>Application Request: Sucedio una excepcion para el request GenerateReporteCommand AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommand</span><span class='exception'>System.Text.Json.JsonException: 'A' is an invalid start of a value. Path: $ | LineNumber: 0 | BytePositionInLine: 0.
+ ---> System.Text.Json.JsonReaderException: 'A' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()
+   at System.Text.Json.Utf8JsonReader.Read()
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack& state, JsonReaderException ex)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Utf8JsonReader& reader, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 utf8Json, JsonTypeInfo`1 jsonTypeInfo, Nullable`1 actualByteCount)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 json, JsonTypeInfo`1 jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.Deserialize[TValue](String json, JsonSerializerOptions options)
+   at AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommandHandler.Handle(GenerateReporteCommand request, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Features\Reportes\Commands\GenerateReporteCommandHandler.cs:line 28
+   at AppCapasCitas.Application.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\ValidationBehaviour.cs:line 23
+   at AppCapasCitas.Application.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\UnhandledExceptionBehaviour.cs:line 20</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-10 17:06:01</span>
+            <span class='level'>Error</span>
+            <span class='category'>Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware</span>
+            <span class='message'>An unhandled exception has occurred while executing the request.</span><span class='exception'>System.Text.Json.JsonException: 'A' is an invalid start of a value. Path: $ | LineNumber: 0 | BytePositionInLine: 0.
+ ---> System.Text.Json.JsonReaderException: 'A' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()
+   at System.Text.Json.Utf8JsonReader.Read()
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack& state, JsonReaderException ex)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Utf8JsonReader& reader, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 utf8Json, JsonTypeInfo`1 jsonTypeInfo, Nullable`1 actualByteCount)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 json, JsonTypeInfo`1 jsonTypeInfo)
+   at System.Text.Json.JsonSerializer.Deserialize[TValue](String json, JsonSerializerOptions options)
+   at AppCapasCitas.Application.Features.Reports.Commands.GenerateReport.GenerateReporteCommandHandler.Handle(GenerateReporteCommand request, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Features\Reportes\Commands\GenerateReporteCommandHandler.cs:line 28
+   at AppCapasCitas.Application.Behaviours.ValidationBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\ValidationBehaviour.cs:line 23
+   at AppCapasCitas.Application.Behaviours.UnhandledExceptionBehaviour`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\Licito\AppCapasCitas\AppCapasCitas.Application\Behaviours\UnhandledExceptionBehaviour.cs:line 20
+   at AppCapasCitas.API.Controllers.ReportController.GenerarReportePacientes(ReportePacienteRequest request) in D:\Licito\AppCapasCitas\AppCapasCitas.aPI\Controllers\ReporteController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:06:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application is shutting down...</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (34ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (26ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:30</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.aPI</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:08:35</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application is shutting down...</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (35ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (32ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:00</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:09:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:10:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (92ms) [Parameters=[@__request_FiltroNombre_0_contains='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[id], [p].[activo], [p].[alergias], [p].[antecedentes_familiares], [p].[antecedentes_personales], [p].[creado_por], [p].[enfermedades_cronicas], [p].[estado_civil], [p].[fecha_actualizacion], [p].[fecha_creacion], [p].[fecha_nacimiento], [p].[genero], [p].[medicamentos_actuales], [p].[modificado_por], [p].[observaciones], [p].[ocupacion], [p].[tipo_sangre_id]
+FROM [paciente] AS [p]
+LEFT JOIN [usuario] AS [u] ON [p].[id] = [u].[id]
+WHERE [u].[nombre] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\' OR [u].[apellido] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\'
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-10 17:10:03</span>
+            <span class='level'>Error</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Error al generar reporte de pacientes</span><span class='exception'>iText.Kernel.Exceptions.PdfException: Unknown PdfException.
+ ---> System.NotSupportedException: Either com.itextpdf:bouncy-castle-adapter or com.itextpdf:bouncy-castle-fips-adapter dependency must be added in order to use BouncyCastleFactoryCreator
+   at iText.Bouncycastleconnector.BouncyCastleDefaultFactory.CreateIDigest(String hashAlgorithm)
+   at iText.Kernel.Pdf.SmartModePdfObjectsSerializer..ctor()
+   --- End of inner exception stack trace ---
+   at iText.Kernel.Pdf.SmartModePdfObjectsSerializer..ctor()
+   at iText.Kernel.Pdf.PdfWriter..ctor(Stream os, WriterProperties properties)
+   at iText.Kernel.Pdf.PdfWriter..ctor(Stream os)
+   at AppCapasCitas.Reporting.Services.ReporteService.GenerarReportePacientesAsync(ReportePacienteRequest request) in D:\Licito\AppCapasCitas\AppCapasCitas.Reporting\Services\ReporteService.cs:line 67</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:10:58</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (27ms) [Parameters=[@__request_FiltroNombre_0_contains='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[id], [p].[activo], [p].[alergias], [p].[antecedentes_familiares], [p].[antecedentes_personales], [p].[creado_por], [p].[enfermedades_cronicas], [p].[estado_civil], [p].[fecha_actualizacion], [p].[fecha_creacion], [p].[fecha_nacimiento], [p].[genero], [p].[medicamentos_actuales], [p].[modificado_por], [p].[observaciones], [p].[ocupacion], [p].[tipo_sangre_id]
+FROM [paciente] AS [p]
+LEFT JOIN [usuario] AS [u] ON [p].[id] = [u].[id]
+WHERE [u].[nombre] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\' OR [u].[apellido] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\'
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-10 17:15:35</span>
+            <span class='level'>Error</span>
+            <span class='category'>Program</span>
+            <span class='message'>Error de migración</span><span class='exception'>Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (2): El sistema no puede encontrar el archivo especificado.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass20_0.<<ExistsAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in D:\Licito\AppCapasCitas\AppCapasCitas.aPI\Program.cs:line 113
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:2,State:0,Class:20</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:15:35</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:15:35</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:15:35</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:15:35</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.aPI</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:15:52</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application is shutting down...</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (55ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (125ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:01</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.aPI</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:16:45</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (55ms) [Parameters=[@__request_FiltroNombre_0_contains='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[id], [p].[activo], [p].[alergias], [p].[antecedentes_familiares], [p].[antecedentes_personales], [p].[creado_por], [p].[enfermedades_cronicas], [p].[estado_civil], [p].[fecha_actualizacion], [p].[fecha_creacion], [p].[fecha_nacimiento], [p].[genero], [p].[medicamentos_actuales], [p].[modificado_por], [p].[observaciones], [p].[ocupacion], [p].[tipo_sangre_id]
+FROM [paciente] AS [p]
+LEFT JOIN [usuario] AS [u] ON [p].[id] = [u].[id]
+WHERE [u].[nombre] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\' OR [u].[apellido] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\'
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry error'>
+            <span class='time'>2025-07-10 17:16:47</span>
+            <span class='level'>Error</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Error al generar reporte de pacientes</span><span class='exception'>System.NullReferenceException: Object reference not set to an instance of an object.
+   at AppCapasCitas.Reporting.Services.ReporteService.<>c.<GenerarReportePacientesAsync>b__7_1(Paciente p) in D:\Licito\AppCapasCitas\AppCapasCitas.Reporting\Services\ReporteService.cs:line 86
+   at AppCapasCitas.Reporting.Helpers.PdfHelper.CrearTabla[T](List`1 headers, List`1 data, Func`2 dataExtractor, List`1 columnWidths) in D:\Licito\AppCapasCitas\AppCapasCitas.Reporting\Helpers\PdfHelper.cs:line 81
+   at AppCapasCitas.Reporting.Services.ReporteService.GenerarReportePacientesAsync(ReportePacienteRequest request) in D:\Licito\AppCapasCitas\AppCapasCitas.Reporting\Services\ReporteService.cs:line 86</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:18:53</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application is shutting down...</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (28ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (31ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:11</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:11</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:11</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:11</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:19:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (36ms) [Parameters=[@__request_FiltroNombre_0_contains='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[id], [p].[activo], [p].[alergias], [p].[antecedentes_familiares], [p].[antecedentes_personales], [p].[creado_por], [p].[enfermedades_cronicas], [p].[estado_civil], [p].[fecha_actualizacion], [p].[fecha_creacion], [p].[fecha_nacimiento], [p].[genero], [p].[medicamentos_actuales], [p].[modificado_por], [p].[observaciones], [p].[ocupacion], [p].[tipo_sangre_id], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login]
+FROM [paciente] AS [p]
+LEFT JOIN [usuario] AS [u] ON [p].[id] = [u].[id]
+WHERE [u].[nombre] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\' OR [u].[apellido] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\'
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:20:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Reporte de pacientes generado: 1 registros</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (38ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (30ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:23:19</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:24:12</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (22ms) [Parameters=[@__request_FiltroNombre_0_contains='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[id], [p].[activo], [p].[alergias], [p].[antecedentes_familiares], [p].[antecedentes_personales], [p].[creado_por], [p].[enfermedades_cronicas], [p].[estado_civil], [p].[fecha_actualizacion], [p].[fecha_creacion], [p].[fecha_nacimiento], [p].[genero], [p].[medicamentos_actuales], [p].[modificado_por], [p].[observaciones], [p].[ocupacion], [p].[tipo_sangre_id], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login]
+FROM [paciente] AS [p]
+LEFT JOIN [usuario] AS [u] ON [p].[id] = [u].[id]
+WHERE [u].[nombre] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\' OR [u].[apellido] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\'
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:24:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Reporte de pacientes generado: 1 registros</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (41ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (30ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:53:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:55:36</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (60ms) [Parameters=[@__request_FiltroNombre_0_contains='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[id], [p].[activo], [p].[alergias], [p].[antecedentes_familiares], [p].[antecedentes_personales], [p].[creado_por], [p].[enfermedades_cronicas], [p].[estado_civil], [p].[fecha_actualizacion], [p].[fecha_creacion], [p].[fecha_nacimiento], [p].[genero], [p].[medicamentos_actuales], [p].[modificado_por], [p].[observaciones], [p].[ocupacion], [p].[tipo_sangre_id], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login]
+FROM [paciente] AS [p]
+LEFT JOIN [usuario] AS [u] ON [p].[id] = [u].[id]
+WHERE [u].[nombre] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\' OR [u].[apellido] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\'
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:55:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Reporte de pacientes generado: 1 registros</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:56:58</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (50ms) [Parameters=[@__request_FiltroNombre_0_contains='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[id], [p].[activo], [p].[alergias], [p].[antecedentes_familiares], [p].[antecedentes_personales], [p].[creado_por], [p].[enfermedades_cronicas], [p].[estado_civil], [p].[fecha_actualizacion], [p].[fecha_creacion], [p].[fecha_nacimiento], [p].[genero], [p].[medicamentos_actuales], [p].[modificado_por], [p].[observaciones], [p].[ocupacion], [p].[tipo_sangre_id], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login]
+FROM [paciente] AS [p]
+LEFT JOIN [usuario] AS [u] ON [p].[id] = [u].[id]
+WHERE [u].[nombre] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\' OR [u].[apellido] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\'
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:57:33</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Reporte de pacientes generado: 1 registros</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:58:31</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__request_FiltroNombre_0_contains='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[id], [p].[activo], [p].[alergias], [p].[antecedentes_familiares], [p].[antecedentes_personales], [p].[creado_por], [p].[enfermedades_cronicas], [p].[estado_civil], [p].[fecha_actualizacion], [p].[fecha_creacion], [p].[fecha_nacimiento], [p].[genero], [p].[medicamentos_actuales], [p].[modificado_por], [p].[observaciones], [p].[ocupacion], [p].[tipo_sangre_id], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login]
+FROM [paciente] AS [p]
+LEFT JOIN [usuario] AS [u] ON [p].[id] = [u].[id]
+WHERE [u].[nombre] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\' OR [u].[apellido] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\'
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 17:58:31</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Reporte de pacientes generado: 1 registros</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:09</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (44ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:09</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:09</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (43ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:20</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (27ms) [Parameters=[@__request_FiltroNombre_0_contains='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[id], [p].[activo], [p].[alergias], [p].[antecedentes_familiares], [p].[antecedentes_personales], [p].[creado_por], [p].[enfermedades_cronicas], [p].[estado_civil], [p].[fecha_actualizacion], [p].[fecha_creacion], [p].[fecha_nacimiento], [p].[genero], [p].[medicamentos_actuales], [p].[modificado_por], [p].[observaciones], [p].[ocupacion], [p].[tipo_sangre_id], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login]
+FROM [paciente] AS [p]
+LEFT JOIN [usuario] AS [u] ON [p].[id] = [u].[id]
+WHERE [u].[nombre] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\' OR [u].[apellido] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\'
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:35:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Reporte de pacientes generado: 1 registros</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:17</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (99ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:17</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:17</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (55ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:18</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (23ms) [Parameters=[@__request_FiltroNombre_0_contains='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[id], [p].[activo], [p].[alergias], [p].[antecedentes_familiares], [p].[antecedentes_personales], [p].[creado_por], [p].[enfermedades_cronicas], [p].[estado_civil], [p].[fecha_actualizacion], [p].[fecha_creacion], [p].[fecha_nacimiento], [p].[genero], [p].[medicamentos_actuales], [p].[modificado_por], [p].[observaciones], [p].[ocupacion], [p].[tipo_sangre_id], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login]
+FROM [paciente] AS [p]
+LEFT JOIN [usuario] AS [u] ON [p].[id] = [u].[id]
+WHERE [u].[nombre] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\' OR [u].[apellido] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\'
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:48:45</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Reporte de pacientes generado: 1 registros</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:50:08</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__request_FiltroNombre_0_contains='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[id], [p].[activo], [p].[alergias], [p].[antecedentes_familiares], [p].[antecedentes_personales], [p].[creado_por], [p].[enfermedades_cronicas], [p].[estado_civil], [p].[fecha_actualizacion], [p].[fecha_creacion], [p].[fecha_nacimiento], [p].[genero], [p].[medicamentos_actuales], [p].[modificado_por], [p].[observaciones], [p].[ocupacion], [p].[tipo_sangre_id], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login]
+FROM [paciente] AS [p]
+LEFT JOIN [usuario] AS [u] ON [p].[id] = [u].[id]
+WHERE [u].[nombre] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\' OR [u].[apellido] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\'
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:50:09</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Reporte de pacientes generado: 1 registros</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (47ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:02</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:12</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (28ms) [Parameters=[@__request_FiltroNombre_0_contains='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[id], [p].[activo], [p].[alergias], [p].[antecedentes_familiares], [p].[antecedentes_personales], [p].[creado_por], [p].[enfermedades_cronicas], [p].[estado_civil], [p].[fecha_actualizacion], [p].[fecha_creacion], [p].[fecha_nacimiento], [p].[genero], [p].[medicamentos_actuales], [p].[modificado_por], [p].[observaciones], [p].[ocupacion], [p].[tipo_sangre_id], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login]
+FROM [paciente] AS [p]
+LEFT JOIN [usuario] AS [u] ON [p].[id] = [u].[id]
+WHERE [u].[nombre] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\' OR [u].[apellido] LIKE @__request_FiltroNombre_0_contains ESCAPE N'\'
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-10 18:51:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Reporte de pacientes generado: 1 registros</span></div>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "B7bEErFyEgs=",
+  "dgSpecHash": "OrvxxzFY+88=",
   "success": true,
-  "projectFilePath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.frontEnd\\AppCapasCitas.FrontEnd.csproj",
+  "projectFilePath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\erdv\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\blazor.bootstrap.3.3.1.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\blazored.sessionstorage\\2.4.0\\blazored.sessionstorage.2.4.0.nupkg.sha512",
@@ -40,9 +40,9 @@
     "C:\\Users\\erdv\\.nuget\\packages\\microsoft.jsinterop\\9.0.4\\microsoft.jsinterop.9.0.4.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\microsoft.jsinterop.webassembly\\9.0.4\\microsoft.jsinterop.webassembly.9.0.4.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.6\\microsoft.net.illink.tasks.9.0.6.nupkg.sha512",
-    "C:\\Users\\erdv\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.6\\microsoft.net.sdk.webassembly.pack.9.0.6.nupkg.sha512",
+    "C:\\Users\\erdv\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.7\\microsoft.net.sdk.webassembly.pack.9.0.7.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.11.0\\system.identitymodel.tokens.jwt.8.11.0.nupkg.sha512",
-    "C:\\Users\\erdv\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\9.0.6\\microsoft.netcore.app.runtime.mono.browser-wasm.9.0.6.nupkg.sha512"
+    "C:\\Users\\erdv\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\9.0.7\\microsoft.netcore.app.runtime.mono.browser-wasm.9.0.7.nupkg.sha512"
   ],
   "logs": []
 }

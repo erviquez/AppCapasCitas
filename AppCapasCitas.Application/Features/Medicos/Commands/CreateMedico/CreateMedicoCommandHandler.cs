@@ -1,5 +1,6 @@
 using System;
-using AppCapasCitas.Application.Contracts.Identity;
+using AppCapasCitas.Application.Contracts.Persistence.Identity;
+
 using AppCapasCitas.Application.Contracts.Persistence;
 using AppCapasCitas.Domain.Models;
 using AppCapasCitas.Transversal.Common;

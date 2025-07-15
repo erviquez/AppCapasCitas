@@ -17,8 +17,9 @@ public partial class Usuario : EntidadBaseAuditoria
         public Int32 CodigoPais { get; set; }
         public string Pais { get; set; } = string.Empty;
         public string Estado { get; set; } = string.Empty;  
+        public string? Genero { get; set; }
         ///
-        public DateTime? UltimoLogin { get; set; }
+    public DateTime? UltimoLogin { get; set; }
 
         // Relaciones
         public virtual Paciente? PacienteNavigation { get; set; }

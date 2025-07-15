@@ -39,6 +39,7 @@ public interface IAsyncRepository<T> where T : class
                           , CancellationToken cancellationToken = default);
 
     Task<T> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+    Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
     Task<T> AddAsync(T entity, CancellationToken cancellationToken = default);
 

@@ -1,4 +1,4 @@
-using AppCapasCitas.Application.Contracts.Identity;
+using AppCapasCitas.Application.Contracts.Persistence.Identity;
 using AppCapasCitas.Application.Models.Identity;
 using AppCapasCitas.DTO.Request.Identity;
 using AppCapasCitas.DTO.Response.Identity;
@@ -603,14 +603,14 @@ public class AuthService : IAuthService
         var jwtTokenHandler = new JwtSecurityTokenHandler();
 
         // Crear clave de seguridad usando la clave secreta de configuración
-        var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtSettings.Key));
+        var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
 
         // 2. OBTENER CLAIMS (ATRIBUTOS) DEL USUARIO
         // Obtener todos los claims personalizados del usuario
         var userClaims = await _userManager.GetClaimsAsync(user);
-
         // Obtener todos los roles del usuario
         var roles = await _userManager.GetRolesAsync(user);
+
 
         // 3. PREPARAR CLAIMS DE ROLES
         var roleClaims = new List<Claim>();
@@ -625,10 +625,13 @@ public class AuthService : IAuthService
             // Combinar tres tipos de claims:
             Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim("Id", user.Id),  // ID del usuario
+                    new Claim("uid", user.Id),
+                    new Claim("email", user.Email!),
                     new Claim(JwtRegisteredClaimNames.Email, user.Email!),  // Email
                     new Claim(JwtRegisteredClaimNames.Sub, user.Email!),  // Subject
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())  // ID único del token
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),  // ID único del token
+                    new Claim(JwtRegisteredClaimNames.Iat, new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64)
+           
                 }
                 .Union(userClaims)  // Claims personalizados
                 .Union(roleClaims)),  // Claims de roles
@@ -656,7 +659,6 @@ public class AuthService : IAuthService
             UserId = user.Id,  // Dueño del token
             CreateDate = DateTime.UtcNow,  // Fecha creación
             ExpireDate = DateTime.UtcNow.AddMonths(6),  // Expira en 6 meses
-
             // Token complejo (caracteres aleatorios + GUID)
             Token = $"{GenerateRandomTokenCharacters(35)}{Guid.NewGuid()}"
         };

@@ -20,8 +20,17 @@
     <ProjectReference Include="..\AppCapasCitas.DTO\AppCapasCitas.DTO.csproj" />
     <ProjectReference Include="..\AppCapasCitas.Identity\AppCapasCitas.Identity.csproj" />
     <ProjectReference Include="..\AppCapasCitas.Infrastructure\AppCapasCitas.Infrastructure.csproj" />
+    <ProjectReference Include="..\AppCapasCitas.Reporting\AppCapasCitas.Reporting.csproj" />
     <ProjectReference Include="..\AppCapasCitas.Transversal.Common\AppCapasCitas.Transversal.Common.csproj" />
     <ProjectReference Include="..\AppCapasCitas.Transversal.Logging\AppCapasCitas.Transversal.Logging.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\images\backgrounds\" />
+    <Folder Include="wwwroot\images\icons\" />
+    <Folder Include="wwwroot\images\logos\" />
   </ItemGroup>
 
 

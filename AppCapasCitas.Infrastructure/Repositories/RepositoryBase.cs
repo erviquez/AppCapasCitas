@@ -104,10 +104,16 @@ public class RepositoryBase<T> : IAsyncRepository<T> where T : class
         return await query.ToListAsync();
     }
 
+    
     public async Task<T> GetByIdAsync(int id, CancellationToken cancellationToken = default)
-    {
+    {        
         return (await _context.Set<T>().FindAsync(id))!;
     }
+    public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    {        
+        return (await _context.Set<T>().FindAsync(id))!;
+    }
+
     public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default)
     {
         return await _context.Set<T>().Where(predicate).ToListAsync();

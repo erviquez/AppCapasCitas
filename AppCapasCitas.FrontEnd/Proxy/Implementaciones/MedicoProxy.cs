@@ -112,37 +112,34 @@ public class MedicoProxy : IMedicoProxy
             return response;
         }
         var result = await _httpClient.PutAsJsonAsync("api/v1/Medico/", medicoRequest!);
-        if (result.IsSuccessStatusCode)
+        response = await result.Content.ReadFromJsonAsync<Response<bool>>();
+        return response!;
+    }
+
+
+    public async Task<Response<MedicoResponse>> ObtenerMedicoPorIdAsync(Guid medicoId)
+    {
+        var response = new Response<MedicoResponse>();
+        try
         {
-            response = await result.Content.ReadFromJsonAsync<Response<bool>>();
-            return response!;
-        }
-        response.IsSuccess = false;
-        response.Message = "No se pudo actualizar el médico";
-        return response;
-    }     
-    
-        public async Task<Response<MedicoResponse>> ObtenerMedicoPorIdAsync(Guid medicoId)
-        {
-            var response = new Response<MedicoResponse>();
-            try
+            var result = await _httpClient.GetAsync($"api/v1/Medico/GetById/{medicoId}");
+            if (result.IsSuccessStatusCode)
             {
-                var result = await _httpClient.GetAsync($"api/v1/Medico/GetById/{medicoId}");
-                if (result.IsSuccessStatusCode)
-                {
-                    response = await result.Content.ReadFromJsonAsync<Response<MedicoResponse>>();
-                    return response!;
-                }
-                response.IsSuccess = false;
-                response.Message = "No se pudo recuperar el usuario por ID";
-                return response;    
+                response = await result.Content.ReadFromJsonAsync<Response<MedicoResponse>>();
+                return response!;
             }
-            catch (Exception ex)
-            {
-                response!.IsSuccess = false;
-                response.Message = "Error al obtener el medico por ID: " + ex.Message;
-                response.Errors = new List<ValidationFailure> { new ValidationFailure("Error", ex.Message) };
-            }
+            response.IsSuccess = false;
+            response.Message = "No se pudo recuperar el usuario por ID";
             return response;
         }
+        catch (Exception ex)
+        {
+            response!.IsSuccess = false;
+            response.Message = "Error al obtener el medico por ID: " + ex.Message;
+            response.Errors = new List<ValidationFailure> { new ValidationFailure("Error", ex.Message) };
+        }
+        return response;
+    }
+        
+    
 }

@@ -135,11 +135,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
+      "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
       "projectName": "AppCapasCitas.DTO",
-      "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
+      "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
       "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-      "outputPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\obj\\",
+      "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

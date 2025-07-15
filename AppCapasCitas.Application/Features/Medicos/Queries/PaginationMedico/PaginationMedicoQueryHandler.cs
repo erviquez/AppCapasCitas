@@ -4,6 +4,7 @@ using AppCapasCitas.Application.Specifications.Medicos;
 using AppCapasCitas.Domain.Models;
 using AppCapasCitas.DTO.Response.Medico;
 using AppCapasCitas.Transversal.Common;
+using AutoMapper;
 using MediatR;
 
 namespace AppCapasCitas.Application.Features.Medicos.Queries.PaginationMedico;
@@ -11,11 +12,12 @@ namespace AppCapasCitas.Application.Features.Medicos.Queries.PaginationMedico;
 public class PaginationMedicoQueryHandler: IRequestHandler<PaginationMedicoQuery, ResponsePagination<IReadOnlyList<MedicoResponse>>>
 {
     private readonly IUnitOfWork _unitOfWork;
-   
+    private readonly IMapper _mapper;
 
-    public PaginationMedicoQueryHandler(IUnitOfWork unitOfWork)
+    public PaginationMedicoQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
+        _mapper = mapper;
     }
 
     public async Task<ResponsePagination<IReadOnlyList<MedicoResponse>>> Handle(PaginationMedicoQuery request, CancellationToken cancellationToken)
@@ -39,41 +41,8 @@ public class PaginationMedicoQueryHandler: IRequestHandler<PaginationMedicoQuery
             var totalMedicos = await _unitOfWork.GetRepository<Medico>().CountAsyncWithSpec(specCount);
 
             var rounded = Math.Ceiling(Convert.ToDecimal(totalMedicos) / Convert.ToDecimal(medicoSpecificationParams.PageSize));
-            var totalPages = Convert.ToInt32(rounded);
-
-            //var data = _mapper.Map<IReadOnlyList<Usuario>, IReadOnlyList<MedicoVm>>(medicos);  
-            var listMedico = new List<MedicoResponse>();
-            foreach (var medico in medicos)
-            {
-                var medicoVm = new MedicoResponse
-                {
-                    //Id = medico.Id,
-                    MedicoId = medico.UsuarioNavigation!.Id,
-                    Nombre = medico.UsuarioNavigation!.Nombre,
-                    Apellido = medico.UsuarioNavigation!.Apellido,
-                    Telefono = medico.UsuarioNavigation!.Telefono,
-                    Celular = medico.UsuarioNavigation!.Celular,
-                    Direccion = medico.UsuarioNavigation!.Direccion,
-                    Ciudad = medico.UsuarioNavigation!.Ciudad,
-                    CodigoPais = medico.UsuarioNavigation!.CodigoPais,
-                    Pais = medico.UsuarioNavigation!.Pais,
-                    Estado = medico.UsuarioNavigation!.Estado,
-                    Activo = medico.UsuarioNavigation!.Activo,
-                    UltimoLogin = medico.UsuarioNavigation!.UltimoLogin,
-                    FechaCreacion = medico.UsuarioNavigation!.FechaCreacion,
-                    FechaActualizacion = medico.UsuarioNavigation!.FechaActualizacion,
-                    CreadoPor = medico.UsuarioNavigation!.CreadoPor,
-                    ModificadoPor = medico.UsuarioNavigation!.ModificadoPor,
-                    Email = medico.UsuarioNavigation!.Email,
-                    CedulaProfesional = medico.CedulaProfesional ?? string.Empty,
-                    Biografia = medico.Biografia!,
-                    //pendiente especialidades y hospitales
-
-               
-                };
-                listMedico.Add(medicoVm);
-            }
-  
+            var totalPages = Convert.ToInt32(rounded);           
+            var medicoResponse = _mapper.Map<List<MedicoResponse>>(medicos);  
             responsePagination = new ResponsePagination<IReadOnlyList<MedicoResponse>>
             {
                     PageNumber = request.PageIndex,
@@ -82,7 +51,7 @@ public class PaginationMedicoQueryHandler: IRequestHandler<PaginationMedicoQuery
                     TotalCount = totalMedicos,
                     IsSuccess = true,
                     Message = "Lista de medicos obtenida correctamente",
-                    Data = listMedico
+                    Data = medicoResponse
             };
         }
         catch (Exception ex)

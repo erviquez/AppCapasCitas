@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama UML Completo - AppCapasCitas</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .info-panel {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            display: block;
+        }
+        .tabs {
+            display: flex;
+            background: #ecf0f1;
+            margin: 0;
+            overflow-x: auto;
+        }
+        .tab {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 15px 25px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+        }
+        .tab:hover {
+            background: #d5dbdb;
+            transform: translateY(-2px);
+        }
+        .tab.active {
+            background: white;
+            border-bottom: 3px solid #3498db;
+            color: #2c3e50;
+        }
+        .tab-content {
+            display: none;
+            padding: 30px;
+            background: white;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .diagram-container {
+            background: #fafafa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .diagram-container h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 1.3em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .legend {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px solid #333;
+        }
+        .export-section {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #dee2e6;
+        }
+        .export-btn {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+        }
+        .section-title {
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 Sistema de Citas Médicas</h1>
+            <h2>AppCapasCitas - Diagrama UML Completo</h2>
+        </div>
+        
+        <div class="info-panel">
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number">20</span>
+                    <span>Entidades</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">35+</span>
+                    <span>Relaciones</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5</span>
+                    <span>Capas</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">.NET 8</span>
+                    <span>Framework</span>
+                </div>
+            </div>
+            <p><strong>Arquitectura:</strong> Clean Architecture (DDD) | <strong>Tecnología:</strong> Blazor Server, Entity Framework Core | <strong>Base de Datos:</strong> SQL Server</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('complete')">🎯 Modelo Completo</button>
+            <button class="tab" onclick="showTab('core')">⚡ Entidades Core</button>
+            <button class="tab" onclick="showTab('medical')">🏥 Módulo Médico</button>
+            <button class="tab" onclick="showTab('infrastructure')">🏗️ Infraestructura</button>
+            <button class="tab" onclick="showTab('er')">📊 Diagrama ER</button>
+            <button class="tab" onclick="showTab('flow')">🔄 Flujo del Sistema</button>
+            <button class="tab" onclick="showTab('architecture')">🏛️ Arquitectura</button>
+        </div>
+
+        <!-- Modelo Completo -->
+        <div id="complete" class="tab-content active">
+            <div class="diagram-container">
+                <h3>📋 Modelo de Dominio Completo - Todas las Entidades</h3>
+                <div class="mermaid">
+classDiagram
+    class EntidadBase {
+        +Guid Id
+    }
+    
+    class EntidadBaseAuditoria {
+        +Guid Id
+        +DateTime FechaCreacion
+        +DateTime FechaActualizacion
+        +string CreadoPor
+        +string ModificadoPor
+        +bool Activo
+    }
+
+    class Usuario {
+        +Guid RoleId
+        +string RolName
+        +string Email
+        +string Nombre
+        +string Apellido
+        +string Telefono
+        +string Celular
+        +string Direccion
+        +string Ciudad
+        +int CodigoPais
+        +string Pais
+        +string Estado
+        +string Genero
+        +DateTime UltimoLogin
+    }
+
+    class Medico {
+        +string CedulaProfesional
+        +string Universidad
+        +string Biografia
+    }
+
+    class Paciente {
+        +string EstadoCivil
+        +string Ocupacion
+        +DateTime FechaNacimiento
+        +string Genero
+        +string Alergias
+        +string EnfermedadesCronicas
+        +string MedicamentosActuales
+        +string AntecedentesFamiliares
+        +string AntecedentesPersonales
+        +string Observaciones
+        +Guid TipoSangreId
+    }
+
+    class Cita {
+        +DateTime FechaHora
+        +string Motivo
+        +string Estado
+        +string Notas
+        +string Diagnostico
+        +string Tratamiento
+        +Guid PacienteId
+        +Guid MedicoId
+        +Guid ConsultorioId
+        +Guid PagoId
+    }
+
+    class RecetaMedica {
+        +DateTime FechaEmision
+        +DateTime FechaVencimiento
+        +string Instrucciones
+        +string DiagnosticoPrincipal
+        +string DiagnosticosSecundarios
+        +string Observaciones
+        +string Motivo
+        +string Estado
+        +string Adjuntos
+        +Guid MedicoId
+        +Guid PacienteId
+        +Guid CitaId
+    }
+
+    class HistorialMedico {
+        +DateTime Fecha
+        +string Diagnostico
+        +string Tratamiento
+        +string Notas
+        +string PresionArterial
+        +decimal Temperatura
+        +decimal Peso
+        +decimal Altura
+        +Guid PacienteId
+        +Guid MedicoId
+        +Guid CitaId
+    }
+
+    class MedicamentoRecetado {
+        +string NombreMedicamento
+        +string Dosis
+        +string Frecuencia
+        +string InstruccionesEspeciales
+        +Guid RecetaMedicaId
+    }
+
+    class HorarioTrabajo {
+        +DayOfWeek DiaSemana
+        +TimeSpan HoraInicio
+        +TimeSpan HoraFin
+        +Guid MedicoId
+    }
+
+    class TipoSangre {
+        +string Nombre
+        +string Descripcion
+        +string Antigenos
+        +string Anticuerpos
+        +string RecibirDe
+        +string DonarA
+    }
+
+    class Aseguradora {
+        +string Nombre
+        +string Telefono
+        +string Direccion
+        +string Ciudad
+        +string CodigoPostal
+        +string Estado
+        +string Pais
+        +string Observaciones
+        +Guid PacienteId
+    }
+
+    class Contacto {
+        +string Nombre
+        +string Telefono
+        +string Parentesco
+        +Guid PacienteId
+    }
+
+    class Pago {
+        +decimal Monto
+        +DateTime FechaPago
+        +string MetodoPago
+        +string Estado
+        +string Comprobante
+        +string Notas
+        +Guid PacienteId
+        +Guid CitaId
+    }
+
+    class Hospital {
+        +string Nombre
+        +string TelefonoPrincipal
+        +string EmailContacto
+        +string SitioWeb
+        +string Direccion
+        +string CodigoPostal
+        +string Municipio
+        +string Pais
+        +string Url
+        +string HorarioAtencion
+        +string ServiciosEspeciales
+    }
+
+    class Consultorio {
+        +string Nombre
+        +string Ubicacion
+        +string Telefono
+        +string NumeroConsultorio
+        +string Equipamiento
+        +Guid HospitalId
+    }
+
+    class Especialidad {
+        +string Nombre
+        +string Descripcion
+    }
+
+    class Cargo {
+        +string Nombre
+        +string Descripcion
+        +int NivelJerarquico
+        +bool EsJefatura
+        +Guid EspecialidadId
+    }
+
+    class MedicoEspecialidadHospital {
+        +DateTime FechaInicio
+        +DateTime FechaFin
+        +decimal CostoConsultaEspecifico
+        +string Consultorio
+        +string HorarioAtencion
+        +string NumeroContrato
+        +string TipoContratacion
+        +Guid MedicoId
+        +Guid EspecialidadId
+        +Guid HospitalId
+        +Guid CargoId
+    }
+
+    class TipoAccion {
+        +string Nombre
+        +string Descripcion
+    }
+
+    class UsuarioLogAccion {
+        +Guid UsuarioId
+        +Guid TipoAccionId
+    }
+
+    EntidadBase <|-- EntidadBaseAuditoria
+    EntidadBase <|-- TipoSangre
+    EntidadBase <|-- Contacto
+    EntidadBase <|-- TipoAccion
+    
+    EntidadBaseAuditoria <|-- Usuario
+    EntidadBaseAuditoria <|-- Medico
+    EntidadBaseAuditoria <|-- Paciente
+    EntidadBaseAuditoria <|-- Cita
+    EntidadBaseAuditoria <|-- RecetaMedica
+    EntidadBaseAuditoria <|-- HistorialMedico
+    EntidadBaseAuditoria <|-- MedicamentoRecetado
+    EntidadBaseAuditoria <|-- HorarioTrabajo
+    EntidadBaseAuditoria <|-- Aseguradora
+    EntidadBaseAuditoria <|-- Pago
+    EntidadBaseAuditoria <|-- Hospital
+    EntidadBaseAuditoria <|-- Consultorio
+    EntidadBaseAuditoria <|-- Especialidad
+    EntidadBaseAuditoria <|-- Cargo
+    EntidadBaseAuditoria <|-- MedicoEspecialidadHospital
+    EntidadBaseAuditoria <|-- UsuarioLogAccion
+
+    Usuario ||--o| Paciente
+    Usuario ||--o| Medico
+    Usuario ||--o{ UsuarioLogAccion
+    
+    Paciente }o--|| TipoSangre
+    Paciente ||--o{ Aseguradora
+    Paciente ||--o{ Contacto
+    Paciente ||--o{ Cita
+    Paciente ||--o{ Pago
+    Paciente ||--o{ HistorialMedico
+    Paciente ||--o{ RecetaMedica
+    
+    Medico ||--o{ HorarioTrabajo
+    Medico ||--o{ Cita
+    Medico ||--o{ HistorialMedico
+    Medico ||--o{ RecetaMedica
+    Medico ||--o{ MedicoEspecialidadHospital
+    
+    Cita ||--o{ RecetaMedica
+    Cita ||--|| HistorialMedico
+    Cita }o--|| Consultorio
+    Cita ||--o| Pago
+    
+    RecetaMedica ||--o{ MedicamentoRecetado
+    
+    Hospital ||--o{ Consultorio
+    Hospital ||--o{ MedicoEspecialidadHospital
+    
+    Especialidad ||--o{ MedicoEspecialidadHospital
+    Especialidad ||--o{ Cargo
+    
+    Cargo ||--o{ MedicoEspecialidadHospital
+    
+    TipoAccion ||--o{ UsuarioLogAccion
+                </div>
+            </div>
+        </div>
+
+        <!-- Entidades Core -->
+        <div id="core" class="tab-content">
+            <div class="diagram-container">
+                <h3>⚡ Entidades Core del Sistema</h3>
+                <div class="mermaid">
+classDiagram
+    class Usuario {
+        +string Email
+        +string Nombre
+        +string Apellido
+        +string RolName
+        +bool Activo
+        +DateTime UltimoLogin
+    }
+    
+    class Medico {
+        +string CedulaProfesional
+        +string Universidad
+        +string Biografia
+    }
+    
+    class Paciente {
+        +string EstadoCivil
+        +DateTime FechaNacimiento
+        +string Alergias
+        +string EnfermedadesCronicas
+    }
+    
+    class Cita {
+        +DateTime FechaHora
+        +string Motivo
+        +string Estado
+        +string Diagnostico
+        +string Tratamiento
+    }
+
+    Usuario ||--|| Medico
+    Usuario ||--|| Paciente
+    Paciente ||--o{ Cita
+    Medico ||--o{ Cita
+                </div>
+            </div>
+            
+            <div class="section-title">📋 Descripción de Entidades Core:</div>
+            <ul>
+                <li><strong>Usuario:</strong> Entidad base para autenticación y autorización del sistema</li>
+                <li><strong>Médico:</strong> Profesionales de la salud que atienden pacientes</li>
+                <li><strong>Paciente:</strong> Usuarios que reciben atención médica</li>
+                <li><strong>Cita:</strong> Encuentros médicos programados entre paciente y médico</li>
+            </ul>
+        </div>
+
+        <!-- Módulo Médico -->
+        <div id="medical" class="tab-content">
+            <div class="diagram-container">
+                <h3>🏥 Módulo de Gestión Médica</h3>
+                <div class="mermaid">
+classDiagram
+    class Cita {
+        +DateTime FechaHora
+        +string Motivo
+        +string Estado
+        +string Diagnostico
+    }
+    
+    class RecetaMedica {
+        +DateTime FechaEmision
+        +string Instrucciones
+        +string DiagnosticoPrincipal
+        +string Estado
+    }
+    
+    class HistorialMedico {
+        +DateTime Fecha
+        +string Diagnostico
+        +string Tratamiento
+        +decimal Temperatura
+        +decimal Peso
+        +decimal Altura
+    }
+    
+    class MedicamentoRecetado {
+        +string NombreMedicamento
+        +string Dosis
+        +string Frecuencia
+    }
+    
+    class HorarioTrabajo {
+        +DayOfWeek DiaSemana
+        +TimeSpan HoraInicio
+        +TimeSpan HoraFin
+    }
+    
+    class TipoSangre {
+        +string Nombre
+        +string Descripcion
+        +string Antigenos
+        +string Anticuerpos
+    }
+
+    Cita ||--o{ RecetaMedica
+    Cita ||--|| HistorialMedico
+    RecetaMedica ||--o{ MedicamentoRecetado
+                </div>
+            </div>
+        </div>
+
+        <!-- Infraestructura -->
+        <div id="infrastructure" class="tab-content">
+            <div class="diagram-container">
+                <h3>🏗️ Infraestructura y Gestión</h3>
+                <div class="mermaid">
+classDiagram
+    class Hospital {
+        +string Nombre
+        +string Direccion
+        +string Telefono
+        +string EmailContacto
+        +string ServiciosEspeciales
+    }
+    
+    class Consultorio {
+        +string Nombre
+        +string Ubicacion
+        +string NumeroConsultorio
+        +string Equipamiento
+    }
+    
+    class Especialidad {
+        +string Nombre
+        +string Descripcion
+    }
+    
+    class Cargo {
+        +string Nombre
+        +string Descripcion
+        +int NivelJerarquico
+        +bool EsJefatura
+    }
+    
+    class MedicoEspecialidadHospital {
+        +DateTime FechaInicio
+        +DateTime FechaFin
+        +decimal CostoConsultaEspecifico
+        +string NumeroContrato
+        +string TipoContratacion
+    }
+    
+    class Aseguradora {
+        +string Nombre
+        +string Telefono
+        +string Direccion
+    }
+    
+    class Contacto {
+        +string Nombre
+        +string Telefono
+        +string Parentesco
+    }
+    
+    class Pago {
+        +decimal Monto
+        +DateTime FechaPago
+        +string MetodoPago
+        +string Estado
+    }
+
+    Hospital ||--o{ Consultorio
+    Hospital ||--o{ MedicoEspecialidadHospital
+    Especialidad ||--o{ MedicoEspecialidadHospital
+    Cargo ||--o{ MedicoEspecialidadHospital
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagrama ER -->
+        <div id="er" class="tab-content">
+            <div class="diagram-container">
+                <h3>📊 Diagrama de Entidad-Relación</h3>
+                <div class="mermaid">
+erDiagram
+    Usuario {
+        guid id PK
+        string email
+        string nombre
+        string apellido
+        string rol_name
+        bool activo
+        datetime ultimo_login
+    }
+    
+    Medico {
+        guid id PK
+        string cedula_profesional
+        string universidad
+        string biografia
+    }
+    
+    Paciente {
+        guid id PK
+        string estado_civil
+        string ocupacion
+        date fecha_nacimiento
+        string alergias
+        string enfermedades_cronicas
+        guid tipo_sangre_id FK
+    }
+    
+    Cita {
+        guid id PK
+        datetime fecha_hora
+        string motivo
+        string estado
+        string diagnostico
+        string tratamiento
+        guid paciente_id FK
+        guid medico_id FK
+        guid consultorio_id FK
+        guid pago_id FK
+    }
+    
+    RecetaMedica {
+        guid id PK
+        datetime fecha_emision
+        datetime fecha_vencimiento
+        string instrucciones
+        string diagnostico_principal
+        string estado
+        guid medico_id FK
+        guid paciente_id FK
+        guid cita_id FK
+    }
+    
+    HistorialMedico {
+        guid id PK
+        datetime fecha
+        string diagnostico
+        string tratamiento
+        string notas
+        decimal temperatura
+        decimal peso
+        decimal altura
+        guid paciente_id FK
+        guid medico_id FK
+        guid cita_id FK
+    }
+    
+    Hospital {
+        guid id PK
+        string nombre
+        string direccion
+        string telefono
+        string email_contacto
+    }
+    
+    Consultorio {
+        guid id PK
+        string nombre
+        string ubicacion
+        string numero_consultorio
+        guid hospital_id FK
+    }
+    
+    TipoSangre {
+        guid id PK
+        string nombre
+        string descripcion
+        string antigenos
+        string anticuerpos
+    }
+
+    Usuario ||--o| Medico : "puede_ser"
+    Usuario ||--o| Paciente : "puede_ser"
+    Paciente }o--|| TipoSangre : "tiene"
+    Paciente ||--o{ Cita : "agenda"
+    Medico ||--o{ Cita : "atiende"
+    Cita ||--o{ RecetaMedica : "genera"
+    Cita ||--|| HistorialMedico : "registra"
+    Hospital ||--o{ Consultorio : "contiene"
+    Cita }o--|| Consultorio : "se_realiza_en"
+                </div>
+            </div>
+        </div>
+
+        <!-- Flujo del Sistema -->
+        <div id="flow" class="tab-content">
+            <div class="diagram-container">
+                <h3>🔄 Flujo Completo del Sistema</h3>
+                <div class="mermaid">
+flowchart TD
+    A[Usuario se registra] --> B{Tipo de usuario}
+    B -->|Medico| C[Crear perfil Medico]
+    B -->|Paciente| D[Crear perfil Paciente]
+    
+    C --> E[Configurar datos profesionales]
+    E --> F[Definir horarios de trabajo]
+    F --> G[Asignarse a Hospital/Especialidad]
+    
+    D --> H[Completar perfil medico]
+    H --> I[Agregar contactos de emergencia]
+    I --> J[Configurar aseguradora]
+    
+    G --> K[Sistema listo para citas]
+    J --> K
+    
+    K --> L[Paciente agenda cita]
+    L --> M[Validar disponibilidad medico]
+    M --> N[Confirmar cita]
+    N --> O[Cita programada]
+    
+    O --> P[Dia de la cita]
+    P --> Q[Medico atiende paciente]
+    Q --> R[Registrar signos vitales]
+    R --> S[Realizar diagnostico]
+    S --> T{Necesita receta}
+    T -->|Si| U[Emitir receta medica]
+    T -->|No| V[Finalizar consulta]
+    U --> W[Agregar medicamentos]
+    W --> X[Generar comprobante]
+    X --> Y[Procesar pago]
+    Y --> V
+    V --> Z[Actualizar historial medico]
+    Z --> AA[Agendar seguimiento si es necesario]
+    AA --> BB[Consulta completada]
+                </div>
+            </div>
+        </div>
+
+        <!-- Arquitectura -->
+        <div id="architecture" class="tab-content">
+            <div class="diagram-container">
+                <h3>🏛️ Arquitectura del Sistema</h3>
+                <div class="mermaid">
+graph TB
+    subgraph PresentationLayer["🎯 Presentation Layer"]
+        A[Blazor Server Pages]
+        B[Web API Controllers]
+        C[Authentication & Authorization]
+        D[SignalR Hubs]
+    end
+    
+    subgraph ApplicationLayer["⚙️ Application Layer"]
+        E[CQRS Command Handlers]
+        F[CQRS Query Handlers]
+        G[Application Services]
+        H[AutoMapper Profiles]
+        I[FluentValidation]
+        J[MediatR Pipeline]
+    end
+    
+    subgraph DomainLayer["🏗️ Domain Layer"]
+        K[Domain Entities]
+        L[Value Objects]
+        M[Domain Services]
+        N[Domain Events]
+        O[Specifications]
+        P[Repository Interfaces]
+    end
+    
+    subgraph InfrastructureLayer["🔧 Infrastructure Layer"]
+        Q[Entity Framework Core]
+        R[Repository Implementations]
+        S[External API Clients]
+        T[Email Services]
+        U[File Storage]
+        V[Caching Redis]
+    end
+    
+    subgraph IdentityLayer["🔐 Identity Layer"]
+        W[ASP.NET Core Identity]
+        X[JWT Token Service]
+        Y[Role Management]
+        Z[Claims Authorization]
+    end
+    
+    subgraph DataLayer["📊 Data Layer"]
+        AA[(SQL Server Database)]
+        BB[Entity Configurations]
+        CC[Migrations]
+        DD[Seed Data]
+    end
+
+    A --> E
+    B --> E
+    C --> W
+    D --> E
+    E --> K
+    F --> K
+    G --> K
+    H --> K
+    I --> E
+    J --> E
+    Q --> AA
+    R --> AA
+    W --> AA
+    BB --> AA
+    CC --> AA
+    DD --> AA
+    S --> T
+    T --> U
+    U --> V
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <h3>🎨 Leyenda de Entidades por Módulo:</h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #e1f5fe; border-color: #0277bd;"></div>
+                    <span><strong>Base:</strong> EntidadBase, EntidadBaseAuditoria</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #f3e5f5; border-color: #7b1fa2;"></div>
+                    <span><strong>Core:</strong> Usuario, Médico, Paciente, Cita</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #e8f5e8; border-color: #388e3c;"></div>
+                    <span><strong>Médico:</strong> RecetaMedica, HistorialMedico, MedicamentoRecetado</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #fff3e0; border-color: #f57c00;"></div>
+                    <span><strong>Infraestructura:</strong> Hospital, Consultorio, Especialidad, Cargo</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #fce4ec; border-color: #c2185b;"></div>
+                    <span><strong>Soporte:</strong> TipoSangre, Aseguradora, Contacto, Pago, Auditoría</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="export-section">
+            <h3>📤 Exportar Diagramas</h3>
+            <button class="export-btn" onclick="window.print()">🖨️ Imprimir</button>
+            <button class="export-btn" onclick="exportDiagram()">📸 Capturar Pantalla</button>
+            <button class="export-btn" onclick="copyLink()">🔗 Copiar Enlace</button>
+        </div>
+    </div>
+
+    <script>
+        // Inicializar Mermaid
+        window.addEventListener('load', function() {
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'default',
+                securityLevel: 'loose',
+                flowchart: {
+                    useMaxWidth: true,
+                    htmlLabels: true
+                }
+            });
+            console.log('Diagrama UML completo cargado correctamente');
+        });
+
+        // Función para cambiar tabs
+        function showTab(tabName) {
+            // Ocultar todos los contenidos
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(function(content) {
+                content.classList.remove('active');
+            });
+            
+            // Desactivar todos los tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+            
+            // Mostrar el contenido seleccionado
+            const selectedContent = document.getElementById(tabName);
+            if (selectedContent) {
+                selectedContent.classList.add('active');
+            }
+            
+            // Activar el tab clickeado
+            const clickedTab = event.target;
+            if (clickedTab) {
+                clickedTab.classList.add('active');
+            }
+        }
+
+        // Función para exportar diagrama
+        function exportDiagram() {
+            alert('💡 Para exportar: \n1. Usa F12 > Console > screenshot \n2. Botón derecho > "Guardar imagen como..." \n3. Usa extensiones de captura de pantalla');
+        }
+
+        // Función para copiar enlace
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href);
+            alert('🔗 Enlace copiado al portapapeles');
+        }
+    </script>
+</body>
+</html>

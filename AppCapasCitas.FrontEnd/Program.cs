@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using AppCapasCitas.FrontEnd;
 using AppCapasCitas.FrontEnd.Proxy.Interfaces;
 using AppCapasCitas.FrontEnd.Proxy.Implementaciones;
-using Blazored.SessionStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using AppCapasCitas.FrontEnd.Security;
 using Blazored.Toast;
 using CurrieTechnologies.Razor.SweetAlert2;
+using Blazored.SessionStorage;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -22,7 +22,8 @@ builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<IUsuarioProxy,UsuarioProxy>();
 builder.Services.AddScoped<ILoginProxy,LoginProxy>();
 builder.Services.AddScoped<IPacienteProxy,PacienteProxy>();
-builder.Services.AddScoped<IMedicoProxy,MedicoProxy>();
+builder.Services.AddScoped<IMedicoProxy, MedicoProxy>();
+builder.Services.AddScoped<IReporteProxy, ReporteProxy>();
 
 builder.Services.AddBlazorBootstrap();
 builder.Services.AddBlazoredToast();
@@ -31,8 +32,8 @@ builder.Services.AddBlazoredToast();
 //  options.SetThemeForColorSchemePreference(ColorScheme.Dark, SweetAlertTheme.Dark);
 // });
 builder.Services.AddSweetAlert2(options => {
- options.Theme = SweetAlertTheme.Dark;
- options.SetThemeForColorSchemePreference(ColorScheme.Light, SweetAlertTheme.Bootstrap4);
+    options.Theme = SweetAlertTheme.Dark;
+    options.SetThemeForColorSchemePreference(ColorScheme.Light, SweetAlertTheme.Bootstrap4);
 });
 
 await builder.Build().RunAsync();

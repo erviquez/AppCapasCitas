@@ -1,5 +1,5 @@
 using System.Text;
-using AppCapasCitas.Application.Contracts.Identity;
+using AppCapasCitas.Application.Contracts.Persistence.Identity;
 using AppCapasCitas.Application.Models.Identity;
 using AppCapasCitas.Identity.Data;
 using AppCapasCitas.Identity.Models;
@@ -71,17 +71,28 @@ public static class IdentityServiceRegistration
         
         // Registra el servicio de autenticación para su uso en la aplicación
         services.AddTransient<IAuthService, AuthService>();
-        
+
+        // Configuración de parámetros para validación de tokens JWT
+        var jwtSettings = sectionJwtSettings.Get<JwtSettings>();
+        var key = Encoding.UTF8.GetBytes(jwtSettings!.Key);
+
+        // Verificar que la clave tenga la longitud mínima
+        if (key.Length < 32)
+        {
+            throw new ArgumentException("La clave JWT debe tener al menos 32 caracteres (256 bits)");
+        }
         // Configuración de parámetros para validación de tokens JWT
         var tokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true, // Valida el emisor (issuer)
-            ValidIssuer =  sectionJwtSettings["Issuer"], 
+            ValidIssuer = jwtSettings.Issuer,
+            //ValidIssuer =  sectionJwtSettings["Issuer"], 
             ValidateIssuerSigningKey = true, // Valida la firma del emisor
             ValidateAudience = true, // Valida la audiencia (audience)
-            ValidAudience = sectionJwtSettings["Audience"], // Audiencia válida
+            ValidAudience = jwtSettings.Audience, // Audiencia válida
+
             ValidateLifetime = true, // Valida la vigencia del token
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(sectionJwtSettings["Key"]!)), // Clave secreta
+            IssuerSigningKey = new SymmetricSecurityKey(key), // Clave secreta
             RequireExpirationTime = true, // No requiere tiempo de expiración
             ClockSkew = TimeSpan.Zero // No permite desfase de tiempo
         };
@@ -99,6 +110,26 @@ public static class IdentityServiceRegistration
         {
             options.SaveToken = true; // Guarda el token en las propiedades de autenticación
             options.TokenValidationParameters = tokenValidationParameters; // Usa los parámetros configurados
+
+             // Configuración adicional para debugging
+            options.Events = new JwtBearerEvents
+            {
+                OnAuthenticationFailed = context =>
+                {
+                    Console.WriteLine($"JWT Authentication failed: {context.Exception.Message}");
+                    return Task.CompletedTask;
+                },
+                OnTokenValidated = context =>
+                {
+                    Console.WriteLine("JWT Token validated successfully");
+                    return Task.CompletedTask;
+                },
+                OnChallenge = context =>
+                {
+                    Console.WriteLine($"JWT Challenge: {context.ErrorDescription}");
+                    return Task.CompletedTask;
+                }
+            };
         });
 
         return services;

@@ -6,23 +6,16 @@ namespace AppCapasCitas.Domain.Models;
 
 public partial class Paciente : EntidadBaseAuditoria
 {
+    public string? EstadoCivil { get; set; }
+    public string? Ocupacion { get; set; }
     public DateTime? FechaNacimiento { get; set; }
-    public string? Genero { get; set; }
-    public string? Alergias { get; set; }
+    public string? Genero { get; set; }    public string? Alergias { get; set; }
     public string? EnfermedadesCronicas { get; set; }
     public string? MedicamentosActuales { get; set; }
     public string? AntecedentesFamiliares { get; set; }
     public string? AntecedentesPersonales { get; set; }
     public string? Observaciones { get; set; }
-    public string? Sexo { get; set; } // Nuevo campo para el sexo del paciente
-    public string? TipoSangre { get; set; }
-    public string? NumeroIdentificacion { get; set; }
-    public string? Ciudad { get; set; }
-    public string? CodigoPostal { get; set; }
-    public string? EstadoCivil { get; set; }
-    public string? Ocupacion { get; set; }
-    public string? Nacionalidad { get; set; }
-    public string? Idiomas { get; set; }
+
 
     // Relaciones
     public virtual ICollection<Cita> Citas { get; set; } = new HashSet<Cita>();

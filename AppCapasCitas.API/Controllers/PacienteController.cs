@@ -2,7 +2,7 @@ using System.Net;
 using AppCapasCitas.Application.Features.Pacientes.Queries.GetPacienteById;
 using AppCapasCitas.Application.Features.Pacientes.Queries.PaginationPaciente;
 using AppCapasCitas.Application.Features.Shared;
-using AppCapasCitas.DTO.Request.Paciente;
+using AppCapasCitas.DTO.Response.Paciente;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

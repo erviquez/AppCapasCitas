@@ -1,15 +1,14 @@
-// using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByEntityId.GetMedicoById;
-// using FluentValidation;
+using FluentValidation;
 
-// namespace AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoById;
+namespace AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoById;
 
-// public class GetMedicoByIdQueryValidator:AbstractValidator<GetMedicoByIdQuery>
-// {
-//     public GetMedicoByIdQueryValidator()
-//     {
-//         RuleFor(x => x.Id)
-//             .NotEmpty().WithMessage("El Id no puede estar vacío")
-//             .Must(id => id != Guid.Empty).WithMessage("El Id no puede ser Guid.Empty");
-//     }
-// }
+public class GetMedicoByIdQueryValidator : AbstractValidator<GetMedicoByIdQuery>
+{
+    public GetMedicoByIdQueryValidator()
+    {
+        RuleFor(x => x.IdentityId)
+            .NotEmpty().WithMessage("El Id de la entidad no puede estar vacío")
+            .NotEqual(Guid.Empty).WithMessage("El Id de la entidad no puede ser un GUID vacío");
+    } 
 
+}

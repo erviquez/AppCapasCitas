@@ -1,5 +1,5 @@
 using System.Net;
-using AppCapasCitas.Application.Contracts.Identity;
+using AppCapasCitas.Application.Contracts.Persistence.Identity;
 using AppCapasCitas.Application.Contracts.Persistence;
 using AppCapasCitas.Application.Contracts.Persistence.Infrastructure;
 using AppCapasCitas.Application.Models;

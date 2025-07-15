@@ -11,6 +11,12 @@ public class PacienteSpecification: BaseSpecification<Paciente>
 )
     {
         AddInclude(x => x.UsuarioNavigation!);
+        AddInclude(x => x.TipoSangreNavigation!);
+        AddInclude(x => x.Aseguradoras!);
+        AddInclude(x => x.Contactos!);
+
+        
+
         //AddInclude(x => x.PacienteEspecialidadHospitales!);
         ApplyPaging(
             pacienteParams.PageSize * (pacienteParams.PageIndex -1),pacienteParams.PageSize);

@@ -1,6 +1,6 @@
 using System;
 using System.Linq.Expressions;
-using AppCapasCitas.Application.Contracts.Identity;
+using AppCapasCitas.Application.Contracts.Persistence.Identity;
 using AppCapasCitas.Application.Contracts.Persistence;
 using AppCapasCitas.Domain.Models;
 using AppCapasCitas.DTO.Response.Usuario;

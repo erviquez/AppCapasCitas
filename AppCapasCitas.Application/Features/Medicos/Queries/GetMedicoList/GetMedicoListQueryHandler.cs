@@ -33,7 +33,8 @@ public class GetMedicoListQueryHandler : IRequestHandler<GetMedicoListQuery, Res
             var includes = new List<Expression<Func<Medico, object>>>
             {
                 x => x.UsuarioNavigation!, // Include the related Usuario
-                x => x.MedicoEspecialidadHospitales!
+                x => x.MedicoEspecialidadHospitales!,
+                x => x.HorariosTrabajo!
             };
 
             var medicos = await _medicoRepository.GetAsync(
@@ -51,7 +52,7 @@ public class GetMedicoListQueryHandler : IRequestHandler<GetMedicoListQuery, Res
                 return response;
             }
 
-            var medicoResponse = _mapper.Map<IReadOnlyList<MedicoResponse>>(medicos);
+            var medicoResponse = _mapper.Map<List<MedicoResponse>>(medicos);
             message = "Lista de medicos obtenida correctamente. Total de medicos";
             _appLogger.LogInformation($"{message}: {0} - {1}", totalCount, DateTime.Now);
             response.IsSuccess = true;

@@ -2,7 +2,7 @@
 using System.Net;
 using AppCapasCitas.Application.Features.Medicos.Commands.CreateMedico;
 using AppCapasCitas.Application.Features.Medicos.Commands.EditMedico;
-using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByIdentityId;
+using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoById;
 using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoByName;
 using AppCapasCitas.Application.Features.Medicos.Queries.GetMedicoList;
 using AppCapasCitas.Application.Features.Medicos.Queries.PaginationMedico;
@@ -27,6 +27,9 @@ namespace AppCapasCitas.API.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(typeof(Response<IReadOnlyList<MedicoResponse>>), 200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         public async Task<ActionResult<IReadOnlyList<MedicoResponse>>> GetAll()
         {
             var query = new GetMedicoListQuery();
@@ -45,10 +48,10 @@ namespace AppCapasCitas.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("GetByIdentityId/{identityId}")]
-        public async Task<IActionResult> GetByIdentityId(Guid identityId)
+        [HttpGet("GetById/{medicoId}")]
+        public async Task<IActionResult> GetById(Guid medicoId)
         {
-            var query = new GetMedicoByIdentityIdQuery(identityId);
+            var query = new GetMedicoByIdQuery(medicoId);
             var result = await _mediator.Send(query);
             if (result.IsSuccess == false)
             {

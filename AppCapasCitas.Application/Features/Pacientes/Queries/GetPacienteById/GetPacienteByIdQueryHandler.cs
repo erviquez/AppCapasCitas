@@ -1,9 +1,8 @@
-using System;
 using System.Linq.Expressions;
-using AppCapasCitas.Application.Contracts.Identity;
+using AppCapasCitas.Application.Contracts.Persistence.Identity;
 using AppCapasCitas.Application.Contracts.Persistence;
 using AppCapasCitas.Domain.Models;
-using AppCapasCitas.DTO.Request.Paciente;
+using AppCapasCitas.DTO.Response.Paciente;
 using AppCapasCitas.Transversal.Common;
 using AutoMapper;
 using FluentValidation.Results;
@@ -35,6 +34,10 @@ public class GetPacienteByIdQueryHandler : IRequestHandler<GetPacienteByIdQuery,
              var includes = new List<Expression<Func<Paciente, object>>>
             {
                 x => x.UsuarioNavigation!, 
+                x => x.TipoSangreNavigation!, 
+                x => x.Aseguradoras!, 
+                x => x.Contactos!, 
+
             };
             var paciente = await _pacienteRepository.GetEntityAsync(
                                             x => x.Activo == true && x.Id == request.PacienteId,

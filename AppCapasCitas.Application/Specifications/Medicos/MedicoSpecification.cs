@@ -12,7 +12,8 @@ public class MedicoSpecification: BaseSpecification<Medico>
 )
     {
         AddInclude(x => x.UsuarioNavigation!);
-        //AddInclude(x => x.MedicoEspecialidadHospitales!);
+        AddInclude(x => x.MedicoEspecialidadHospitales!);
+        AddInclude(x => x.HorariosTrabajo!);
         ApplyPaging(
             medicoParams.PageSize * (medicoParams.PageIndex -1),medicoParams.PageSize);
         // AddOrderBy(p => p.UsuarioNavigation != null ? p.Id : 0); // Or another unique field if Id doesn't exist

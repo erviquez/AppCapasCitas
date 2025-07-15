@@ -195,14 +195,9 @@ public class UsuarioProxy : IUsuarioProxy
             return response;
         }
         var result = await _httpClient.PutAsJsonAsync("api/v1/Usuario/", usuarioRequest!);
-        if (result.IsSuccessStatusCode)
-        {
-            response = await result.Content.ReadFromJsonAsync<Response<bool>>();
-            return response!;
-        }
-        response.IsSuccess = false;
-        response.Message = "No se pudo actualizar el usuario";
-        return response;
+        response = await result.Content.ReadFromJsonAsync<Response<bool>>();
+        return response!;
+
     }
 
     

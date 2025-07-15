@@ -1,6 +1,6 @@
 namespace AppCapasCitas.DTO.Helpers;
 
-public static class ParentescoHelper
+public static class ParentescosHelper
 {
     public static readonly Dictionary<int, string> Parentescos = new()
     {

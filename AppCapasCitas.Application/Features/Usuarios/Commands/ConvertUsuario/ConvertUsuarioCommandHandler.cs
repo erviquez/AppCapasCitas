@@ -1,10 +1,8 @@
-using System.Threading.Tasks;
-using AppCapasCitas.Application.Contracts.Identity;
+using AppCapasCitas.Application.Contracts.Persistence.Identity;
 using AppCapasCitas.Application.Contracts.Persistence;
 using AppCapasCitas.Application.Contracts.Persistence.Infrastructure;
 using AppCapasCitas.Application.Models;
 using AppCapasCitas.Domain.Models;
-using AppCapasCitas.DTO.Helpers;
 using AppCapasCitas.Transversal.Common;
 using AppCapasCitas.Transversal.Common.Templates.Html;
 using AppCapasCitas.Transversal.Common.Templates.Sms;

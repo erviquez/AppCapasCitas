@@ -15,16 +15,6 @@ public partial class MedicoEspecialidadHospital: EntidadBaseAuditoria
 
     public decimal? CostoConsultaEspecifico { get; set; }
 
-    // Propiedades adicionales
-    public string? Consultorio { get; set; }
-    public string? HorarioAtencion { get; set; }
-    
-    // Número de contrato o identificación institucional
-    public string? NumeroContrato { get; set; }
-    
-    // Tipo de contratación (Tiempo completo, medio tiempo, etc.)
-    public string? TipoContratacion { get; set; }
-
     //relaciones
     [Required]
 

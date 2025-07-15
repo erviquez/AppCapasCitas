@@ -25,12 +25,7 @@
 
   <ItemGroup>
     <Folder Include="Exceptions\" />
-    <Folder Include="Features\Especialidades\" />
-    <Folder Include="Features\Especialidades\Commands\" />
-    <Folder Include="Features\Especialidades\Queries\" />
-    <Folder Include="Features\HorariosTrabajo\" />
     <Folder Include="Features\HorariosTrabajo\Commands\" />
-    <Folder Include="Features\HorariosTrabajo\Queries\" />
     <Folder Include="Features\Medicos\Commands\DisableMedico\" />
     <Folder Include="Features\Pacientes\Commands\" />
     <Folder Include="Features\Pacientes\Commands\CreatePaciente\" />
@@ -41,7 +36,6 @@
     <Folder Include="Features\Pacientes\Vms\" />
     <Folder Include="Features\Pacientes\Vms\Request\" />
     <Folder Include="Features\Pacientes\Vms\Response\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>

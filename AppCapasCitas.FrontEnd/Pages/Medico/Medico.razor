@@ -1,4 +1,5 @@
 ﻿@page "/medico/medico"
+@using AppCapasCitas.DTO.Request.Reporte
 @using AppCapasCitas.DTO.Response.Identity
 @using AppCapasCitas.Transversal.Common.Identity
 @using Blazored.Toast.Configuration
@@ -7,9 +8,11 @@
 @using Microsoft.AspNetCore.Components
 @inject NavigationManager navigationManager
 @inject IMedicoProxy proxy
+@inject IReporteProxy proxyReportes
 @inject IToastService toastService
 @inject Blazored.SessionStorage.ISessionStorageService sessionStorage
 @inject SweetAlertService Swal;
+@inject IJSRuntime JSRuntime
 @attribute [Authorize]
 @inject AuthenticationStateProvider auth
 @using Microsoft.AspNetCore.Components.Web
@@ -44,8 +47,11 @@
                     </button>
                 </div>
             </div>
-            
-
+             <div class="col-md-2 text-end">
+                <button class="btn btn-outline-secondary" @onclick="ExportarPDF">
+                    <i class="bi bi-filetype-pdf"></i> Exportar
+                </button>
+            </div>           
         </div>
 
         <Loading mostrar="@cargando"/>
@@ -75,21 +81,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var usuario in listaMedicos)
+                        @foreach (var medico in listaMedicos)
                         {
-                            @if (usuario == null) continue;
+                            @if (medico == null) continue;
                             <tr>
-                                <td>@usuario.Nombre</td>
-                                <td>@usuario.Apellido</td>
-                                <td>@usuario.Email</td>
-                                <td>@usuario.Telefono</td>
-                                <td>@usuario.Celular</td>
-                                <td>@usuario.Direccion</td>
-                                <td>@usuario.Ciudad</td>
-                                <td>@usuario.Estado</td>
-                                <td>@usuario.Pais</td>
+                                <td>@medico!.UsuarioResponse!.Nombre</td>
+                                <td>@medico.UsuarioResponse.Apellido</td>
+                                <td>@medico.UsuarioResponse.Email</td>
+                                <td>@medico.UsuarioResponse.Telefono</td>
+                                <td>@medico.UsuarioResponse.Celular</td>
+                                <td>@medico.UsuarioResponse.Direccion</td>
+                                <td>@medico.UsuarioResponse.Ciudad</td>
+                                <td>@medico.UsuarioResponse.Estado</td>
+                                <td>@medico.UsuarioResponse.Pais</td>
                                 <td>
-                                    @if (usuario.Activo)
+                                    @if (medico.UsuarioResponse.Activo)
                                     {
                                         <span class="badge bg-success">Sí</span>
                                     }
@@ -99,11 +105,14 @@
                                     }
                                 </td>
                                 <td>
-                                    @(usuario.UltimoLogin?.ToString("dd/MM/yyyy HH:mm") ?? "-")
+                                    @(medico.UsuarioResponse.UltimoLogin?.ToString("dd/MM/yyyy HH:mm") ?? "-")
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-outline-danger ms-1" @onclick="() => EditarMedico(usuario.MedicoId.ToString())">
+                                    <button class="btn btn-sm btn-outline-danger ms-1" @onclick="() => EditarMedico(medico.UsuarioResponse.UsuarioId.ToString())">
                                             <i class="bi-pencil-square"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger ms-1" @onclick="() => ExportarExpedienteByIdPDF(medico.UsuarioResponse.UsuarioId.ToString())">
+                                            <i class="bi bi-filetype-pdf"></i>
                                     </button>
 
                                     @* @if (usuario.Activo)
@@ -306,6 +315,74 @@
             navigationManager.NavigateTo($"/medico/EditarMedico/{usuarioId}");
         }
         cargando = false;
+    }
+    private async Task ExportarPDF()
+    {
+        cargando = true;
+        try
+        {
+            toastService.ShowInfo("Exportando datos a PDF...");
+            var request = new ReporteRequest
+            {
+                FiltroNombre = searchText
+            };
+            var response = await proxyReportes.GenerarReporteMedicosPersonalizadoAsync(request);
+            if (response == null || !response.IsSuccess)
+            {
+                toastService.ShowError("Error al generar el reporte: " + response?.Message);
+                return;
+            }
+            @* await AbrirPdfEnNuevaVentana(response!.Data!.Base64Content);            *@
+            await DescargarArchivo(response.Data!.FileContent, response.Data.FileName, response.Data.ContentType);
 
+            toastService.ShowSuccess("Datos exportados correctamente");
+        }
+        catch (Exception ex)
+        {
+            toastService.ShowError($"Error al exportar: {ex.Message}");
+        }
+        finally
+        {
+            cargando = false;
+        }
+    }
+
+    private async Task ExportarExpedienteByIdPDF(string medicoId)
+    {
+        cargando = true;
+        try
+        {
+            toastService.ShowInfo("Exportando datos a PDF...");
+ 
+            var response = await proxyReportes.GenerarReporteMedicoByIdAsync(medicoId);
+            if (response == null || !response.IsSuccess)
+            {
+                toastService.ShowError("Error al generar el reporte: " + response?.Message);
+                return;
+            }
+            @* await AbrirPdfEnNuevaVentana(response!.Data!.Base64Content);            *@
+            await DescargarArchivo(response.Data!.FileContent, response.Data.FileName, response.Data.ContentType);
+
+            toastService.ShowSuccess("Datos exportados correctamente");
+        }
+        catch (Exception ex)
+        {
+            toastService.ShowError($"Error al exportar: {ex.Message}");
+        }
+        finally
+        {
+            cargando = false;
+        }
+    }
+
+    @* private async Task AbrirPdfEnNuevaVentana(string base64Content)
+    {
+        var dataUrl = $"data:application/pdf;base64,{base64Content}";
+        await JSRuntime.InvokeVoidAsync("open", dataUrl, "_blank");
+    } *@
+    private async Task DescargarArchivo(byte[] fileBytes, string fileName, string contentType)
+    {
+        var base64 = Convert.ToBase64String(fileBytes);
+        await JSRuntime.InvokeVoidAsync("downloadFile", base64, fileName, contentType);
     }
 }

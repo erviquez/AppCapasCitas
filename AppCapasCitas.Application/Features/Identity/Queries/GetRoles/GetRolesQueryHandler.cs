@@ -1,5 +1,5 @@
 using System;
-using AppCapasCitas.Application.Contracts.Identity;
+using AppCapasCitas.Application.Contracts.Persistence.Identity;
 using AppCapasCitas.Transversal.Common;
 using AppCapasCitas.Transversal.Common.Identity;
 using MediatR;

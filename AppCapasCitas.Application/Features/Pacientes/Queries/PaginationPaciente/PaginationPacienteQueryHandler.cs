@@ -1,8 +1,10 @@
 using AppCapasCitas.Application.Contracts.Persistence;
 using AppCapasCitas.Application.Specifications.Pacientes;
 using AppCapasCitas.Domain.Models;
-using AppCapasCitas.DTO.Request.Paciente;
+using AppCapasCitas.DTO.Response.Paciente;
+using AppCapasCitas.DTO.Response.Usuario;
 using AppCapasCitas.Transversal.Common;
+using AutoMapper;
 using MediatR;
 
 namespace AppCapasCitas.Application.Features.Pacientes.Queries.PaginationPaciente;
@@ -10,10 +12,12 @@ namespace AppCapasCitas.Application.Features.Pacientes.Queries.PaginationPacient
 public class PaginationPacienteQueryHandler : IRequestHandler<PaginationPacienteQuery, ResponsePagination<IReadOnlyList<PacienteResponse>>>
 {
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
 
-    public PaginationPacienteQueryHandler(IUnitOfWork unitOfWork)
+    public PaginationPacienteQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
+        _mapper = mapper;
     }
 
     public async Task<ResponsePagination<IReadOnlyList<PacienteResponse>>> Handle(PaginationPacienteQuery request, CancellationToken cancellationToken)
@@ -38,44 +42,7 @@ public class PaginationPacienteQueryHandler : IRequestHandler<PaginationPaciente
 
             var rounded = Math.Ceiling(Convert.ToDecimal(totalPacientes) / Convert.ToDecimal(pacienteSpecificationParams.PageSize));
             var totalPages = Convert.ToInt32(rounded);
-
-            //var data = _mapper.Map<IReadOnlyList<Usuario>, IReadOnlyList<PacienteVm>>(pacientes);  
-            var listPaciente = new List<PacienteResponse>();
-            foreach (var paciente in pacientes)
-            {
-                var pacienteVm = new PacienteResponse
-                {
-                    //Id = paciente.Id,
-                    PacienteId = paciente.UsuarioNavigation!.Id,
-                    Nombre = paciente.UsuarioNavigation!.Nombre,
-                    Apellido = paciente.UsuarioNavigation!.Apellido,
-                    Telefono = paciente.UsuarioNavigation!.Telefono,
-                    Celular = paciente.UsuarioNavigation!.Celular,
-                    Direccion = paciente.UsuarioNavigation!.Direccion,
-                    Ciudad = paciente.UsuarioNavigation!.Ciudad,
-                    CodigoPais = paciente.UsuarioNavigation!.CodigoPais,
-                    Pais = paciente.UsuarioNavigation!.Pais,
-                    Estado = paciente.UsuarioNavigation!.Estado,
-                    Activo = paciente.UsuarioNavigation!.Activo,
-                    UltimoLogin = paciente.UsuarioNavigation!.UltimoLogin,
-                    FechaCreacion = paciente.UsuarioNavigation!.FechaCreacion,
-                    FechaActualizacion = paciente.UsuarioNavigation!.FechaActualizacion,
-                    CreadoPor = paciente.UsuarioNavigation!.CreadoPor,
-                    ModificadoPor = paciente.UsuarioNavigation!.ModificadoPor,
-                    Email = paciente.UsuarioNavigation!.Email,
-                    FechaNacimiento = paciente.FechaNacimiento,
-                    Genero = paciente.Genero,
-                    Alergias = paciente.Alergias,
-                    EnfermedadesCronicas = paciente.EnfermedadesCronicas,
-                    MedicamentosActuales = paciente.MedicamentosActuales
-
-                    //pendiente especialidades y hospitales
-
-
-                };
-                listPaciente.Add(pacienteVm);
-            }
-  
+            var listPaciente = _mapper.Map<List<PacienteResponse>>(pacientes);           
             responsePagination = new ResponsePagination<IReadOnlyList<PacienteResponse>>
             {
                     PageNumber = request.PageIndex,

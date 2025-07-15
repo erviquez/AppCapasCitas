@@ -1,5 +1,5 @@
 using System.Net;
-using AppCapasCitas.Application.Contracts.Identity;
+using AppCapasCitas.Application.Contracts.Persistence.Identity;
 using AppCapasCitas.Application.Features.Usuarios.Commands.ActionLogUsuario;
 using AppCapasCitas.Application.Features.Usuarios.Commands.CreateUsuario;
 using AppCapasCitas.Application.Features.Usuarios.Commands.DisableUsuario;

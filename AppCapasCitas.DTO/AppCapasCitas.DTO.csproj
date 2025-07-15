@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Request\Medico\" />
     <Folder Include="Response\Identity\" />
-    <Folder Include="Response\Medico\" />
   </ItemGroup>
 
   <ItemGroup>

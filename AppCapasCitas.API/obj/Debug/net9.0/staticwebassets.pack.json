@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\wwwroot\\images\\backgrounds\\fondo-reportes.png",
+      "PackagePath": "staticwebassets\\images\\backgrounds\\fondo-reportes.png"
+    },
+    {
+      "Id": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\wwwroot\\images\\backgrounds\\fondo-reportes_test.png",
+      "PackagePath": "staticwebassets\\images\\backgrounds\\fondo-reportes_test.png"
+    },
+    {
+      "Id": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\wwwroot\\images\\logos\\logo-principal.jpg",
+      "PackagePath": "staticwebassets\\images\\logos\\logo-principal.jpg"
+    },
+    {
+      "Id": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\wwwroot\\images\\logos\\logo.jpg",
+      "PackagePath": "staticwebassets\\images\\logos\\logo.jpg"
+    },
+    {
+      "Id": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.API\\wwwroot\\images\\logos\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logos\\logo.png"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.AppCapasCitas.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.AppCapasCitas.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.AppCapasCitas.API.props",
+      "PackagePath": "build\\AppCapasCitas.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.AppCapasCitas.API.props",
+      "PackagePath": "buildMultiTargeting\\AppCapasCitas.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.AppCapasCitas.API.props",
+      "PackagePath": "buildTransitive\\AppCapasCitas.API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,5 +1,5 @@
 using System;
-using AppCapasCitas.DTO.Request.Paciente;
+using AppCapasCitas.DTO.Response.Paciente;
 using AppCapasCitas.Transversal.Common;
 
 namespace AppCapasCitas.FrontEnd.Proxy.Interfaces;

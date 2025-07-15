@@ -1,6 +1,6 @@
 
 using AppCapasCitas.Application.Specifications.Pacientes;
-using AppCapasCitas.DTO.Request.Paciente;
+using AppCapasCitas.DTO.Response.Paciente;
 using AppCapasCitas.Transversal.Common;
 using MediatR;
 

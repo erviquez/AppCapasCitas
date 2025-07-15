@@ -168,6 +168,10 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("consultorio_id");
 
+                    b.Property<decimal?>("CostoConsulta")
+                        .HasColumnType("decimal(10,2)")
+                        .HasColumnName("costo_consulta");
+
                     b.Property<string>("CreadoPor")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("creado_por");
@@ -220,6 +224,10 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("pago_id");
 
+                    b.Property<Guid?>("TipoConsultaId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("tipo_consulta_id");
+
                     b.Property<string>("Tratamiento")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("tratamiento");
@@ -241,6 +249,9 @@ namespace AppCapasCitas.Infrastructure.Migrations
 
                     b.HasIndex("PacienteId")
                         .HasDatabaseName("ix_cita_paciente_id");
+
+                    b.HasIndex("TipoConsultaId")
+                        .HasDatabaseName("ix_cita_tipo_consulta_id");
 
                     b.ToTable("cita", (string)null);
                 });
@@ -357,12 +368,17 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("bit")
                         .HasColumnName("activo");
 
+                    b.Property<decimal?>("CostoConsultaBase")
+                        .HasColumnType("decimal(10,2)")
+                        .HasColumnName("costo_consulta_base");
+
                     b.Property<string>("CreadoPor")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("creado_por");
 
                     b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)")
                         .HasColumnName("descripcion");
 
                     b.Property<DateTime?>("FechaActualizacion")
@@ -385,6 +401,13 @@ namespace AppCapasCitas.Infrastructure.Migrations
 
                     b.HasKey("Id")
                         .HasName("pk_especialidad");
+
+                    b.HasIndex("Activo")
+                        .HasDatabaseName("IX_Especialidad_Activo");
+
+                    b.HasIndex("Nombre")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Especialidad_Nombre");
 
                     b.ToTable("especialidad", (string)null);
                 });
@@ -704,6 +727,10 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("modificado_por");
 
+                    b.Property<string>("Universidad")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("universidad");
+
                     b.HasKey("Id")
                         .HasName("pk_medico");
 
@@ -724,10 +751,6 @@ namespace AppCapasCitas.Infrastructure.Migrations
                     b.Property<Guid>("CargoId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("cargo_id");
-
-                    b.Property<string>("Consultorio")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("consultorio");
 
                     b.Property<decimal?>("CostoConsultaEspecifico")
                         .HasPrecision(10, 2)
@@ -758,10 +781,6 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("fecha_inicio");
 
-                    b.Property<string>("HorarioAtencion")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("horario_atencion");
-
                     b.Property<Guid>("HospitalId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("hospital_id");
@@ -773,14 +792,6 @@ namespace AppCapasCitas.Infrastructure.Migrations
                     b.Property<string>("ModificadoPor")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("modificado_por");
-
-                    b.Property<string>("NumeroContrato")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("numero_contrato");
-
-                    b.Property<string>("TipoContratacion")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("tipo_contratacion");
 
                     b.HasKey("Id")
                         .HasName("pk_medico_especialidad_hospital");
@@ -823,14 +834,6 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("antecedentes_personales");
 
-                    b.Property<string>("Ciudad")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ciudad");
-
-                    b.Property<string>("CodigoPostal")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("codigo_postal");
-
                     b.Property<string>("CreadoPor")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("creado_por");
@@ -859,10 +862,6 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("genero");
 
-                    b.Property<string>("Idiomas")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("idiomas");
-
                     b.Property<string>("MedicamentosActuales")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("medicamentos_actuales");
@@ -871,14 +870,6 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("modificado_por");
 
-                    b.Property<string>("Nacionalidad")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("nacionalidad");
-
-                    b.Property<string>("NumeroIdentificacion")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("numero_identificacion");
-
                     b.Property<string>("Observaciones")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("observaciones");
@@ -886,14 +877,6 @@ namespace AppCapasCitas.Infrastructure.Migrations
                     b.Property<string>("Ocupacion")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("ocupacion");
-
-                    b.Property<string>("Sexo")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("sexo");
-
-                    b.Property<string>("TipoSangre")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("tipo_sangre");
 
                     b.Property<Guid?>("TipoSangreId")
                         .HasColumnType("uniqueidentifier")
@@ -960,7 +943,7 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnName("modificado_por");
 
                     b.Property<decimal>("Monto")
-                        .HasColumnType("decimal(5,2)")
+                        .HasColumnType("decimal(10,2)")
                         .HasColumnName("monto");
 
                     b.Property<string>("Notas")
@@ -999,6 +982,10 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasColumnType("bit")
                         .HasColumnName("activo");
 
+                    b.Property<string>("Adjuntos")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("adjuntos");
+
                     b.Property<Guid>("CitaId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("cita_id");
@@ -1006,6 +993,21 @@ namespace AppCapasCitas.Infrastructure.Migrations
                     b.Property<string>("CreadoPor")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("creado_por");
+
+                    b.Property<string>("DiagnosticoPrincipal")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
+                        .HasColumnName("diagnostico_principal");
+
+                    b.Property<string>("DiagnosticosSecundarios")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)")
+                        .HasColumnName("diagnosticos_secundarios");
+
+                    b.Property<string>("Estado")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("estado");
 
                     b.Property<DateTime?>("FechaActualizacion")
                         .HasColumnType("datetime2")
@@ -1035,6 +1037,16 @@ namespace AppCapasCitas.Infrastructure.Migrations
                     b.Property<string>("ModificadoPor")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("modificado_por");
+
+                    b.Property<string>("Motivo")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)")
+                        .HasColumnName("motivo");
+
+                    b.Property<string>("Observaciones")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)")
+                        .HasColumnName("observaciones");
 
                     b.Property<Guid>("PacienteId")
                         .HasColumnType("uniqueidentifier")
@@ -1079,6 +1091,60 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .HasName("pk_tipo_accion");
 
                     b.ToTable("tipo_accion", (string)null);
+                });
+
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.TipoConsulta", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit")
+                        .HasColumnName("activo");
+
+                    b.Property<string>("CreadoPor")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("creado_por");
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)")
+                        .HasColumnName("descripcion");
+
+                    b.Property<int>("DuracionMinutos")
+                        .HasColumnType("int")
+                        .HasColumnName("duracion_minutos");
+
+                    b.Property<DateTime?>("FechaActualizacion")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("fecha_actualizacion");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("fecha_creacion");
+
+                    b.Property<string>("ModificadoPor")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("modificado_por");
+
+                    b.Property<decimal>("MultiplicadorCosto")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(4,2)")
+                        .HasDefaultValue(1.0m)
+                        .HasColumnName("multiplicador_costo");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("nombre");
+
+                    b.HasKey("Id")
+                        .HasName("pk_tipo_consulta");
+
+                    b.ToTable("tipo_consulta", (string)null);
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.TipoSangre", b =>
@@ -1180,6 +1246,10 @@ namespace AppCapasCitas.Infrastructure.Migrations
                     b.Property<DateTime>("FechaCreacion")
                         .HasColumnType("datetime2")
                         .HasColumnName("fecha_creacion");
+
+                    b.Property<string>("Genero")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("genero");
 
                     b.Property<string>("ModificadoPor")
                         .HasColumnType("nvarchar(max)")
@@ -1314,11 +1384,19 @@ namespace AppCapasCitas.Infrastructure.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_cita_paciente_paciente_id");
 
+                    b.HasOne("AppCapasCitas.Domain.Models.TipoConsulta", "TipoConsultaNavigation")
+                        .WithMany("Citas")
+                        .HasForeignKey("TipoConsultaId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_cita_tipo_consulta_tipo_consulta_id");
+
                     b.Navigation("ConsultorioNavigation");
 
                     b.Navigation("MedicoNavigation");
 
                     b.Navigation("Paciente");
+
+                    b.Navigation("TipoConsultaNavigation");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.Consultorio", b =>
@@ -1594,6 +1672,11 @@ namespace AppCapasCitas.Infrastructure.Migrations
             modelBuilder.Entity("AppCapasCitas.Domain.Models.RecetaMedica", b =>
                 {
                     b.Navigation("Medicamentos");
+                });
+
+            modelBuilder.Entity("AppCapasCitas.Domain.Models.TipoConsulta", b =>
+                {
+                    b.Navigation("Citas");
                 });
 
             modelBuilder.Entity("AppCapasCitas.Domain.Models.TipoSangre", b =>

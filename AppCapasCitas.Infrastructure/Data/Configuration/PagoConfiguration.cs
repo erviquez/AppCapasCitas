@@ -18,7 +18,7 @@ public class PagoConfiguration : IEntityTypeConfiguration<Pago>
 
         // Configuración de monto:
         entity.Property(h => h.Monto)
-            .HasColumnType("decimal(5,2)"); // Formato: $999.99
+            .HasColumnType("decimal(10,2)"); // Formato: $999.99
 
         // Configuración de índices para mejorar el rendimiento de búsquedas frecuentes        
         entity.HasIndex(p => p.Estado); // Filtrado por estado de pago

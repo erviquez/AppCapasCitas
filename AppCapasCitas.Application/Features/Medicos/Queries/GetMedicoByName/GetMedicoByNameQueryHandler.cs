@@ -32,14 +32,15 @@ public class GetMedicoByNameQueryHandler : IRequestHandler<GetMedicoByNameQuery,
         {
             var includes = new List<Expression<Func<Medico, object>>>
             {
-                x => x.UsuarioNavigation!, // Include the related Usuario
+                x => x.UsuarioNavigation!, 
+                x => x.HorariosTrabajo!,
                 x => x.MedicoEspecialidadHospitales!
             };
 
             
             var medicos = await _medicoRepository.GetAsync(
                 x => x.Activo == true &&
-                (x.UsuarioNavigation!.Nombre + " " + x.UsuarioNavigation.Apellido).ToLower() == request.Nombre!.ToLower(),
+                (x.UsuarioNavigation!.Nombre + " " + x.UsuarioNavigation.Apellido).ToLower().Contains(request.Nombre!.ToLower()),
                 x => x.OrderBy(x => x.Id),
                 includes,
                 cancellationToken: cancellationToken);
@@ -53,7 +54,7 @@ public class GetMedicoByNameQueryHandler : IRequestHandler<GetMedicoByNameQuery,
                 return response;
             }
 
-            var medicoResponse = _mapper.Map<IReadOnlyList<MedicoResponse>>(medicos);
+            var medicoResponse = _mapper.Map<List<MedicoResponse>>(medicos);
             message = "Lista de medicos por nombre obtenida correctamente. Total de medicos";
             _appLogger.LogInformation($"{message}: {0} - {1}", totalCount, DateTime.Now);
             response.IsSuccess = true;

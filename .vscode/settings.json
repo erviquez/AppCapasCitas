@@ -1,0 +1,4 @@
+{
+    "dbMcp.provider": "sqlserver",
+    "dbMcp.connectionString": "mssql://sa:Test-123456@localhost:1433/CitasAppDev"
+}
