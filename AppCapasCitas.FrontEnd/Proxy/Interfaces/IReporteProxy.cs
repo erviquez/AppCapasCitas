@@ -12,4 +12,19 @@ public interface IReporteProxy
     Task<Response<object>> ObtenerConfiguracionReporteAsync();
     Task<Response<ReporteResponse>> GenerarReporteMedicosPersonalizadoAsync(ReporteRequest request);
     Task<Response<ReporteResponse>> GenerarReporteMedicoByIdAsync(string medicoId);
+
+
+    /// <summary>
+    /// Genera expedientes múltiples de médicos (versión client-side)
+    /// </summary>
+    Task<Response<ReporteResponse>> GenerarExpedientesMedicosMultiplesAsync(List<string> medicosIds);
+   
+    /// <summary>
+    /// Genera expedientes múltiples de médicos (versión optimizada server-side)
+    /// </summary>
+   // Task<Response<ReporteResponse>> GenerarExpedientesMedicosMultiplesOptimizadoAsync(List<string> medicosIds);
+
+
+
+    
 }

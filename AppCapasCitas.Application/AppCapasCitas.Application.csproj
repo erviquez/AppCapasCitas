@@ -36,6 +36,7 @@
     <Folder Include="Features\Pacientes\Vms\" />
     <Folder Include="Features\Pacientes\Vms\Request\" />
     <Folder Include="Features\Pacientes\Vms\Response\" />
+    <Folder Include="Features\Reportes\Queries\" />
   </ItemGroup>
 
 </Project>

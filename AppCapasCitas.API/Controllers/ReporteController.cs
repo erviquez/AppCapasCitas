@@ -1,7 +1,7 @@
+using AppCapasCitas.Application.Contracts.Persistence.Infrastructure;
 using AppCapasCitas.Application.Features.Reports.Commands.GenerateReport;
 using AppCapasCitas.DTO.Configuration;
 using AppCapasCitas.DTO.Request.Reporte;
-using AppCapasCitas.Reporting.Helpers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -13,10 +13,12 @@ namespace AppCapasCitas.API.Controllers;
 public class ReporteController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly IReporteService _reporteService;
 
-    public ReporteController(IMediator mediator)
+    public ReporteController(IMediator mediator, IReporteService reporteService)
     {
         _mediator = mediator;
+        _reporteService = reporteService;
     }
 
     [HttpPost("pacientes")]
@@ -145,6 +147,36 @@ public class ReporteController : ControllerBase
         }
 
         return File(response.Data.FileContent, response.Data.ContentType, response.Data.FileName);
+    }
+
+    [HttpPost("medicos/expedientes-multiples")]
+    public async Task<IActionResult> GenerarExpedientesMedicosMultiples([FromBody] ReporteMultipleRequest request)
+    {
+        try
+        {
+            var command = new GenerateReporteCommand
+            {
+                TipoReporte = "medicosmultiples",
+                Parametros = request
+            };
+
+            var response = await _mediator.Send(command);
+
+            if (!response.IsSuccess)
+                return BadRequest(response);   
+
+            if (response.Data!.FileContent == null)
+            {
+                return NotFound("No se encontró el contenido del archivo.");
+            }
+
+            return File(response.Data.FileContent, response.Data.ContentType, response.Data.FileName);
+        }
+        catch (Exception ex)
+        {
+            //_logger.LogError(ex, "Error al generar expedientes múltiples");
+            return StatusCode(500, $"Error interno del servidor: {ex.Message}");
+        }
     }
 
 

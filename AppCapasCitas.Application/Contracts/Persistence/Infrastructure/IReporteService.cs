@@ -15,5 +15,10 @@ public interface IReporteService
     Task<Response<ReporteResponse>> GenerarReporteEspecialidadesAsync();
     Task<Response<ReporteResponse>> GenerarReporteConfigurableMedicosAsync(ReporteRequest request);
 
+        // Expedientes individuales
     Task<Response<ReporteResponse>> GenerarExpedienteMedicoAsync(ReporteIdRequest request);
+    
+    // Múltiples expedientes
+    Task<Response<ReporteResponse>> GenerarMultiplesExpedientesMedicosAsync(ReporteMultipleRequest request);
+    //Task<Response<List<MedicoSeleccionDto>>> ObtenerMedicosParaSeleccionAsync();
 }

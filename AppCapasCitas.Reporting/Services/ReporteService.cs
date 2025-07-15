@@ -5,6 +5,7 @@ using AppCapasCitas.DTO.Configuration;
 using AppCapasCitas.DTO.Request.Pago;
 using AppCapasCitas.DTO.Request.Reporte;
 using AppCapasCitas.DTO.Response.Reporte;
+using AppCapasCitas.DTO.Helpers; 
 using AppCapasCitas.Reporting.Helpers;
 using AppCapasCitas.Transversal.Common;
 using iText.Kernel.Pdf;
@@ -16,6 +17,7 @@ using iText.Kernel.Colors;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Linq.Expressions;
+using System.IO.Compression;
 
 namespace AppCapasCitas.Reporting.Services;
 
@@ -287,7 +289,7 @@ public class ReporteService : IReporteService
                 config = request.ConfiguracionImpresion;
             // Obtener datos
             //si filtro nombre es vacio
- 
+
             var medicos = await _medicoRepository.GetAsync(
             predicate: p => (string.IsNullOrEmpty(request.FiltroNombre) ||
                            p.UsuarioNavigation!.Nombre!.ToLower().Contains(request.FiltroNombre.ToLower()) ||
@@ -515,7 +517,7 @@ public class ReporteService : IReporteService
             .SetBorder(Border.NO_BORDER)
             .SetPadding(10);
 
-        columnaIzq.Add(CrearCampoExpediente("Nombre Completo:", 
+        columnaIzq.Add(CrearCampoExpediente("Nombre Completo:",
             $"{medico.UsuarioNavigation?.Nombre} {medico.UsuarioNavigation?.Apellido}", config));
         columnaIzq.Add(CrearCampoExpediente("Email:", medico.UsuarioNavigation?.Email ?? "N/A", config));
         columnaIzq.Add(CrearCampoExpediente("Teléfono:", medico.UsuarioNavigation?.Telefono ?? "N/A", config));
@@ -563,7 +565,7 @@ public class ReporteService : IReporteService
             .SetPadding(10);
 
         columnaDer.Add(CrearCampoExpediente("Estado:", medico.Activo ? "Activo" : "Inactivo", config));
-        columnaDer.Add(CrearCampoExpediente("Último Login:", 
+        columnaDer.Add(CrearCampoExpediente("Último Login:",
             medico.UsuarioNavigation?.UltimoLogin?.ToString("dd/MM/yyyy HH:mm") ?? "N/A", config));
 
         tabla.AddCell(columnaIzq);
@@ -591,8 +593,8 @@ public class ReporteService : IReporteService
         if (medico.MedicoEspecialidadHospitales?.Any() == true)
         {
             var headers = new List<string> { "Especialidad", "Hospital", "Cargo", "Estado" };
-            var tabla = PdfConfigurableHelper.CrearTablaConfigurable(headers, 
-                medico.MedicoEspecialidadHospitales.ToList(), 
+            var tabla = PdfConfigurableHelper.CrearTablaConfigurable(headers,
+                medico.MedicoEspecialidadHospitales.ToList(),
                 item => new List<string>
                 {
                     item.EspecialidadNavigation?.Nombre ?? "N/A",
@@ -600,7 +602,7 @@ public class ReporteService : IReporteService
                     item.CargoNavigation?.Nombre ?? "N/A",
                     item.Activo ? "Activo" : "Inactivo"
                 }, config);
-            
+
             doc.Add(tabla);
         }
         else
@@ -620,8 +622,8 @@ public class ReporteService : IReporteService
         if (medico.HorariosTrabajo?.Any() == true)
         {
             var headers = new List<string> { "Día", "Hora Inicio", "Hora Fin", "Estado" };
-            var tabla = PdfConfigurableHelper.CrearTablaConfigurable(headers, 
-                medico.HorariosTrabajo.OrderBy(h => h.DiaSemana).ToList(), 
+            var tabla = PdfConfigurableHelper.CrearTablaConfigurable(headers,
+                medico.HorariosTrabajo.OrderBy(h => h.DiaSemana).ToList(),
                 horario => new List<string>
                 {
                     ObtenerNombreDia((int)horario.DiaSemana),
@@ -629,7 +631,7 @@ public class ReporteService : IReporteService
                     (horario.HoraFin != null ? horario.HoraFin.ToString(@"hh\:mm") : "N/A"),
                     horario.Activo ? "Activo" : "Inactivo"
                 }, config);
-            
+
             doc.Add(tabla);
         }
         else
@@ -672,7 +674,7 @@ public class ReporteService : IReporteService
                     .SetBold())
                 .SetBackgroundColor(ColorConstants.LIGHT_GRAY)
                 .SetTextAlignment(TextAlignment.CENTER));
-            
+
             tabla.AddCell(new Cell()
                 .Add(new Paragraph(stat.Value)
                     .SetFontSize(config.TamanoFuenteTexto))
@@ -695,7 +697,7 @@ public class ReporteService : IReporteService
         return diaSemana switch
         {
             1 => "Lunes",
-            2 => "Martes", 
+            2 => "Martes",
             3 => "Miércoles",
             4 => "Jueves",
             5 => "Viernes",
@@ -707,5 +709,171 @@ public class ReporteService : IReporteService
 
     #endregion
     /////////////////// 
+    #region Métodos para Múltiples Expedientes
 
+    /// <summary>
+    /// Genera múltiples expedientes de médicos en un archivo ZIP
+    /// </summary>
+    public async Task<Response<ReporteResponse>> GenerarMultiplesExpedientesMedicosAsync(ReporteMultipleRequest request)
+    {
+        var response = new Response<ReporteResponse>();
+
+        try
+        {
+            if (request.Ids == null || !request.Ids.Any())
+            {
+                response.IsSuccess = false;
+                response.Message = "Debe seleccionar al menos un médico";
+                return response;
+            }
+
+            var config = request.ConfiguracionImpresion ?? _pdfDefaults.AplicarConfiguracionDefault();
+            var archivosGenerados = new List<ArchivoGenerado>();
+
+            // Generar cada expediente individualmente
+            foreach (var medicoId in request.Ids)
+            {
+                try
+                {
+                    var expedienteRequest = new ReporteIdRequest 
+                    { 
+                        Id = Guid.Parse(medicoId), 
+                        ConfiguracionImpresion = config 
+                    };
+
+                    var expedienteResponse = await GenerarExpedienteMedicoAsync(expedienteRequest);
+
+                    if (expedienteResponse.IsSuccess && expedienteResponse.Data != null)
+                    {
+                        archivosGenerados.Add(new ArchivoGenerado
+                        {
+                            NombreArchivo = expedienteResponse.Data.FileName,
+                            Contenido = expedienteResponse.Data.FileContent,
+                            TipoContenido = expedienteResponse.Data.ContentType
+                        });
+
+                        _logger.LogInformation($"Expediente generado para médico ID: {medicoId}");
+                    }
+                    else
+                    {
+                        _logger.LogWarning($"No se pudo generar expediente para médico ID: {medicoId}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"Error generando expediente para médico ID: {medicoId}");
+                    // Continuar con los siguientes médicos
+                }
+            }
+
+            if (!archivosGenerados.Any())
+            {
+                response.IsSuccess = false;
+                response.Message = "No se pudo generar ningún expediente";
+                return response;
+            }
+
+            // Crear archivo ZIP
+            var zipContent = CrearArchivoZip(archivosGenerados);
+            var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+
+            var reporteResponse = new ReporteResponse
+            {
+                FileName = $"Expedientes_Medicos_{timestamp}.zip",
+                ContentType = "application/zip",
+                FileContent = zipContent,
+                Base64Content = Convert.ToBase64String(zipContent),
+                TotalRecords = archivosGenerados.Count
+            };
+
+            response.Data = reporteResponse;
+            response.IsSuccess = true;
+            response.Message = $"Se generaron {archivosGenerados.Count} expedientes exitosamente";
+
+            _logger.LogInformation($"ZIP generado con {archivosGenerados.Count} expedientes");
+        }
+        catch (Exception ex)
+        {
+            response.IsSuccess = false;
+            response.Message = $"Error al generar expedientes múltiples: {ex.Message}";
+            _logger.LogError(ex, "Error al generar expedientes múltiples");
+        }
+
+        return response;
+    }
+
+    /// <summary>
+    /// Obtiene la lista de médicos para selección múltiple
+    /// </summary>
+    // public async Task<Response<List<MedicoSeleccionDto>>> ObtenerMedicosParaSeleccionAsync()
+    // {
+    //     var response = new Response<List<MedicoSeleccionDto>>();
+
+    //     try
+    //     {
+    //         var medicos = await _medicoRepository.GetAsync(
+    //             predicate: m => m.Activo,
+    //             orderBy: q => q.OrderBy(m => m.UsuarioNavigation!.Apellido)
+    //                         .ThenBy(m => m.UsuarioNavigation!.Nombre),
+    //             includes: new List<Expression<Func<Medico, object>>>
+    //             {
+    //                 m => m.UsuarioNavigation!,
+    //                 m => m.MedicoEspecialidadHospitales!
+    //             },
+    //             disableTracking: true,
+    //             cancellationToken: default
+    //         );
+
+    //         var medicosDto = medicos.Select(m => new MedicoSeleccionDto
+    //         {
+    //             Id = m.Id.ToString(),
+    //             NombreCompleto = $"{m.UsuarioNavigation?.Nombre} {m.UsuarioNavigation?.Apellido}",
+    //             Email = m.UsuarioNavigation?.Email ?? "",
+    //             Especialidades = m.MedicoEspecialidadHospitales?
+    //                 .Where(meh => meh.Activo)
+    //                 .Select(meh => meh.EspecialidadNavigation?.Nombre ?? "")
+    //                 .Where(e => !string.IsNullOrEmpty(e))
+    //                 .ToList() ?? new List<string>(),
+    //             Activo = m.Activo
+    //         }).ToList();
+
+    //         response.Data = medicosDto;
+    //         response.IsSuccess = true;
+    //         response.Message = $"Se encontraron {medicosDto.Count} médicos";
+
+    //         _logger.LogInformation($"Lista de médicos obtenida: {medicosDto.Count} registros");
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         response.IsSuccess = false;
+    //         response.Message = $"Error al obtener lista de médicos: {ex.Message}";
+    //         _logger.LogError(ex, "Error al obtener lista de médicos");
+    //     }
+
+    //     return response;
+    // }
+
+    /// <summary>
+    /// Crea un archivo ZIP con múltiples archivos
+    /// </summary>
+    private byte[] CrearArchivoZip(List<ArchivoGenerado> archivos)
+    {
+        using var memoryStream = new MemoryStream();
+        using (var archive = new System.IO.Compression.ZipArchive(memoryStream, 
+            System.IO.Compression.ZipArchiveMode.Create, true))
+        {
+            foreach (var archivo in archivos)
+            {
+                var entry = archive.CreateEntry(archivo.NombreArchivo, 
+                    System.IO.Compression.CompressionLevel.Optimal);
+                
+                using var entryStream = entry.Open();
+                entryStream.Write(archivo.Contenido, 0, archivo.Contenido.Length);
+            }
+        }
+
+        return memoryStream.ToArray();
+    }
+
+#endregion
 }

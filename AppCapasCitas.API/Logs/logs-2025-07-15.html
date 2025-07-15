@@ -19432,3 +19432,1550 @@ ORDER BY [u].[apellido], [u].[nombre]</span></div>
             <span class='level'>Information</span>
             <span class='category'>Microsoft.Hosting.Lifetime</span>
             <span class='message'>Application is shutting down...</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (26ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (32ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:13:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.aPI</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 16:20:17</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was not authenticated.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:21:40</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application is shutting down...</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:12</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (36ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:12</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:12</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (37ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:22:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 16:22:32</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was not authenticated.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (37ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (32ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:23:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.API</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 16:24:14</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was not authenticated.</span></div>
+
+        <div class='log-entry warning'>
+            <span class='time'>2025-07-15 16:25:16</span>
+            <span class='level'>Warning</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Query</span>
+            <span class='message'>Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:25:16</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (65ms) [Parameters=[@__request_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m0].[id], [m0].[activo], [m0].[cargo_id], [m0].[costo_consulta_especifico], [m0].[creado_por], [m0].[especialidad_id], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[fecha_fin], [m0].[fecha_inicio], [m0].[hospital_id], [m0].[medico_id], [m0].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por], [c].[id], [c].[activo], [c].[consultorio_id], [c].[costo_consulta], [c].[creado_por], [c].[diagnostico], [c].[estado], [c].[fecha_actualizacion], [c].[fecha_creacion], [c].[fecha_hora], [c].[medico_id], [c].[modificado_por], [c].[motivo], [c].[notas], [c].[paciente_id], [c].[pago_id], [c].[tipo_consulta_id], [c].[tratamiento]
+FROM [medico] AS [m]
+LEFT JOIN [usuario] AS [u] ON [m].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m0] ON [m].[id] = [m0].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m].[id] = [h].[medico_id]
+LEFT JOIN [cita] AS [c] ON [m].[id] = [c].[medico_id]
+WHERE [m].[id] = @__request_Id_0
+ORDER BY [m].[id], [u].[id], [m0].[id], [h].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:25:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Expediente médico generado para: Carlos Garcia</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:26:07</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Expediente generado para médico ID: c6aae1bd-690e-4618-a36f-4f9959291c72</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:26:24</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (36ms) [Parameters=[@__request_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m0].[id], [m0].[activo], [m0].[cargo_id], [m0].[costo_consulta_especifico], [m0].[creado_por], [m0].[especialidad_id], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[fecha_fin], [m0].[fecha_inicio], [m0].[hospital_id], [m0].[medico_id], [m0].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por], [c].[id], [c].[activo], [c].[consultorio_id], [c].[costo_consulta], [c].[creado_por], [c].[diagnostico], [c].[estado], [c].[fecha_actualizacion], [c].[fecha_creacion], [c].[fecha_hora], [c].[medico_id], [c].[modificado_por], [c].[motivo], [c].[notas], [c].[paciente_id], [c].[pago_id], [c].[tipo_consulta_id], [c].[tratamiento]
+FROM [medico] AS [m]
+LEFT JOIN [usuario] AS [u] ON [m].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m0] ON [m].[id] = [m0].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m].[id] = [h].[medico_id]
+LEFT JOIN [cita] AS [c] ON [m].[id] = [c].[medico_id]
+WHERE [m].[id] = @__request_Id_0
+ORDER BY [m].[id], [u].[id], [m0].[id], [h].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:26:44</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Expediente médico generado para: Mario Marin</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:26:50</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Expediente generado para médico ID: 807f6df0-deb3-44d6-9157-c77a9ae004a4</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:27:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>ZIP generado con 2 expedientes</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (27ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (37ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [migration_id] nvarchar(150) NOT NULL,
+        [product_version] nvarchar(32) NOT NULL,
+        CONSTRAINT [pk___ef_migrations_history] PRIMARY KEY ([migration_id])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [migration_id], [product_version]
+FROM [__EFMigrationsHistory]
+ORDER BY [migration_id];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Migrations</span>
+            <span class='message'>No migrations were applied. The database is already up to date.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:03</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Now listening on: http://localhost:5100</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application started. Press Ctrl+C to shut down.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Hosting environment: Development</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:55:04</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Content root path: D:\Licito\AppCapasCitas\AppCapasCitas.aPI</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 16:59:20</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>Successfully validated the token.</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 16:59:20</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was successfully authenticated.</span></div>
+
+        <div class='log-entry warning'>
+            <span class='time'>2025-07-15 16:59:20</span>
+            <span class='level'>Warning</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Query</span>
+            <span class='message'>Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:20</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (18ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [m0].[id], [m0].[activo], [m0].[biografia], [m0].[cedula_profesional], [m0].[creado_por], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[modificado_por], [m0].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m1].[id], [m1].[activo], [m1].[cargo_id], [m1].[costo_consulta_especifico], [m1].[creado_por], [m1].[especialidad_id], [m1].[fecha_actualizacion], [m1].[fecha_creacion], [m1].[fecha_fin], [m1].[fecha_inicio], [m1].[hospital_id], [m1].[medico_id], [m1].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por]
+FROM (
+    SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad]
+    FROM [medico] AS [m]
+    ORDER BY [m].[id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [m0]
+LEFT JOIN [usuario] AS [u] ON [m0].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m1] ON [m0].[id] = [m1].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m0].[id] = [h].[medico_id]
+ORDER BY [m0].[id], [u].[id], [m1].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [medico] AS [m]</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>Successfully validated the token.</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was successfully authenticated.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Activo], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName], [a].[Orden], [a].[Prioridad]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Activo], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName], [a].[Orden], [a].[Prioridad]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Activo], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName], [a].[Orden], [a].[Prioridad]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Activo], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName], [a].[Orden], [a].[Prioridad]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Activo], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName], [a].[Orden], [a].[Prioridad]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Activo], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName], [a].[Orden], [a].[Prioridad]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Activo], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName], [a].[Orden], [a].[Prioridad]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Activo], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName], [a].[Orden], [a].[Prioridad]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Active], [a].[ConcurrencyStamp], [a].[CreateBy], [a].[CreateDate], [a].[Email], [a].[EmailConfirmed], [a].[LastLogin], [a].[LastModifiedBy], [a].[LastModifiedByDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Active], [a].[ConcurrencyStamp], [a].[CreateBy], [a].[CreateDate], [a].[Email], [a].[EmailConfirmed], [a].[LastLogin], [a].[LastModifiedBy], [a].[LastModifiedByDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[Activo], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName], [a].[Orden], [a].[Prioridad]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler</span>
+            <span class='message'>AuthenticationScheme: Identity.Application signed in.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (7ms) [Parameters=[@p20='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (DbType = Boolean), @p2='?' (Size = 4000), @p21='?' (Size = 4000), @p3='?' (Size = 100), @p4='?' (DbType = DateTime2), @p5='?' (Size = 256), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime2), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2), @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTimeOffset), @p12='?' (Size = 256), @p13='?' (Size = 256), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (DbType = Boolean), @p17='?' (Size = 4000), @p18='?' (DbType = Boolean), @p19='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [Active] = @p1, [ConcurrencyStamp] = @p2, [CreateBy] = @p3, [CreateDate] = @p4, [Email] = @p5, [EmailConfirmed] = @p6, [LastLogin] = @p7, [LastModifiedBy] = @p8, [LastModifiedByDate] = @p9, [LockoutEnabled] = @p10, [LockoutEnd] = @p11, [NormalizedEmail] = @p12, [NormalizedUserName] = @p13, [PasswordHash] = @p14, [PhoneNumber] = @p15, [PhoneNumberConfirmed] = @p16, [SecurityStamp] = @p17, [TwoFactorEnabled] = @p18, [UserName] = @p19
+OUTPUT 1
+WHERE [Id] = @p20 AND [ConcurrencyStamp] = @p21;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:32</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = DateTime2), @p8='?' (Size = 4000), @p9='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([CreateBy], [CreateDate], [ExpireDate], [IsRevoked], [IsUsed], [JwtId], [LastModifiedBy], [LastModifiedByDate], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:33</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__tipoAccion_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[id], [t].[descripcion], [t].[nombre]
+FROM [tipo_accion] AS [t]
+WHERE [t].[nombre] = @__tipoAccion_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:33</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Boolean), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [usuario_log_accion] ([id], [activo], [creado_por], [fecha_actualizacion], [fecha_creacion], [modificado_por], [tipo_accion_id], [usuario_id])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:33</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[@__usuarioId_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login]
+FROM [usuario] AS [u]
+WHERE [u].[id] = @__usuarioId_0</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:33</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (6ms) [Parameters=[@p19='?' (DbType = Guid), @p0='?' (DbType = Boolean), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Int32), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2), @p10='?' (DbType = DateTime2), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [usuario] SET [activo] = @p0, [apellido] = @p1, [celular] = @p2, [ciudad] = @p3, [codigo_pais] = @p4, [creado_por] = @p5, [direccion] = @p6, [email] = @p7, [estado] = @p8, [fecha_actualizacion] = @p9, [fecha_creacion] = @p10, [genero] = @p11, [modificado_por] = @p12, [nombre] = @p13, [pais] = @p14, [rol_name] = @p15, [role_id] = @p16, [telefono] = @p17, [ultimo_login] = @p18
+OUTPUT 1
+WHERE [id] = @p19;</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:33</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Application.Features.Usuarios.Commands.ActionLogUsuario.ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Último login actualizado para el usuario: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:33</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Application.Features.Usuarios.Commands.ActionLogUsuario.ActionLogUsuarioCommandHandler</span>
+            <span class='message'>Acción registrada correctamente UsuarioId: 09c0f1b8-6c92-4f34-ab90-7b0231b6685b, TipoAccionId: 815d767b-4968-4427-9e63-8f4524d492c8</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 16:59:35</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>Successfully validated the token.</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 16:59:35</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was successfully authenticated.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:35</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [m0].[id], [m0].[activo], [m0].[biografia], [m0].[cedula_profesional], [m0].[creado_por], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[modificado_por], [m0].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m1].[id], [m1].[activo], [m1].[cargo_id], [m1].[costo_consulta_especifico], [m1].[creado_por], [m1].[especialidad_id], [m1].[fecha_actualizacion], [m1].[fecha_creacion], [m1].[fecha_fin], [m1].[fecha_inicio], [m1].[hospital_id], [m1].[medico_id], [m1].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por]
+FROM (
+    SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad]
+    FROM [medico] AS [m]
+    ORDER BY [m].[id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [m0]
+LEFT JOIN [usuario] AS [u] ON [m0].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m1] ON [m0].[id] = [m1].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m0].[id] = [h].[medico_id]
+ORDER BY [m0].[id], [u].[id], [m1].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:35</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [medico] AS [m]</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 16:59:40</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>Successfully validated the token.</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 16:59:40</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was successfully authenticated.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:40</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login]
+FROM [medico] AS [m]
+LEFT JOIN [usuario] AS [u] ON [m].[id] = [u].[id]
+WHERE [m].[activo] = CAST(1 AS bit)
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:41</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Agregando imagen de fondo...</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 16:59:42</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Reporte de medicos generado: 2 registros</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:13</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>Successfully validated the token.</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:13</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was successfully authenticated.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [m0].[id], [m0].[activo], [m0].[biografia], [m0].[cedula_profesional], [m0].[creado_por], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[modificado_por], [m0].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m1].[id], [m1].[activo], [m1].[cargo_id], [m1].[costo_consulta_especifico], [m1].[creado_por], [m1].[especialidad_id], [m1].[fecha_actualizacion], [m1].[fecha_creacion], [m1].[fecha_fin], [m1].[fecha_inicio], [m1].[hospital_id], [m1].[medico_id], [m1].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por]
+FROM (
+    SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad]
+    FROM [medico] AS [m]
+    ORDER BY [m].[id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [m0]
+LEFT JOIN [usuario] AS [u] ON [m0].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m1] ON [m0].[id] = [m1].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m0].[id] = [h].[medico_id]
+ORDER BY [m0].[id], [u].[id], [m1].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:13</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [medico] AS [m]</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:20</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>Successfully validated the token.</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:20</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was successfully authenticated.</span></div>
+
+        <div class='log-entry warning'>
+            <span class='time'>2025-07-15 17:00:20</span>
+            <span class='level'>Warning</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Query</span>
+            <span class='message'>Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:21</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__request_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m0].[id], [m0].[activo], [m0].[cargo_id], [m0].[costo_consulta_especifico], [m0].[creado_por], [m0].[especialidad_id], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[fecha_fin], [m0].[fecha_inicio], [m0].[hospital_id], [m0].[medico_id], [m0].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por], [c].[id], [c].[activo], [c].[consultorio_id], [c].[costo_consulta], [c].[creado_por], [c].[diagnostico], [c].[estado], [c].[fecha_actualizacion], [c].[fecha_creacion], [c].[fecha_hora], [c].[medico_id], [c].[modificado_por], [c].[motivo], [c].[notas], [c].[paciente_id], [c].[pago_id], [c].[tipo_consulta_id], [c].[tratamiento]
+FROM [medico] AS [m]
+LEFT JOIN [usuario] AS [u] ON [m].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m0] ON [m].[id] = [m0].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m].[id] = [h].[medico_id]
+LEFT JOIN [cita] AS [c] ON [m].[id] = [c].[medico_id]
+WHERE [m].[id] = @__request_Id_0
+ORDER BY [m].[id], [u].[id], [m0].[id], [h].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:22</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Expediente médico generado para: Carlos Garcia</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:22</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Expediente generado para médico ID: c6aae1bd-690e-4618-a36f-4f9959291c72</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:22</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__request_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m0].[id], [m0].[activo], [m0].[cargo_id], [m0].[costo_consulta_especifico], [m0].[creado_por], [m0].[especialidad_id], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[fecha_fin], [m0].[fecha_inicio], [m0].[hospital_id], [m0].[medico_id], [m0].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por], [c].[id], [c].[activo], [c].[consultorio_id], [c].[costo_consulta], [c].[creado_por], [c].[diagnostico], [c].[estado], [c].[fecha_actualizacion], [c].[fecha_creacion], [c].[fecha_hora], [c].[medico_id], [c].[modificado_por], [c].[motivo], [c].[notas], [c].[paciente_id], [c].[pago_id], [c].[tipo_consulta_id], [c].[tratamiento]
+FROM [medico] AS [m]
+LEFT JOIN [usuario] AS [u] ON [m].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m0] ON [m].[id] = [m0].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m].[id] = [h].[medico_id]
+LEFT JOIN [cita] AS [c] ON [m].[id] = [c].[medico_id]
+WHERE [m].[id] = @__request_Id_0
+ORDER BY [m].[id], [u].[id], [m0].[id], [h].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:22</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Expediente médico generado para: Mario Marin</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:22</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Expediente generado para médico ID: 807f6df0-deb3-44d6-9157-c77a9ae004a4</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:22</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>ZIP generado con 2 expedientes</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:39</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>Successfully validated the token.</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:39</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was successfully authenticated.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:39</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [m0].[id], [m0].[activo], [m0].[biografia], [m0].[cedula_profesional], [m0].[creado_por], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[modificado_por], [m0].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m1].[id], [m1].[activo], [m1].[cargo_id], [m1].[costo_consulta_especifico], [m1].[creado_por], [m1].[especialidad_id], [m1].[fecha_actualizacion], [m1].[fecha_creacion], [m1].[fecha_fin], [m1].[fecha_inicio], [m1].[hospital_id], [m1].[medico_id], [m1].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por]
+FROM (
+    SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad]
+    FROM [medico] AS [m]
+    ORDER BY [m].[id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [m0]
+LEFT JOIN [usuario] AS [u] ON [m0].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m1] ON [m0].[id] = [m1].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m0].[id] = [h].[medico_id]
+ORDER BY [m0].[id], [u].[id], [m1].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:39</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [medico] AS [m]</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:45</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>Successfully validated the token.</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:45</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was successfully authenticated.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:45</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [m0].[id], [m0].[activo], [m0].[biografia], [m0].[cedula_profesional], [m0].[creado_por], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[modificado_por], [m0].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m1].[id], [m1].[activo], [m1].[cargo_id], [m1].[costo_consulta_especifico], [m1].[creado_por], [m1].[especialidad_id], [m1].[fecha_actualizacion], [m1].[fecha_creacion], [m1].[fecha_fin], [m1].[fecha_inicio], [m1].[hospital_id], [m1].[medico_id], [m1].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por]
+FROM (
+    SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad]
+    FROM [medico] AS [m]
+    ORDER BY [m].[id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [m0]
+LEFT JOIN [usuario] AS [u] ON [m0].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m1] ON [m0].[id] = [m1].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m0].[id] = [h].[medico_id]
+ORDER BY [m0].[id], [u].[id], [m1].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:45</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [medico] AS [m]</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:49</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>Successfully validated the token.</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:49</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was successfully authenticated.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:49</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [m0].[id], [m0].[activo], [m0].[biografia], [m0].[cedula_profesional], [m0].[creado_por], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[modificado_por], [m0].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m1].[id], [m1].[activo], [m1].[cargo_id], [m1].[costo_consulta_especifico], [m1].[creado_por], [m1].[especialidad_id], [m1].[fecha_actualizacion], [m1].[fecha_creacion], [m1].[fecha_fin], [m1].[fecha_inicio], [m1].[hospital_id], [m1].[medico_id], [m1].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por]
+FROM (
+    SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad]
+    FROM [medico] AS [m]
+    ORDER BY [m].[id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [m0]
+LEFT JOIN [usuario] AS [u] ON [m0].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m1] ON [m0].[id] = [m1].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m0].[id] = [h].[medico_id]
+ORDER BY [m0].[id], [u].[id], [m1].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:49</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [medico] AS [m]</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:54</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>Successfully validated the token.</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:54</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was successfully authenticated.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:54</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [m0].[id], [m0].[activo], [m0].[biografia], [m0].[cedula_profesional], [m0].[creado_por], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[modificado_por], [m0].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m1].[id], [m1].[activo], [m1].[cargo_id], [m1].[costo_consulta_especifico], [m1].[creado_por], [m1].[especialidad_id], [m1].[fecha_actualizacion], [m1].[fecha_creacion], [m1].[fecha_fin], [m1].[fecha_inicio], [m1].[hospital_id], [m1].[medico_id], [m1].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por]
+FROM (
+    SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad]
+    FROM [medico] AS [m]
+    ORDER BY [m].[id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [m0]
+LEFT JOIN [usuario] AS [u] ON [m0].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m1] ON [m0].[id] = [m1].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m0].[id] = [h].[medico_id]
+ORDER BY [m0].[id], [u].[id], [m1].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:54</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [medico] AS [m]</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:57</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>Successfully validated the token.</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:00:57</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was successfully authenticated.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [m0].[id], [m0].[activo], [m0].[biografia], [m0].[cedula_profesional], [m0].[creado_por], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[modificado_por], [m0].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m1].[id], [m1].[activo], [m1].[cargo_id], [m1].[costo_consulta_especifico], [m1].[creado_por], [m1].[especialidad_id], [m1].[fecha_actualizacion], [m1].[fecha_creacion], [m1].[fecha_fin], [m1].[fecha_inicio], [m1].[hospital_id], [m1].[medico_id], [m1].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por]
+FROM (
+    SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad]
+    FROM [medico] AS [m]
+    ORDER BY [m].[id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [m0]
+LEFT JOIN [usuario] AS [u] ON [m0].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m1] ON [m0].[id] = [m1].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m0].[id] = [h].[medico_id]
+ORDER BY [m0].[id], [u].[id], [m1].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:00:57</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [medico] AS [m]</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:01:37</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>Successfully validated the token.</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:01:37</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was successfully authenticated.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:01:37</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[@__request_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m0].[id], [m0].[activo], [m0].[cargo_id], [m0].[costo_consulta_especifico], [m0].[creado_por], [m0].[especialidad_id], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[fecha_fin], [m0].[fecha_inicio], [m0].[hospital_id], [m0].[medico_id], [m0].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por], [c].[id], [c].[activo], [c].[consultorio_id], [c].[costo_consulta], [c].[creado_por], [c].[diagnostico], [c].[estado], [c].[fecha_actualizacion], [c].[fecha_creacion], [c].[fecha_hora], [c].[medico_id], [c].[modificado_por], [c].[motivo], [c].[notas], [c].[paciente_id], [c].[pago_id], [c].[tipo_consulta_id], [c].[tratamiento]
+FROM [medico] AS [m]
+LEFT JOIN [usuario] AS [u] ON [m].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m0] ON [m].[id] = [m0].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m].[id] = [h].[medico_id]
+LEFT JOIN [cita] AS [c] ON [m].[id] = [c].[medico_id]
+WHERE [m].[id] = @__request_Id_0
+ORDER BY [m].[id], [u].[id], [m0].[id], [h].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:01:37</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Expediente médico generado para: Carlos Garcia</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:01:37</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Expediente generado para médico ID: c6aae1bd-690e-4618-a36f-4f9959291c72</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:01:37</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (3ms) [Parameters=[@__request_Id_0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login], [m0].[id], [m0].[activo], [m0].[cargo_id], [m0].[costo_consulta_especifico], [m0].[creado_por], [m0].[especialidad_id], [m0].[fecha_actualizacion], [m0].[fecha_creacion], [m0].[fecha_fin], [m0].[fecha_inicio], [m0].[hospital_id], [m0].[medico_id], [m0].[modificado_por], [h].[id], [h].[activo], [h].[creado_por], [h].[dia_semana], [h].[fecha_actualizacion], [h].[fecha_creacion], [h].[hora_fin], [h].[hora_inicio], [h].[medico_id], [h].[modificado_por], [c].[id], [c].[activo], [c].[consultorio_id], [c].[costo_consulta], [c].[creado_por], [c].[diagnostico], [c].[estado], [c].[fecha_actualizacion], [c].[fecha_creacion], [c].[fecha_hora], [c].[medico_id], [c].[modificado_por], [c].[motivo], [c].[notas], [c].[paciente_id], [c].[pago_id], [c].[tipo_consulta_id], [c].[tratamiento]
+FROM [medico] AS [m]
+LEFT JOIN [usuario] AS [u] ON [m].[id] = [u].[id]
+LEFT JOIN [medico_especialidad_hospital] AS [m0] ON [m].[id] = [m0].[medico_id]
+LEFT JOIN [horario_trabajo] AS [h] ON [m].[id] = [h].[medico_id]
+LEFT JOIN [cita] AS [c] ON [m].[id] = [c].[medico_id]
+WHERE [m].[id] = @__request_Id_0
+ORDER BY [m].[id], [u].[id], [m0].[id], [h].[id]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:01:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Expediente médico generado para: Mario Marin</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:01:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Expediente generado para médico ID: 807f6df0-deb3-44d6-9157-c77a9ae004a4</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:01:38</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>ZIP generado con 2 expedientes</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:06:10</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>Successfully validated the token.</span></div>
+
+        <div class='log-entry debug'>
+            <span class='time'>2025-07-15 17:06:10</span>
+            <span class='level'>Debug</span>
+            <span class='category'>Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler</span>
+            <span class='message'>AuthenticationScheme: Bearer was successfully authenticated.</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:06:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.EntityFrameworkCore.Database.Command</span>
+            <span class='message'>Executed DbCommand (4ms) [Parameters=[@__ToLower_0_contains='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [m].[id], [m].[activo], [m].[biografia], [m].[cedula_profesional], [m].[creado_por], [m].[fecha_actualizacion], [m].[fecha_creacion], [m].[modificado_por], [m].[universidad], [u].[id], [u].[activo], [u].[apellido], [u].[celular], [u].[ciudad], [u].[codigo_pais], [u].[creado_por], [u].[direccion], [u].[email], [u].[estado], [u].[fecha_actualizacion], [u].[fecha_creacion], [u].[genero], [u].[modificado_por], [u].[nombre], [u].[pais], [u].[rol_name], [u].[role_id], [u].[telefono], [u].[ultimo_login]
+FROM [medico] AS [m]
+LEFT JOIN [usuario] AS [u] ON [m].[id] = [u].[id]
+WHERE (LOWER([u].[nombre]) LIKE @__ToLower_0_contains ESCAPE N'\' OR LOWER([u].[apellido]) LIKE @__ToLower_0_contains ESCAPE N'\') AND [m].[activo] = CAST(1 AS bit)
+ORDER BY [u].[apellido], [u].[nombre]</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:06:10</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Agregando imagen de fondo...</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:06:11</span>
+            <span class='level'>Information</span>
+            <span class='category'>AppCapasCitas.Reporting.Services.ReporteService</span>
+            <span class='message'>Reporte de medicos generado: 1 registros</span></div>
+
+        <div class='log-entry information'>
+            <span class='time'>2025-07-15 17:28:34</span>
+            <span class='level'>Information</span>
+            <span class='category'>Microsoft.Hosting.Lifetime</span>
+            <span class='message'>Application is shutting down...</span></div>

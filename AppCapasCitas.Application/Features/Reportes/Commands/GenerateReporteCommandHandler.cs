@@ -22,6 +22,19 @@ public class GenerateReporteCommandHandler : IRequestHandler<GenerateReporteComm
         {
             switch (request.TipoReporte.ToLower())
             {
+                case "medicosmultiples":
+                    var expedientesMedicosMultiplesRequest = DeserializarParametros<ReporteMultipleRequest>(request.Parametros);
+                    if (expedientesMedicosMultiplesRequest == null)
+                    {
+                        return new Response<ReporteResponse>
+                        {
+                            IsSuccess = false,
+                            Message = "Parámetros inválidos para reporte de medicos nultiples"
+                        };
+                    }
+                    return await _reporteService.GenerarMultiplesExpedientesMedicosAsync(expedientesMedicosMultiplesRequest);
+
+
                 case "medicobyid":
                     var medicoIdRequest = DeserializarParametros<ReporteIdRequest>(request.Parametros);
                     if (medicoIdRequest == null)
