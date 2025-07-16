@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gu4tAh6AivM=",
+  "dgSpecHash": "OrvxxzFY+88=",
   "success": true,
-  "projectFilePath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.frontEnd\\AppCapasCitas.FrontEnd.csproj",
+  "projectFilePath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\erdv\\.nuget\\packages\\blazor.bootstrap\\3.3.1\\blazor.bootstrap.3.3.1.nupkg.sha512",
     "C:\\Users\\erdv\\.nuget\\packages\\blazored.sessionstorage\\2.4.0\\blazored.sessionstorage.2.4.0.nupkg.sha512",
