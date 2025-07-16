@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppCapasCitas.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ccaaff2430f08200b2ab01ca70e6d73390c4f3a8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+266222c34cd722a842c5324e788a7eebbf5e472f")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppCapasCitas.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppCapasCitas.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
