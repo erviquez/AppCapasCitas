@@ -5,6 +5,8 @@
 @using AppCapasCitas.FrontEnd.Components.Modals
 @using AppCapasCitas.FrontEnd.Components
 @using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web
+
 @inject NavigationManager navigationManager
 @inject IUsuarioProxy proxy
 @inject IToastService toastService
@@ -12,7 +14,6 @@
 @inject SweetAlertService Swal;
 @attribute [Authorize]
 @inject AuthenticationStateProvider auth
-@using Microsoft.AspNetCore.Components.Web
 <PageTitle>Usuarios</PageTitle>
 
 <div class="card">

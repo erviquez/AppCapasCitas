@@ -1,0 +1,13 @@
+D:\Licito\AppCapasCitas\AppCapasCitas.Transversal.Common\bin\Debug\net9.0\AppCapasCitas.Transversal.Common.deps.json
+D:\Licito\AppCapasCitas\AppCapasCitas.Transversal.Common\bin\Debug\net9.0\AppCapasCitas.Transversal.Common.dll
+D:\Licito\AppCapasCitas\AppCapasCitas.Transversal.Common\bin\Debug\net9.0\AppCapasCitas.Transversal.Common.pdb
+D:\Licito\AppCapasCitas\AppCapasCitas.Transversal.Common\obj\Debug\net9.0\AppCapasCitas.Transversal.Common.csproj.AssemblyReference.cache
+D:\Licito\AppCapasCitas\AppCapasCitas.Transversal.Common\obj\Debug\net9.0\AppCapasCitas.Transversal.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\Licito\AppCapasCitas\AppCapasCitas.Transversal.Common\obj\Debug\net9.0\AppCapasCitas.Transversal.Common.AssemblyInfoInputs.cache
+D:\Licito\AppCapasCitas\AppCapasCitas.Transversal.Common\obj\Debug\net9.0\AppCapasCitas.Transversal.Common.AssemblyInfo.cs
+D:\Licito\AppCapasCitas\AppCapasCitas.Transversal.Common\obj\Debug\net9.0\AppCapasCitas.Transversal.Common.csproj.CoreCompileInputs.cache
+D:\Licito\AppCapasCitas\AppCapasCitas.Transversal.Common\obj\Debug\net9.0\AppCapasCitas.Transversal.Common.sourcelink.json
+D:\Licito\AppCapasCitas\AppCapasCitas.Transversal.Common\obj\Debug\net9.0\AppCapasCitas.Transversal.Common.dll
+D:\Licito\AppCapasCitas\AppCapasCitas.Transversal.Common\obj\Debug\net9.0\refint\AppCapasCitas.Transversal.Common.dll
+D:\Licito\AppCapasCitas\AppCapasCitas.Transversal.Common\obj\Debug\net9.0\AppCapasCitas.Transversal.Common.pdb
+D:\Licito\AppCapasCitas\AppCapasCitas.Transversal.Common\obj\Debug\net9.0\ref\AppCapasCitas.Transversal.Common.dll

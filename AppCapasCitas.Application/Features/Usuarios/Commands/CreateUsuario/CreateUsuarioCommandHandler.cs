@@ -185,7 +185,7 @@ public class CreateUsuarioCommandHandler : IRequestHandler<CreateUsuarioCommand,
     private async Task<string> CreateEmailConfirmationUrl(string userId, string token)
     {
         var tokenEncoded = WebUtility.UrlEncode(token);
-        var result = await _shortnerService.CreateUrlAsync("UrlEmail", new[] { $"userId={userId}", $"token={tokenEncoded}" });
+        var result = await _shortnerService.CreateUrlAsync("UrlEmail", new[] { $"usuarioId={userId}", $"token={tokenEncoded}" });
         return result.Data!;
     }
 
@@ -194,7 +194,7 @@ public class CreateUsuarioCommandHandler : IRequestHandler<CreateUsuarioCommand,
     {
         var tokenEncoded = WebUtility.UrlEncode(token);
         var phoneEncoded = WebUtility.UrlEncode(phoneNumber);
-        var result = await _shortnerService.CreateUrlAsync("UrlPhone", new[] { $"userId={userId}", $"phone={phoneEncoded}", $"token={tokenEncoded}" } );
+        var result = await _shortnerService.CreateUrlAsync("UrlPhone", new[] { $"usuarioId={userId}", $"phone={phoneEncoded}", $"token={tokenEncoded}" } );
         return result.Data!;
     }
     private async Task SendSms(Usuario usuario, string token)

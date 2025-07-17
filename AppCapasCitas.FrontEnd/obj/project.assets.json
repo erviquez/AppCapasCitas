@@ -2521,11 +2521,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj",
+      "projectUniqueName": "D:\\Licito\\AppCapasCitas\\appCapasCitas.frontEnd\\AppCapasCitas.FrontEnd.csproj",
       "projectName": "AppCapasCitas.FrontEnd",
-      "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\AppCapasCitas.FrontEnd.csproj",
+      "projectPath": "D:\\Licito\\AppCapasCitas\\appCapasCitas.frontEnd\\AppCapasCitas.FrontEnd.csproj",
       "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-      "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.FrontEnd\\obj\\",
+      "outputPath": "D:\\Licito\\AppCapasCitas\\appCapasCitas.frontEnd\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

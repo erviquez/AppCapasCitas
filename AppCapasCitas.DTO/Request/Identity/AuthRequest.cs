@@ -5,7 +5,8 @@ namespace AppCapasCitas.DTO.Request.Identity;
 
 public class AuthRequest
 {
-    public string Id { get; set; } = string.Empty;
+    public Guid UsuarioId { get; set; } = Guid.Empty;
+
     [Required(ErrorMessage = ConstantError.ErrorMessageInput)]
     public string Email { get; set; } = string.Empty;
     public string Username { get; set; } = string.Empty;

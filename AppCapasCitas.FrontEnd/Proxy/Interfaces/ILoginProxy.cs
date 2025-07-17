@@ -8,4 +8,5 @@ namespace AppCapasCitas.FrontEnd.Proxy.Interfaces;
 public interface ILoginProxy
 {
      Task<Response<AuthResponse>> LoginAsync(AuthRequest request);
+     Task<Response<bool>> ResetPasswordAsync(AuthResetPasswordRequest request);
 }

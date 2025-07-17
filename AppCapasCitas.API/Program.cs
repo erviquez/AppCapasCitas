@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 using AppCapasCitas.Application.Contracts.Persistence.Infrastructure;
 using AppCapasCitas.Infrastructure.Repositories.Messaging;
 using AppCapasCitas.Infrastructure.Repositories.Shortner;
-using AppCapasCitas.DTO.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 string NombrePolitica = "WebApiConf";
 
@@ -108,7 +107,7 @@ builder.Services.AddSwaggerGen(c =>
 
 
 builder.Services.AddInfrastructureServices(builder.Configuration);
-builder.Services.AddApplicationServices();
+builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.ConfigureIdentityServices(builder.Configuration);
 
 

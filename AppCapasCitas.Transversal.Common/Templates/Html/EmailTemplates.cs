@@ -11,7 +11,7 @@ public class EmailTemplates
         <head>
             <meta charset=""UTF-8"">
             <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
-            <title>Cambio de Rol de Usuario - AppCapasCitas</title>
+            <title>Cambio de Rol de Usuario - App Citas</title>
             <style>
                 body {{
                     font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
@@ -141,12 +141,12 @@ public class EmailTemplates
                     
                     <div class=""message"">
                         Gracias por utilizar nuestros servicios.<br>
-                        El equipo de AppCapasCitas
+                        El equipo de App Citas
                     </div>
                 </div>
                 
                 <div class=""email-footer"">
-                    &copy; {DateTime.Now.Year} AppCapasCitas. Todos los derechos reservados.<br>
+                    &copy; {DateTime.Now.Year} App Citas. Todos los derechos reservados.<br>
                     <small>Este es un mensaje automático, por favor no respondas directamente.</small>
                 </div>
             </div>
@@ -164,7 +164,7 @@ public class EmailTemplates
         <head>
             <meta charset=""UTF-8"">
             <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
-            <title>Alta de Usuario - AppCapasCitas</title>
+            <title>Alta de Usuario - App Citas</title>
             <style>
                 body {{
                     font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
@@ -261,7 +261,7 @@ public class EmailTemplates
         <body>
             <div class=""email-container"">
                 <div class=""email-header"">
-                    <h1>Bienvenido a AppCapasCitas</h1>
+                    <h1>Bienvenido a App Citas</h1>
                 </div>
                 
                 <div class=""email-body"">
@@ -270,7 +270,7 @@ public class EmailTemplates
                     </div>
                     
                     <div class=""message"">
-                        Tu usuario ha sido creado exitosamente en <strong>AppCapasCitas</strong>. A continuación encontrarás tus datos de acceso:
+                        Tu usuario ha sido creado exitosamente en <strong>App Citas</strong>. A continuación encontrarás tus datos de acceso:
                     </div>
                     
                     <div class=""info-card"">
@@ -294,12 +294,12 @@ public class EmailTemplates
                     
                     <div class=""message"">
                         Gracias por utilizar nuestros servicios.<br>
-                        El equipo de AppCapasCitas
+                        El equipo de App Citas
                     </div>
                 </div>
                 
                 <div class=""email-footer"">
-                    &copy; {DateTime.Now.Year} AppCapasCitas. Todos los derechos reservados.<br>
+                    &copy; {DateTime.Now.Year} App Citas. Todos los derechos reservados.<br>
                     <small>Este es un mensaje automático, por favor no respondas directamente.</small>
                 </div>
             </div>
@@ -316,7 +316,7 @@ public class EmailTemplates
     <head>
         <meta charset=""UTF-8"">
         <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
-        <title>Alta de Usuario - AppCapasCitas</title>
+        <title>Alta de Usuario - App Citas</title>
         <style>
             body {{
                 font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
@@ -424,7 +424,7 @@ public class EmailTemplates
     <body>
         <div class=""email-container"">
             <div class=""email-header"">
-                <h1>Bienvenido a AppCapasCitas</h1>
+                <h1>Bienvenido a App Citas</h1>
             </div>
             
             <div class=""email-body"">
@@ -433,7 +433,7 @@ public class EmailTemplates
                 </div>
                 
                 <div class=""message"">
-                    Tu usuario ha sido creado exitosamente en <strong>AppCapasCitas</strong>. A continuación encontrarás tus datos de acceso:
+                    Tu usuario ha sido creado exitosamente en <strong>App Citas</strong>. A continuación encontrarás tus datos de acceso:
                 </div>
                 
                 <div class=""info-card"">
@@ -456,17 +456,17 @@ public class EmailTemplates
                 </div>
 
                 <div style=""text-align:center;"">
-                    <a href=""{confirmUrl}"" class=""confirm-btn"">Confirmar mi correo electrónico</a>
+                    <a href=""{confirmUrl}"" class=""confirm-btn"" style=""color: #FFFFFF;"">Confirmar mi correo electrónico</a>
                 </div>
                 
                 <div class=""message"">
                     Gracias por utilizar nuestros servicios.<br>
-                    El equipo de AppCapasCitas
+                    El equipo de App Citas
                 </div>
             </div>
             
             <div class=""email-footer"">
-                &copy; {DateTime.Now.Year} AppCapasCitas. Todos los derechos reservados.<br>
+                &copy; {DateTime.Now.Year} App Citas. Todos los derechos reservados.<br>
                 <small>Este es un mensaje automático, por favor no respondas directamente.</small>
             </div>
         </div>

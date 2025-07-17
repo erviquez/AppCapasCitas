@@ -428,6 +428,96 @@ public class AuthService : IAuthService
         }
         return response;
     }
+    /// <summary>
+    /// Reset password de un usuario
+    /// <param name="request">Datos del usuario y nueva contraseña</param>
+    /// <returns>Respuesta con éxito o error</returns>
+    /// <exception cref="Exception">Cuando el usuario no existe o hay errores al cambiar la contraseña</exception>
+    /// </summary>
+    
+    public async Task<Response<bool>> ResetPassword(AuthResetPasswordRequest request)
+    {
+        var response = new Response<bool>();
+        try
+        {
+            // Busca el usuario por ID
+            var user = await _userManager.FindByIdAsync(request.UsuarioId.ToString());
+            if (user == null)
+            {
+                response.IsSuccess = false;
+                response.Message = "El usuario no existe";
+                return response;
+            }
+            // Verifica que la contraseña antigua sea correcta
+            var passwordCheck = await _userManager.CheckPasswordAsync(user, request.OldPassword);
+            if (!passwordCheck)
+            {
+                response.IsSuccess = false;
+                response.Message = "La contraseña antigua es incorrecta";
+                return response;
+            }
+
+            // Verifica que la nueva contraseña sea válida
+            if (string.IsNullOrEmpty(request.NewPassword) || request.NewPassword.Length < 6)
+            {
+                response.IsSuccess = false;
+                response.Message = "La nueva contraseña debe tener al menos 6 caracteres";
+                return response;
+            }
+
+            // Verifica que las contraseñas coincidan
+            if (request.NewPassword != request.ConfirmNewPassword)
+            {
+                response.IsSuccess = false;
+                response.Message = "Las contraseñas no coinciden";
+                return response;
+            }
+            if (!string.IsNullOrEmpty(request.OldPassword))
+            {
+                var changeResult = await _userManager.ChangePasswordAsync(user, request.OldPassword, request.NewPassword);
+                if (!changeResult.Succeeded)
+                {
+                    response.IsSuccess = false;
+                    response.Message = $"Error al cambiar la contraseña: {string.Join(", ", changeResult.Errors.Select(e => e.Description))}";
+                    return response;
+                }
+           }
+            else
+            {
+                //Validar si se mantiene funcionalidad
+                // Si no se proporciona contraseña antigua, se establece la nueva directamente
+                user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, request.NewPassword);
+                var updateResult = await _userManager.UpdateAsync(user);
+                if (!updateResult.Succeeded)
+                {
+                    response.IsSuccess = false;
+                    response.Message = $"Error al actualizar el usuario: {string.Join(", ", updateResult.Errors.Select(e => e.Description))}";
+                    return response;
+                }
+            }
+            // Actualiza el usuario con la nueva contraseña
+            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, request.NewPassword);
+            await _userManager.UpdateAsync(user);
+
+            response.IsSuccess = true;
+            response.Data = true; // Indica que la operación fue exitosa
+        }
+        catch (Exception ex)
+        {
+            var st = new System.Diagnostics.StackTrace(true);
+            var frame = st.GetFrame(0); // Frame actual
+            var className = frame!.GetMethod()!.DeclaringType!.FullName;
+            var lineNumber = frame.GetFileLineNumber();
+            string errorMessage = $"Error en la Linea: {lineNumber} -> {ex.InnerException?.Message} ";
+            _appLogger.LogError(ex.Message, ex);
+            response.Message = "Ocurrió un error, revisar detalle.";
+            response.Errors = new List<ValidationFailureFluent>
+            {
+                new ValidationFailureFluent(className, errorMessage)
+            };
+        }
+        return response;
+    }
 
     /// <summary>
     /// Asigna un rol a un usuario existente
@@ -963,7 +1053,7 @@ public class AuthService : IAuthService
         var response = new Response<bool>();
         try
         {
-            var userIdentity = await _userManager.FindByIdAsync(authRequest.Id);
+            var userIdentity = await _userManager.FindByIdAsync(authRequest.UsuarioId.ToString());
             if (userIdentity is not null)
             {
                 if (authRequest.Email != "") userIdentity.Email = authRequest.Email;

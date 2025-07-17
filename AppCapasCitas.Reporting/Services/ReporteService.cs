@@ -468,7 +468,7 @@ public class ReporteService : IReporteService
             CrearSeccionHorariosTrabajo(doc, medicoData, config);
 
             // ESTADÍSTICAS
-            await CrearSeccionEstadisticas(doc, medicoData, config);
+            CrearSeccionEstadisticas(doc, medicoData, config);
 
             // Pie de página
             PdfConfigurableHelper.CrearPieDePaginaConfigurable(doc, config);
@@ -627,8 +627,8 @@ public class ReporteService : IReporteService
                 horario => new List<string>
                 {
                     ObtenerNombreDia((int)horario.DiaSemana),
-                    (horario.HoraInicio != null ? horario.HoraInicio.ToString(@"hh\:mm") : "N/A"),
-                    (horario.HoraFin != null ? horario.HoraFin.ToString(@"hh\:mm") : "N/A"),
+                    horario.HoraInicio.ToString(@"hh\:mm") ?? "N/A",
+                    horario.HoraFin.ToString(@"hh\:mm") ?? "N/A",
                     horario.Activo ? "Activo" : "Inactivo"
                 }, config);
 
@@ -644,7 +644,7 @@ public class ReporteService : IReporteService
         doc.Add(new Paragraph("\n"));
     }
 
-    private async Task CrearSeccionEstadisticas(Document doc, Medico medico, ReporteConfiguration config)
+    private void CrearSeccionEstadisticas(Document doc, Medico medico, ReporteConfiguration config)
     {
         PdfConfigurableHelper.CrearTituloSeccion(doc, "ESTADÍSTICAS", config);
 

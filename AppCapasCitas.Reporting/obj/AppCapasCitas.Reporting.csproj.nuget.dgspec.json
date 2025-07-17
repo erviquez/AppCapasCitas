@@ -4,14 +4,14 @@
     "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Reporting\\AppCapasCitas.Reporting.csproj": {}
   },
   "projects": {
-    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\AppCapasCitas.Application.csproj": {
+    "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\AppCapasCitas.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\AppCapasCitas.Application.csproj",
+        "projectUniqueName": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\AppCapasCitas.Application.csproj",
         "projectName": "AppCapasCitas.Application",
-        "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\AppCapasCitas.Application.csproj",
+        "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\AppCapasCitas.Application.csproj",
         "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-        "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\obj\\",
+        "outputPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -35,8 +35,8 @@
               "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Domain\\AppCapasCitas.Domain.csproj": {
                 "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Domain\\AppCapasCitas.Domain.csproj"
               },
-              "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj": {
-                "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj"
+              "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj": {
+                "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj"
               },
               "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj": {
                 "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj"
@@ -85,6 +85,10 @@
               "version": "[9.0.4, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
               "target": "Package",
               "version": "[9.0.4, )"
             }
@@ -174,14 +178,14 @@
         }
       }
     },
-    "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj": {
+    "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
+        "projectUniqueName": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
         "projectName": "AppCapasCitas.DTO",
-        "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
+        "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\AppCapasCitas.DTO.csproj",
         "packagesPath": "C:\\Users\\erdv\\.nuget\\packages\\",
-        "outputPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\obj\\",
+        "outputPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.DTO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -277,8 +281,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\AppCapasCitas.Application.csproj": {
-                "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\AppCapasCitas.Application.csproj"
+              "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\AppCapasCitas.Application.csproj": {
+                "projectPath": "d:\\Licito\\AppCapasCitas\\AppCapasCitas.Application\\AppCapasCitas.Application.csproj"
               },
               "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj": {
                 "projectPath": "D:\\Licito\\AppCapasCitas\\AppCapasCitas.Transversal.Common\\AppCapasCitas.Transversal.Common.csproj"

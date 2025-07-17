@@ -7,6 +7,7 @@ using AppCapasCitas.DTO.Request.Identity;
 using AppCapasCitas.DTO.Request.Usuario;
 using AppCapasCitas.DTO.Response.Identity;
 using AppCapasCitas.Transversal.Common;
+using FluentValidation.Results;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -105,8 +106,9 @@ public class AccountController : ControllerBase
     //confirmation email
     // </summary>
     [HttpGet("ConfirmEmail")]
-    public async Task<IActionResult> ConfirmEmail(string usuarioId, string token)
+    public async Task<ActionResult<Response<bool>>> ConfirmEmail(string usuarioId, string token)
     {
+        
         if (string.IsNullOrEmpty(usuarioId) || string.IsNullOrEmpty(token))
         {
             return BadRequest("Invalid user ID or token.");
@@ -125,7 +127,7 @@ public class AccountController : ControllerBase
         if (guidUsuarioId != Guid.Empty)
             await LogAccion(guidUsuarioId, result.Data.ToString());
             
-        return Ok("Email confirmed successfully.");
+        return Ok(result);
     }
     /// <summary>
     /// Confirmación de teléfono vía SMS
@@ -151,6 +153,47 @@ public class AccountController : ControllerBase
             await LogAccion(guidUsuarioId, "DisableUsuarioById", result.Data.ToString());
         return Ok("Teléfono confirmado correctamente.");
     }
+
+    /// <summary>
+    /// Reset de contraseña
+    /// </summary>
+    /// <param name="usuarioId">ID del usuario</param>
+    /// <param name="newPassword">Nueva contraseña</param>
+    /// <param name="confirmNewPassword">Confirmación de nueva contraseña</param>
+    /// <param name="oldPassword">Contraseña antigua</param>
+    /// <returns></returns>
+    [HttpPost("ResetPassword")]
+    public async Task<IActionResult> ResetPassword([FromBody] AuthResetPasswordRequest request )
+    {
+         var response = new Response<bool>();
+        if (request is null)
+        {
+            response.IsSuccess = false;
+            response.Errors = new List<ValidationFailure> { new ValidationFailure("Error", "Error en el request recibido") };
+            return BadRequest(response);
+        }
+        response = await _authService.ResetPassword(request);
+        if (!response.IsSuccess)
+        {
+            response.IsSuccess = false;
+            response.Message = response.Message;
+            response.Errors = response.Errors;
+            return BadRequest(response);
+        }
+        //verificar si se puede convertir a guid
+        if (!Guid.TryParse(request.UsuarioId.ToString(), out var guidUsuarioId) || guidUsuarioId == Guid.Empty)
+        {
+            return BadRequest("Invalid user ID format.");
+        }
+        if (guidUsuarioId != Guid.Empty)
+            await LogAccion(guidUsuarioId, "ResetPassword", guidUsuarioId.ToString());
+        response.IsSuccess = true;
+        response.Data = true;
+        response.Message = "Contraseña restablecida correctamente.";
+        return Ok(response);
+    }
+
+    /// <returns></returns>
 
 
     private async Task LogAccion(Guid usuarioId, string? usuarioCreacion = "system", [System.Runtime.CompilerServices.CallerMemberName] string? methodName = null, string? mensaje = null)

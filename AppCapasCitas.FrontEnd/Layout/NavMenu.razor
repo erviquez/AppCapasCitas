@@ -1,13 +1,15 @@
 ﻿@inject AuthenticationStateProvider auth
 @inject NavigationManager navigationManager
 @inject SweetAlertService Swal;
-
-
+@inject Blazored.SessionStorage.ISessionStorageService SessionStorage
 
 <!-- Barra superior de navegación -->
 <header class="top-row ps-3 navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Citas medicas</a>
+        <a class="navbar-brand" href="/">
+            <i class="bi bi-heart-pulse me-2"></i>
+            Citas Médicas
+        </a>
         <button class="navbar-toggler" 
                 title="Menú de navegación" 
                 @onclick="ToggleNavMenu"
@@ -21,59 +23,207 @@
 <div class="@NavMenuCssClass nav-scrollable bg-dark" @onclick="ToggleNavMenu">
     <nav class="nav flex-column">
         <AuthorizeView>
-
             <NotAuthorized>
-
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="usuario/registro">
-                        <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Registrarse
+                        <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> 
+                        <span class="nav-text">Registrarse</span>
                     </NavLink>
                 </div>
             </NotAuthorized>
         </AuthorizeView>
 
         <AuthorizeView>
+            <!-- Menú Home/Dashboard -->
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                    <span class="bi bi-house-fill-nav-menu" aria-hidden="true"></span>
+                    <span class="nav-text">Inicio</span>
+                </NavLink>
+            </div>
 
+            <!-- Menú Médicos -->
             <div class="nav-item px-3">
                 <NavLink class="nav-link" href="medico/medico">
-                    <span class="bi bi-person-badge-fill-nav-menu" aria-hidden="true"></span>  Médicos
+                    <span class="bi bi-person-badge-fill-nav-menu" aria-hidden="true"></span>
+                    <span class="nav-text">Médicos</span>
+                    <span class="badge bg-info ms-auto">@medicosCount</span>
                 </NavLink>
-            </div>
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="paciente">
-                    <span class="bi bi-person-lines-fill-nav-menu" aria-hidden="true"></span>  Pacientes
-                </NavLink>
-            </div>
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="administracion">
-                    <span class="bi bi-gear-fill-nav-menu" aria-hidden="true"></span> Administración
-                </NavLink>
-                <ul class="nav flex-column ms-3">
-                    <li class="nav-item">
-                        <NavLink class="nav-link" href="usuario/usuario">
-                            <span class="bi bi-people-fill-nav-menu" aria-hidden="true"></span> Usuarios
-                        </NavLink>
-                    </li>
-                </ul>
-            </div>
-            <div class="nav-item px-3">
-                <a class="nav-link" @onclick="CerrarSesion" style="cursor: pointer;">
-                    <span class="bi bi-box-arrow-right-nav-menu" aria-hidden="true"></span> Cerrar Sesión
-                </a>
             </div>
 
-    </AuthorizeView>
+            <!-- Menú Pacientes -->
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="paciente">
+                    <span class="bi bi-person-lines-fill-nav-menu" aria-hidden="true"></span>
+                    <span class="nav-text">Pacientes</span>
+                    <span class="badge bg-success ms-auto">@pacientesCount</span>
+                </NavLink>
+            </div>
+            
+            <!-- Menú colapsable de Administración -->
+            <div class="nav-item px-3">
+                <a class="nav-link d-flex justify-content-between align-items-center" 
+                   @onclick="ToggleAdministracionMenu" 
+                   @onclick:stopPropagation="true"
+                   style="cursor: pointer;">
+                    <span class="d-flex align-items-center">
+                        <span class="bi bi-gear-fill-nav-menu" aria-hidden="true"></span>
+                        <span class="nav-text">Administración</span>
+                    </span>
+                    <span class="collapse-icon @(isAdministracionCollapsed ? "" : "expanded")">
+                        <i class="bi bi-chevron-right"></i>
+                    </span>
+                </a>
+                
+                <!-- Submenú colapsable -->
+                @if (!isAdministracionCollapsed)
+                {
+                    <ul class="nav flex-column submenu-container">
+                        <li class="nav-item">
+                            <NavLink class="nav-link submenu-item" href="usuario/usuario">
+                                @* <span class="bi bi-people-fill-nav-menu" aria-hidden="true"></span> *@
+                                <span class="submenu-text">Usuarios</span>
+                                <span class="badge bg-warning ms-auto">@usuariosCount</span>
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link submenu-item" href="usuario/perfilusuario">
+                                <span class="bi bi-person-circle-nav-menu" aria-hidden="true"></span>
+                                <span class="submenu-text">Mi Perfil</span>
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link submenu-item" href="administracion/especialidades">
+                                <span class="bi bi-clipboard2-pulse-nav-menu" aria-hidden="true"></span>
+                                <span class="submenu-text">Especialidades</span>
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-link submenu-item" href="administracion/configuracion">
+                                <span class="bi bi-sliders-nav-menu" aria-hidden="true"></span>
+                                <span class="submenu-text">Configuración</span>
+                            </NavLink>
+                        </li>
+                    </ul>
+                }
+            </div>
+
+            <!-- Separador -->
+            <hr class="text-white-50 my-2" />
+            
+            <!-- Menú Mi Perfil (acceso rápido) -->
+            <div class="nav-item px-3">
+                <NavLink class="nav-link profile-link" href="usuario/perfilusuario">
+                    <span class="bi bi-person-badge-nav-menu" aria-hidden="true"></span>
+                    <span class="nav-text">@currentUserName</span>
+                    <span class="badge bg-secondary ms-auto">Online</span>
+                </NavLink>
+            </div>
+            
+            <!-- Cerrar Sesión -->
+            <div class="nav-item px-3">
+                <a class="nav-link logout-link" @onclick="CerrarSesion" @onclick:stopPropagation="true" style="cursor: pointer;">
+                    <span class="bi bi-box-arrow-right-nav-menu" aria-hidden="true"></span>
+                    <span class="nav-text">Cerrar Sesión</span>
+                </a>
+            </div>
+        </AuthorizeView>
     </nav>
 </div>
 
+
+
 @code {
     private bool collapseNavMenu = true;
+    private bool isAdministracionCollapsed = true;
+    
+    // Contadores para badges
+    private int usuariosCount = 0;
+    private int medicosCount = 0;
+    private int pacientesCount = 0;
+    
+    // Usuario actual
+    private string currentUserName = "Usuario";
+    
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadMenuState();
+        await LoadUserInfo();
+        LoadCounters();
+        
+        // Detectar la ruta actual para mantener abierto el submenú correspondiente
+        DetectActiveMenu();
+    }
+
+    private async Task LoadMenuState()
+    {
+        try
+        {
+            isAdministracionCollapsed = !(await SessionStorage.GetItemAsync<bool>("administracionMenuOpen"));
+        }
+        catch
+        {
+            // Si hay error al leer del storage, usar valores por defecto
+            isAdministracionCollapsed = true;
+        }
+    }
+
+    private async Task LoadUserInfo()
+    {
+        try
+        {
+            var authService = (AuthenticationService)auth;
+            var user = await authService.GetUserActual();
+            if (user != null && !string.IsNullOrEmpty(user.Username))
+            {
+                currentUserName = user.Username;
+            }
+        }
+        catch
+        {
+            currentUserName = "Usuario";
+        }
+    }
+
+    private void LoadCounters()
+    {
+        //Pendiente: Cargar contadores desde la API
+        usuariosCount = 15;
+        medicosCount = 8;
+        pacientesCount = 142;
+    }
+
+    private void DetectActiveMenu()
+    {
+        var currentUri = navigationManager.Uri.ToLower();
+
+        if (currentUri.Contains("/usuario/") || currentUri.Contains("/administracion/"))
+        {
+            isAdministracionCollapsed = false;
+        }
+    }
 
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
     }
+
+    private async Task ToggleAdministracionMenu()
+    {
+        isAdministracionCollapsed = !isAdministracionCollapsed;
+        try
+        {
+            await SessionStorage.SetItemAsync("administracionMenuOpen", !isAdministracionCollapsed);
+        }
+        catch
+        {
+            // Ignorar errores de SessionStorage
+        }
+        StateHasChanged();
+    }
+
     private async Task CerrarSesion()
     {
         SweetAlertResult result = await Swal.FireAsync(new SweetAlertOptions{
@@ -84,15 +234,24 @@
             ConfirmButtonText = "Si",
             CancelButtonText = "No"
         });
+        
         if (!string.IsNullOrEmpty(result.Value))
         {
             await Swal.FireAsync(new SweetAlertOptions{
-                Title = "Adios...",
+                Title = "Adiós...",
                 Text = "Ha cerrado sesión correctamente.",
                 Icon = SweetAlertIcon.Success,
                 ShowConfirmButton = false,
                 Timer = 1500
             });
+            
+            // Limpiar estado del menú
+            try
+            {
+                await SessionStorage.SetItemAsync("administracionMenuOpen", false);
+            }
+            catch { }
+            
             var authService = (AuthenticationService)auth;
             await authService.Logout();
             navigationManager.NavigateTo("/");

@@ -44,7 +44,7 @@ public class DisableUsuarioCommandHandler : IRequestHandler<DisableUsuarioComman
 
             var usuarioActualizado = new AuthRequest()
             {
-                Id = request.IdentityId.ToString(),
+                UsuarioId = request.IdentityId,
                 Active = request.Active
             };
             var resultUpdateIdentity = await _authService.UpdateApplicationUser(usuarioActualizado);
@@ -57,7 +57,7 @@ public class DisableUsuarioCommandHandler : IRequestHandler<DisableUsuarioComman
                 var activo = request.Active? false : true; 
                 usuarioActualizado = new AuthRequest()
                 {
-                    Id = request.IdentityId.ToString(),
+                    UsuarioId = request.IdentityId,
                     Active = activo
                 };
                 // Intentar revertir el cambio en Identity

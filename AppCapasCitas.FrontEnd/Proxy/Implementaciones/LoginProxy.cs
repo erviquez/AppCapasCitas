@@ -36,24 +36,28 @@ public class LoginProxy:ILoginProxy
 
 
     }
+    /// <summary>
+    /// /Reset password
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<Response<bool>> ResetPasswordAsync(AuthResetPasswordRequest request)
+    {
+        var response = new Response<bool>();
+        if (request == null)
+        {
+            response.IsSuccess = false;
+            response.Errors = new List<ValidationFailure> { new ValidationFailure("Error", "Error en el request recibido") };
+            return response;
+        }
 
-    //registrar ultimo login
-    // private async Task<Response<bool>> RegistrarUltimoLoginAsync(string userId)
-    // {
-    //     var response = new Response<bool>();
-    //     if (string.IsNullOrEmpty(userId))
-    //     {
-    //         response.IsSuccess = false;
-    //         response.Errors = new List<ValidationFailure> { new ValidationFailure("Error", "El userId no puede ser nulo o vacío") };
-    //         return response;
-    //     }
+        var result = await _httpClient.PostAsJsonAsync<AuthResetPasswordRequest>("api/v1/Account/ResetPassword", request!);
+        response = await result.Content.ReadFromJsonAsync<Response<bool>>()
+                ?? new Response<bool>();
 
-    //     var result = await _httpClient.PostAsJsonAsync("api/v1/Account/RegistrarUltimoLogin", userId);
-    //     response = await result.Content.ReadFromJsonAsync<Response<bool>>()
-    //             ?? new Response<bool>();
+        return response;
+    }
 
-    //     return response;
-    // }
 
     public Task<Response<RegistrationResponse>> RegistrarUsuarioAsync(RegistrationRequest request)
     {

@@ -1,0 +1,450 @@
+﻿@page "/usuario/perfilusuario"
+@using AppCapasCitas.DTO.Request.Identity
+@using AppCapasCitas.DTO.Response.Identity
+@using AppCapasCitas.Transversal.Common.Identity
+@using Blazored.Toast.Configuration
+@using AppCapasCitas.FrontEnd.Proxy.Interfaces
+@using AppCapasCitas.FrontEnd.Security
+@using Microsoft.AspNetCore.Components.Authorization
+
+@inject IUsuarioProxy UsuarioProxy
+@inject ILoginProxy LoginProxy
+@inject NavigationManager navigationManager
+@inject IUsuarioProxy proxy
+@inject IToastService toastService
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@inject SweetAlertService Swal;
+@attribute [Authorize]
+@inject AuthenticationStateProvider auth
+@inject ILogger<PerfilUsuario> Logger
+
+
+
+<PageTitle>Mi Perfil - AppCapasCitas</PageTitle>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <!-- Header de la página -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body bg-gradient" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <div class="avatar-circle">
+                                <i class="fas fa-user-circle fa-3x text-white"></i>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h2 class="text-white mb-0">Mi Perfil</h2>
+                            <p class="text-white-50 mb-0">Gestiona tu información personal y configuración de cuenta</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Información del Usuario -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-white border-bottom">
+                    <h5 class="mb-0">
+                        <i class="fas fa-user me-2 text-primary"></i>
+                        Información Personal
+                    </h5>
+                </div>
+                <div class="card-body p-4">
+                    @if (isLoading)
+                    {
+                        <div class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                            <p class="mt-2 text-muted">Cargando información del usuario...</p>
+                        </div>
+                    }
+                    else if (usuario != null)
+                    {
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold text-muted">ID de Usuario</label>
+                                <div class="form-control-plaintext border rounded p-2 bg-light">
+                                    @usuario.Id
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold text-muted">Nombre de Usuario</label>
+                                <div class="form-control-plaintext border rounded p-2 bg-light">
+                                    @usuario.Username
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold text-muted">Email</label>
+                                <div class="form-control-plaintext border rounded p-2 bg-light">
+                                    <i class="fas fa-envelope me-2 text-primary"></i>
+                                    @usuario.Email
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold text-muted">Estado</label>
+                                <div class="form-control-plaintext border rounded p-2 bg-light">
+                                    @if (usuario.Active)
+                                    {
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-check-circle me-1"></i>
+                                            Activo
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">
+                                            <i class="fas fa-times-circle me-1"></i>
+                                            Inactivo
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                            @if (usuario.Roles != null && usuario.Roles.Any())
+                            {
+                                <div class="col-12">
+                                    <label class="form-label fw-bold text-muted">Roles Asignados</label>
+                                    <div class="form-control-plaintext border rounded p-2 bg-light">
+                                        @foreach (var rol in usuario.Roles)
+                                        {
+                                            <span class="badge bg-info me-2">
+                                                <i class="fas fa-user-tag me-1"></i>
+                                                @rol
+                                            </span>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            @if (usuario.LastLogin.HasValue)
+                            {
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold text-muted">Último Acceso</label>
+                                    <div class="form-control-plaintext border rounded p-2 bg-light">
+                                        <i class="fas fa-clock me-2 text-warning"></i>
+                                        @usuario.LastLogin.Value.ToString("dd/MM/yyyy HH:mm")
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            No se pudo cargar la información del usuario.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel de Cambio de Contraseña -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-bottom">
+                    <h5 class="mb-0">
+                        <i class="fas fa-lock me-2 text-warning"></i>
+                        Cambiar Contraseña
+                    </h5>
+                </div>
+                <div class="card-body p-4">
+                    <EditForm Model="resetPasswordRequest" OnValidSubmit="CambiarContrasena" FormName="cambiarPassword">
+                        <DataAnnotationsValidator />
+                        
+                        <div class="mb-3">
+                            <label for="oldPassword" class="form-label fw-bold">Contraseña Actual</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-key text-muted"></i>
+                                </span>
+                                <InputText type="@(mostrarContrasenaActual ? "text" : "password")" 
+                                          class="form-control" 
+                                          id="oldPassword" 
+                                          @bind-Value="resetPasswordRequest.OldPassword" 
+                                          placeholder="Ingrese su contraseña actual" />
+                                <button type="button" class="btn btn-outline-secondary" 
+                                        @onclick="() => mostrarContrasenaActual = !mostrarContrasenaActual">
+                                    <i class="fas @(mostrarContrasenaActual ? "fa-eye-slash" : "fa-eye")"></i>
+                                </button>
+                            </div>
+                            <ValidationMessage For="@(() => resetPasswordRequest.OldPassword)" class="text-danger small" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label fw-bold">Nueva Contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock text-muted"></i>
+                                </span>
+                                <InputText type="@(mostrarContrasenaNueva ? "text" : "password")" 
+                                          class="form-control" 
+                                          id="newPassword" 
+                                          @bind-Value="resetPasswordRequest.NewPassword" 
+                                          placeholder="Ingrese su nueva contraseña" />
+                                <button type="button" class="btn btn-outline-secondary" 
+                                        @onclick="() => mostrarContrasenaNueva = !mostrarContrasenaNueva">
+                                    <i class="fas @(mostrarContrasenaNueva ? "fa-eye-slash" : "fa-eye")"></i>
+                                </button>
+                            </div>
+                            <ValidationMessage For="@(() => resetPasswordRequest.NewPassword)" class="text-danger small" />
+                            <div class="form-text">
+                                <small class="text-muted">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    Mínimo 6 caracteres, incluye mayúsculas, minúsculas y números
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label fw-bold">Confirmar Nueva Contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-check-double text-muted"></i>
+                                </span>
+                                <InputText type="@(mostrarConfirmarContrasena ? "text" : "password")" 
+                                          class="form-control" 
+                                          id="confirmPassword" 
+                                          @bind-Value="resetPasswordRequest.ConfirmNewPassword" 
+                                          placeholder="Confirme su nueva contraseña" />
+                                <button type="button" class="btn btn-outline-secondary" 
+                                        @onclick="() => mostrarConfirmarContrasena = !mostrarConfirmarContrasena">
+                                    <i class="fas @(mostrarConfirmarContrasena ? "fa-eye-slash" : "fa-eye")"></i>
+                                </button>
+                            </div>
+                            <ValidationMessage For="@(() => resetPasswordRequest.ConfirmNewPassword)" class="text-danger small" />
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(mensajeError))
+                        {
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                @mensajeError
+                                <button type="button" class="btn-close" @onclick="() => mensajeError = string.Empty"></button>
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(mensajeExito))
+                        {
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <i class="fas fa-check-circle me-2"></i>
+                                @mensajeExito
+                                <button type="button" class="btn-close" @onclick="() => mensajeExito = string.Empty"></button>
+                            </div>
+                        }
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary" disabled="@isChangingPassword">
+                                @if (isChangingPassword)
+                                {
+                                    <span class="spinner-border spinner-border-sm me-2"></span>
+                                    <span>Cambiando...</span>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-sync-alt me-2"></i>
+                                    <span>Cambiar Contraseña</span>
+                                }
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" @onclick="LimpiarFormulario">
+                                <i class="fas fa-eraser me-2"></i>
+                                Limpiar
+                            </button>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+
+            <!-- Información Adicional -->
+            <div class="card border-0 shadow-sm mt-4">
+                <div class="card-header bg-white border-bottom">
+                    <h6 class="mb-0">
+                        <i class="fas fa-shield-alt me-2 text-success"></i>
+                        Seguridad de la Cuenta
+                    </h6>
+                </div>
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <small class="text-muted">Autenticación activa</small>
+                    </div>
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-key text-warning me-2"></i>
+                        <small class="text-muted">Contraseña segura</small>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-clock text-info me-2"></i>
+                        <small class="text-muted">Sesión activa</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    [CascadingParameter]
+    private Task<AuthenticationState>? AuthenticationState { get; set; }
+
+    private AuthResponse? usuario;
+    private AuthResetPasswordRequest resetPasswordRequest = new ();
+    private bool isLoading = true;
+    private bool isChangingPassword = false;
+    private string mensajeError = string.Empty;
+    private string mensajeExito = string.Empty;
+    private bool mostrarContrasenaActual = false;
+    private bool mostrarContrasenaNueva = false;
+    private bool mostrarConfirmarContrasena = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarDatosUsuario();
+    }
+
+    private async Task CargarDatosUsuario()
+    {
+        try
+        {
+            isLoading = true;
+            StateHasChanged();
+
+            if (AuthenticationState != null)
+            {
+                var authState = await AuthenticationState;
+                if (authState.User?.Identity?.IsAuthenticated == true)
+                {
+                    var userIdClaim = authState.User.FindFirst("uid")?.Value;
+                    if (!string.IsNullOrEmpty(userIdClaim) && Guid.TryParse(userIdClaim, out var userId))
+                    {
+                        resetPasswordRequest.UsuarioId = userId;
+                        
+                        // Obtener información del usuario desde la sesión
+                        var authService = (AuthenticationService)auth;
+                        var sessionUser = await authService.GetUserActual();
+                        if (sessionUser != null)
+                        {
+                            usuario = sessionUser;
+                            resetPasswordRequest.Email = usuario.Email;
+                        }
+                        else
+                        {
+                            // Fallback: obtener desde API si no está en sesión
+                            var response = await UsuarioProxy.ObtenerUsuarioPorIdAsync(userId);
+                            if (response.IsSuccess && response.Data != null)
+                            {
+                                usuario = new AuthResponse
+                                {
+                                    Id = response.Data.UsuarioId,
+                                    Username = response.Data.Username,
+                                    Email = response.Data.Email,
+                                    Active = response.Data.Activo
+                                };
+                                resetPasswordRequest.Email = usuario.Email;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error al cargar datos del usuario");
+            mensajeError = "Error al cargar la información del usuario.";
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task CambiarContrasena()
+    {
+        try
+        {
+            isChangingPassword = true;
+            mensajeError = string.Empty;
+            mensajeExito = string.Empty;
+            StateHasChanged();
+
+            // Validaciones del lado cliente
+            if (string.IsNullOrWhiteSpace(resetPasswordRequest.OldPassword))
+            {
+                mensajeError = "La contraseña actual es requerida.";
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(resetPasswordRequest.NewPassword))
+            {
+                mensajeError = "La nueva contraseña es requerida.";
+                return;
+            }
+
+            if (resetPasswordRequest.NewPassword.Length < 6)
+            {
+                mensajeError = "La nueva contraseña debe tener al menos 6 caracteres.";
+                return;
+            }
+
+            if (resetPasswordRequest.NewPassword != resetPasswordRequest.ConfirmNewPassword)
+            {
+                mensajeError = "Las contraseñas no coinciden.";
+                return;
+            }
+
+            if (resetPasswordRequest.OldPassword == resetPasswordRequest.NewPassword)
+            {
+                mensajeError = "La nueva contraseña debe ser diferente a la actual.";
+                return;
+            }
+
+            // Llamar al servicio para cambiar la contraseña
+            var response = await LoginProxy.ResetPasswordAsync(resetPasswordRequest);
+
+            if (response.IsSuccess)
+            {
+                mensajeExito = "Contraseña cambiada exitosamente.";
+                LimpiarFormulario();
+                
+                // Mostrar notificación de éxito
+                toastService.ShowSuccess("Contraseña actualizada, Su contraseña ha sido cambiada exitosamente.");
+            }
+            else
+            {
+                mensajeError = response.Message ?? "Error al cambiar la contraseña.";
+                toastService.ShowSuccess(mensajeError);
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error al cambiar contraseña");
+            mensajeError = "Ocurrió un error inesperado. Por favor, intente nuevamente.";
+            toastService.ShowSuccess(mensajeError);
+
+
+        }
+        finally
+        {
+            isChangingPassword = false;
+            StateHasChanged();
+        }
+    }
+
+    private void LimpiarFormulario()
+    {
+        resetPasswordRequest.OldPassword = string.Empty;
+        resetPasswordRequest.NewPassword = string.Empty;
+        resetPasswordRequest.ConfirmNewPassword = string.Empty;
+        mostrarContrasenaActual = false;
+        mostrarContrasenaNueva = false;
+        mostrarConfirmarContrasena = false;
+        mensajeError = string.Empty;
+        mensajeExito = string.Empty;
+    }
+}
