@@ -1,0 +1,537 @@
+{
+  "Version": 1,
+  "Hash": "z28rGtXVSM4KJnEaNR3Xr9104hZoPOWsCRyz9UQoMTE=",
+  "Source": "AppCapasCitas.API",
+  "BasePath": "_content/AppCapasCitas.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "AppCapasCitas.API\\wwwroot",
+      "Source": "AppCapasCitas.API",
+      "ContentRoot": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\",
+      "BasePath": "_content/AppCapasCitas.API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\backgrounds\\fondo-reportes_test.png",
+      "SourceId": "AppCapasCitas.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\",
+      "BasePath": "_content/AppCapasCitas.API",
+      "RelativePath": "images/backgrounds/fondo-reportes_test#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fktw0xw6xd",
+      "Integrity": "Uf4sAdyk64S4QJGUT5MUqikbvxPmuMZc9taStpJ/joI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\backgrounds\\fondo-reportes_test.png"
+    },
+    {
+      "Identity": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\backgrounds\\fondo-reportes.png",
+      "SourceId": "AppCapasCitas.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\",
+      "BasePath": "_content/AppCapasCitas.API",
+      "RelativePath": "images/backgrounds/fondo-reportes#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "nuzhokc48v",
+      "Integrity": "QYjlwhwZqeDGiLoZ4iw/3i/Manq3EH9EVomiFjnP1Xc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\backgrounds\\fondo-reportes.png"
+    },
+    {
+      "Identity": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\logos\\logo-principal.jpg",
+      "SourceId": "AppCapasCitas.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\",
+      "BasePath": "_content/AppCapasCitas.API",
+      "RelativePath": "images/logos/logo-principal#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "w2qqns9wzf",
+      "Integrity": "iP3IBkPbBHZbjghnclMPWJ/z8Fq9R1llvOHvQW5wD6k=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\logos\\logo-principal.jpg"
+    },
+    {
+      "Identity": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\logos\\logo.jpg",
+      "SourceId": "AppCapasCitas.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\",
+      "BasePath": "_content/AppCapasCitas.API",
+      "RelativePath": "images/logos/logo#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "w2qqns9wzf",
+      "Integrity": "iP3IBkPbBHZbjghnclMPWJ/z8Fq9R1llvOHvQW5wD6k=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\logos\\logo.jpg"
+    },
+    {
+      "Identity": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\logos\\logo.png",
+      "SourceId": "AppCapasCitas.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\",
+      "BasePath": "_content/AppCapasCitas.API",
+      "RelativePath": "images/logos/logo#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "s72c8u57r4",
+      "Integrity": "OOZu1+ylKvp9FasAM+Owwgx2g4f/zcAjeno7VKnhkr4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\logos\\logo.png"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "images/backgrounds/fondo-reportes_test.fktw0xw6xd.png",
+      "AssetFile": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\backgrounds\\fondo-reportes_test.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1171780"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Uf4sAdyk64S4QJGUT5MUqikbvxPmuMZc9taStpJ/joI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 14 Jul 2025 21:28:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fktw0xw6xd"
+        },
+        {
+          "Name": "label",
+          "Value": "images/backgrounds/fondo-reportes_test.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Uf4sAdyk64S4QJGUT5MUqikbvxPmuMZc9taStpJ/joI="
+        }
+      ]
+    },
+    {
+      "Route": "images/backgrounds/fondo-reportes_test.png",
+      "AssetFile": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\backgrounds\\fondo-reportes_test.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1171780"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Uf4sAdyk64S4QJGUT5MUqikbvxPmuMZc9taStpJ/joI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 14 Jul 2025 21:28:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Uf4sAdyk64S4QJGUT5MUqikbvxPmuMZc9taStpJ/joI="
+        }
+      ]
+    },
+    {
+      "Route": "images/backgrounds/fondo-reportes.nuzhokc48v.png",
+      "AssetFile": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\backgrounds\\fondo-reportes.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "94992"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QYjlwhwZqeDGiLoZ4iw/3i/Manq3EH9EVomiFjnP1Xc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 14 Jul 2025 23:44:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nuzhokc48v"
+        },
+        {
+          "Name": "label",
+          "Value": "images/backgrounds/fondo-reportes.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-QYjlwhwZqeDGiLoZ4iw/3i/Manq3EH9EVomiFjnP1Xc="
+        }
+      ]
+    },
+    {
+      "Route": "images/backgrounds/fondo-reportes.png",
+      "AssetFile": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\backgrounds\\fondo-reportes.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "94992"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QYjlwhwZqeDGiLoZ4iw/3i/Manq3EH9EVomiFjnP1Xc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 14 Jul 2025 23:44:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-QYjlwhwZqeDGiLoZ4iw/3i/Manq3EH9EVomiFjnP1Xc="
+        }
+      ]
+    },
+    {
+      "Route": "images/logos/logo-principal.jpg",
+      "AssetFile": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\logos\\logo-principal.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4938"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iP3IBkPbBHZbjghnclMPWJ/z8Fq9R1llvOHvQW5wD6k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 16 Sep 2021 18:30:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-iP3IBkPbBHZbjghnclMPWJ/z8Fq9R1llvOHvQW5wD6k="
+        }
+      ]
+    },
+    {
+      "Route": "images/logos/logo-principal.w2qqns9wzf.jpg",
+      "AssetFile": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\logos\\logo-principal.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4938"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iP3IBkPbBHZbjghnclMPWJ/z8Fq9R1llvOHvQW5wD6k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 16 Sep 2021 18:30:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "w2qqns9wzf"
+        },
+        {
+          "Name": "label",
+          "Value": "images/logos/logo-principal.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iP3IBkPbBHZbjghnclMPWJ/z8Fq9R1llvOHvQW5wD6k="
+        }
+      ]
+    },
+    {
+      "Route": "images/logos/logo.jpg",
+      "AssetFile": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\logos\\logo.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4938"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iP3IBkPbBHZbjghnclMPWJ/z8Fq9R1llvOHvQW5wD6k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 16 Sep 2021 18:30:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-iP3IBkPbBHZbjghnclMPWJ/z8Fq9R1llvOHvQW5wD6k="
+        }
+      ]
+    },
+    {
+      "Route": "images/logos/logo.png",
+      "AssetFile": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\logos\\logo.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "19865"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OOZu1+ylKvp9FasAM+Owwgx2g4f/zcAjeno7VKnhkr4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Jul 2025 22:43:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-OOZu1+ylKvp9FasAM+Owwgx2g4f/zcAjeno7VKnhkr4="
+        }
+      ]
+    },
+    {
+      "Route": "images/logos/logo.s72c8u57r4.png",
+      "AssetFile": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\logos\\logo.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "19865"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OOZu1+ylKvp9FasAM+Owwgx2g4f/zcAjeno7VKnhkr4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 13 Jul 2025 22:43:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s72c8u57r4"
+        },
+        {
+          "Name": "label",
+          "Value": "images/logos/logo.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-OOZu1+ylKvp9FasAM+Owwgx2g4f/zcAjeno7VKnhkr4="
+        }
+      ]
+    },
+    {
+      "Route": "images/logos/logo.w2qqns9wzf.jpg",
+      "AssetFile": "D:\\Licito\\AppCapasCitas\\appCapasCitas.apI\\wwwroot\\images\\logos\\logo.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4938"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iP3IBkPbBHZbjghnclMPWJ/z8Fq9R1llvOHvQW5wD6k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 16 Sep 2021 18:30:20 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "w2qqns9wzf"
+        },
+        {
+          "Name": "label",
+          "Value": "images/logos/logo.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iP3IBkPbBHZbjghnclMPWJ/z8Fq9R1llvOHvQW5wD6k="
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Citas - Sistema Integral de Gestión de Citas Médicas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .medical-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10 L50 90 M10 50 L90 50" stroke="white" stroke-width="4" fill="none"/></svg>');
+            background-size: 80px 80px;
+            background-repeat: repeat;
+            z-index: 1;
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .logo-section {
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
+        }
+
+        .logo::before {
+            content: "+";
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .tech-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(240, 147, 251, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            text-align: left;
+        }
+
+        .feature h4 {
+            color: #667eea;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .author-section {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .author-section h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .contact-item::before {
+            content: "📧";
+            font-size: 1.2rem;
+        }
+
+        .contact-item:nth-child(2)::before {
+            content: "💼";
+        }
+
+        .contact-item:nth-child(3)::before {
+            content: "🌐";
+        }
+
+        .date-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .content {
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .tech-stack {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="medical-bg"></div>
+    
+    <div class="container">
+        <div class="date-badge">
+            📅  <p id="current-date"></p> <p id="current-month"></p> <p id="current-day"></p>
+        </div>
+        
+        <div class="content">
+            <div class="logo-section">
+                <div class="logo pulse"></div>
+                <h1>AppCitas</h1>
+                <p class="subtitle">Sistema Integral de Gestión de Citas Médicas</p>
+            </div>
+
+            <div class="description">
+                <p>Es un sistema robusto y escalable desarrollado con arquitectura limpia que revoluciona la gestión de citas médicas. Implementa las mejores prácticas de desarrollo con .NET 9.0, ofreciendo una solución completa para centros médicos, clínicas y profesionales de la salud.</p>
+            </div>
+
+            <div class="tech-stack">
+                <div class="tech-card">
+                    <h3>🎯 Frontend</h3>
+                    <p>Blazor WebAssembly con componentes reactivos y diseño responsivo</p>
+                </div>
+                <div class="tech-card">
+                    <h3>⚡ Backend</h3>
+                    <p>ASP.NET Core Web API con arquitectura limpia y CQRS</p>
+                </div>
+                <div class="tech-card">
+                    <h3>🗄️ Base de Datos</h3>
+                    <p>SQL Server con Entity Framework Core y migraciones</p>
+                </div>
+                <div class="tech-card">
+                    <h3>🔒 Seguridad</h3>
+                    <p>JWT Authentication y ASP.NET Core Identity</p>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <h4>🏥 Gestión Integral</h4>
+                    <p>Administración completa de médicos, especialidades, pacientes y citas</p>
+                </div>
+               
+                <div class="feature">
+                    <h4>🔄 Arquitectura CQRS</h4>
+                    <p>Separación de comandos y consultas con MediatR y Repository Pattern</p>
+                </div>
+                <div class="feature">
+                    <h4>📱 Responsive Design</h4>
+                    <p>Interfaz adaptable para dispositivos móviles y de escritorio</p>
+                </div>
+                <div class="feature">
+                    <h4>📧 Notificaciones</h4>
+                    <p>Sistema de emails y SMS para confirmaciones y recordatorios</p>
+                </div>
+				 <div class="feature">
+                    <h4>📊 Reportes Avanzados</h4>
+                    <p>Generación de PDFs con expedientes médicos y reportes estadísticos</p>
+                </div>
+                <div class="feature">
+                    <h4>🚀 Alto Rendimiento</h4>
+                    <p>Optimizado para manejar grandes volúmenes de datos médicos</p>
+                </div>
+            </div>
+
+            <div class="author-section">
+                <h3>👨‍💻 Desarrollador</h3>
+                <div class="contact-info">
+                    <div class="contact-item">erviquez@gmail.com</div>
+                    <div class="contact-item">Ernesto De la O Viquez</div>
+                    <div class="contact-item"  ><a href="https://github.com/erviquez/AppCapasCitas" dest="_blank">GitHub</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Añadir efectos de interactividad
+        document.addEventListener('DOMContentLoaded', function() {
+            const techCards = document.querySelectorAll('.tech-card');
+            
+            techCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Animación de aparición progresiva
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.feature, .tech-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+
+		const today = new Date();		
+		const formattedDate = today.toLocaleDateString();
+		document.getElementById('current-date').textContent = formattedDate;
+
+		
+		
+	  </script>
+</body>
+</html>
